@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════
+   VARIABLES (TOKENS) — la única fuente de verdad visual
+   Igual que las variables de Figma: si un color cambia,
+   se cambia acá y se actualiza todo el sitio.
+
+   Convención de nombres: --categoria-variante
+   ═══════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Color: fondos del escritorio (oscuro, fotográfico) ── */
+  --color-fondo: #161616;
+  --color-fondo-alto: #232323;      /* zonas con más luz del gradiente */
+  --color-fondo-brillo: #3a3a3a;    /* el "foco" de luz del fondo */
+
+  /* ── Color: texto sobre fondo oscuro ── */
+  --color-texto: #f5f5f4;
+  --color-texto-suave: rgba(245, 245, 244, 0.75);
+  --color-texto-label: rgba(245, 245, 244, 0.85);
+
+  /* ── Color: superficies claras (ventanas) ── */
+  --color-superficie: #ffffff;
+  --color-superficie-barra: #f6f6f6;
+  --color-superficie-lateral: #fafafa;
+  --color-borde-claro: #e5e5e5;
+
+  /* ── Color: texto sobre superficies claras ── */
+  --color-tinta: #1d1d1f;
+  --color-tinta-suave: #6e6e73;
+  --color-tinta-cuerpo: #3a3a3c;
+
+  /* ── Color: acentos del sistema ── */
+  --color-carpeta: #5ba8f2;         /* azul carpeta macOS */
+  --color-carpeta-oscuro: #3c8be0;
+  --color-carpeta-claro: #74bcf9;
+  --color-nota: #f7c948;            /* amarillo de la app Notes */
+
+  /* ── Color: semáforos de ventana ── */
+  --color-semaforo-cerrar: #ff5f57;
+  --color-semaforo-min: #febc2e;
+  --color-semaforo-max: #28c840;
+
+  /* ── Efecto glass (dock, menubar, íconos modernos) ── */
+  --glass-fondo: rgba(255, 255, 255, 0.12);
+  --glass-fondo-fuerte: rgba(255, 255, 255, 0.18);
+  --glass-borde: rgba(255, 255, 255, 0.25);
+  --glass-blur: blur(20px);
+
+  /* ── Tipografía ── */
+  --fuente-principal: 'Figtree', -apple-system, sans-serif;
+
+  --texto-xs: 0.719rem;    /* 11.5px — labels de íconos */
+  --texto-sm: 0.781rem;    /* 12.5px — menubar, títulos de ventana */
+  --texto-base: 0.844rem;  /* 13.5px — cuerpo dentro de ventanas */
+  --texto-md: 0.938rem;    /* 15px  — destacados */
+  --texto-lg: 1.188rem;    /* 19px  — títulos dentro de ventanas */
+  --texto-hero: clamp(1.75rem, 4vw, 2.875rem); /* título central, fluido */
+
+  /* ── Espaciado (escala de 4px, como una grilla de Figma) ── */
+  --espacio-1: 0.25rem;   /*  4px */
+  --espacio-2: 0.5rem;    /*  8px */
+  --espacio-3: 0.75rem;   /* 12px */
+  --espacio-4: 1rem;      /* 16px */
+  --espacio-5: 1.5rem;    /* 24px */
+  --espacio-6: 2rem;      /* 32px */
+
+  /* ── Radios ── */
+  --radio-sm: 6px;        /* thumbnails */
+  --radio-md: 12px;       /* ventanas, apps del dock */
+  --radio-lg: 20px;       /* dock */
+
+  /* ── Sombras ── */
+  --sombra-icono: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --sombra-ventana: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 0 0.5px rgba(255, 255, 255, 0.15);
+
+  /* ── Capas (z-index): quién queda arriba de quién ── */
+  --capa-escritorio: 1;
+  --capa-barra: 50;
+  --capa-ventana: 100;
+}

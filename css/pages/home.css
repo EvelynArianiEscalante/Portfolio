@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════════════
+   PÁGINA: HOME — decisiones específicas del escritorio
+   Acá viven las posiciones de los íconos, los tamaños de las
+   ventanas y las imágenes placeholder. Los componentes en sí
+   están en css/components/.
+   ═══════════════════════════════════════════════ */
+
+/* ── Imágenes de los thumbnails ──
+   Foto repetida en b/n SOLO para evaluar la grilla.
+   Pendiente: un screenshot real de Figma por proyecto. */
+.thumb--placeholder {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
+                    url('https://picsum.photos/id/1011/800/500?grayscale');
+}
+
+/* ── Posiciones de los íconos: columna ordenada a la derecha ── */
+#icono-siotyx     { top: 11%; right: 3%; }
+#icono-anteriores { top: 32%; right: 3%; }
+#icono-ds         { top: 53%; right: 3%; }
+#icono-sobre-mi   { top: 74%; right: 3%; }
+
+/* ── Tamaños y posiciones iniciales de las ventanas ──
+   left: 50% + margen negativo = centrada; después el usuario la arrastra. */
+#ventana-siotyx,
+#ventana-anteriores {
+  width: min(520px, 88vw);
+  top: 24%;
+  left: 50%;
+  margin-left: min(-260px, -44vw);
+}
+
+#ventana-notas {
+  width: min(620px, 88vw);
+  height: min(420px, 70vh);
+  top: 16%;
+  left: 50%;
+  margin-left: min(-310px, -44vw);
+}
+
+.ventana--proyecto {
+  width: min(640px, 90vw);
+  top: 14%;
+  left: 50%;
+  margin-left: min(-320px, -45vw);
+}
+
+/* ── Ajustes para pantallas chicas ── */
+@media (max-width: 700px) {
+  #icono-siotyx     { top: 10%; right: 4%; }
+  #icono-anteriores { top: 30%; right: 4%; }
+  #icono-ds         { top: 50%; right: 4%; }
+  #icono-sobre-mi   { top: 70%; right: 4%; }
+
+  .centro h1 {
+    font-size: 1.5rem;
+  }
+
+  .proyecto__imagen {
+    height: 220px;
+  }
+}

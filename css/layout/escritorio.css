@@ -1,0 +1,58 @@
+/* ═══════════════════════════════════════════════
+   LAYOUT: ESCRITORIO — el lienzo de toda la home
+   Fondo oscuro abstracto con grano fotográfico.
+   ═══════════════════════════════════════════════ */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-fondo);
+  overflow: hidden; /* el escritorio no scrollea: todo vive en una pantalla */
+}
+
+.escritorio {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* Tres capas de luz sobre el fondo oscuro, como una foto abstracta */
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 35%, var(--color-fondo-brillo) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, #2b2b2b 0%, transparent 55%),
+    linear-gradient(165deg, var(--color-fondo-alto) 0%, var(--color-fondo) 100%);
+}
+
+/* Grano fotográfico generado por código (SVG de ruido).
+   Cuando exista la imagen definitiva (persona en b/n o visual UX),
+   se reemplaza todo el fondo por ella. */
+.escritorio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  pointer-events: none; /* el grano es decorativo: los clics lo atraviesan */
+}
+
+/* ── Texto central del escritorio (hero) ── */
+.centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+  pointer-events: none; /* no bloquea clics a íconos que pasen por detrás */
+  max-width: 560px;
+  padding: 0 var(--espacio-5);
+}
+
+.centro__rol {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-3);
+}

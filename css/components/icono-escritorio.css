@@ -1,0 +1,51 @@
+/* ═══════════════════════════════════════════════
+   COMPONENTE: ÍCONO DE ESCRITORIO
+   Dos variantes: carpeta (SVG azul macOS) y thumbnail (foto).
+   Las POSICIONES de cada ícono no van acá: van en css/pages/home.css,
+   porque son una decisión de la página, no del componente.
+   ═══════════════════════════════════════════════ */
+
+.icono {
+  position: absolute;
+  width: 88px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.icono:hover {
+  transform: scale(1.06);
+}
+
+/* ── Variante thumbnail: cuadro con imagen ── */
+.icono__thumb {
+  width: 72px;
+  height: 54px;
+  margin: 0 auto var(--espacio-2);
+  border-radius: var(--radio-sm);
+  box-shadow: var(--sombra-icono);
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+/* ── Variante carpeta: SVG estilo macOS ── */
+.icono__folder {
+  width: 62px;
+  height: 48px;
+  margin: 0 auto var(--espacio-2);
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* ── Label debajo del ícono ── */
+.icono__label {
+  font-size: var(--texto-xs);
+  font-weight: 500;
+  color: var(--color-texto-label);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); /* legible sobre cualquier fondo */
+  line-height: 1.25;
+  display: block;
+}

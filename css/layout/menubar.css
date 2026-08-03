@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════
+   LAYOUT: MENUBAR — barra superior estilo macOS
+   Además de estética, es la NAVEGACIÓN REAL del sitio:
+   el camino rápido para quien no quiere jugar con el escritorio.
+   ═══════════════════════════════════════════════ */
+
+.menubar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--espacio-4);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: var(--glass-blur);
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: var(--color-texto-suave);
+  z-index: var(--capa-barra);
+}
+
+.menubar__izq {
+  display: flex;
+  gap: var(--espacio-4);
+  align-items: center;
+}
+
+.menubar__nombre {
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+/* Links de navegación: sobrios, se iluminan al pasar */
+.menubar__link {
+  transition: color 0.15s ease;
+}
+
+.menubar__link:hover {
+  color: var(--color-texto);
+}

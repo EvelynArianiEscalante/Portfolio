@@ -1,0 +1,46 @@
+/* ═══════════════════════════════════════════════
+   RESET — borra los estilos por defecto del navegador
+   Se escribe una vez y no se toca más.
+   ═══════════════════════════════════════════════ */
+
+/* Todos los elementos: sin márgenes ni paddings heredados,
+   y box-sizing: border-box hace que width incluya el padding y el borde
+   (el modelo mental de Figma: la caja mide lo que dice que mide). */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Las imágenes no desbordan su contenedor */
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* Botones y links heredan la tipografía del sitio
+   (por defecto usan la del sistema, y desentona) */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Los links no traen subrayado ni color azul por defecto:
+   cada componente decide cómo se ve su link */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Listas de navegación sin viñetas */
+ul[role="list"],
+nav ul {
+  list-style: none;
+}

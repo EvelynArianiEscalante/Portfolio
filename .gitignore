@@ -1,0 +1,9 @@
+# ═══════════════════════════════════════════
+# GITIGNORE — lo que Git debe IGNORAR (no subir)
+# ═══════════════════════════════════════════
+
+# Archivos basura que macOS crea solo en cada carpeta
+.DS_Store
+
+# Configuración local de VS Code (es personal, no del proyecto)
+.vscode/

@@ -1,0 +1,34 @@
+/* ═══════════════════════════════════════════════
+   TIPOGRAFÍA — Figtree en todo el sitio
+   La fuente se carga desde Google Fonts en el <head> del HTML;
+   acá solo se define cómo se usa.
+   ═══════════════════════════════════════════════ */
+
+body {
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+  /* Suavizado de fuente en pantallas Mac: se ve más fino y nítido */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Título principal (hero del escritorio) */
+h1 {
+  font-size: var(--texto-hero);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em; /* apenas más apretado: estándar en títulos grandes */
+}
+
+/* Títulos dentro de ventanas */
+h2,
+h3 {
+  font-size: var(--texto-lg);
+  font-weight: 700;
+  color: var(--color-tinta);
+}
+
+/* Cuerpo de texto dentro de ventanas */
+p,
+li {
+  line-height: 1.65;
+}

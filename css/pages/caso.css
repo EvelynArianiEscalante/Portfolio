@@ -1,0 +1,126 @@
+/* ═══════════════════════════════════════════════
+   PÁGINA: CASO DE ESTUDIO — layout de lectura larga
+   Compartido por todas las páginas de caso.
+   ═══════════════════════════════════════════════ */
+
+body {
+  background: var(--color-fondo);
+  min-height: 100vh;
+}
+
+.caso-nav {
+  padding: var(--espacio-4) var(--espacio-5);
+  font-size: var(--texto-sm);
+}
+
+.caso-nav a { color: var(--color-texto-suave); }
+.caso-nav a:hover { color: var(--color-texto); }
+
+.caso-contenido {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--espacio-6) var(--espacio-5) 96px;
+}
+
+/* Cabecera del caso */
+.caso-header { margin-bottom: var(--espacio-6); }
+
+.caso-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--espacio-2);
+}
+
+.caso-header .bajada {
+  font-size: 1.125rem;
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-5);
+}
+
+/* Ficha técnica (misma idea que en las ventanas, adaptada a fondo oscuro) */
+.caso-ficha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4) var(--espacio-6);
+  padding: var(--espacio-4) 0;
+  border-top: 1px solid rgba(245, 245, 244, 0.15);
+  border-bottom: 1px solid rgba(245, 245, 244, 0.15);
+}
+
+.caso-ficha .dato dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+  margin-bottom: 2px;
+}
+
+.caso-ficha .dato dd {
+  font-size: var(--texto-md);
+  font-weight: 500;
+}
+
+/* Secciones del relato */
+.caso-seccion { margin-top: var(--espacio-6); }
+
+.caso-seccion h2 {
+  color: var(--color-texto);
+  font-size: 1.25rem;
+  margin-bottom: var(--espacio-3);
+}
+
+.caso-seccion h3 {
+  color: var(--color-texto);
+  font-size: 1.05rem;
+  margin: var(--espacio-4) 0 var(--espacio-2);
+}
+
+.caso-seccion p,
+.caso-seccion li {
+  font-size: 1rem;
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-3);
+}
+
+.caso-seccion ul { margin-left: 20px; }
+
+.caso-seccion strong { color: var(--color-texto); font-weight: 600; }
+
+/* Imagen del caso (placeholder hasta tener screenshots) */
+.caso-imagen {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radio-md);
+  border: 1px solid rgba(245, 245, 244, 0.12);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245, 245, 244, 0.4);
+  font-size: var(--texto-sm);
+  letter-spacing: 0.05em;
+  margin: var(--espacio-4) 0;
+}
+
+/* Tarjeta de aprendizaje */
+.caso-aprendizaje {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(245, 245, 244, 0.12);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  margin-top: var(--espacio-6);
+}
+
+/* Navegación entre casos, al pie */
+.caso-siguiente {
+  margin-top: var(--espacio-6);
+  padding-top: var(--espacio-5);
+  border-top: 1px solid rgba(245, 245, 244, 0.15);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.caso-siguiente a { color: var(--color-carpeta-claro); }
+.caso-siguiente a:hover { text-decoration: underline; }

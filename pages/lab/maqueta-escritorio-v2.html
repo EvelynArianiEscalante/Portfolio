@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evelyn — Escritorio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAQUETA v2 — referencia: plantilla "MakOS".
+       Dirección: oscuro, fotográfico, realista, clean.
+       CSS inline a propósito: sigue siendo exploración, no producción. -->
+  <style>
+    :root {
+      --fondo-1: #232323;
+      --fondo-2: #161616;
+      --blanco: #f5f5f4;
+      --gris-texto: rgba(245, 245, 244, .75);
+      --gris-label: rgba(245, 245, 244, .85);
+      --ventana-fondo: #ffffff;
+      --tinta: #1d1d1f;
+      --tinta-suave: #6e6e73;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Figtree', -apple-system, sans-serif;
+      background: var(--fondo-2);
+      overflow: hidden; /* el escritorio no scrollea: todo vive en una pantalla */
+      color: var(--blanco);
+    }
+
+    /* ═══ ESCRITORIO: fondo oscuro abstracto con grano ═══ */
+    .escritorio {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 35%, #3a3a3a 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, #2b2b2b 0%, transparent 55%),
+        linear-gradient(165deg, var(--fondo-1) 0%, var(--fondo-2) 100%);
+    }
+
+    /* Grano fotográfico: un SVG de ruido generado por código, sin imagen externa.
+       Cuando tengas tu foto/imagen abstracta, reemplaza todo este fondo por ella. */
+    .escritorio::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: .07;
+      pointer-events: none;
+    }
+
+    /* ═══ BARRA DE MENÚ ═══ */
+    .menubar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      background: rgba(0, 0, 0, .25);
+      backdrop-filter: blur(20px);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--gris-texto);
+      z-index: 50;
+    }
+    .menubar__izq { display: flex; gap: 18px; }
+    .menubar__nombre { font-weight: 700; color: var(--blanco); }
+
+    /* ═══ ÍCONOS DEL ESCRITORIO (proyectos como thumbnails) ═══ */
+    .icono {
+      position: absolute;
+      width: 88px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      transition: transform .15s ease;
+    }
+    .icono:hover { transform: scale(1.06); }
+    .icono__thumb {
+      width: 72px;
+      height: 54px;
+      margin: 0 auto 6px;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .45);
+      background-size: cover;
+      background-position: center;
+    }
+    .icono__label {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--gris-label);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+      line-height: 1.25;
+      display: block;
+    }
+
+    /* Foto placeholder repetida (b/n) solo para evaluar cómo se ven los cuadros.
+       Después: un screenshot real de Figma distinto por proyecto. */
+    .thumb--ejes, .thumb--ds, .thumb--retail, .thumb--lab {
+      background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
+                        url('https://picsum.photos/id/1011/800/500?grayscale');
+    }
+
+    /* Ícono de carpeta estilo macOS */
+    .icono__folder {
+      width: 62px;
+      height: 48px;
+      margin: 0 auto 6px;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .4));
+    }
+
+    /* Íconos ordenados en columna, alineados a la derecha como en macOS */
+    #icono-siotyx { top: 11%; right: 3%; }
+    #icono-ds     { top: 32%; right: 3%; }
+    #icono-lab    { top: 53%; right: 3%; }
+
+    /* ═══ TEXTO CENTRAL (reemplazable por tu imagen a futuro) ═══ */
+    .centro {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+      pointer-events: none;
+      max-width: 560px;
+      padding: 0 24px;
+    }
+    .centro__rol {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gris-texto);
+      margin-bottom: 14px;
+    }
+    .centro__titulo {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -.01em;
+    }
+
+    /* ═══ DOCK ═══ */
+    .dock {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 20px;
+      z-index: 50;
+    }
+    .dock__app {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      transition: transform .18s cubic-bezier(.34, 1.56, .64, 1);
+      overflow: hidden;
+      text-decoration: none; /* los <a> traen subrayado por defecto: acá se anula */
+    }
+    .dock__app:hover { transform: translateY(-8px) scale(1.1); }
+    .dock__sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(255, 255, 255, .2);
+      margin: 0 4px;
+    }
+    /* App "Sobre mí": círculo con iniciales hasta tener tu foto */
+    .app--sobre-mi {
+      background: radial-gradient(circle at 30% 30%, #5a5a5e, #2c2c2e);
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 15px;
+    }
+    /* App Notes: réplica del ícono real */
+    .app--notas { background: #fff; flex-direction: column; padding: 0; display: flex; }
+    .app--notas .notas-tapa { width: 100%; height: 30%; background: #f7c948; }
+    .app--notas .notas-lineas {
+      flex: 1; width: 100%;
+      background: repeating-linear-gradient(#fff, #fff 6px, #e8e8e8 6px, #e8e8e8 7px);
+    }
+    /* Mail — estilo "glass": translúcido, borde de luz, como los íconos actuales */
+    .app--mail {
+      background: linear-gradient(145deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, .3);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+    }
+    /* LinkedIn / Behance como tiles tipográficos */
+    .app--linkedin { background: #0a66c2; color: #fff; font-weight: 700; font-size: 17px; }
+    .app--behance { background: #1769ff; color: #fff; font-weight: 700; font-size: 16px; }
+
+    .app--mail svg { width: 22px; height: 22px; fill: #fff; opacity: .95; }
+
+    /* ═══ VENTANAS ═══ */
+    .ventana {
+      position: absolute;
+      background: var(--ventana-fondo);
+      border-radius: 12px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, .55), 0 0 0 .5px rgba(255, 255, 255, .15);
+      color: var(--tinta);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 100;
+    }
+    .ventana.abierta { display: flex; }
+    .ventana__barra {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 13px;
+      cursor: grab;
+      user-select: none;
+      background: #f6f6f6;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .ventana__barra:active { cursor: grabbing; }
+    .semaforo {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .semaforo--cerrar { background: #ff5f57; }
+    .semaforo--min { background: #febc2e; }
+    .semaforo--max { background: #28c840; }
+    .ventana__titulo {
+      flex: 1;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--tinta-suave);
+      /* compensa el ancho de los semáforos para centrar de verdad */
+      margin-right: 50px;
+    }
+
+    /* Ventana Notes: sidebar + contenido, como la app real */
+    #ventana-notas { width: min(620px, 88vw); height: min(420px, 70vh); top: 16%; left: 50%; margin-left: min(-310px, -44vw); }
+    .notas__cuerpo { display: flex; flex: 1; min-height: 0; }
+    .notas__sidebar {
+      width: 180px;
+      border-right: 1px solid #e5e5e5;
+      background: #fafafa;
+      padding: 10px;
+      flex-shrink: 0;
+    }
+    .notas__item {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: none;
+      font-family: inherit;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--tinta);
+    }
+    .notas__item strong { display: block; font-weight: 600; margin-bottom: 2px; }
+    .notas__item span { color: var(--tinta-suave); font-size: 12px; }
+    .notas__item.activo { background: #f7c94855; }
+    .notas__contenido {
+      flex: 1;
+      padding: 22px 26px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #3a3a3c;
+    }
+    .notas__contenido h3 { font-size: 19px; font-weight: 700; color: var(--tinta); margin-bottom: 10px; }
+    .notas__contenido p { margin-bottom: 12px; }
+    .notas__contenido ul { margin: 0 0 12px 18px; }
+    .notas__contenido li { margin-bottom: 5px; }
+
+    /* Ventanas de proyecto: imagen grande + caption */
+    .ventana--proyecto { width: min(640px, 90vw); top: 14%; left: 50%; margin-left: min(-320px, -45vw); }
+    .proyecto__imagen {
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .55);
+      letter-spacing: .05em;
+    }
+    .proyecto__caption {
+      padding: 16px 22px 20px;
+      font-size: 13.5px;
+      color: var(--tinta-suave);
+      line-height: 1.55;
+    }
+    .proyecto__caption strong { color: var(--tinta); display: block; font-size: 15px; margin-bottom: 3px; }
+
+    /* Ventana estilo Finder para la carpeta Siotyx */
+    #ventana-siotyx { width: min(480px, 88vw); top: 24%; left: 50%; margin-left: min(-240px, -44vw); }
+    .finder__grid {
+      display: flex;
+      gap: 30px;
+      padding: 30px 34px 36px;
+      flex-wrap: wrap;
+    }
+    .finder__item {
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      width: 90px;
+      transition: transform .15s ease;
+    }
+    .finder__item:hover { transform: scale(1.06); }
+    .finder__item .icono__folder { width: 54px; height: 42px; filter: none; }
+    .finder__item span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--tinta);
+    }
+
+    @media (max-width: 700px) {
+      #icono-siotyx { top: 10%; right: 4%; }
+      #icono-ds     { top: 34%; right: 4%; }
+      #icono-lab    { top: 58%; right: 4%; }
+      .centro__titulo { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="escritorio">
+
+    <!-- Barra de menú -->
+    <header class="menubar">
+      <div class="menubar__izq">
+        <span class="menubar__nombre">Evelyn Ariani</span>
+        <span>UX/UI Designer</span>
+      </div>
+      <span id="reloj">—</span>
+    </header>
+
+    <!-- Texto central. A futuro: acá va tu imagen (persona en b/n o visual UX). -->
+    <div class="centro">
+      <p class="centro__rol">B2B · Hardware · Design Systems</p>
+      <h1 class="centro__titulo">Hago que sistemas complejos se sientan simples.</h1>
+    </div>
+
+    <!-- Íconos del escritorio, ordenados en columna a la derecha.
+         Siotyx es una CARPETA (contiene Core, Transporte y Retail);
+         los demás son thumbnails con foto. -->
+    <button class="icono" id="icono-siotyx" data-ventana="ventana-siotyx">
+      <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+        <defs>
+          <linearGradient id="folder-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#74bcf9"/>
+            <stop offset="1" stop-color="#3c8be0"/>
+          </linearGradient>
+        </defs>
+        <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/>
+        <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+      </svg>
+      <span class="icono__label">Siotyx</span>
+    </button>
+    <button class="icono" id="icono-ds" data-ventana="ventana-ds">
+      <span class="icono__thumb thumb--ds"></span>
+      <span class="icono__label">Design System</span>
+    </button>
+    <button class="icono" id="icono-lab" data-ventana="ventana-lab">
+      <span class="icono__thumb thumb--lab"></span>
+      <span class="icono__label">Lab</span>
+    </button>
+
+    <!-- ═══ VENTANA: Notes con Sobre mí / Experiencia ═══ -->
+    <section class="ventana" id="ventana-notas">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Notas</span>
+      </div>
+      <div class="notas__cuerpo">
+        <aside class="notas__sidebar">
+          <button class="notas__item activo" data-nota="experiencia">
+            <strong>Experiencia</strong>
+            <span>Supply Solutions…</span>
+          </button>
+          <button class="notas__item" data-nota="sobre-mi">
+            <strong>Sobre mí</strong>
+            <span>Del dibujo al UX…</span>
+          </button>
+        </aside>
+        <div class="notas__contenido" id="nota-experiencia">
+          <h3>Experiencia</h3>
+          <p><strong>UX/UI Designer (Ssr) · Supply Solutions</strong><br>
+          Diseño de Siotyx, plataforma B2B de logística conectada a hardware RFID.</p>
+          <ul>
+            <li>Única diseñadora de 3 productos (Core, Transporte, Retail), web y mobile.</li>
+            <li>Design system desde cero: tokens, componentes y 13 páginas de documentación.</li>
+            <li>29 configuraciones de camión ilustradas por partes; componente de neumático con 6 estados.</li>
+          </ul>
+          <p><strong>Diseñadora UX/UI · Sisu</strong><br>
+          Clientes externos: salud, kioscos de autoservicio (hardware), WiFi comercial y sistemas internos.</p>
+        </div>
+        <div class="notas__contenido" id="nota-sobre-mi" style="display:none">
+          <h3>Sobre mí</h3>
+          <p>Del dibujo a los videojuegos, y de ahí al UX. Diseño software B2B complejo
+          donde lo digital se encuentra con el hardware.</p>
+          <p>— Evelyn</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANA: Siotyx como carpeta estilo Finder ═══
+         Adentro, los tres productos. Clic en cada uno abre su ventana. -->
+    <section class="ventana" id="ventana-siotyx">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Siotyx</span>
+      </div>
+      <div class="finder__grid">
+        <button class="finder__item" data-ventana="ventana-core">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+            <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="#3c8be0"/>
+            <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+          </svg>
+          <span>Core</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-ejes">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+            <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="#3c8be0"/>
+            <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+          </svg>
+          <span>Transporte</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-retail">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+            <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="#3c8be0"/>
+            <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+          </svg>
+          <span>Retail</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANAS DE PROYECTO (imagen placeholder + caption) ═══ -->
+    <section class="ventana ventana--proyecto" id="ventana-core">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Core</span>
+      </div>
+      <div class="proyecto__imagen thumb--ejes">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Core</strong>
+        La capa transversal de la plataforma: acceso, scanner, gestión de etiquetas
+        y ajustes de conectividad. Las verticales se enganchan vía su API.
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-ejes">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Ejes y neumáticos</span>
+      </div>
+      <div class="proyecto__imagen thumb--ejes">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Configuración de ejes y neumáticos</strong>
+        De una notación de texto en el requerimiento a un lenguaje visual:
+        29 configuraciones de camión ilustradas por partes.
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-ds">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Design System</span>
+      </div>
+      <div class="proyecto__imagen thumb--ds">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Design system desde cero</strong>
+        Tokens, componentes y 13 páginas de documentación para 3 productos, web y mobile.
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-retail">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Retail RFID</span>
+      </div>
+      <div class="proyecto__imagen thumb--retail">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Retail RFID</strong>
+        El escaneo no identifica el ítem: lo confirma y lo registra.
+        Un cambio de modelo mental que reescribió pantallas y copy.
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-lab">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Lab</span>
+      </div>
+      <div class="proyecto__imagen thumb--lab">[ contenido del lab — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Lab</strong>
+        Experimentos: este portfolio hecho a mano en código, y mi forma de trabajar con IA.
+      </p>
+    </section>
+
+    <!-- ═══ DOCK ═══ -->
+    <nav class="dock" aria-label="Dock">
+      <button class="dock__app app--sobre-mi" data-ventana="ventana-notas" title="Sobre mí">EA</button>
+      <button class="dock__app app--notas" data-ventana="ventana-notas" title="Notas">
+        <span class="notas-tapa"></span><span class="notas-lineas"></span>
+      </button>
+      <span class="dock__sep"></span>
+      <a class="dock__app app--mail" href="mailto:eescalante@supplysolutions.ai" title="Contacto">
+        <svg viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.2-.2 7.3 5.6a.8.8 0 0 0 1 0l7.3-5.6a.9.9 0 0 0-.3 0h-15a.9.9 0 0 0-.3 0Z"/></svg>
+      </a>
+      <a class="dock__app app--linkedin" href="#" title="LinkedIn">in</a>
+      <a class="dock__app app--behance" href="#" title="Behance">Bē</a>
+    </nav>
+
+  </div>
+
+  <script>
+    // ── Reloj de la barra de menú ──
+    function actualizarReloj() {
+      const opciones = { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' };
+      document.getElementById('reloj').textContent = new Date().toLocaleString('es-AR', opciones);
+    }
+    actualizarReloj();
+    setInterval(actualizarReloj, 60000);
+
+    // ── Abrir ventanas: cualquier elemento con data-ventana abre esa ventana ──
+    let zIndice = 100; // contador para que la última ventana tocada quede arriba
+    document.querySelectorAll('[data-ventana]').forEach(disparador => {
+      disparador.addEventListener('click', () => {
+        const ventana = document.getElementById(disparador.dataset.ventana);
+        ventana.classList.add('abierta');
+        ventana.style.zIndex = ++zIndice;
+      });
+    });
+
+    // ── Cerrar con el semáforo rojo ──
+    document.querySelectorAll('[data-cierra]').forEach(boton => {
+      boton.addEventListener('click', evento => {
+        evento.stopPropagation(); // que el clic no dispare otra cosa
+        boton.closest('.ventana').classList.remove('abierta');
+      });
+    });
+
+    // ── Cambiar de nota en la ventana Notes ──
+    document.querySelectorAll('[data-nota]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.notas__item').forEach(i => i.classList.remove('activo'));
+        item.classList.add('activo');
+        document.getElementById('nota-experiencia').style.display = item.dataset.nota === 'experiencia' ? 'block' : 'none';
+        document.getElementById('nota-sobre-mi').style.display = item.dataset.nota === 'sobre-mi' ? 'block' : 'none';
+      });
+    });
+
+    // ── Arrastrar ventanas desde su barra de título ──
+    document.querySelectorAll('[data-arrastra]').forEach(barra => {
+      barra.addEventListener('pointerdown', evento => {
+        if (evento.target.dataset.cierra !== undefined) return; // no arrastrar desde el botón cerrar
+        const ventana = barra.closest('.ventana');
+        ventana.style.zIndex = ++zIndice;
+        const rect = ventana.getBoundingClientRect();
+        const dx = evento.clientX - rect.left;
+        const dy = evento.clientY - rect.top;
+
+        function mover(e) {
+          ventana.style.left = (e.clientX - dx) + 'px';
+          ventana.style.top = (e.clientY - dy) + 'px';
+          ventana.style.marginLeft = '0';
+        }
+        function soltar() {
+          document.removeEventListener('pointermove', mover);
+          document.removeEventListener('pointerup', soltar);
+        }
+        document.addEventListener('pointermove', mover);
+        document.addEventListener('pointerup', soltar);
+      });
+    });
+  </script>
+</body>
+</html>

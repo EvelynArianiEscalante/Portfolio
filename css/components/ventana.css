@@ -1,0 +1,232 @@
+/* ═══════════════════════════════════════════════
+   COMPONENTE: VENTANA
+   Base compartida + tres variantes:
+   - Finder (grilla de carpetas)
+   - Notes (sidebar + contenido)
+   - Proyecto (imagen + caption)
+   Los TAMAÑOS Y POSICIONES iniciales van en css/pages/home.css.
+   ═══════════════════════════════════════════════ */
+
+.ventana {
+  position: absolute;
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-ventana);
+  color: var(--color-tinta);
+  display: none; /* las ventanas nacen cerradas; JS les pone .abierta */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: var(--capa-ventana);
+}
+
+.ventana.abierta {
+  display: flex;
+}
+
+/* ── Barra de título (también es la zona de arrastre) ── */
+.ventana__barra {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 13px;
+  cursor: grab;
+  user-select: none; /* que arrastrar no seleccione el texto del título */
+  background: var(--color-superficie-barra);
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.ventana__barra:active {
+  cursor: grabbing;
+}
+
+.semaforo {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.semaforo--cerrar { background: var(--color-semaforo-cerrar); }
+.semaforo--min    { background: var(--color-semaforo-min); }
+.semaforo--max    { background: var(--color-semaforo-max); }
+
+.ventana__titulo {
+  flex: 1;
+  text-align: center;
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: var(--color-tinta-suave);
+  margin-right: 50px; /* compensa el ancho de los semáforos para centrar de verdad */
+}
+
+/* ═══ Variante FINDER: grilla de carpetas adentro ═══ */
+
+.finder__grid {
+  display: flex;
+  gap: 30px;
+  padding: 30px 34px 36px;
+  flex-wrap: wrap;
+}
+
+.finder__item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  width: 90px;
+  transition: transform 0.15s ease;
+}
+
+.finder__item:hover {
+  transform: scale(1.06);
+}
+
+.finder__item .icono__folder {
+  width: 54px;
+  height: 42px;
+  filter: none; /* dentro de la ventana no necesita sombra proyectada */
+}
+
+.finder__item span {
+  display: block;
+  margin-top: var(--espacio-1);
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: var(--color-tinta);
+}
+
+/* ═══ Variante NOTES: sidebar + contenido ═══ */
+
+.notas__cuerpo {
+  display: flex;
+  flex: 1;
+  min-height: 0; /* permite que el contenido scrollee en vez de desbordar */
+}
+
+.notas__sidebar {
+  width: 180px;
+  border-right: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie-lateral);
+  padding: var(--espacio-2);
+  flex-shrink: 0;
+}
+
+.notas__item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: var(--texto-base);
+  color: var(--color-tinta);
+}
+
+.notas__item strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.notas__item span {
+  color: var(--color-tinta-suave);
+  font-size: 0.75rem;
+}
+
+.notas__item.activo {
+  background: color-mix(in srgb, var(--color-nota) 33%, transparent);
+}
+
+.notas__contenido {
+  flex: 1;
+  padding: 22px 26px;
+  overflow-y: auto;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-cuerpo);
+}
+
+.notas__contenido h3 {
+  margin-bottom: var(--espacio-2);
+}
+
+.notas__contenido p {
+  margin-bottom: var(--espacio-3);
+}
+
+.notas__contenido ul {
+  margin: 0 0 var(--espacio-3) 18px;
+}
+
+.notas__contenido li {
+  margin-bottom: 5px;
+}
+
+/* ═══ Variante PROYECTO: imagen grande + caption ═══ */
+
+.proyecto__imagen {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--texto-base);
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.05em;
+  background-size: cover;
+  background-position: center;
+}
+
+.proyecto__caption {
+  padding: var(--espacio-4) 22px 20px;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-suave);
+  line-height: 1.55;
+}
+
+.proyecto__caption strong {
+  color: var(--color-tinta);
+  display: block;
+  font-size: var(--texto-md);
+  margin-bottom: 3px;
+}
+
+/* Ficha técnica: fila de datos duros del proyecto (rol, duración, tools...) */
+.proyecto__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4) var(--espacio-5);
+  padding: var(--espacio-3) 22px;
+  border-top: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie-lateral);
+}
+
+.proyecto__dato {
+  font-size: 0.75rem;
+}
+
+.proyecto__dato dt {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-bottom: 2px;
+}
+
+.proyecto__dato dd {
+  color: var(--color-tinta);
+  font-weight: 500;
+}
+
+/* Link "ver caso completo" dentro del caption */
+.proyecto__link {
+  display: inline-block;
+  margin-top: var(--espacio-2);
+  font-weight: 600;
+  color: var(--color-carpeta-oscuro);
+}
+
+.proyecto__link:hover {
+  text-decoration: underline;
+}

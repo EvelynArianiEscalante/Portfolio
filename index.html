@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evelyn Ariani — Diseñadora UX/UI · B2B + Hardware</title>
+  <meta name="description" content="Diseño UX/UI para plataformas B2B conectadas a hardware: logística, RFID y design systems construidos desde cero.">
+
+  <!-- Tipografía: Figtree -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos, de lo general a lo específico:
+       base (tokens) → layout → componentes → página -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/tipografia.css">
+  <link rel="stylesheet" href="css/layout/escritorio.css">
+  <link rel="stylesheet" href="css/layout/menubar.css">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css">
+  <link rel="stylesheet" href="css/components/ventana.css">
+  <link rel="stylesheet" href="css/components/dock.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+
+<body>
+
+  <!-- Gradiente de las carpetas: se define UNA vez acá (svg oculto)
+       y todas las carpetas del sitio lo referencian con url(#folder-grad) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="folder-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#74bcf9"/>
+        <stop offset="1" stop-color="#3c8be0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="escritorio">
+
+    <!-- ═══ BARRA DE MENÚ: estética macOS + navegación real ═══ -->
+    <header class="menubar">
+      <nav class="menubar__izq" aria-label="Navegación principal">
+        <span class="menubar__nombre">Evelyn Ariani</span>
+        <span>UX/UI Designer</span>
+        <a class="menubar__link" href="pages/casos-de-estudio/index.html">Proyectos</a>
+        <a class="menubar__link" href="#">Sistema de diseño</a>       <!-- página pendiente -->
+        <a class="menubar__link" href="#">Sobre mí</a>                <!-- página pendiente -->
+        <a class="menubar__link" href="mailto:evelynescalante.25@gmail.com">Contacto</a>
+      </nav>
+      <span id="reloj">—</span>
+    </header>
+
+    <!-- ═══ HERO CENTRAL (a futuro: tu imagen en b/n) ═══ -->
+    <div class="centro">
+      <p class="centro__rol">B2B · Hardware · Design Systems</p>
+      <h1>Hago que sistemas complejos se sientan simples.</h1>
+    </div>
+
+    <!-- ═══ ÍCONOS DEL ESCRITORIO: columna ordenada a la derecha ═══
+         Jerarquía deliberada: dos carpetas que cuentan la historia
+         (Siotyx = presente, Proyectos anteriores = recorrido)
+         + Design System y Sobre mí como items propios. -->
+
+    <button class="icono" id="icono-siotyx" data-ventana="ventana-siotyx">
+      <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+        <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/>
+        <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+      </svg>
+      <span class="icono__label">Siotyx</span>
+    </button>
+
+    <button class="icono" id="icono-anteriores" data-ventana="ventana-anteriores">
+      <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
+        <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/>
+        <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
+      </svg>
+      <span class="icono__label">Proyectos anteriores</span>
+    </button>
+
+    <button class="icono" id="icono-ds" data-ventana="ventana-ds">
+      <span class="icono__thumb thumb--placeholder"></span>
+      <span class="icono__label">Design System</span>
+    </button>
+
+    <button class="icono" id="icono-sobre-mi" data-ventana="ventana-notas">
+      <span class="icono__thumb thumb--placeholder"></span>
+      <span class="icono__label">Sobre mí</span>
+    </button>
+
+    <!-- ═══ VENTANA FINDER: Siotyx (trabajo actual) ═══ -->
+    <section class="ventana" id="ventana-siotyx">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Siotyx — plataforma B2B de logística con RFID</span>
+      </div>
+      <div class="finder__grid">
+        <button class="finder__item" data-ventana="ventana-core">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Core</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-transporte">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Transporte</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-retail">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Retail</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANA FINDER: Proyectos anteriores (etapa Sisu) ═══ -->
+    <section class="ventana" id="ventana-anteriores">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Proyectos anteriores</span>
+      </div>
+      <div class="finder__grid">
+        <button class="finder__item" data-ventana="ventana-health">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Health app design</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-wifi">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Sistema WiFi Marketing</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-pedidos">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>Pedidos &amp; Gestión</span>
+        </button>
+        <button class="finder__item" data-ventana="ventana-aika">
+          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <span>AIKA</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANA NOTES: Sobre mí / Experiencia ═══ -->
+    <section class="ventana" id="ventana-notas">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Notas</span>
+      </div>
+      <div class="notas__cuerpo">
+        <aside class="notas__sidebar">
+          <button class="notas__item activo" data-nota="experiencia">
+            <strong>Experiencia</strong>
+            <span>Supply Solutions…</span>
+          </button>
+          <button class="notas__item" data-nota="sobre-mi">
+            <strong>Sobre mí</strong>
+            <span>Del dibujo al UX…</span>
+          </button>
+        </aside>
+        <div class="notas__contenido" id="nota-experiencia">
+          <h3>Experiencia</h3>
+          <p><strong>UX/UI Designer (Ssr) · Supply Solutions</strong> · actual<br>
+          Diseño de Siotyx, plataforma B2B de logística conectada a hardware RFID.
+          Única diseñadora de 3 productos (Core, Transporte, Retail), web y mobile.
+          Design system desde cero: tokens, componentes y 13 páginas de documentación.</p>
+          <p><strong>UX/UI Designer Ssr · Cober</strong> · 2025 – 2026<br>
+          Rediseño integral de app de salud, basado en research y card sorting.</p>
+          <p><strong>UX/UI Designer · Sisu</strong> · 2024<br>
+          Kioscos de autoservicio conectados a hardware, WiFi comercial y sistemas internos.</p>
+          <p><strong>UI Designer Jr · Fidooo engineering</strong> · 2023 – 2024<br>
+          <strong>UX/UI Designer Freelance · Micemark</strong> · 2023 – 2025</p>
+        </div>
+        <div class="notas__contenido" id="nota-sobre-mi" style="display:none">
+          <h3>Sobre mí</h3>
+          <p>Mi pasión por lo visual comenzó desde chica, con el dibujo y la pintura.
+          Ese interés lo conecté a la tecnología a través de los videojuegos: sus
+          gráficos y sus historias. Cuando descubrí el UX/UI encontré la unión
+          perfecta: la estética del diseño con el desafío de hacer que los productos
+          digitales funcionen y ayuden a las personas.</p>
+          <p>🧉 Mate · 🎧 Música · 🎮 Videojuegos · ⚽️🏑 Fútbol y hockey</p>
+          <p>— Evelyn</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANAS DE PROYECTO ═══
+         Cada una es un ADELANTO: imagen + dos líneas + link al caso completo.
+         El caso completo vivirá como página propia en pages/casos-de-estudio/. -->
+
+    <section class="ventana ventana--proyecto" id="ventana-core">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Core</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Core</strong>
+        La capa transversal de la plataforma: acceso, scanner, gestión de etiquetas
+        y ajustes de conectividad. Las verticales se enganchan vía su API.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-transporte">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Transporte</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Transporte / Flotas</strong>
+        De una notación de texto en el requerimiento a un lenguaje visual:
+        29 configuraciones de camión ilustradas por partes.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+      <!-- Ficha técnica: <dl> = lista de definiciones (término + dato).
+           Es la etiqueta semánticamente correcta para pares clave-valor. -->
+      <dl class="proyecto__meta">
+        <div class="proyecto__dato">
+          <dt>Rol</dt>
+          <dd>Única diseñadora UX/UI</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Duración</dt>
+          <dd>[ pendiente ]</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Plataformas</dt>
+          <dd>Web + Mobile</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Alcance</dt>
+          <dd>10 sprints (5 mobile + 5 web)</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Herramientas</dt>
+          <dd>Figma · Jira · Confluence</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-retail">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Retail</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Retail</strong>
+        El escaneo no identifica el ítem: lo confirma y lo registra.
+        Un cambio de modelo mental que reescribió pantallas y copy.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-ds">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Design System</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Design system desde cero</strong>
+        Tokens, componentes y 13 páginas de documentación para 3 productos,
+        web y mobile, incluida ilustración técnica propia.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-health">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Health app design</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Health App Redesign</strong>
+        La salud digital: del caos a la búsqueda de una experiencia intuitiva.
+        Rediseño integral basado en research y card sorting: de una app inconsistente
+        a una experiencia confiable, con reducción significativa de quejas de usabilidad.
+        <a class="proyecto__link" href="pages/casos-de-estudio/health-app.html">Ver caso completo →</a>
+      </p>
+      <dl class="proyecto__meta">
+        <div class="proyecto__dato"><dt>Empresa</dt><dd>Cober</dd></div>
+        <div class="proyecto__dato"><dt>Timeline</dt><dd>Abr 2025 – Feb 2026</dd></div>
+        <div class="proyecto__dato"><dt>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
+        <div class="proyecto__dato"><dt>Skills</dt><dd>UX Research · UI Design · Prototype · UX Writing</dd></div>
+      </dl>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-wifi">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Sistema WiFi Marketing</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Sistema WiFi Marketing</strong>
+        WiFi en espacios comerciales: captación y experiencia de conexión.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-pedidos">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Pedidos &amp; Gestión</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>Sistema de Pedidos &amp; Gestión</strong>
+        Kioscos de autoservicio: el diseño que unifica la experiencia de compra
+        y la gestión de stock. Menús jerárquicos con alertas predictivas y branding
+        flexible — una experiencia integrada entre hardware y software.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+      <dl class="proyecto__meta">
+        <div class="proyecto__dato"><dt>Timeline</dt><dd>May 2024 – Nov 2024</dd></div>
+        <div class="proyecto__dato"><dt>Rol</dt><dd>UX/UI Designer</dd></div>
+        <div class="proyecto__dato"><dt>Skills</dt><dd>User stories · UX/UI · Prototype · Workshops</dd></div>
+      </dl>
+    </section>
+
+    <section class="ventana ventana--proyecto" id="ventana-aika">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">AIKA</span>
+      </div>
+      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <p class="proyecto__caption">
+        <strong>AIKA</strong>
+        Productividad interna: del desorden de las hojas de cálculo a la
+        automatización de la gestión de tiempo. Reportes gráficos, to-do list
+        con seguimiento e historial de cambios para transparencia.
+        <a class="proyecto__link" href="#">Ver caso completo →</a>
+      </p>
+      <dl class="proyecto__meta">
+        <div class="proyecto__dato"><dt>Timeline</dt><dd>Sep 2024 – Nov 2024</dd></div>
+        <div class="proyecto__dato"><dt>Rol</dt><dd>UX/UI Designer</dd></div>
+        <div class="proyecto__dato"><dt>Skills</dt><dd>User stories · UX/UI · Prototype · Gráficas de datos</dd></div>
+      </dl>
+    </section>
+
+    <!-- ═══ DOCK ═══ -->
+    <nav class="dock" aria-label="Dock">
+      <button class="dock__app app--sobre-mi" data-ventana="ventana-notas" title="Sobre mí">
+        <!-- Memoji en loop: autoplay solo funciona si el video está muted;
+             playsinline evita que iOS lo abra a pantalla completa -->
+        <video src="assets/images/sobre-mi/memoji.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+      </button>
+      <button class="dock__app app--notas" data-ventana="ventana-notas" title="Notas">
+        <span class="notas-tapa"></span><span class="notas-lineas"></span>
+      </button>
+      <span class="dock__sep"></span>
+      <a class="dock__app app--mail" href="mailto:evelynescalante.25@gmail.com" title="Contacto">
+        <svg viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.2-.2 7.3 5.6a.8.8 0 0 0 1 0l7.3-5.6a.9.9 0 0 0-.3 0h-15a.9.9 0 0 0-.3 0Z"/></svg>
+      </a>
+      <a class="dock__app app--linkedin" href="https://www.linkedin.com/in/evelynarianiescalante/" target="_blank" rel="noopener" title="LinkedIn">in</a>
+      <a class="dock__app app--behance" href="https://www.behance.net/evelynarianiUXer" target="_blank" rel="noopener" title="Behance">Bē</a>
+    </nav>
+
+  </div>
+
+  <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
+  <script src="js/components/ventanas.js"></script>
+  <script src="js/components/reloj.js"></script>
+</body>
+</html>
