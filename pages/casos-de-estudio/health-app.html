@@ -17,10 +17,16 @@
 </head>
 <body>
 
-  <nav class="caso-nav">
-    <a href="index.html">← Proyectos</a> · <a href="../../index.html">Escritorio</a>
-  </nav>
-
+  <!-- El caso vive dentro de una ventana Mac maximizada.
+       El semáforo rojo cierra = vuelve al escritorio. -->
+  <div class="ventana-max">
+    <div class="ventana-max__barra">
+      <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
+      <span class="semaforo semaforo--min"></span>
+      <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
+      <span class="ventana-max__titulo">Health App Redesign — Caso de estudio</span>
+    </div>
+    <div class="ventana-max__scroll">
   <main class="caso-contenido">
 
     <header class="caso-header">
@@ -101,5 +107,7 @@
     </nav>
 
   </main>
+    </div>
+  </div>
 </body>
 </html>

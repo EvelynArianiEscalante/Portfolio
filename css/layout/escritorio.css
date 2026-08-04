@@ -17,11 +17,11 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  /* Tres capas de luz sobre el fondo oscuro, como una foto abstracta */
+  /* Wallpaper + un velo oscuro sutil encima para que el texto siga legible */
   background:
-    radial-gradient(ellipse 80% 60% at 65% 35%, var(--color-fondo-brillo) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, #2b2b2b 0%, transparent 55%),
-    linear-gradient(165deg, var(--color-fondo-alto) 0%, var(--color-fondo) 100%);
+    linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
+    url('../../assets/images/fondo/walppaper3.jpg') center / cover no-repeat,
+    var(--color-fondo);
 }
 
 /* Grano fotográfico generado por código (SVG de ruido).

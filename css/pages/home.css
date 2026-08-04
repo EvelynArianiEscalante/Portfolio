@@ -29,6 +29,14 @@
   margin-left: min(-260px, -44vw);
 }
 
+#ventana-sobre-mi-app {
+  width: min(540px, 90vw);
+  height: min(520px, 78vh);
+  top: 10%;
+  left: 50%;
+  margin-left: min(-270px, -45vw);
+}
+
 #ventana-notas {
   width: min(620px, 88vw);
   height: min(420px, 70vh);

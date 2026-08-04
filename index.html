@@ -26,17 +26,6 @@
 
 <body>
 
-  <!-- Gradiente de las carpetas: se define UNA vez acá (svg oculto)
-       y todas las carpetas del sitio lo referencian con url(#folder-grad) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="folder-grad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#74bcf9"/>
-        <stop offset="1" stop-color="#3c8be0"/>
-      </linearGradient>
-    </defs>
-  </svg>
-
   <div class="escritorio">
 
     <!-- ═══ BARRA DE MENÚ: estética macOS + navegación real ═══ -->
@@ -64,18 +53,12 @@
          + Design System y Sobre mí como items propios. -->
 
     <button class="icono" id="icono-siotyx" data-ventana="ventana-siotyx">
-      <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
-        <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/>
-        <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
-      </svg>
+      <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
       <span class="icono__label">Siotyx</span>
     </button>
 
     <button class="icono" id="icono-anteriores" data-ventana="ventana-anteriores">
-      <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true">
-        <path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/>
-        <path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/>
-      </svg>
+      <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
       <span class="icono__label">Proyectos anteriores</span>
     </button>
 
@@ -84,7 +67,7 @@
       <span class="icono__label">Design System</span>
     </button>
 
-    <button class="icono" id="icono-sobre-mi" data-ventana="ventana-notas">
+    <button class="icono" id="icono-sobre-mi" data-ventana="ventana-sobre-mi-app">
       <span class="icono__thumb thumb--placeholder"></span>
       <span class="icono__label">Sobre mí</span>
     </button>
@@ -99,15 +82,15 @@
       </div>
       <div class="finder__grid">
         <button class="finder__item" data-ventana="ventana-core">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Core</span>
         </button>
         <button class="finder__item" data-ventana="ventana-transporte">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Transporte</span>
         </button>
         <button class="finder__item" data-ventana="ventana-retail">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Retail</span>
         </button>
       </div>
@@ -123,25 +106,57 @@
       </div>
       <div class="finder__grid">
         <button class="finder__item" data-ventana="ventana-health">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Health app design</span>
         </button>
         <button class="finder__item" data-ventana="ventana-wifi">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Sistema WiFi Marketing</span>
         </button>
         <button class="finder__item" data-ventana="ventana-pedidos">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Pedidos &amp; Gestión</span>
         </button>
         <button class="finder__item" data-ventana="ventana-aika">
-          <svg class="icono__folder" viewBox="0 0 64 50" aria-hidden="true"><path d="M3 10a4 4 0 0 1 4-4h15a4 4 0 0 1 2.8 1.2L28 10h29a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V10Z" fill="url(#folder-grad)"/><path d="M3 16h58v27a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V16Z" fill="#5ba8f2"/></svg>
+          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>AIKA</span>
         </button>
       </div>
     </section>
 
-    <!-- ═══ VENTANA NOTES: Sobre mí / Experiencia ═══ -->
+    <!-- ═══ VENTANA SOBRE MÍ: la persona (se abre desde el memoji) ═══ -->
+    <section class="ventana" id="ventana-sobre-mi-app">
+      <div class="ventana__barra" data-arrastra>
+        <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
+        <span class="semaforo semaforo--min"></span>
+        <span class="semaforo semaforo--max"></span>
+        <span class="ventana__titulo">Sobre mí</span>
+      </div>
+      <div class="sobremi__cuerpo">
+        <div class="sobremi__ficha">
+          <video class="sobremi__foto" src="assets/images/sobre-mi/memoji.mp4" autoplay loop muted playsinline aria-label="Memoji de Evelyn"></video>
+          <div class="sobremi__datos">
+            <p><span class="sobremi__label">Nombre</span> Evelyn Ariani Escalante</p>
+            <p><span class="sobremi__label">Rol</span> UX/UI Designer Ssr</p>
+            <p><span class="sobremi__label">Mail</span> <a href="mailto:evelynescalante.25@gmail.com">evelynescalante.25@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="sobremi__bio">
+          <p>Mi pasión por lo visual comenzó desde chica, con el dibujo y la pintura.
+          Ese interés por lo creativo lo conecté a la tecnología a través de los
+          videojuegos: principalmente por sus gráficos e historias.</p>
+          <p>Cuando descubrí el UX/UI encontré la unión perfecta: la estética del
+          diseño con el desafío de hacer que los productos digitales funcionen de
+          forma eficiente y ayuden a las personas.</p>
+          <p>Hoy diseño software B2B complejo conectado a hardware — logística,
+          RFID, design systems desde cero — donde lo digital se encuentra con
+          el mundo físico.</p>
+          <p>🧉 Mate · 🎧 Música · 🎮 Videojuegos · ⚽️🏑 Fútbol y hockey</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VENTANA NOTES: el CV (experiencia + educación) ═══ -->
     <section class="ventana" id="ventana-notas">
       <div class="ventana__barra" data-arrastra>
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
@@ -155,9 +170,9 @@
             <strong>Experiencia</strong>
             <span>Supply Solutions…</span>
           </button>
-          <button class="notas__item" data-nota="sobre-mi">
-            <strong>Sobre mí</strong>
-            <span>Del dibujo al UX…</span>
+          <button class="notas__item" data-nota="educacion">
+            <strong>Educación</strong>
+            <span>Coderhouse, No Country…</span>
           </button>
         </aside>
         <div class="notas__contenido" id="nota-experiencia">
@@ -173,15 +188,18 @@
           <p><strong>UI Designer Jr · Fidooo engineering</strong> · 2023 – 2024<br>
           <strong>UX/UI Designer Freelance · Micemark</strong> · 2023 – 2025</p>
         </div>
-        <div class="notas__contenido" id="nota-sobre-mi" style="display:none">
-          <h3>Sobre mí</h3>
-          <p>Mi pasión por lo visual comenzó desde chica, con el dibujo y la pintura.
-          Ese interés lo conecté a la tecnología a través de los videojuegos: sus
-          gráficos y sus historias. Cuando descubrí el UX/UI encontré la unión
-          perfecta: la estética del diseño con el desafío de hacer que los productos
-          digitales funcionen y ayuden a las personas.</p>
-          <p>🧉 Mate · 🎧 Música · 🎮 Videojuegos · ⚽️🏑 Fútbol y hockey</p>
-          <p>— Evelyn</p>
+        <div class="notas__contenido" id="nota-educacion" style="display:none">
+          <h3>Educación</h3>
+          <ul>
+            <li><strong>Desarrollo Web</strong> · Coderhouse · 2025</li>
+            <li><strong>Prácticas UX/UI (emulación)</strong> · No Country · 2023</li>
+            <li><strong>Fundamentos del Diseño Gráfico</strong> · Coderhouse · 2023</li>
+            <li><strong>Carrera de Diseño UX/UI</strong> · Coderhouse · 2022 – 2023</li>
+            <li><strong>Lic. Diseño y Animación Digital</strong> · Universidad Siglo 21 · 2020 (no finalizada)</li>
+          </ul>
+          <h3>Idiomas</h3>
+          <p>Inglés: escrito intermedio-avanzado, oral intermedio.<br>
+          Portugués: escrito intermedio, oral avanzado.</p>
         </div>
       </div>
     </section>
@@ -354,26 +372,33 @@
 
     <!-- ═══ DOCK ═══ -->
     <nav class="dock" aria-label="Dock">
-      <button class="dock__app app--sobre-mi" data-ventana="ventana-notas" title="Sobre mí">
+      <button class="dock__app app--sobre-mi" data-ventana="ventana-sobre-mi-app" data-label="Sobre mí" aria-label="Sobre mí">
         <!-- Memoji en loop: autoplay solo funciona si el video está muted;
              playsinline evita que iOS lo abra a pantalla completa -->
         <video src="assets/images/sobre-mi/memoji.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
       </button>
-      <button class="dock__app app--notas" data-ventana="ventana-notas" title="Notas">
-        <span class="notas-tapa"></span><span class="notas-lineas"></span>
+      <!-- Íconos propios de Evelyn, exportados de Figma -->
+      <button class="dock__app app--icono" data-ventana="ventana-notas" data-label="CV · Experiencia" aria-label="CV y experiencia">
+        <img src="assets/icons/escritorio/notes.png" alt="Notas">
       </button>
       <span class="dock__sep"></span>
-      <a class="dock__app app--mail" href="mailto:evelynescalante.25@gmail.com" title="Contacto">
-        <svg viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.2-.2 7.3 5.6a.8.8 0 0 0 1 0l7.3-5.6a.9.9 0 0 0-.3 0h-15a.9.9 0 0 0-.3 0Z"/></svg>
+      <a class="dock__app app--icono" href="mailto:evelynescalante.25@gmail.com" data-label="Contacto" aria-label="Contacto">
+        <img src="assets/icons/escritorio/mail.png" alt="Contacto">
       </a>
-      <a class="dock__app app--linkedin" href="https://www.linkedin.com/in/evelynarianiescalante/" target="_blank" rel="noopener" title="LinkedIn">in</a>
+      <a class="dock__app app--icono" href="https://www.linkedin.com/in/evelynarianiescalante/" target="_blank" rel="noopener" data-label="LinkedIn" aria-label="LinkedIn">
+        <img src="assets/icons/escritorio/linkedin.svg" alt="LinkedIn">
+      </a>
+      <!-- Behance oculto por ahora; para reactivarlo, quitar este comentario.
       <a class="dock__app app--behance" href="https://www.behance.net/evelynarianiUXer" target="_blank" rel="noopener" title="Behance">Bē</a>
+      -->
+
     </nav>
 
   </div>
 
   <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
   <script src="js/components/ventanas.js"></script>
+  <script src="js/components/dock.js"></script>
   <script src="js/components/reloj.js"></script>
 </body>
 </html>

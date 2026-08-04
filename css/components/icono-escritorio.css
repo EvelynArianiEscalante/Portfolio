@@ -33,8 +33,9 @@
 
 /* ── Variante carpeta: SVG estilo macOS ── */
 .icono__folder {
-  width: 62px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
+  object-fit: contain; /* respeta la proporción del ícono, sin estirar */
   margin: 0 auto var(--espacio-2);
   display: block;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));

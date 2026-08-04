@@ -5,118 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyectos — Evelyn Ariani</title>
   <meta name="description" content="Casos de estudio de UX/UI: plataformas B2B conectadas a hardware, logística RFID y design systems.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- OJO con las rutas: esta página está dos niveles adentro,
-       por eso los estilos se buscan con ../../ (subir dos carpetas) -->
   <link rel="stylesheet" href="../../css/base/reset.css">
   <link rel="stylesheet" href="../../css/base/variables.css">
   <link rel="stylesheet" href="../../css/base/tipografia.css">
+  <link rel="stylesheet" href="../../css/pages/caso.css">
 
-  <!-- Estilos propios de esta página, mínimos y provisorios.
-       Cuando la página crezca, se mudan a css/pages/casos.css -->
   <style>
-    body {
-      background: var(--color-fondo);
-      min-height: 100vh;
-      padding: 64px 24px;
-    }
-    .contenedor {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .volver {
-      font-size: var(--texto-sm);
-      color: var(--color-texto-suave);
-      display: inline-block;
-      margin-bottom: var(--espacio-6);
-    }
-    .volver:hover { color: var(--color-texto); }
-    .titulo-pagina { margin-bottom: var(--espacio-2); }
-    .bajada {
-      color: var(--color-texto-suave);
-      margin-bottom: var(--espacio-6);
-    }
+    /* Índice de proyectos como grilla de cards, dentro de la ventana */
+    .indice { max-width: 920px; margin: 0 auto; padding: var(--espacio-6) var(--espacio-5) 96px; }
+    .indice h1 { color: var(--color-tinta); margin-bottom: var(--espacio-2); }
+    .indice__bajada { color: var(--color-tinta-suave); margin-bottom: var(--espacio-6); }
+
     .grupo { margin-bottom: var(--espacio-6); }
     .grupo__nombre {
       font-size: var(--texto-sm);
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--color-texto-suave);
+      color: var(--color-tinta-suave);
       margin-bottom: var(--espacio-4);
     }
-    .caso {
-      display: block;
-      padding: var(--espacio-4) 0;
-      border-bottom: 1px solid rgba(245, 245, 244, 0.12);
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--espacio-5);
     }
-    .caso:hover .caso__nombre { color: var(--color-carpeta-claro); }
-    .caso__nombre {
+
+    .card-proyecto {
+      display: block;
+      border: 1px solid var(--color-borde-claro);
+      border-radius: var(--radio-md);
+      overflow: hidden;
+      background: var(--color-superficie);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card-proyecto:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+    }
+
+    .card-proyecto__imagen {
+      aspect-ratio: 16 / 9;
+      background: var(--color-superficie-lateral)
+                  linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08));
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-tinta-suave);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .card-proyecto__imagen.thumb--placeholder {
+      background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
+                        url('https://picsum.photos/id/1011/800/450?grayscale');
+    }
+
+    .card-proyecto__texto { padding: var(--espacio-4); }
+    .card-proyecto__titulo {
       font-size: var(--texto-lg);
       font-weight: 700;
-      color: var(--color-texto);
+      color: var(--color-tinta);
+      margin-bottom: var(--espacio-1);
       transition: color 0.15s ease;
     }
-    .caso__resumen {
+    .card-proyecto:hover .card-proyecto__titulo { color: var(--color-carpeta-oscuro); }
+    .card-proyecto__resumen {
       font-size: var(--texto-base);
-      color: var(--color-texto-suave);
-      margin-top: var(--espacio-1);
+      color: var(--color-tinta-suave);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <main class="contenedor">
-    <a class="volver" href="../../index.html">← Volver al escritorio</a>
 
-    <h1 class="titulo-pagina">Proyectos</h1>
-    <p class="bajada">
-      Diseño UX/UI para software B2B complejo conectado a hardware.
-      Todos los casos, sin vueltas.
-    </p>
+  <div class="ventana-max">
+    <div class="ventana-max__barra">
+      <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
+      <span class="semaforo semaforo--min"></span>
+      <span class="semaforo semaforo--max"></span>
+      <span class="ventana-max__titulo">Proyectos</span>
+    </div>
+    <div class="ventana-max__scroll">
+      <main class="indice">
 
-    <section class="grupo">
-      <h2 class="grupo__nombre">Siotyx · Supply Solutions (actual)</h2>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Transporte / Flotas</span>
-        <p class="caso__resumen">De notación de texto a lenguaje visual: 29 configuraciones de camión ilustradas por partes.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Retail</span>
-        <p class="caso__resumen">El escaneo confirma y registra: un cambio de modelo mental que reescribió pantallas y copy.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Core</span>
-        <p class="caso__resumen">La capa transversal: acceso, scanner, gestión de etiquetas y conectividad.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Design System desde cero</span>
-        <p class="caso__resumen">Tokens, componentes y 13 páginas de documentación para 3 productos, web y mobile.</p>
-      </a>
-    </section>
+        <h1>Proyectos</h1>
+        <p class="indice__bajada">
+          Diseño UX/UI para software B2B complejo conectado a hardware.
+          Todos los casos, sin vueltas.
+        </p>
 
-    <section class="grupo">
-      <h2 class="grupo__nombre">Proyectos anteriores</h2>
-      <a class="caso" href="health-app.html">
-        <span class="caso__nombre">Health App Redesign</span>
-        <p class="caso__resumen">La salud digital: del caos a la búsqueda de una experiencia intuitiva.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Sistema de Pedidos &amp; Gestión</span>
-        <p class="caso__resumen">Kioscos de autoservicio: el diseño que unifica la experiencia de compra y la gestión de stock.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">Sistema WiFi Marketing</span>
-        <p class="caso__resumen">WiFi en espacios comerciales: captación y experiencia de conexión.</p>
-      </a>
-      <a class="caso" href="#">
-        <span class="caso__nombre">AIKA</span>
-        <p class="caso__resumen">Productividad interna: del desorden de las hojas de cálculo a la automatización de la gestión de tiempo.</p>
-      </a>
-    </section>
-  </main>
+        <section class="grupo">
+          <h2 class="grupo__nombre">Siotyx · Supply Solutions (actual)</h2>
+          <div class="cards">
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Transporte / Flotas</p>
+                <p class="card-proyecto__resumen">De notación de texto a lenguaje visual: 29 configuraciones de camión ilustradas por partes.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Retail</p>
+                <p class="card-proyecto__resumen">El escaneo confirma y registra: un cambio de modelo mental que reescribió pantallas y copy.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Core</p>
+                <p class="card-proyecto__resumen">La capa transversal: acceso, scanner, gestión de etiquetas y conectividad.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Design System desde cero</p>
+                <p class="card-proyecto__resumen">Tokens, componentes y 13 páginas de documentación para 3 productos, web y mobile.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="grupo">
+          <h2 class="grupo__nombre">Proyectos anteriores</h2>
+          <div class="cards">
+            <a class="card-proyecto" href="health-app.html">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Health App Redesign</p>
+                <p class="card-proyecto__resumen">La salud digital: del caos a la búsqueda de una experiencia intuitiva.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Sistema de Pedidos &amp; Gestión</p>
+                <p class="card-proyecto__resumen">Kioscos de autoservicio: el diseño que unifica la experiencia de compra y la gestión de stock.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Sistema WiFi Marketing</p>
+                <p class="card-proyecto__resumen">WiFi en espacios comerciales: captación y experiencia de conexión.</p>
+              </div>
+            </a>
+            <a class="card-proyecto" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">AIKA</p>
+                <p class="card-proyecto__resumen">Productividad interna: del desorden de las hojas de cálculo a la automatización de la gestión de tiempo.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
 </body>
 </html>
