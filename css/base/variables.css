@@ -35,6 +35,16 @@
   --color-carpeta-claro: #74bcf9;
   --color-nota: #f7c948;            /* amarillo de la app Notes */
 
+  /* Rojo de diagnóstico: marca hallazgos y problemas detectados.
+     Es de CONTENIDO, distinto del rojo del semáforo de cerrar ventana,
+     que es de interfaz. No mezclarlos aunque se parezcan. */
+  --color-alerta: #d1453b;
+  --color-alerta-tenue: rgba(209, 69, 59, 0.07);
+
+  /* Verde de solución: marca lo que se resolvió. Es el par del rojo de
+     diagnóstico — juntos cuentan "esto estaba mal / esto hicimos". */
+  --color-exito: #2e9e5b;
+
   /* ── Color: semáforos de ventana ── */
   --color-semaforo-cerrar: #ff5f57;
   --color-semaforo-min: #febc2e;

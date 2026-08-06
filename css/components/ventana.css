@@ -401,9 +401,40 @@
   border-bottom: 1px solid var(--color-borde-claro);
 }
 
+/* Cada puesto es una fila: logo fijo a la izquierda, contenido a la derecha.
+   El logo lleva flex-shrink: 0 para que nunca se achique cuando el texto
+   empuja — es el error más común al poner un ícono al lado de un párrafo. */
 .notas__puesto {
+  display: flex;
+  gap: var(--espacio-3);
+  align-items: flex-start;
   padding: var(--espacio-4) 0;
   border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notas__puesto-info { flex: 1; min-width: 0; }
+
+.notas__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: var(--color-superficie-lateral);
+  border: 1px solid var(--color-borde-claro);
+}
+
+.notas__logo--sm { width: 28px; height: 28px; border-radius: 7px; }
+
+/* Sin logo todavía: cuadradito con la inicial, para que la columna no se
+   desarme y todo siga alineado. */
+.notas__logo--inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
 }
 
 .notas__puesto:last-child { border-bottom: none; }
@@ -436,6 +467,9 @@
 }
 
 .notas__lista li {
+  display: flex;
+  gap: var(--espacio-3);
+  align-items: center;
   padding: var(--espacio-2) 0;
   border-bottom: 1px solid var(--color-borde-claro);
   line-height: 1.5;
@@ -458,4 +492,108 @@
   font-weight: 600;
   color: #b45f18;
   margin-bottom: var(--espacio-2);
+}
+
+
+/* ═══ Ubicación en la ventana Sobre mí ═══ */
+
+/* Bloque genérico dentro de Sobre mí: separador arriba y un título.
+   Lo comparten "Cómo trabajo" y "Ubicación". Si mañana sumás otro bloque,
+   le ponés esta clase y ya queda igual que los demás — no hay que copiar CSS. */
+.sobremi__seccion {
+  margin-top: var(--espacio-5);
+  padding-top: var(--espacio-4);
+  border-top: 1px solid var(--color-borde-claro);
+}
+
+.sobremi__seccion h3 {
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  margin-bottom: var(--espacio-3);
+}
+
+.sobremi__seccion p {
+  font-size: var(--texto-base);
+  color: var(--color-tinta-cuerpo);
+  line-height: 1.55;
+  margin-bottom: var(--espacio-3);
+}
+
+.sobremi__mapa h3 {
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  margin-bottom: var(--espacio-3);
+}
+
+/* El contenedor lleva el redondeo y el recorte; el iframe va suelto adentro.
+   Un iframe no respeta border-radius por sí solo: hay que recortarlo desde
+   afuera con overflow: hidden. */
+.mapa {
+  position: relative;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  border: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie-lateral);
+  /* 2:1 y no 16:9: la ventana Sobre mí ya trae mucho texto arriba y un mapa
+     más alto obliga a scrollear de más. */
+  aspect-ratio: 2 / 1;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Botón flotante sobre el mapa, como en la referencia */
+.mapa__link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--color-superficie);
+  color: var(--color-carpeta-oscuro);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.mapa__link:hover { background: var(--color-superficie-barra); }
+
+.sobremi__lugar {
+  margin-top: var(--espacio-2);
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+}
+
+
+/* Herramientas por categoría: etiqueta chica arriba, lista debajo */
+.notas__tools { margin-bottom: var(--espacio-3); }
+
+.notas__tools > div {
+  padding: var(--espacio-2) 0;
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notas__tools > div:last-child { border-bottom: none; }
+
+.notas__tools dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-bottom: 3px;
+}
+
+.notas__tools dd {
+  margin: 0;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-cuerpo);
+  line-height: 1.5;
 }

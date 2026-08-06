@@ -200,6 +200,46 @@
           el mundo físico.</p>
           <p>🧉 Mate · 🎧 Música · 🎮 Videojuegos · ⚽️🏑 Fútbol y hockey</p>
         </div>
+
+        <!-- ═══ CÓMO TRABAJO ═══
+             ⚠️ EVELYN: este texto es una propuesta. Leelo con calma y cambiá
+             lo que no te represente — habla de vos, tiene que sonarte tuyo. -->
+        <section class="sobremi__seccion">
+          <h3>Cómo trabajo</h3>
+          <p>Aprendí a programar lo suficiente como para dejar de entregar
+          mockups estáticos. Este portfolio está hecho a mano en HTML y CSS,
+          versionado en Git, trabajando con Claude como par técnico.</p>
+          <p>No me volvió desarrolladora: me volvió una diseñadora que puede
+          poner algo funcionando delante de un dev, en vez de una imagen.</p>
+        </section>
+
+        <!-- ═══ UBICACIÓN ═══
+             Mapa embebido de Google SIN clave de API: la URL con
+             ?output=embed funciona sin registrarse ni pagar nada.
+             (La API oficial de Google Maps Embed sí pide una clave.)
+             loading="lazy" = el mapa no se descarga hasta que se acerca a
+             la pantalla, así no frena la carga del resto del sitio.
+             Si algún día dejara de andar, la alternativa es OpenStreetMap:
+             https://www.openstreetmap.org/export/embed.html?bbox=-58.53,-34.71,-58.33,-34.53&marker=-34.60,-58.44 -->
+        <section class="sobremi__seccion sobremi__mapa">
+          <h3>Ubicación</h3>
+          <div class="mapa">
+            <iframe
+              src="https://maps.google.com/maps?q=Ciudad%20Aut%C3%B3noma%20de%20Buenos%20Aires%2C%20Argentina&z=11&output=embed"
+              title="Mapa de Ciudad Autónoma de Buenos Aires"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a class="mapa__link" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/place/Ciudad+Aut%C3%B3noma+de+Buenos+Aires">
+              Abrir en Maps
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+          <p class="sobremi__lugar">Capital Federal, Buenos Aires · Argentina</p>
+        </section>
       </div>
     </section>
 
@@ -246,6 +286,8 @@
           intuitivas y eficientes.</p>
 
           <article class="notas__puesto notas__puesto--revisar">
+            <img class="notas__logo" src="assets/images/sobre-mi/logos/supply-logo.png" alt="Logo de Supply Solutions">
+            <div class="notas__puesto-info">
             <p class="notas__aviso">⚠️ Este puesto no estaba en el CV viejo — falta afinarlo.</p>
             <h3>UX/UI Designer Ssr · Supply Solutions</h3>
             <p class="notas__meta">Argentina · actual</p>
@@ -254,9 +296,12 @@
               <li>Única diseñadora de 3 productos (Core, Transporte, Retail), web y mobile.</li>
               <li>Design system desde cero: tokens, componentes y 13 páginas de documentación.</li>
             </ul>
+          </div>
           </article>
 
           <article class="notas__puesto">
+            <img class="notas__logo" src="assets/images/sobre-mi/logos/cober-logo.png" alt="Logo de Cober Medicina Privada">
+            <div class="notas__puesto-info">
             <h3>UX/UI Designer Ssr · Cober Medicina Privada</h3>
             <p class="notas__meta">Capital Federal · Abr 2025 – Feb 2026</p>
             <ul>
@@ -267,9 +312,12 @@
               <li>Documentación de buenas prácticas y aportes al futuro design system.</li>
               <li>Wireframes de baja y alta fidelidad, mobile y desktop (SaaS).</li>
             </ul>
+          </div>
           </article>
 
           <article class="notas__puesto">
+            <img class="notas__logo" src="assets/images/sobre-mi/logos/micemark-logo.png" alt="Logo de Micemark">
+            <div class="notas__puesto-info">
             <h3>UX/UI Designer Freelance · Micemark</h3>
             <p class="notas__meta">Remoto, Argentina · Ago 2023 – Mar 2025</p>
             <ul>
@@ -278,9 +326,12 @@
               <li>Research y benchmark. Autolayout y prototipado.</li>
               <li>Estimaciones de tiempo y reuniones con clientes.</li>
             </ul>
+          </div>
           </article>
 
           <article class="notas__puesto">
+            <img class="notas__logo" src="assets/images/sobre-mi/logos/sisu-logo.png" alt="Logo de SISU Technologies">
+            <div class="notas__puesto-info">
             <h3>UX/UI Designer Jr · SISU Technologies</h3>
             <p class="notas__meta">Remoto, México · May 2024 – Nov 2024</p>
             <ul>
@@ -291,9 +342,12 @@
               <li>Crosschecks con devs: responsividad, librerías React, optimización de UI.</li>
               <li>Dashboards interactivos con Recharts, junto al equipo de desarrollo.</li>
             </ul>
+          </div>
           </article>
 
           <article class="notas__puesto">
+            <img class="notas__logo" src="assets/images/sobre-mi/logos/fidooo-logo.png" alt="Logo de Fidooo Engineering">
+            <div class="notas__puesto-info">
             <h3>UI Designer Jr · Fidooo Engineering</h3>
             <p class="notas__meta">Remoto, Bolivia · Oct 2023 – May 2024</p>
             <ul>
@@ -301,17 +355,18 @@
               <li>Branding y material gráfico junto al equipo de marketing.</li>
               <li>Atomic Design y prototipado en Figma.</li>
             </ul>
+          </div>
           </article>
         </div>
 
         <div class="notas__contenido" id="nota-educacion" style="display:none">
           <h3>Educación</h3>
           <ul class="notas__lista">
-            <li><strong>Desarrollo Web</strong><br>Coderhouse · Mar 2025 – Jun 2025 · Finalizado</li>
-            <li><strong>Prácticas UX/UI (emulación)</strong><br>No Country · Ago 2023 – Sep 2023 · Finalizado</li>
-            <li><strong>Fundamentos del Diseño Gráfico</strong><br>Coderhouse · Jun 2023 – Ago 2023 · Finalizado</li>
-            <li><strong>Carrera de Diseño UX/UI</strong><br>Coderhouse · Abr 2022 – Jun 2023 · Finalizado</li>
-            <li><strong>Lic. Diseño y Animación Digital</strong><br>Universidad Siglo 21 · Mar 2020 – Oct 2020 · No finalizada</li>
+            <li><img class="notas__logo notas__logo--sm" src="assets/images/sobre-mi/logos/coderhouse-logo.png" alt="Logo de Coderhouse"><div><strong>Desarrollo Web</strong><br>Coderhouse · Mar 2025 – Jun 2025 · Finalizado</div></li>
+            <li><img class="notas__logo notas__logo--sm" src="assets/images/sobre-mi/logos/nocountry-logo.png" alt="Logo de No Country"><div><strong>Prácticas UX/UI (emulación)</strong><br>No Country · Ago 2023 – Sep 2023 · Finalizado</div></li>
+            <li><img class="notas__logo notas__logo--sm" src="assets/images/sobre-mi/logos/coderhouse-logo.png" alt="Logo de Coderhouse"><div><strong>Fundamentos del Diseño Gráfico</strong><br>Coderhouse · Jun 2023 – Ago 2023 · Finalizado</div></li>
+            <li><img class="notas__logo notas__logo--sm" src="assets/images/sobre-mi/logos/coderhouse-logo.png" alt="Logo de Coderhouse"><div><strong>Carrera de Diseño UX/UI</strong><br>Coderhouse · Abr 2022 – Jun 2023 · Finalizado</div></li>
+            <li><img class="notas__logo notas__logo--sm" src="assets/images/sobre-mi/logos/s21-logo.png" alt="Logo de Universidad Siglo 21"><div><strong>Lic. Diseño y Animación Digital</strong><br>Universidad Siglo 21 · Mar 2020 – Oct 2020 · No finalizada</div></li>
           </ul>
         </div>
 
@@ -319,12 +374,34 @@
           <h3>Habilidades</h3>
           <p>Design System · Atomic Design · Autolayout · Visual Design · Prototipado ·
           Design Thinking y Heurísticas · Wireframing · User Flow ·
-          HTML, CSS y Bootstrap (básico) · Comunicación efectiva y colaboración</p>
+          Comunicación efectiva y colaboración</p>
 
+          <!-- Herramientas agrupadas por para qué sirven, no en una lista larga:
+               un reclutador busca UNA cosa (¿maneja Figma? ¿toca código?) y
+               con grupos la encuentra sin leer todo. -->
           <h3>Herramientas</h3>
-          <p>Figma · FigJam · Figma Make · Figma Sites · Framer · Photoshop ·
-          Adobe Express · Trello · Mural · Optimal Workshop · VS Code ·
-          WordPress (básico)</p>
+          <dl class="notas__tools">
+            <div>
+              <dt>Diseño</dt>
+              <dd>Figma · FigJam · Figma Make · Figma Sites · Framer · Photoshop · Adobe Express</dd>
+            </div>
+            <div>
+              <dt>Research</dt>
+              <dd>Optimal Workshop · Mural</dd>
+            </div>
+            <div>
+              <dt>Gestión</dt>
+              <dd>Jira · Confluence · Trello</dd>
+            </div>
+            <div>
+              <dt>Desarrollo</dt>
+              <dd>VS Code · Git y GitHub · HTML y CSS · WordPress (básico)</dd>
+            </div>
+            <div>
+              <dt>IA</dt>
+              <dd>Claude · Claude Code · Conectores MCP (Figma, Jira)</dd>
+            </div>
+          </dl>
 
           <h3>Idiomas</h3>
           <p><strong>Inglés:</strong> escrito intermedio-avanzado · oral intermedio.<br>

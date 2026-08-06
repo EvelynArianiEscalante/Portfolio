@@ -86,13 +86,36 @@
       <h3>Hallazgos clave</h3>
       <!-- ⚠️ EVELYN: esta lista la saqué de las anotaciones de tu propia
            imagen 3-findings. Revisala y corregí lo que haga falta. -->
-      <ul>
-        <li><strong>Jerarquía visual inconsistente</strong> y problemas de grid y alineación.</li>
-        <li><strong>Uso inapropiado del color</strong> y fallas de accesibilidad.</li>
-        <li><strong>Flujos con fricción:</strong> búsqueda ineficiente y navegación confusa.</li>
-        <li><strong>Ausencia de feedback visual</strong> e incumplimiento de patrones conocidos.</li>
-        <li><strong>Vocabulario impreciso:</strong> terminología interna que no conectaba
-        con el lenguaje del usuario.</li>
+      <!-- Grilla de hallazgos: cada uno es una card numerada.
+           Sigue siendo un <ul> por debajo — semánticamente ES una lista, y
+           así los lectores de pantalla la anuncian como "lista de 5 ítems".
+           Lo que cambia es cómo se dibuja, no lo que significa. -->
+      <ul class="puntos puntos--problema">
+        <li class="punto">
+          <span class="punto__num">01</span>
+          <p><strong>Jerarquía visual inconsistente</strong><br>
+          Problemas de grid y de alineación a lo largo de toda la app.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">02</span>
+          <p><strong>Uso inapropiado del color</strong><br>
+          Con fallas de accesibilidad asociadas.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">03</span>
+          <p><strong>Flujos con fricción</strong><br>
+          Búsqueda ineficiente y navegación confusa.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">04</span>
+          <p><strong>Ausencia de feedback visual</strong><br>
+          E incumplimiento de patrones ya conocidos por el usuario.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">05</span>
+          <p><strong>Vocabulario impreciso</strong><br>
+          Terminología interna que no conectaba con el lenguaje del usuario.</p>
+        </li>
       </ul>
       <figure class="caso-figura">
         <img src="../../assets/images/casos-de-estudio/health-app/3-findings.webp"
@@ -115,11 +138,25 @@
       claridad, la coherencia y una estética minimalista, alineada con los
       patrones de diseño modernos.</p>
       <h3>Elementos centrales del rediseño</h3>
-      <ul>
-        <li><strong>Nueva arquitectura de información.</strong></li>
-        <li><strong>Flujos de usuario optimizados.</strong></li>
-        <li><strong>Credencial digital simplificada.</strong></li>
-        <li><strong>Prototipos interactivos.</strong></li>
+      <!-- Mismo componente que los hallazgos, con la variante verde.
+           Rojo = lo que estaba mal · Verde = lo que se resolvió. -->
+      <ul class="puntos puntos--solucion">
+        <li class="punto">
+          <span class="punto__num">01</span>
+          <p><strong>Nueva arquitectura de información</strong></p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">02</span>
+          <p><strong>Flujos de usuario optimizados</strong></p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">03</span>
+          <p><strong>Credencial digital simplificada</strong></p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">04</span>
+          <p><strong>Prototipos interactivos</strong></p>
+        </li>
       </ul>
 
       <h3>Antes y después</h3>

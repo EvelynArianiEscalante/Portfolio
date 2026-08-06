@@ -217,3 +217,71 @@ body::before {
 @media (max-width: 700px) {
   .ventana-max { inset: 8px; }
 }
+
+
+/* ═══ Grilla de puntos ═══
+   UN componente, dos variantes de color. La gracia está en --acento: una
+   variable propia de este componente. La card no sabe de qué color es; lee
+   --acento. La variante lo define. Si mañana hace falta una tercera (azul,
+   por ejemplo), son dos líneas y no hay que duplicar nada.
+   Es exactamente la lógica de una variante en Figma.
+
+   ul.puntos y no .puntos a secas: más arriba hay una regla `.caso-seccion ul`
+   que mete 20px de sangría, y una clase sola le pierde en especificidad. */
+ul.puntos {
+  --acento: var(--color-tinta-suave);
+  list-style: none;
+  margin: var(--espacio-4) 0 var(--espacio-5);
+  margin-left: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espacio-3);
+}
+
+/* ATENCIÓN — el mismo tropiezo de antes, ahora entre reglas mías:
+   el valor por defecto de --acento lo define `ul.puntos` (clase + etiqueta).
+   Si la variante fuera `.puntos--solucion` (clase sola) PERDERÍA, porque las
+   dos apuntan al MISMO elemento y gana la más específica. Por eso la variante
+   también lleva el `ul` adelante: empatan, y desempata el orden. */
+ul.puntos--problema { --acento: var(--color-alerta); }
+ul.puntos--solucion { --acento: var(--color-exito); }
+
+.punto {
+  display: flex;
+  gap: var(--espacio-3);
+  align-items: flex-start;
+  padding: var(--espacio-4);
+  border: 1px solid var(--color-borde-claro);
+  border-left: 3px solid var(--acento);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+}
+
+.punto p {
+  margin: 0;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-suave);
+  line-height: 1.45;
+}
+
+.punto strong {
+  color: var(--color-tinta);
+  font-size: var(--texto-md);
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+/* tabular-nums: todos los dígitos ocupan el mismo ancho, así los números
+   quedan en columna aunque cambien. */
+.punto__num {
+  flex-shrink: 0;
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--acento);
+  padding-top: 2px;
+}
+
+/* Si el último queda solo en su fila, que ocupe el ancho completo. */
+ul.puntos .punto:last-child:nth-child(odd) { grid-column: 1 / -1; }

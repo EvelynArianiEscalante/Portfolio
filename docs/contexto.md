@@ -76,7 +76,20 @@ contenido — máximo 1-2 clics a cualquier caso.
 
 ## PENDIENTES (en orden sugerido)
 
-0. **DOS ARCHIVOS QUE SOLO PUEDE SUBIR EVELYN** (todo el código ya está listo
+0. **PENDIENTES DE EVELYN (el código ya está listo y esperándolos):**
+   - `assets/docs/cv-evelyn-ariani-escalante.pdf` → el botón "Descargar CV" del
+     sidebar de Perfil profesional está maquetado con `hidden`. Al subir el PDF,
+     borrar la palabra `hidden` de esa línea en index.html.
+   - `assets/images/og-preview.jpg` (1200×630) → las etiquetas Open Graph ya
+     apuntan ahí. Sin la imagen el preview sale sin foto, no rompe nada.
+   - **Revisar el texto de "Cómo trabajo"** en la ventana Sobre mí: es una
+     propuesta mía, tiene que sonarle a ella.
+   - **Aprobar o corregir el puesto de Supply Solutions** en Perfil profesional
+     (marcado en naranja, clase `.notas__puesto--revisar`).
+   - Isotipo de Supply Solutions: el logo actual es horizontal con texto y
+     dentro del cuadrado de 36px queda mucho más chico que los otros siete.
+
+0b. **DOS ARCHIVOS QUE SOLO PUEDE SUBIR EVELYN** (todo el código ya está listo
    y esperándolos):
    - `assets/docs/cv-evelyn-ariani-escalante.pdf` → el botón "Descargar CV en
      PDF" ya está maquetado en el sidebar de la ventana Notas de `index.html`,
@@ -162,8 +175,48 @@ completo con fechas). Figma fuente: archivo `EW8YfHJvbhoD7LMmSvoLyS`.
 - 2026-08-06: fondo del escritorio = `background-concretebuild.jpg` con velo
   negro al **55%**. No bajar ese número sin medir: la foto es clara y con menos
   velo el texto blanco queda por debajo del contraste mínimo (4,5:1).
+- 2026-08-06: **datos personales tapados en las imágenes de Health App** —
+  24 zonas en 5 imágenes: nombre y DNI del afiliado, número de asociado,
+  nombres de médicos y de pacientes, números de orden. Se rellenó con el color
+  de fondo de cada zona (no barras negras). ⚠️ APRENDIZAJE: el OCR automático
+  NO alcanza — dejó pasar una lista entera de afiliados y el texto atenuado del
+  cuarto teléfono. Lo que funcionó fue mirar cada imagen ampliada. Si se suman
+  imágenes nuevas, revisarlas a ojo antes de publicar.
+  Se dejaron a propósito: las fechas de turnos (inventadas) y el teléfono
+  4556-4800 del Sanatorio Colegiales (institución pública).
+- 2026-08-06: componente `.puntos` con variantes de color (`--problema` rojo /
+  `--solucion` verde) en `caso.css`, usado en los hallazgos y en los elementos
+  del rediseño de Health App. Una sola card, el color lo define la variante
+  vía la variable `--acento`.
+  ⚠️ Las variantes se escriben `ul.puntos--solucion` y NO `.puntos--solucion`:
+  el valor por defecto lo pone `ul.puntos` y le gana en especificidad.
+- 2026-08-06: logos de empresas y de estudios en Perfil profesional
+  (`assets/images/sobre-mi/logos/`, 8 archivos).
+- 2026-08-06: mapa de Capital Federal en Sobre mí. Usa la URL de Google con
+  `?output=embed`, que NO necesita clave de API. Si dejara de funcionar, la
+  alternativa está comentada en el HTML (OpenStreetMap).
+- 2026-08-06: bloque **"Cómo trabajo"** en Sobre mí (aprender a codear + trabajo
+  con IA como diferencial). Texto propuesto por Claude, PENDIENTE de aprobación.
+- 2026-08-06: skills reorganizadas — Bootstrap afuera (no lo usa más), y las
+  herramientas ahora van agrupadas: Diseño, Research, Gestión, Desarrollo, IA
+  (Claude, Claude Code, conectores MCP).
 - 2026-08-06: previews reales cargadas para Health App, WiFi, Pedidos y AIKA.
   Siguen con foto de relleno (picsum): Transporte, Retail y Design System.
 - 2026-08-04: PENDIENTE DE DISCUSIÓN, no tocar sin Evelyn — el H1 del hero
   ("Hago que sistemas complejos se sientan simples") le parece bien por ahora;
   lo revisa al final del trabajo de contenido.
+
+
+## Cómo trabajar el sitio (aprendido a los golpes, 2026-08-06)
+
+- **Git desde la sesión de Claude NO funciona.** La carpeta montada no le deja
+  borrar sus propios archivos `.lock`, y cada comando deja el repo trabado.
+  Claude escribe los archivos; **el commit y el push los hace Evelyn desde
+  VS Code**. Si aparece el cartel "Unable to create index.lock", pedirle a
+  Claude que lo destrabe.
+- **Verificar renderizando, no a ojo.** Claude tiene Chromium: puede abrir el
+  sitio, sacar capturas y medir contraste o alineación de verdad. Se usó para
+  el fondo de hormigón (velo al 55%) y para la alineación de las cards.
+- **Nada que diga "pendiente" se publica.** Los placeholders llevan texto neutro.
+- **Antes de publicar imágenes nuevas: mirarlas ampliadas.** Ver el log del
+  2026-08-06 sobre datos personales.
