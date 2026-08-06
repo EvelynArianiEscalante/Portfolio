@@ -17,10 +17,18 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  /* Wallpaper + un velo oscuro sutil encima para que el texto siga legible */
+  /* Wallpaper + un velo oscuro encima para que el texto blanco siga legible.
+     ── Por qué el velo es tan alto (55%) ──
+     La foto de hormigón es CLARA: en la zona del hero mide 182 de 255 de
+     luminancia. Con el velo viejo de 12%, el texto blanco daba 1,8:1 de
+     contraste — ilegible (la norma WCAG pide 4,5:1 para texto chico).
+     Al 55% da 4,80:1 y pasa. Si bajás este número, revisá el contraste:
+     no es una cuestión de gusto, es si se lee o no.
+     Los dos linear-gradient iguales son el truco para pintar un color plano
+     encima de una imagen: CSS apila los fondos, el primero queda arriba. */
   background:
-    linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
-    url('../../assets/images/fondo/walppaper3.jpg') center / cover no-repeat,
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('../../assets/images/fondo/background-concretebuild.jpg') center / cover no-repeat,
     var(--color-fondo);
 }
 

@@ -176,7 +176,10 @@
   margin-top: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* flex-start, no center: los items del sidebar arrancan a la izquierda y el
+     botón tiene que seguir esa misma línea. Texto centrado adentro de una
+     columna alineada a la izquierda rompe el eje de lectura. */
+  justify-content: flex-start;
   gap: var(--espacio-2);
   padding: 10px var(--espacio-3);
   border-radius: 8px;
@@ -184,7 +187,7 @@
   color: #fff;
   font-size: var(--texto-sm);
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   line-height: 1.2;
   transition: background 0.15s ease, transform 0.15s ease;
 }
@@ -221,13 +224,59 @@
   margin-bottom: var(--espacio-5);
 }
 
-.sobremi__foto {
+/* ── Avatar con switch: dos capas apiladas + un botón que alterna ──
+   El contenedor define el tamaño; las dos capas se apilan encima con
+   position:absolute e inset:0 (= top/right/bottom/left en 0, o sea "ocupá
+   todo el contenedor"). Se cruzan por opacidad, no por display, para que la
+   transición se pueda animar: display no admite transition. */
+.sobremi__avatar {
+  position: relative;
   width: 104px;
   height: 104px;
+  flex-shrink: 0;
+}
+
+.sobremi__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   border-radius: var(--radio-md);
   object-fit: cover;
   background: #111;
-  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sobremi__foto.visible { opacity: 1; }
+
+/* El botoncito de las flechas, abajo a la derecha del avatar */
+.sobremi__switch {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-superficie);
+  background: var(--color-tinta);
+  color: var(--color-superficie);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.sobremi__switch:hover {
+  background: var(--color-carpeta-oscuro);
+  transform: scale(1.12);
+}
+
+.sobremi__switch:focus-visible {
+  outline: 2px solid var(--color-carpeta-claro);
+  outline-offset: 2px;
 }
 
 .sobremi__datos {
@@ -340,4 +389,73 @@
 
 .proyecto__link:hover {
   text-decoration: underline;
+}
+
+
+/* ═══ Contenido del CV dentro de la ventana Notas ═══ */
+
+.notas__resumen {
+  font-size: var(--texto-base);
+  color: var(--color-tinta);
+  padding-bottom: var(--espacio-3);
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notas__puesto {
+  padding: var(--espacio-4) 0;
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notas__puesto:last-child { border-bottom: none; }
+
+.notas__puesto h3 {
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  margin-bottom: 2px;
+}
+
+/* Fila de lugar y fechas: dato secundario, tipografía más chica y apagada */
+.notas__meta {
+  font-size: 0.75rem;
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-2);
+}
+
+.notas__puesto ul,
+.notas__lista {
+  margin: 0 0 0 18px;
+  padding: 0;
+}
+
+.notas__puesto li,
+.notas__lista li { margin-bottom: 5px; }
+
+.notas__lista {
+  list-style: none;
+  margin-left: 0;
+}
+
+.notas__lista li {
+  padding: var(--espacio-2) 0;
+  border-bottom: 1px solid var(--color-borde-claro);
+  line-height: 1.5;
+}
+
+.notas__lista li:last-child { border-bottom: none; }
+
+/* ── Marcador TEMPORAL de contenido a revisar ──
+   Naranja a propósito: no es un color del sistema, canta que está de más.
+   Cuando el contenido esté aprobado se borra la clase --revisar del HTML
+   y el párrafo .notas__aviso de adentro. */
+.notas__puesto--revisar {
+  border-left: 3px solid #e8833a;
+  padding-left: var(--espacio-3);
+  background: rgba(232, 131, 58, 0.06);
+}
+
+.notas__aviso {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #b45f18;
+  margin-bottom: var(--espacio-2);
 }

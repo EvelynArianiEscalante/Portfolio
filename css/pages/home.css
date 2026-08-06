@@ -23,11 +23,23 @@
   background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp');
 }
 
+#ventana-wifi .proyecto__imagen {
+  background-image: url('../../assets/images/casos-de-estudio/wifi-marketing/1-preview.webp');
+}
+
+#ventana-pedidos .proyecto__imagen {
+  background-image: url('../../assets/images/casos-de-estudio/pedidos-gestion/1-preview.webp');
+}
+
+#ventana-aika .proyecto__imagen {
+  background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp');
+}
+
 /* ── Posiciones de los íconos: columna ordenada a la derecha ── */
 #icono-siotyx     { top: 11%; right: 3%; }
 #icono-anteriores { top: 32%; right: 3%; }
 #icono-ds         { top: 53%; right: 3%; }
-#icono-sobre-mi   { top: 74%; right: 3%; }
+/* #icono-sobre-mi   { top: 74%; right: 3%; }   ← ícono sacado del escritorio */
 
 /* ── Tamaños y posiciones iniciales de las ventanas ──
    left: 50% + margen negativo = centrada; después el usuario la arrastra. */
@@ -48,8 +60,10 @@
 }
 
 #ventana-notas {
-  width: min(620px, 88vw);
-  height: min(420px, 70vh);
+  /* Más grande que antes: adentro entra el CV completo. El contenido
+     scrollea solo (overflow-y: auto en .notas__contenido). */
+  width: min(700px, 92vw);
+  height: min(560px, 80vh);
   top: 16%;
   left: 50%;
   margin-left: min(-310px, -44vw);
@@ -67,7 +81,7 @@
   #icono-siotyx     { top: 10%; right: 4%; }
   #icono-anteriores { top: 30%; right: 4%; }
   #icono-ds         { top: 50%; right: 4%; }
-  #icono-sobre-mi   { top: 70%; right: 4%; }
+  /* #icono-sobre-mi   { top: 70%; right: 4%; } */
 
   .centro h1 {
     font-size: 1.5rem;

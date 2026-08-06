@@ -146,6 +146,24 @@ completo con fechas). Figma fuente: archivo `EW8YfHJvbhoD7LMmSvoLyS`.
   "Health app design").
 - 2026-08-04: CTA de descarga de CV maquetado en el sidebar de Notas (oculto
   hasta que exista el PDF) + Open Graph en home y en el caso.
+- 2026-08-06: **Core deja de ser un proyecto propio.** Sale del Finder de Siotyx
+  y de la grilla del índice; su contenido (capa transversal: acceso, scanner,
+  gestión de etiquetas, conectividad) se cuenta ahora DENTRO del Design System.
+  La ventana `#ventana-core` quedó comentada en index.html por si se revierte.
+- 2026-08-06: **grilla de Siotyx en el índice** — Retail ocupa la fila entera
+  arriba (clase `.card-proyecto--ancha`), y debajo Transporte a la izquierda y
+  Design System a la derecha, en ese orden de lectura.
+- 2026-08-06: ventana "Notas" renombrada a **"Perfil profesional"** y cargada con
+  el CV completo (3 pestañas: Experiencia, Educación, Skills). Supply Solutions
+  queda marcado en NARANJA (`.notas__puesto--revisar`) hasta que Evelyn lo apruebe.
+- 2026-08-06: **avatar switch** en la ventana Sobre mí (memoji ↔ foto real).
+  Componente en `js/components/avatar-switch.js`. El botón solo aparece si
+  `assets/images/sobre-mi/profile-photo.jpg` carga bien.
+- 2026-08-06: fondo del escritorio = `background-concretebuild.jpg` con velo
+  negro al **55%**. No bajar ese número sin medir: la foto es clara y con menos
+  velo el texto blanco queda por debajo del contraste mínimo (4,5:1).
+- 2026-08-06: previews reales cargadas para Health App, WiFi, Pedidos y AIKA.
+  Siguen con foto de relleno (picsum): Transporte, Retail y Design System.
 - 2026-08-04: PENDIENTE DE DISCUSIÓN, no tocar sin Evelyn — el H1 del hero
   ("Hago que sistemas complejos se sientan simples") le parece bien por ahora;
   lo revisa al final del trabajo de contenido.

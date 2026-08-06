@@ -48,7 +48,9 @@
         <span>UX/UI Designer</span>
         <a class="menubar__link" href="pages/casos-de-estudio/index.html">Proyectos</a>
         <a class="menubar__link" href="#">Sistema de diseño</a>       <!-- página pendiente -->
-        <a class="menubar__link" href="#">Sobre mí</a>                <!-- página pendiente -->
+        <!-- data-ventana: el JS abre cualquier elemento que tenga este atributo.
+             Antes era un link muerto; ahora abre la ventana Sobre mí. -->
+        <a class="menubar__link" href="#" data-ventana="ventana-sobre-mi-app">Sobre mí</a>
         <a class="menubar__link" href="mailto:evelynescalante.25@gmail.com">Contacto</a>
       </nav>
       <span id="reloj">—</span>
@@ -80,10 +82,15 @@
       <span class="icono__label">Design System</span>
     </button>
 
+    <!-- Ícono "Sobre mí" del escritorio: SACADO a pedido de Evelyn (2026-08-06).
+         La ventana sigue existiendo y se abre desde el memoji del dock, que ya
+         cumple esa función. Para volver a ponerlo, descomentá este bloque y la
+         regla #icono-sobre-mi en css/pages/home.css.
     <button class="icono" id="icono-sobre-mi" data-ventana="ventana-sobre-mi-app">
       <span class="icono__thumb thumb--placeholder"></span>
       <span class="icono__label">Sobre mí</span>
     </button>
+    -->
 
     <!-- ═══ VENTANA FINDER: Siotyx (trabajo actual) ═══ -->
     <section class="ventana" id="ventana-siotyx">
@@ -94,10 +101,7 @@
         <span class="ventana__titulo">Siotyx — plataforma B2B de logística con RFID</span>
       </div>
       <div class="finder__grid">
-        <button class="finder__item" data-ventana="ventana-core">
-          <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
-          <span>Core</span>
-        </button>
+        <!-- Core dejó de ser un proyecto propio: ahora se cuenta dentro del Design System. -->
         <button class="finder__item" data-ventana="ventana-transporte">
           <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
           <span>Transporte</span>
@@ -150,7 +154,34 @@
       </div>
       <div class="sobremi__cuerpo">
         <div class="sobremi__ficha">
-          <video class="sobremi__foto" src="assets/images/sobre-mi/memoji.mp4" autoplay loop muted playsinline aria-label="Memoji de Evelyn"></video>
+          <!-- ═══ AVATAR CON SWITCH ═══
+               Dos capas apiladas (el memoji y la foto real) y un botón que
+               alterna cuál se ve. El botón nace oculto y JS lo muestra SOLO si
+               la foto real carga bien: mientras no exista el archivo, la
+               ventana se ve exactamente como antes.
+
+               PARA ACTIVARLO: guardá tu foto en
+               assets/images/sobre-mi/profile-photo.jpg
+               Nada más. El botón aparece solo. -->
+          <div class="sobremi__avatar">
+            <video class="sobremi__foto sobremi__foto--avatar visible"
+                   src="assets/images/sobre-mi/memoji.mp4"
+                   autoplay loop muted playsinline aria-label="Memoji de Evelyn"></video>
+            <img class="sobremi__foto sobremi__foto--real"
+                 src="assets/images/sobre-mi/profile-photo.jpg"
+                 alt="Foto de Evelyn Ariani Escalante">
+            <button class="sobremi__switch" type="button" hidden
+                    aria-label="Cambiar entre foto y avatar" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                   stroke="currentColor" stroke-width="2.3"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+                <path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+            </button>
+          </div>
           <div class="sobremi__datos">
             <p><span class="sobremi__label">Nombre</span> Evelyn Ariani Escalante</p>
             <p><span class="sobremi__label">Rol</span> UX/UI Designer Ssr</p>
@@ -178,74 +209,134 @@
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
         <span class="semaforo semaforo--min"></span>
         <span class="semaforo semaforo--max"></span>
-        <span class="ventana__titulo">Notas</span>
+        <span class="ventana__titulo">Perfil profesional</span>
       </div>
       <div class="notas__cuerpo">
         <aside class="notas__sidebar">
           <button class="notas__item activo" data-nota="experiencia">
             <strong>Experiencia</strong>
-            <span>Supply Solutions…</span>
+            <span>Supply Solutions, Cober…</span>
           </button>
           <button class="notas__item" data-nota="educacion">
             <strong>Educación</strong>
             <span>Coderhouse, No Country…</span>
           </button>
+          <button class="notas__item" data-nota="skills">
+            <strong>Skills</strong>
+            <span>Herramientas e idiomas</span>
+          </button>
 
           <!-- ═══ CTA: DESCARGAR EL CV ═══
-               Va en el sidebar y no adentro del contenido para que se vea con
-               cualquiera de las dos pestañas activa.
-
                PARA ACTIVARLO, DOS PASOS:
                1) Guardá el PDF en assets/docs/ con este nombre exacto:
                   cv-evelyn-ariani-escalante.pdf
-               2) Borrá la palabra "hidden" de la línea de abajo.
-
-               Lo dejo oculto hasta que el archivo exista: un link a un PDF que
-               no está da error 404, y eso es peor que no tener el botón.
-
-               El atributo download hace dos cosas: fuerza la descarga en vez de
-               abrir el PDF en una pestaña, y le pone al archivo el nombre que
-               le pasás (así al reclutador no le queda un "documento(3).pdf"). -->
+               2) Borrá la palabra "hidden" de la línea de abajo. -->
           <a class="notas__cta" hidden
              href="assets/docs/cv-evelyn-ariani-escalante.pdf"
              download="CV-Evelyn-Ariani-Escalante.pdf">
             <span class="notas__cta__flecha" aria-hidden="true">↓</span>
-            Descargar CV en PDF
+            Descargar CV
           </a>
         </aside>
+
         <div class="notas__contenido" id="nota-experiencia">
-          <h3>Experiencia</h3>
-          <p><strong>UX/UI Designer (Ssr) · Supply Solutions</strong> · actual<br>
-          Diseño de Siotyx, plataforma B2B de logística conectada a hardware RFID.
-          Única diseñadora de 3 productos (Core, Transporte, Retail), web y mobile.
-          Design system desde cero: tokens, componentes y 13 páginas de documentación.</p>
-          <p><strong>UX/UI Designer Ssr · Cober</strong> · 2025 – 2026<br>
-          Rediseño integral de app de salud, basado en research y card sorting.</p>
-          <p><strong>UX/UI Designer · Sisu</strong> · 2024<br>
-          Kioscos de autoservicio conectados a hardware, WiFi comercial y sistemas internos.</p>
-          <p><strong>UI Designer Jr · Fidooo engineering</strong> · 2023 – 2024<br>
-          <strong>UX/UI Designer Freelance · Micemark</strong> · 2023 – 2025</p>
+          <p class="notas__resumen">Diseñadora UX/UI especializada en la arquitectura de
+          sistemas y la simplificación de flujos complejos. Conecto estrategia de negocio
+          con la empatía de usuario, logrando diseños que convierten caos en soluciones
+          intuitivas y eficientes.</p>
+
+          <article class="notas__puesto notas__puesto--revisar">
+            <p class="notas__aviso">⚠️ Este puesto no estaba en el CV viejo — falta afinarlo.</p>
+            <h3>UX/UI Designer Ssr · Supply Solutions</h3>
+            <p class="notas__meta">Argentina · actual</p>
+            <ul>
+              <li>Diseño de Siotyx, plataforma B2B de logística conectada a hardware RFID.</li>
+              <li>Única diseñadora de 3 productos (Core, Transporte, Retail), web y mobile.</li>
+              <li>Design system desde cero: tokens, componentes y 13 páginas de documentación.</li>
+            </ul>
+          </article>
+
+          <article class="notas__puesto">
+            <h3>UX/UI Designer Ssr · Cober Medicina Privada</h3>
+            <p class="notas__meta">Capital Federal · Abr 2025 – Feb 2026</p>
+            <ul>
+              <li>Análisis UX de flujos existentes y detección de problemas de usabilidad.</li>
+              <li>Reestructuración de arquitectura de información mediante card sorting.</li>
+              <li>Colaboración con desarrollo y marketing: coherencia visual y tono.</li>
+              <li>Encuestas de satisfacción y email marketing.</li>
+              <li>Documentación de buenas prácticas y aportes al futuro design system.</li>
+              <li>Wireframes de baja y alta fidelidad, mobile y desktop (SaaS).</li>
+            </ul>
+          </article>
+
+          <article class="notas__puesto">
+            <h3>UX/UI Designer Freelance · Micemark</h3>
+            <p class="notas__meta">Remoto, Argentina · Ago 2023 – Mar 2025</p>
+            <ul>
+              <li>Landing pages y plataformas web responsive.</li>
+              <li>Creación y mantenimiento de design systems.</li>
+              <li>Research y benchmark. Autolayout y prototipado.</li>
+              <li>Estimaciones de tiempo y reuniones con clientes.</li>
+            </ul>
+          </article>
+
+          <article class="notas__puesto">
+            <h3>UX/UI Designer Jr · SISU Technologies</h3>
+            <p class="notas__meta">Remoto, México · May 2024 – Nov 2024</p>
+            <ul>
+              <li>Diseño UX/UI para aplicaciones B2B: pantallas interactivas y reportes.</li>
+              <li>Research, user stories, arquitectura de información y benchmark.</li>
+              <li>Metodologías ágiles por sprints, MVP y workshops con clientes.</li>
+              <li>Industrias: salud, hardware de automatización y conectividad.</li>
+              <li>Crosschecks con devs: responsividad, librerías React, optimización de UI.</li>
+              <li>Dashboards interactivos con Recharts, junto al equipo de desarrollo.</li>
+            </ul>
+          </article>
+
+          <article class="notas__puesto">
+            <h3>UI Designer Jr · Fidooo Engineering</h3>
+            <p class="notas__meta">Remoto, Bolivia · Oct 2023 – May 2024</p>
+            <ul>
+              <li>Diseño y optimización de design systems.</li>
+              <li>Branding y material gráfico junto al equipo de marketing.</li>
+              <li>Atomic Design y prototipado en Figma.</li>
+            </ul>
+          </article>
         </div>
+
         <div class="notas__contenido" id="nota-educacion" style="display:none">
           <h3>Educación</h3>
-          <ul>
-            <li><strong>Desarrollo Web</strong> · Coderhouse · 2025</li>
-            <li><strong>Prácticas UX/UI (emulación)</strong> · No Country · 2023</li>
-            <li><strong>Fundamentos del Diseño Gráfico</strong> · Coderhouse · 2023</li>
-            <li><strong>Carrera de Diseño UX/UI</strong> · Coderhouse · 2022 – 2023</li>
-            <li><strong>Lic. Diseño y Animación Digital</strong> · Universidad Siglo 21 · 2020 (no finalizada)</li>
+          <ul class="notas__lista">
+            <li><strong>Desarrollo Web</strong><br>Coderhouse · Mar 2025 – Jun 2025 · Finalizado</li>
+            <li><strong>Prácticas UX/UI (emulación)</strong><br>No Country · Ago 2023 – Sep 2023 · Finalizado</li>
+            <li><strong>Fundamentos del Diseño Gráfico</strong><br>Coderhouse · Jun 2023 – Ago 2023 · Finalizado</li>
+            <li><strong>Carrera de Diseño UX/UI</strong><br>Coderhouse · Abr 2022 – Jun 2023 · Finalizado</li>
+            <li><strong>Lic. Diseño y Animación Digital</strong><br>Universidad Siglo 21 · Mar 2020 – Oct 2020 · No finalizada</li>
           </ul>
-          <h3>Idiomas</h3>
-          <p>Inglés: escrito intermedio-avanzado, oral intermedio.<br>
-          Portugués: escrito intermedio, oral avanzado.</p>
         </div>
-      </div>
+
+        <div class="notas__contenido" id="nota-skills" style="display:none">
+          <h3>Habilidades</h3>
+          <p>Design System · Atomic Design · Autolayout · Visual Design · Prototipado ·
+          Design Thinking y Heurísticas · Wireframing · User Flow ·
+          HTML, CSS y Bootstrap (básico) · Comunicación efectiva y colaboración</p>
+
+          <h3>Herramientas</h3>
+          <p>Figma · FigJam · Figma Make · Figma Sites · Framer · Photoshop ·
+          Adobe Express · Trello · Mural · Optimal Workshop · VS Code ·
+          WordPress (básico)</p>
+
+          <h3>Idiomas</h3>
+          <p><strong>Inglés:</strong> escrito intermedio-avanzado · oral intermedio.<br>
+          <strong>Portugués:</strong> escrito intermedio · oral avanzado.</p>
+        </div>
     </section>
 
     <!-- ═══ VENTANAS DE PROYECTO ═══
          Cada una es un ADELANTO: imagen + dos líneas + link al caso completo.
          El caso completo vivirá como página propia en pages/casos-de-estudio/. -->
 
+    <!-- Ventana de Core: retirada 2026-08-06, su contenido pasó al Design System.
     <section class="ventana ventana--proyecto" id="ventana-core">
       <div class="ventana__barra" data-arrastra>
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
@@ -260,6 +351,7 @@
         <a class="proyecto__link" href="#">Ver caso completo →</a>
       </p>
     </section>
+    -->
 
     <section class="ventana ventana--proyecto" id="ventana-transporte">
       <div class="ventana__barra" data-arrastra>
@@ -324,8 +416,10 @@
       <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Design system desde cero</strong>
-        Tokens, componentes y 13 páginas de documentación para 3 productos,
-        web y mobile, incluida ilustración técnica propia.
+        Tokens, componentes y 13 páginas de documentación para toda la plataforma:
+        las verticales de Transporte y Retail, más Core — la capa transversal de
+        acceso, scanner, gestión de etiquetas y conectividad. Incluye ilustración
+        técnica propia.
         <a class="proyecto__link" href="#">Ver caso completo →</a>
       </p>
     </section>
@@ -361,7 +455,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Sistema WiFi Marketing</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
+      <div class="proyecto__imagen"></div>
       <p class="proyecto__caption">
         <strong>Sistema WiFi Marketing</strong>
         WiFi en espacios comerciales: captación y experiencia de conexión.
@@ -375,7 +469,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Pedidos &amp; Gestión</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
+      <div class="proyecto__imagen"></div>
       <p class="proyecto__caption">
         <strong>Sistema de Pedidos &amp; Gestión</strong>
         Kioscos de autoservicio: el diseño que unifica la experiencia de compra
@@ -396,7 +490,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">AIKA</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
+      <div class="proyecto__imagen"></div>
       <p class="proyecto__caption">
         <strong>AIKA</strong>
         Productividad interna: del desorden de las hojas de cálculo a la
@@ -441,5 +535,6 @@
   <script src="js/components/ventanas.js"></script>
   <script src="js/components/dock.js"></script>
   <script src="js/components/reloj.js"></script>
+  <script src="js/components/avatar-switch.js"></script>
 </body>
 </html>

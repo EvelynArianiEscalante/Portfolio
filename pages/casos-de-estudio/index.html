@@ -70,6 +70,19 @@
     .card--health {
       background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp');
     }
+    .card--wifi {
+      background-image: url('../../assets/images/casos-de-estudio/wifi-marketing/1-preview.webp');
+    }
+    .card--pedidos {
+      background-image: url('../../assets/images/casos-de-estudio/pedidos-gestion/1-preview.webp');
+    }
+    .card--aika {
+      background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp');
+    }
+
+    /* Card que ocupa la fila completa de la grilla */
+    .card-proyecto--ancha { grid-column: 1 / -1; }
+    .card-proyecto--ancha .card-proyecto__imagen { aspect-ratio: 21 / 9; }
 
     .card-proyecto__texto { padding: var(--espacio-4); }
     .card-proyecto__titulo {
@@ -114,6 +127,18 @@
                de los casos. Los empleadores viven en la ventana Notas / CV. -->
           <h2 class="grupo__nombre">Siotyx · proyecto actual</h2>
           <div class="cards">
+            <!-- Retail ocupa la fila entera: es el caso que abre el grupo.
+                 grid-column: 1 / -1 = "andá de la primera línea de columna a la
+                 última", o sea, ocupá todo el ancho de la grilla. -->
+            <a class="card-proyecto card-proyecto--ancha" href="#">
+              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Retail</p>
+                <p class="card-proyecto__resumen">El escaneo confirma y registra: un cambio de modelo mental que reescribió pantallas y copy.</p>
+              </div>
+            </a>
+            <!-- Abajo, mitad y mitad. El orden en el HTML es el orden en pantalla:
+                 primero Transporte (izquierda), después el Design System (derecha). -->
             <a class="card-proyecto" href="#">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
               <div class="card-proyecto__texto">
@@ -124,22 +149,8 @@
             <a class="card-proyecto" href="#">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
               <div class="card-proyecto__texto">
-                <p class="card-proyecto__titulo">Retail</p>
-                <p class="card-proyecto__resumen">El escaneo confirma y registra: un cambio de modelo mental que reescribió pantallas y copy.</p>
-              </div>
-            </a>
-            <a class="card-proyecto" href="#">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
-              <div class="card-proyecto__texto">
-                <p class="card-proyecto__titulo">Core</p>
-                <p class="card-proyecto__resumen">La capa transversal: acceso, scanner, gestión de etiquetas y conectividad.</p>
-              </div>
-            </a>
-            <a class="card-proyecto" href="#">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
-              <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Design System desde cero</p>
-                <p class="card-proyecto__resumen">Tokens, componentes y 13 páginas de documentación para 3 productos, web y mobile.</p>
+                <p class="card-proyecto__resumen">Tokens, componentes y 13 páginas de documentación para toda la plataforma: las verticales de Transporte y Retail, más Core — la capa transversal de acceso, scanner, etiquetas y conectividad.</p>
               </div>
             </a>
           </div>
@@ -159,21 +170,21 @@
               </div>
             </a>
             <a class="card-proyecto" href="#">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__imagen card--pedidos"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Sistema de Pedidos &amp; Gestión</p>
                 <p class="card-proyecto__resumen">Kioscos de autoservicio: el diseño que unifica la experiencia de compra y la gestión de stock.</p>
               </div>
             </a>
             <a class="card-proyecto" href="#">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__imagen card--wifi"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Sistema WiFi Marketing</p>
                 <p class="card-proyecto__resumen">WiFi en espacios comerciales: captación y experiencia de conexión.</p>
               </div>
             </a>
             <a class="card-proyecto" href="#">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__imagen card--aika"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">AIKA</p>
                 <p class="card-proyecto__resumen">Productividad interna: del desorden de las hojas de cálculo a la automatización de la gestión de tiempo.</p>

@@ -7,3 +7,10 @@
 
 # Configuración local de VS Code (es personal, no del proyecto)
 .vscode/
+
+# ── TEMPORAL (2026-08-06) ──
+# Las imágenes de Health App tienen datos personales sin tapar (un DNI, nombres
+# de médicos). Las escondo de git para que no se puedan publicar por accidente:
+# una vez que algo se sube, queda en el historial para siempre.
+# CUANDO ESTÉN TAPADAS: borrar estas dos líneas y commitear las imágenes.
+assets/images/casos-de-estudio/health-app/
