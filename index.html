@@ -26,15 +26,24 @@
 
   <!-- Estilos, de lo general a lo específico:
        base (tokens) → layout → componentes → página -->
-  <link rel="stylesheet" href="css/base/reset.css">
-  <link rel="stylesheet" href="css/base/variables.css">
-  <link rel="stylesheet" href="css/base/tipografia.css">
-  <link rel="stylesheet" href="css/layout/escritorio.css">
-  <link rel="stylesheet" href="css/layout/menubar.css">
-  <link rel="stylesheet" href="css/components/icono-escritorio.css">
-  <link rel="stylesheet" href="css/components/ventana.css">
-  <link rel="stylesheet" href="css/components/dock.css">
-  <link rel="stylesheet" href="css/pages/home.css">
+  <!-- ═══ ¿QUÉ ES EL ?v=1 DE LOS CSS? ═══
+       Los navegadores guardan los CSS en caché para no bajarlos cada vez.
+       El problema: si cambiás el CSS pero el nombre del archivo sigue igual,
+       el navegador reusa el viejo y el sitio se ve roto (HTML nuevo + estilos
+       viejos = todo desalineado y sin fondo).
+       Al agregarle ?v=1 la URL cambia, así que el navegador lo trata como un
+       archivo nuevo y lo baja sí o sí.
+       REGLA: cada vez que toques un CSS y publiques, subí el número: v=2, v=3…
+       Es lo único que hay que acordarse. -->
+  <link rel="stylesheet" href="css/base/reset.css?v=1">
+  <link rel="stylesheet" href="css/base/variables.css?v=1">
+  <link rel="stylesheet" href="css/base/tipografia.css?v=1">
+  <link rel="stylesheet" href="css/layout/escritorio.css?v=1">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=1">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=1">
+  <link rel="stylesheet" href="css/components/ventana.css?v=1">
+  <link rel="stylesheet" href="css/components/dock.css?v=1">
+  <link rel="stylesheet" href="css/pages/home.css?v=1">
 </head>
 
 <body>
