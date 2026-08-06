@@ -6,6 +6,19 @@
   <title>Evelyn Ariani — Diseñadora UX/UI · B2B + Hardware</title>
   <meta name="description" content="Diseño UX/UI para plataformas B2B conectadas a hardware: logística, RFID y design systems construidos desde cero.">
 
+  <!-- ═══ OPEN GRAPH ═══
+       Es lo que leen LinkedIn / WhatsApp / Slack cuando pegás el link.
+       Sin estas etiquetas el preview sale como una tarjeta vacía.
+       Las URLs de og: TIENEN que ser absolutas: el bot que las lee no está
+       "dentro" del sitio, así que una ruta relativa no la puede resolver. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Evelyn Ariani — Diseñadora UX/UI · B2B + Hardware">
+  <meta property="og:description" content="Diseño UX/UI para plataformas B2B conectadas a hardware: logística, RFID y design systems construidos desde cero.">
+  <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/">
+  <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
+  <meta property="og:image:alt" content="Escritorio del portfolio de Evelyn Ariani Escalante">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Tipografía: Figtree -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,7 +109,10 @@
       </div>
     </section>
 
-    <!-- ═══ VENTANA FINDER: Proyectos anteriores (etapa Sisu) ═══ -->
+    <!-- ═══ VENTANA FINDER: Proyectos anteriores ═══
+         Solo nombres de PRODUCTO acá dentro. Los nombres de empleadores
+         viven únicamente en la ventana Notas (experiencia). -->
+
     <section class="ventana" id="ventana-anteriores">
       <div class="ventana__barra" data-arrastra>
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
@@ -107,7 +123,7 @@
       <div class="finder__grid">
         <button class="finder__item" data-ventana="ventana-health">
           <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
-          <span>Health app design</span>
+          <span>Health App Redesign</span>
         </button>
         <button class="finder__item" data-ventana="ventana-wifi">
           <img class="icono__folder" src="assets/icons/escritorio/folder.png" alt="">
@@ -174,6 +190,28 @@
             <strong>Educación</strong>
             <span>Coderhouse, No Country…</span>
           </button>
+
+          <!-- ═══ CTA: DESCARGAR EL CV ═══
+               Va en el sidebar y no adentro del contenido para que se vea con
+               cualquiera de las dos pestañas activa.
+
+               PARA ACTIVARLO, DOS PASOS:
+               1) Guardá el PDF en assets/docs/ con este nombre exacto:
+                  cv-evelyn-ariani-escalante.pdf
+               2) Borrá la palabra "hidden" de la línea de abajo.
+
+               Lo dejo oculto hasta que el archivo exista: un link a un PDF que
+               no está da error 404, y eso es peor que no tener el botón.
+
+               El atributo download hace dos cosas: fuerza la descarga en vez de
+               abrir el PDF en una pestaña, y le pone al archivo el nombre que
+               le pasás (así al reclutador no le queda un "documento(3).pdf"). -->
+          <a class="notas__cta" hidden
+             href="assets/docs/cv-evelyn-ariani-escalante.pdf"
+             download="CV-Evelyn-Ariani-Escalante.pdf">
+            <span class="notas__cta__flecha" aria-hidden="true">↓</span>
+            Descargar CV en PDF
+          </a>
         </aside>
         <div class="notas__contenido" id="nota-experiencia">
           <h3>Experiencia</h3>
@@ -214,7 +252,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Core</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Core</strong>
         La capa transversal de la plataforma: acceso, scanner, gestión de etiquetas
@@ -229,7 +267,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Transporte</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Transporte / Flotas</strong>
         De una notación de texto en el requerimiento a un lenguaje visual:
@@ -243,10 +281,10 @@
           <dt>Rol</dt>
           <dd>Única diseñadora UX/UI</dd>
         </div>
-        <div class="proyecto__dato">
-          <dt>Duración</dt>
-          <dd>[ pendiente ]</dd>
-        </div>
+        <!-- Saqué el dato "Duración" porque estaba vacío y un hueco visible
+             pesa más que el dato que falta. "Alcance: 10 sprints" ya dice
+             el tamaño del proyecto. Si querés la duración en meses, la
+             volvemos a poner con el número real. -->
         <div class="proyecto__dato">
           <dt>Plataformas</dt>
           <dd>Web + Mobile</dd>
@@ -268,7 +306,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Retail</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Retail</strong>
         El escaneo no identifica el ítem: lo confirma y lo registra.
@@ -283,7 +321,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Design System</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot de Figma — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Design system desde cero</strong>
         Tokens, componentes y 13 páginas de documentación para 3 productos,
@@ -296,18 +334,21 @@
       <div class="ventana__barra" data-arrastra>
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
-        <span class="ventana__titulo">Health app design</span>
+        <span class="ventana__titulo">Health App Redesign</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <!-- Sin thumb--placeholder: este proyecto ya tiene imagen real.
+           La ruta está en css/pages/home.css, bajo #ventana-health. -->
+      <div class="proyecto__imagen"></div>
       <p class="proyecto__caption">
         <strong>Health App Redesign</strong>
         La salud digital: del caos a la búsqueda de una experiencia intuitiva.
         Rediseño integral basado en research y card sorting: de una app inconsistente
-        a una experiencia confiable, con reducción significativa de quejas de usabilidad.
+        a una experiencia confiable.
         <a class="proyecto__link" href="pages/casos-de-estudio/health-app.html">Ver caso completo →</a>
       </p>
       <dl class="proyecto__meta">
-        <div class="proyecto__dato"><dt>Empresa</dt><dd>Cober</dd></div>
+        <!-- "Sector" en vez de "Empresa": ubica al lector sin nombrar al cliente. -->
+        <div class="proyecto__dato"><dt>Sector</dt><dd>Salud</dd></div>
         <div class="proyecto__dato"><dt>Timeline</dt><dd>Abr 2025 – Feb 2026</dd></div>
         <div class="proyecto__dato"><dt>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
         <div class="proyecto__dato"><dt>Skills</dt><dd>UX Research · UI Design · Prototype · UX Writing</dd></div>
@@ -320,7 +361,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Sistema WiFi Marketing</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Sistema WiFi Marketing</strong>
         WiFi en espacios comerciales: captación y experiencia de conexión.
@@ -334,7 +375,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Pedidos &amp; Gestión</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>Sistema de Pedidos &amp; Gestión</strong>
         Kioscos de autoservicio: el diseño que unifica la experiencia de compra
@@ -355,7 +396,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">AIKA</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">[ screenshot — pendiente ]</div>
+      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
       <p class="proyecto__caption">
         <strong>AIKA</strong>
         Productividad interna: del desorden de las hojas de cálculo a la

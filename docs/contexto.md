@@ -46,16 +46,45 @@ contenido — máximo 1-2 clics a cualquier caso.
 - BEM (`bloque__elemento--variante`), nombres en minúsculas con guiones
 - Maquetas exploratorias viejas en `pages/lab/` (superadas, no tocar)
 
+### Nombres de archivos de imagen (regla de Evelyn, 2026-08-05)
+
+- **Carpetas = nombre del proyecto**, tal cual es (`health-app`, `pedidos-gestion`,
+  `siotyx-transporte`). Son nombres propios, no se traducen.
+- **Archivos adentro = palabras en INGLÉS**, numerados en el orden en que
+  aparecen en la página: `1-cover.png`, `3-findings.png`, `5-after.png`.
+  El inglés no es estética: evita de raíz la ñ y los acentos.
+- **Nunca ñ, acentos ni espacios en un nombre de archivo.** macOS y GitHub
+  guardan la ñ distinto, así que la imagen se ve bien en Live Server y aparece
+  rota en el sitio publicado, sin ningún error que lo explique. Es el bug más
+  difícil de encontrar de todos los que hay acá.
+
 ### Decisiones clave tomadas
 
 - "Sistema de Pedidos & Gestión" = Microsafe renombrado (kioscos + hardware)
-- Política de confidencialidad: nombres de empresas públicos (Cober, Sisu...),
-  detalles internos de flujos protegidos ("bajo NDA" en entrevista)
+- **Política de confidencialidad (REVISADA 2026-08-04 — reemplaza la anterior):**
+  en los CASOS van solo nombres de PRODUCTO (Siotyx, AIKA, Health App...).
+  Los nombres de EMPLEADORES (Cober, Sisu, Fidooo, Micemark, Supply Solutions)
+  aparecen **únicamente** en la ventana Notas / CV, en la sección Experiencia.
+  Donde antes iba "Empresa" en la ficha de un caso, ahora va "Sector".
+  Detalles internos de flujos siguen protegidos ("bajo NDA" en entrevista).
+  ⚠️ La versión vieja de esta política decía lo contrario. No revertir.
+- Métricas: prohibido el adjetivo sin dato. Si no hay número, se cuenta la
+  fuente cualitativa y se aclara que lo es (ver el Impacto de Health App).
 - Email de contacto del sitio: evelynescalante.25@gmail.com (personal, NO el laboral)
 - LinkedIn: /in/evelynarianiescalante · Behance: /evelynarianiUXer
 - Hero: "Hago que sistemas complejos se sientan simples."
 
 ## PENDIENTES (en orden sugerido)
+
+0. **DOS ARCHIVOS QUE SOLO PUEDE SUBIR EVELYN** (todo el código ya está listo
+   y esperándolos):
+   - `assets/docs/cv-evelyn-ariani-escalante.pdf` → el botón "Descargar CV en
+     PDF" ya está maquetado en el sidebar de la ventana Notas de `index.html`,
+     con el atributo `hidden` puesto. Cuando el PDF exista, borrar la palabra
+     `hidden` de esa línea y listo.
+   - `assets/images/og-preview.jpg` (1200×630 px) → las etiquetas Open Graph
+     ya están en el `<head>` de `index.html` y `health-app.html` apuntando a
+     ese nombre. Sin la imagen el preview sale sin foto, no se rompe nada.
 
 1. **Responsive / mobile** — el sitio NO está adaptado a mobile aún. Decidir
    qué es el "escritorio" en un celular. Prioritario: los reclutadores abren
@@ -70,7 +99,8 @@ contenido — máximo 1-2 clics a cualquier caso.
 4. **Contenido WiFi Marketing** — el nodo de Figma `4075:8974` da error del
    servidor; pedirle a Evelyn el texto o reintentar.
 5. **Páginas Sistema de diseño y Sobre mí** — links de menubar en `#`.
-6. **Duraciones de proyectos Siotyx** — la ficha de Transporte dice "[ pendiente ]".
+6. **Duraciones de proyectos Siotyx** — el dato "Duración" de la ficha de
+   Transporte se quitó (estaba vacío). Volver a agregarlo con el número real.
 7. Fondo definitivo del escritorio (imagen b/n) en vez del gradiente.
 8. Borrar `.gitkeep` de carpetas ya pobladas y `memojisobremi.MOV` (2.4MB, ya
    convertido a `memoji.mp4`).
@@ -104,3 +134,18 @@ completo con fechas). Figma fuente: archivo `EW8YfHJvbhoD7LMmSvoLyS`.
 - 2026-08-03: contenido real extraído de Figma e integrado; fichas técnicas.
 - 2026-08-03: memoji animado en el dock (video 46KB en loop).
 - 2026-08-03: repo GitHub creado, primer push, GitHub Pages activado. SITIO VIVO.
+- 2026-08-04: **cambio de política de confidencialidad** — los empleadores salen
+  de los casos y quedan solo en el CV/Notas. "Empresa: Cober" → "Sector: Salud".
+- 2026-08-04: los 9 textos `[ ... pendiente ]` visibles se reemplazaron por
+  labels neutros ("Vista previa del proyecto", "Resultados del card sorting"…).
+  Regla nueva: **nada que diga "pendiente" se publica**.
+- 2026-08-04: el Impacto de Health App dejó de decir "reducción significativa"
+  y ahora cuenta el feedback del equipo de atención al cliente, aclarando que
+  es cualitativo. Clase nueva `.caso-nota` en `caso.css`.
+- 2026-08-04: nombre unificado "Health App Redesign" (antes el Finder decía
+  "Health app design").
+- 2026-08-04: CTA de descarga de CV maquetado en el sidebar de Notas (oculto
+  hasta que exista el PDF) + Open Graph en home y en el caso.
+- 2026-08-04: PENDIENTE DE DISCUSIÓN, no tocar sin Evelyn — el H1 del hero
+  ("Hago que sistemas complejos se sientan simples") le parece bien por ahora;
+  lo revisa al final del trabajo de contenido.

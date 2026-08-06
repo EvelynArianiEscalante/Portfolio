@@ -6,6 +6,14 @@
   <title>Health App Redesign — Evelyn Ariani</title>
   <meta name="description" content="Caso de estudio: rediseño de app de salud basado en research y card sorting. De una experiencia inconsistente a una app confiable.">
 
+  <!-- Open Graph: preview del link al compartir este caso suelto. URLs absolutas. -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Health App Redesign — Caso de estudio de Evelyn Ariani">
+  <meta property="og:description" content="Rediseño de una app de salud basado en research y card sorting: de una experiencia inconsistente a una app confiable.">
+  <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/health-app.html">
+  <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,14 +41,31 @@
       <h1>Health App Redesign</h1>
       <p class="bajada">La salud digital: del caos a la búsqueda de una experiencia intuitiva.</p>
       <dl class="caso-ficha">
-        <div class="dato"><dt>Empresa</dt><dd>Cober</dd></div>
+        <!-- Sin nombre de cliente: el sector ubica al lector igual. -->
+        <div class="dato"><dt>Sector</dt><dd>Salud · Medicina privada</dd></div>
         <div class="dato"><dt>Timeline</dt><dd>Abr 2025 – Feb 2026</dd></div>
         <div class="dato"><dt>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
         <div class="dato"><dt>Skills</dt><dd>UX Research · UI · Prototype · UX Writing</dd></div>
       </dl>
     </header>
 
-    <div class="caso-imagen">[ cover del proyecto — pendiente ]</div>
+    <!-- ═══ IMÁGENES ═══
+         Notas sobre cómo están puestas, por si tocás alguna:
+         · <figure> + <figcaption> es la etiqueta correcta para "imagen con
+           epígrafe": el navegador y los lectores de pantalla entienden que el
+           texto describe a la imagen, no que es un párrafo suelto.
+         · width y height NO fijan el tamaño en pantalla (eso lo hace el CSS
+           con width:100%). Le dicen al navegador la PROPORCIÓN, así reserva el
+           lugar antes de que la imagen cargue y el texto no salta.
+         · loading="lazy" = no la descargues hasta que el usuario se acerque.
+           La portada NO lo lleva: esa se ve apenas entrás y tiene que estar ya.
+         · El alt describe la imagen para quien no la ve. No es opcional. -->
+
+    <figure class="caso-figura">
+      <img src="../../assets/images/casos-de-estudio/health-app/1-cover.webp"
+           alt="Pantalla de inicio de la app rediseñada, vista en un teléfono sostenido con una mano"
+           width="1752" height="984">
+    </figure>
 
     <section class="caso-seccion">
       <h2>⛔ Problema</h2>
@@ -59,16 +84,29 @@
       <p>Comencé con una revisión y navegación por diferentes flujos para
       definir los puntos de mayor fricción.</p>
       <h3>Hallazgos clave</h3>
+      <!-- ⚠️ EVELYN: esta lista la saqué de las anotaciones de tu propia
+           imagen 3-findings. Revisala y corregí lo que haga falta. -->
       <ul>
-        <li><strong>Inconsistencia visual</strong> a lo largo de la aplicación.</li>
-        <li><strong>Terminología interna</strong> que no conectaba con el lenguaje del usuario.</li>
+        <li><strong>Jerarquía visual inconsistente</strong> y problemas de grid y alineación.</li>
+        <li><strong>Uso inapropiado del color</strong> y fallas de accesibilidad.</li>
+        <li><strong>Flujos con fricción:</strong> búsqueda ineficiente y navegación confusa.</li>
+        <li><strong>Ausencia de feedback visual</strong> e incumplimiento de patrones conocidos.</li>
+        <li><strong>Vocabulario impreciso:</strong> terminología interna que no conectaba
+        con el lenguaje del usuario.</li>
       </ul>
-      <div class="caso-imagen">[ screenshot: hallazgos / flujos — pendiente ]</div>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/3-findings.webp"
+             alt="Auditoría de la app: cada pantalla anotada con los problemas detectados, agrupados por tipo"
+             width="1830" height="1526" loading="lazy">
+        <figcaption>Auditoría heurística: cada hallazgo mapeado sobre la pantalla donde ocurre.</figcaption>
+      </figure>
       <h3>Construyendo una arquitectura de información sólida: Card Sorting</h3>
       <p>Con un card sorting realizado en 2 fases, validé los modelos mentales
       de los usuarios y descubrí cómo distinguen claramente entre los distintos
       tipos de gestiones.</p>
-      <div class="caso-imagen">[ screenshot: card sorting — pendiente ]</div>
+      <!-- PENDIENTE: acá va la imagen del card sorting. No pongo un recuadro
+           gris de relleno porque al lado de 7 imágenes reales canta mucho.
+           Cuando esté, se agrega una <figure> igual a las de arriba. -->
     </section>
 
     <section class="caso-seccion">
@@ -83,14 +121,60 @@
         <li><strong>Credencial digital simplificada.</strong></li>
         <li><strong>Prototipos interactivos.</strong></li>
       </ul>
-      <div class="caso-imagen">[ screenshots: pantallas del rediseño — pendiente ]</div>
+
+      <h3>Antes y después</h3>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/4-before.webp"
+             alt="Pantallas del portal de turnos antes del rediseño: cuatro vistas con jerarquía visual plana"
+             width="1820" height="970" loading="lazy">
+        <figcaption>Antes: el flujo de turnos original.</figcaption>
+      </figure>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/5-after.webp"
+             alt="El mismo flujo de turnos rediseñado: ocho pantallas con jerarquía clara y estados definidos"
+             width="916" height="909" loading="lazy">
+        <figcaption>Después: el mismo flujo, con jerarquía y estados claros en cada paso.</figcaption>
+      </figure>
+
+      <h3>Cards de turnos y autorizaciones</h3>
+      <p>Las tarjetas no tenían jerarquía ni consistencia, y omitían información
+      crítica: fechas, estado y acción a seguir. Definí un sistema de color
+      unificado para los estados y dejé los datos esenciales siempre visibles,
+      con la acción principal a mano en cada tarjeta.</p>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/6-redesign-cards.webp"
+             alt="Rediseño de las tarjetas de turnos y autorizaciones, con el antes y el después de cada estado"
+             width="1832" height="1363" loading="lazy">
+      </figure>
+
+      <h3>Sistema de feedback</h3>
+      <p>Los mensajes de error eran vagos e intrusivos y no decían qué hacer
+      después, así que el usuario abandonaba el flujo o llamaba a soporte.
+      Diseñé un sistema de feedback conciso y con guía de acción explícita,
+      apoyado en tokens de color por estado: error, éxito, alerta e informativo.</p>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/7-feedback-system.webp"
+             alt="Sistema de mensajes de feedback: pantallas de inicio de sesión mostrando los estados de error y de alerta"
+             width="1832" height="1466" loading="lazy">
+      </figure>
+
+      <h3>Cartilla médica</h3>
+      <figure class="caso-figura">
+        <img src="../../assets/images/casos-de-estudio/health-app/8-redesign-directory.webp"
+             alt="Rediseño de la cartilla médica: comparación entre el buscador de prestadores anterior y el nuevo"
+             width="1832" height="1165" loading="lazy">
+        <figcaption>Cartilla: del listado anterior a un buscador con filtros y resultados sobre mapa.</figcaption>
+      </figure>
     </section>
 
     <section class="caso-seccion">
       <h2>💥 Impacto</h2>
-      <p>El rediseño no solo mejoró la experiencia de usuario: se tradujo en
-      resultados tangibles, como una reducción significativa en las quejas por
-      problemas de usabilidad.</p>
+      <p>La señal más clara no vino de un dashboard sino del equipo de atención
+      al cliente: después del rediseño dejaron de recibir los reclamos de
+      usabilidad que habían motivado el proyecto. Los problemas por los que la
+      gente escribía ya no estaban ahí.</p>
+      <p class="caso-nota">Es feedback cualitativo, no una métrica de producto
+      — pero viene de quienes atendían esos reclamos todos los días.</p>
     </section>
 
     <div class="caso-aprendizaje">

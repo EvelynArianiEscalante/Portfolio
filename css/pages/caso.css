@@ -161,6 +161,39 @@ body::before {
   margin: var(--espacio-4) 0;
 }
 
+/* ── Imagen del caso con epígrafe ──
+   width:100% + height:auto = la imagen se adapta al ancho del contenedor y
+   mantiene su proporción sola. Nunca fijes el alto a mano: la deforma. */
+.caso-figura {
+  margin: var(--espacio-5) 0;
+}
+
+.caso-figura img {
+  display: block;      /* sin esto queda un espacio fantasma abajo:
+                          una img es inline y respeta la línea base del texto */
+  width: 100%;
+  height: auto;
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie-lateral); /* se ve mientras carga */
+}
+
+.caso-figura figcaption {
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+  margin-top: var(--espacio-2);
+  line-height: 1.45;
+}
+
+/* Nota al pie de una afirmación: aclara el origen de un dato sin robarle
+   protagonismo al párrafo principal. Más chica y más apagada que el cuerpo. */
+.caso-nota {
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+  border-left: 2px solid var(--color-borde-claro);
+  padding-left: var(--espacio-3);
+}
+
 .caso-aprendizaje {
   background: var(--color-superficie-lateral);
   border: 1px solid var(--color-borde-claro);

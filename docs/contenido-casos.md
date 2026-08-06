@@ -30,7 +30,12 @@ lenguaje del usuario. Card Sorting en 2 fases para validar modelos mentales.
 nueva arquitectura de información, flujos optimizados, credencial digital
 simplificada, prototipos interactivos.
 
-**Impacto:** Reducción significativa en las quejas por problemas de usabilidad.
+**Impacto:** ⚠️ El copy original decía "reducción significativa en las quejas
+por problemas de usabilidad" — adjetivo sin dato, se reemplazó el 2026-08-04.
+Versión publicada: el equipo de atención al cliente dejó de recibir los reclamos
+de usabilidad que habían motivado el proyecto, aclarando que es feedback
+cualitativo y no una métrica de producto. **Si Evelyn consigue el número real
+de tickets, se cambia por el número.**
 
 **Aprendizaje:** La investigación con usuarios permite ir más allá de lo
 estético; observar cómo la gente organiza información revela frustraciones
@@ -168,13 +173,23 @@ texto #E9E9E9/#C7C7C7 · acento azul #B0CAF3 / #7096D1 · Figtree 18/20/22px
 
 ---
 
-## Política de confidencialidad — DEFINIDA (2026-08-03)
+## Política de confidencialidad — REVISADA (2026-08-04)
 
-**Los nombres de empleadores/clientes son públicos** (Cober, Sisu, Supply
-Solutions — figuran en LinkedIn de todos modos). **Lo que se protege son los
-detalles internos:** flujos específicos, datos de negocio, pantallas sensibles.
-En los casos se cuenta el proceso y el enfoque sin exponer el detalle fino.
-Frase para entrevista: "los detalles completos del flujo están bajo NDA".
+> ⚠️ Esto REEMPLAZA la versión del 2026-08-03, que decía lo contrario ("los
+> nombres de empleadores son públicos"). Evelyn cambió de criterio. No revertir.
+
+**En los casos van solo nombres de PRODUCTO:** Siotyx, Health App, AIKA,
+Sistema de Pedidos & Gestión, Sistema WiFi Marketing.
+
+**Los nombres de EMPLEADORES** (Cober, Sisu, Fidooo, Micemark, Supply
+Solutions) van **únicamente** en la ventana Notas / CV → Experiencia.
+
+Donde la ficha de un caso pedía "Empresa", ahora va **"Sector"**
+(ej. Health App → `Sector · Salud · Medicina privada`).
+
+**Los detalles internos siguen protegidos:** flujos específicos, datos de
+negocio, pantallas sensibles. Frase para entrevista: "los detalles completos
+del flujo están bajo NDA".
 
 ## ⚠️ Notas pendientes
 

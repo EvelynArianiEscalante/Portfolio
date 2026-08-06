@@ -112,6 +112,10 @@
   background: var(--color-superficie-lateral);
   padding: var(--espacio-2);
   flex-shrink: 0;
+  /* Columna flex para poder empujar el CTA del CV al fondo del sidebar
+     con margin-top: auto (el "auto" se come todo el espacio libre). */
+  display: flex;
+  flex-direction: column;
 }
 
 .notas__item {
@@ -163,6 +167,43 @@
 
 .notas__contenido li {
   margin-bottom: 5px;
+}
+
+/* ── CTA de descarga del CV: acción principal de la ventana Notas ──
+   margin-top: auto lo pega abajo del sidebar sin importar cuántos
+   items haya arriba. */
+.notas__cta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  padding: 10px var(--espacio-3);
+  border-radius: 8px;
+  background: var(--color-carpeta-oscuro);
+  color: #fff;
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.notas__cta:hover {
+  background: var(--color-carpeta);
+  transform: translateY(-1px);
+}
+
+/* Foco visible con teclado: obligatorio para accesibilidad.
+   :focus-visible aparece solo al navegar con Tab, no al hacer clic. */
+.notas__cta:focus-visible {
+  outline: 2px solid var(--color-carpeta-claro);
+  outline-offset: 2px;
+}
+
+.notas__cta__flecha {
+  font-size: var(--texto-md);
+  line-height: 1;
 }
 
 /* ═══ Variante SOBRE MÍ: ficha de presentación (estilo "About me") ═══ */
@@ -278,10 +319,21 @@
   font-weight: 500;
 }
 
-/* Link "ver caso completo" dentro del caption */
+/* Link "ver caso completo": SIEMPRE en su propio renglón.
+   ── Por qué se veía mal ──
+   Antes era `display: inline-block` con `margin-top`. Un inline-block sigue
+   viviendo dentro del renglón de texto, así que ese margen no lo bajaba: le
+   agrandaba el alto del renglón. Resultado: el último salto de línea de la
+   bajada quedaba enorme y se leía como si fuera otro párrafo.
+   ── El arreglo ──
+   `display: block` lo saca del renglón de texto y lo baja a uno propio, sin
+   importar dónde termine el párrafo de cada proyecto.
+   `width: fit-content` hace que la caja mida lo que mide el texto: sin eso un
+   block ocupa TODO el ancho y quedaría clickeable media ventana. */
 .proyecto__link {
-  display: inline-block;
-  margin-top: var(--espacio-2);
+  display: block;
+  width: fit-content;
+  margin-top: var(--espacio-3);
   font-weight: 600;
   color: var(--color-carpeta-oscuro);
 }

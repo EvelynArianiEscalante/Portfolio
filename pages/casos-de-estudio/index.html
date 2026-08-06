@@ -65,6 +65,11 @@
       background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
                         url('https://picsum.photos/id/1011/800/450?grayscale');
     }
+    /* Proyectos que ya tienen imagen real. Acá el CSS está adentro del HTML,
+       así que la ruta se cuenta desde ESTA página (pages/casos-de-estudio/). */
+    .card--health {
+      background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp');
+    }
 
     .card-proyecto__texto { padding: var(--espacio-4); }
     .card-proyecto__titulo {
@@ -100,12 +105,14 @@
 
         <h1>Proyectos</h1>
         <p class="indice__bajada">
-          Diseño UX/UI para software B2B complejo conectado a hardware.
-          Todos los casos, sin vueltas.
+          Diseño UX/UI para software B2B complejo conectado a hardware:
+          logística y RFID, kioscos de autoservicio, plataformas de gestión.
         </p>
 
         <section class="grupo">
-          <h2 class="grupo__nombre">Siotyx · Supply Solutions (actual)</h2>
+          <!-- Solo el nombre del producto, para ser consistentes con el resto
+               de los casos. Los empleadores viven en la ventana Notas / CV. -->
+          <h2 class="grupo__nombre">Siotyx · proyecto actual</h2>
           <div class="cards">
             <a class="card-proyecto" href="#">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
@@ -142,10 +149,13 @@
           <h2 class="grupo__nombre">Proyectos anteriores</h2>
           <div class="cards">
             <a class="card-proyecto" href="health-app.html">
-              <div class="card-proyecto__imagen thumb--placeholder"></div>
+              <div class="card-proyecto__imagen card--health"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Health App Redesign</p>
                 <p class="card-proyecto__resumen">La salud digital: del caos a la búsqueda de una experiencia intuitiva.</p>
+                <!-- Ojo: solo esta card tiene página real. Las demás van a "#"
+                     hasta que armemos su caso. -->
+
               </div>
             </a>
             <a class="card-proyecto" href="#">

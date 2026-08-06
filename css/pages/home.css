@@ -6,11 +6,21 @@
    ═══════════════════════════════════════════════ */
 
 /* ── Imágenes de los thumbnails ──
-   Foto repetida en b/n SOLO para evaluar la grilla.
-   Pendiente: un screenshot real de Figma por proyecto. */
+   Foto de relleno en b/n para los proyectos que todavía no tienen captura.
+   Se va cayendo sola a medida que cada proyecto recibe su imagen real. */
 .thumb--placeholder {
   background-image: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
                     url('https://picsum.photos/id/1011/800/500?grayscale');
+}
+
+/* ── Vistas previas reales, una por proyecto ──
+   Van acá y no sueltas en el HTML, así todas las rutas de imagen viven en un
+   solo lugar. OJO: las rutas dentro de un CSS son relativas al archivo CSS,
+   no al HTML. Este archivo está en css/pages/, por eso el ../../
+   La imagen se recorta centrada (background-size: cover, ya está en
+   ventana.css). Para agregar otro proyecto, copiá el bloque y cambiá el id. */
+#ventana-health .proyecto__imagen {
+  background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp');
 }
 
 /* ── Posiciones de los íconos: columna ordenada a la derecha ── */
