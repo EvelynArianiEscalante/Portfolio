@@ -13,6 +13,43 @@
   cursor: pointer;
   text-align: center;
   transition: transform 0.15s ease;
+  /* Entrada escalonada: cada ícono "aparece" al cargar.
+     backwards = antes de arrancar su turno, queda en el estado inicial (invisible) */
+  animation: icono-entrada 0.45s ease-out backwards;
+}
+
+/* Cada ícono entra un pasito después del anterior */
+#icono-siotyx     { animation-delay: 0.15s; }
+#icono-anteriores { animation-delay: 0.28s; }
+#icono-ds         { animation-delay: 0.41s; }
+#icono-sobre-mi   { animation-delay: 0.54s; }
+
+@keyframes icono-entrada {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Rebote de atención estilo macOS: Siotyx (el caso insignia) salta UNA vez,
+   un momento después de que todo cargó, invitando al clic.
+   Dos animaciones en el mismo elemento: entrada primero, rebote después. */
+#icono-siotyx {
+  animation:
+    icono-entrada 0.45s ease-out 0.15s backwards,
+    icono-rebote 0.9s ease-in-out 1.8s;
+}
+
+@keyframes icono-rebote {
+  0%, 100% { transform: none; }
+  18%      { transform: translateY(-16px); }
+  36%      { transform: none; }
+  52%      { transform: translateY(-8px); }
+  68%      { transform: none; }
+}
+
+/* Accesibilidad: si la persona configuró su sistema para reducir movimiento,
+   respetamos esa preferencia y no animamos nada */
+@media (prefers-reduced-motion: reduce) {
+  .icono { animation: none !important; }
 }
 
 .icono:hover {
@@ -43,10 +80,10 @@
 
 /* ── Label debajo del ícono ── */
 .icono__label {
-  font-size: var(--texto-xs);
-  font-weight: 500;
-  color: var(--color-texto-label);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); /* legible sobre cualquier fondo */
+  font-size: 0.85rem; /* antes 11.5px: se perdía sobre el wallpaper */
+  font-weight: 600;
+  color: var(--color-texto);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75); /* legible sobre cualquier fondo */
   line-height: 1.25;
   display: block;
 }

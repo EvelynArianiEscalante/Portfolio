@@ -35,6 +35,18 @@
   background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp');
 }
 
+/* ── Miniaturas de proyectos dentro de las ventanas Finder ──
+   (rutas desde este archivo CSS: ../../assets/...) */
+.fthumb--health  { background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp'); }
+.fthumb--pedidos { background-image: url('../../assets/images/casos-de-estudio/pedidos-gestion/1-preview.webp'); }
+.fthumb--wifi    { background-image: url('../../assets/images/casos-de-estudio/wifi-marketing/1-preview.webp'); }
+.fthumb--aika    { background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp'); }
+/* Siotyx: placeholder hasta tener screenshots reales */
+.fthumb--pendiente {
+  background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
+                    url('https://picsum.photos/id/1011/400/250?grayscale');
+}
+
 /* ── Posiciones de los íconos: columna ordenada a la derecha ── */
 #icono-siotyx     { top: 11%; right: 3%; }
 #icono-anteriores { top: 32%; right: 3%; }
@@ -45,10 +57,10 @@
    left: 50% + margen negativo = centrada; después el usuario la arrastra. */
 #ventana-siotyx,
 #ventana-anteriores {
-  width: min(520px, 88vw);
-  top: 24%;
+  width: min(620px, 90vw);
+  top: 16%;
   left: 50%;
-  margin-left: min(-260px, -44vw);
+  margin-left: min(-310px, -45vw);
 }
 
 #ventana-sobre-mi-app {

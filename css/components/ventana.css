@@ -64,10 +64,13 @@
 /* ═══ Variante FINDER: grilla de carpetas adentro ═══ */
 
 .finder__grid {
-  display: flex;
-  gap: 30px;
-  padding: 30px 34px 36px;
-  flex-wrap: wrap;
+  /* Grid de 2 columnas IGUALES que llenan el ancho de la ventana:
+     1fr + 1fr = mitad y mitad exactas, sin sobrantes a la derecha */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 28px;
+  padding: 28px 32px 36px;
+  align-items: start; /* cada tile arranca arriba: no se descuelgan entre sí */
 }
 
 .finder__item {
@@ -96,6 +99,24 @@
   font-size: var(--texto-sm);
   font-weight: 500;
   color: var(--color-tinta);
+}
+
+/* ── Variante con miniatura: dentro del Finder, los proyectos se muestran
+   como tiles con imagen (el trabajo a la vista), no como carpetas ── */
+.finder__item--thumb {
+  width: 100%; /* ocupa su celda completa del grid */
+}
+
+.finder__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-superficie-lateral);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  margin-bottom: 6px;
 }
 
 /* ═══ Variante NOTES: sidebar + contenido ═══ */
