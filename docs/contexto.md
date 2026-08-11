@@ -74,6 +74,16 @@ contenido — máximo 1-2 clics a cualquier caso.
 - LinkedIn: /in/evelynarianiescalante · Behance: /evelynarianiUXer
 - Hero: "Hago que sistemas complejos se sientan simples."
 
+## Estrategia de lanzamiento (2026-08-11)
+
+Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
+(screenshots Siotyx, páginas de caso, mobile) ANTES de publicar el link.
+- LinkedIn: textos actualizados (titular, Acerca de, Servicios, Experiencia
+  con Supply) — ver versiones finales en docs/cv.md y esta sesión.
+- El link al portfolio se quitó de Destacados y del perfil A PROPÓSITO:
+  se vuelve a poner cuando el sitio esté listo (sobre todo mobile).
+- CV PDF final ya descargable desde el sitio (assets/docs/).
+
 ## PENDIENTES (en orden sugerido)
 
 0. **PENDIENTES DE EVELYN (el código ya está listo y esperándolos):**

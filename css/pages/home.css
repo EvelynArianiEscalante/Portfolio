@@ -48,9 +48,11 @@
 }
 
 /* ── Posiciones de los íconos: columna ordenada a la derecha ── */
-#icono-siotyx     { top: 11%; right: 3%; }
-#icono-anteriores { top: 32%; right: 3%; }
-#icono-ds         { top: 53%; right: 3%; }
+/* Agrupados por proximidad (Gestalt): los proyectos juntos como grupo,
+   el Design System aparte, más abajo */
+#icono-siotyx     { top: 12%; right: 3%; }
+#icono-anteriores { top: 28%; right: 3%; }
+#icono-ds         { top: 56%; right: 3%; }
 /* #icono-sobre-mi   { top: 74%; right: 3%; }   ← ícono sacado del escritorio */
 
 /* ── Tamaños y posiciones iniciales de las ventanas ──
@@ -65,8 +67,8 @@
 
 #ventana-sobre-mi-app {
   width: min(540px, 90vw);
-  height: min(520px, 78vh);
-  top: 10%;
+  height: min(640px, 86vh); /* más alta: que se vea la bio completa y asome "Cómo trabajo" */
+  top: 6%;
   left: 50%;
   margin-left: min(-270px, -45vw);
 }

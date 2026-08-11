@@ -46,6 +46,19 @@
   68%      { transform: none; }
 }
 
+/* Proyectos anteriores responde con UN saltito suave, como un eco:
+   invita sin competirle al protagonista */
+#icono-anteriores {
+  animation:
+    icono-entrada 0.45s ease-out 0.28s backwards,
+    icono-rebote-suave 0.6s ease-in-out 2.9s;
+}
+
+@keyframes icono-rebote-suave {
+  0%, 100% { transform: none; }
+  40%      { transform: translateY(-9px); }
+}
+
 /* Accesibilidad: si la persona configuró su sistema para reducir movimiento,
    respetamos esa preferencia y no animamos nada */
 @media (prefers-reduced-motion: reduce) {
