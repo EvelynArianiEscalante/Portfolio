@@ -10,6 +10,22 @@ intuitivas y eficientes.
 
 ## Experiencia
 
+**SSR UX/UI Designer · Supply Solutions** — Buenos Aires, Argentina · Mar 26 – Actualidad
+*(Redactado 2026-08 con criterio ATS/RRHH: genérico y legible; lo técnico vive en el portfolio)*
+- Diseño end-to-end de plataforma B2B de logística conectada a hardware RFID:
+  3 productos en versiones web y mobile, como única diseñadora del equipo.
+- Creación y mantenimiento de un Design System desde cero: tokens, componentes
+  y documentación para toda la plataforma.
+- Diseño de ilustración e iconografía de producto para simplificar información
+  técnica compleja.
+- Diseño de interfaces integradas con equipos físicos (scanners RFID),
+  contemplando sus contextos y condiciones reales de uso.
+- Trabajo directo con desarrolladores y PM en metodología ágil: user stories,
+  documentación de requerimientos y crosschecks por sprint.
+- Ideación en baja fidelidad asistida con IA, optimizando tiempos de
+  exploración y entrega.
+- Prototipado y motion en Figma para validar interacciones antes del desarrollo.
+
 **SSR UX/UI Designer · Cober Medicina Privada** — Capital Federal · Abr 25 – Feb 26
 - Análisis UX de flujos existentes y detección de problemas de usabilidad.
 - Reestructuración de arquitectura de información mediante card sorting.
@@ -47,14 +63,15 @@ intuitivas y eficientes.
 
 ## Habilidades
 
-Design System, Autolayout, Visual Design, Comunicación efectiva y colaboración,
-Atomic Design, Prototipado, Design Thinking y Heurísticas, Wireframing,
-User Flow, HTML-CSS-Bootstrap (básico)
+Design Systems, Design Tokens, UX Research, Arquitectura de información,
+User Flows, Wireframing, Prototipado, Motion Design, Visual Design e
+iconografía, Atomic Design, Design Thinking y heurísticas, Diseño asistido
+por IA, Comunicación efectiva y colaboración con desarrollo, HTML y CSS
 
 ## Herramientas
 
-Figma, FigJam, Framer, Figma Make, Figma Sites, Photoshop, Adobe Express,
-Trello, Mural, Optimal Workshop, VS Code y WordPress (básico)
+Figma, FigJam, Figma Make, Framer, Claude, Photoshop, Adobe Express,
+VS Code, Git y GitHub, Trello, Mural, Optimal Workshop
 
 ## Idiomas
 
@@ -63,7 +80,7 @@ Trello, Mural, Optimal Workshop, VS Code y WordPress (básico)
 
 ## ⚠️ Notas
 
-- Este CV es PRE-Supply Solutions: falta agregar el puesto actual.
+- Supply Solutions agregado (2026-08) con redacción ATS; pendiente que Evelyn lo pegue en el Figma del CV y re-exporte el PDF.
 - Ojo tipos en el original de Figma: "Phothoshop", "Worpress" — corregir si se reusa.
 - Con esto queda clara la línea de tiempo real: Coderhouse UX (22-23) →
   Fidooo (Oct 23-May 24) + Micemark freelance (Ago 23-Mar 25) en paralelo →
