@@ -62,6 +62,45 @@ document.querySelectorAll('[data-arrastra]').forEach(function (barra) {
   });
 });
 
+// ── Ocultar widgets: cualquier botón con data-oculta esconde a su
+//    contenedor más cercano de tipo <aside> (el widget entero) ──
+document.querySelectorAll('[data-oculta]').forEach(function (boton) {
+  boton.addEventListener('click', function () {
+    var widget = boton.closest('aside');
+
+    // Animación de minimizado (vuela hacia el dock) y RECIÉN después se oculta.
+    // El setTimeout coincide con la duración de la animación CSS (350ms).
+    widget.classList.add('widget-spotify--saliendo');
+    setTimeout(function () {
+      widget.style.display = 'none';
+      widget.classList.remove('widget-spotify--saliendo');
+    }, 350);
+
+    // Si data-oculta trae un id, ese elemento aparece como "vía de regreso"
+    // (ej.: cerrar el widget de música revela su ícono en el dock)
+    if (boton.dataset.oculta) {
+      var regreso = document.getElementById(boton.dataset.oculta);
+      if (regreso) regreso.hidden = false;
+    }
+  });
+});
+
+// ── Mostrar widgets: un botón con data-muestra="id" reabre ese elemento ──
+document.querySelectorAll('[data-muestra]').forEach(function (boton) {
+  boton.addEventListener('click', function () {
+    var objetivo = document.getElementById(boton.dataset.muestra);
+    if (objetivo) {
+      objetivo.style.display = '';
+      // Restaurar con la animación inversa: crece desde el dock
+      objetivo.classList.add('widget-spotify--entrando');
+      setTimeout(function () {
+        objetivo.classList.remove('widget-spotify--entrando');
+      }, 350);
+    }
+    boton.hidden = true; // el botón de regreso cumplió su misión: se retira
+  });
+});
+
 // ── Cambio de nota dentro de la ventana Notes ──
 document.querySelectorAll('[data-nota]').forEach(function (item) {
   item.addEventListener('click', function () {

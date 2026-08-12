@@ -90,6 +90,74 @@
   margin-left: min(-320px, -45vw);
 }
 
+/* ── Widget de Spotify: flotante abajo a la izquierda, como widget de macOS ── */
+.widget-spotify {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  width: 340px;
+  border-radius: 13px; /* acompaña el redondeo propio del reproductor */
+  overflow: hidden;
+  /* Mismo tono oscuro que la tarjeta del reproductor: las esquinas
+     redondeadas del embed se funden en vez de dejar ver el fondo.
+     (Se probó glass oscuro y no convenció — queda como experimento
+     de Lab a futuro.) */
+  background: #1f1f1f;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 40; /* debajo de las ventanas (100): la música es ambiente, no contenido */
+}
+
+.widget-spotify iframe {
+  display: block; /* elimina el espacio fantasma bajo el iframe */
+}
+
+/* ── Minimizar/restaurar estilo macOS: el widget vuela hacia el dock ──
+   45vw a la derecha y 40px abajo ≈ donde aparece su ícono en el dock */
+.widget-spotify--saliendo {
+  animation: widget-minimizar 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.widget-spotify--entrando {
+  animation: widget-restaurar 0.35s cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes widget-minimizar {
+  to {
+    transform: translate(45vw, 40px) scale(0.05);
+    opacity: 0;
+  }
+}
+
+@keyframes widget-restaurar {
+  from {
+    transform: translate(45vw, 40px) scale(0.05);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .widget-spotify--saliendo,
+  .widget-spotify--entrando { animation: none; }
+}
+
+/* Barra de ventana del widget: chrome mac oscuro, a juego con el reproductor */
+.widget-spotify__barra {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  background: #1f1f1f; /* continuo con el cuerpo: una sola superficie */
+}
+
+.widget-spotify__titulo {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(245, 245, 244, 0.6);
+  margin-right: 50px; /* compensa los semáforos para centrar */
+}
+
 /* ── Ajustes para pantallas chicas ── */
 @media (max-width: 700px) {
   #icono-siotyx     { top: 10%; right: 4%; }
