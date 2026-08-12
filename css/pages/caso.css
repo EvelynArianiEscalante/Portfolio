@@ -59,6 +59,41 @@ body::before {
 .semaforo--min    { background: var(--color-semaforo-min); }
 .semaforo--max    { background: var(--color-semaforo-max); }
 
+/* Solo los que NO funcionan (los <span>) se apagan; si el semáforo es un
+   link (<a>, como el verde de health-app) conserva su color pleno */
+span.semaforo--min,
+span.semaforo--max {
+  opacity: 0.55;
+}
+
+/* ── Affordance honesta: solo el rojo funciona (vuelve al escritorio),
+   así que solo el rojo muestra su glifo al hacer hover.
+   Misma decisión que en css/components/ventana.css ── */
+.semaforo--cerrar {
+  position: relative;
+  text-decoration: none; /* acá el rojo es un <a>: que la × no salga subrayada */
+}
+
+.semaforo--cerrar::after {
+  content: "×";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(-1px); /* centro óptico: la × de la fuente cae baja */
+  color: rgba(77, 0, 4, 0.7);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.semaforo--cerrar:hover::after,
+.ventana-max__barra:has(.semaforo:hover) .semaforo--cerrar::after {
+  opacity: 1;
+}
+
 .ventana-max__titulo {
   flex: 1;
   text-align: center;

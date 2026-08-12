@@ -44,13 +44,71 @@
   height: 12px;
   border-radius: 50%;
   border: none;
-  cursor: pointer;
+  /* Flecha normal sobre las luces: corta el cursor "agarrar" de la barra
+     y no promete clic donde no lo hay (amarillo y verde) */
+  cursor: default;
   padding: 0;
+  position: relative; /* ancla del área de hover ampliada (::before) */
+}
+
+/* Zona de hover ampliada e invisible alrededor de cada luz: los círculos
+   miden solo 12px y el cursor "pisaba" la barra entre uno y otro, por eso
+   se seguía viendo la mano de agarrar. Con esto cada luz responde unos
+   píxeles antes (ley de Fitts: blancos chicos, área efectiva más grande). */
+.semaforo::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+}
+
+/* Amarillo y verde en tono "deshabilitado": conservan su color pero
+   apagados, para no prometer una acción que no existe */
+span.semaforo--min,
+span.semaforo--max {
+  opacity: 0.55;
+}
+
+/* El rojo sí es clickeable: manito de link, como corresponde */
+.semaforo--cerrar {
+  cursor: pointer;
 }
 
 .semaforo--cerrar { background: var(--color-semaforo-cerrar); }
 .semaforo--min    { background: var(--color-semaforo-min); }
 .semaforo--max    { background: var(--color-semaforo-max); }
+
+/* ── Affordance honesta: de los tres semáforos solo el rojo funciona,
+   así que solo el rojo muestra su glifo al hacer hover (como macOS,
+   pero sin prometer un minimizar/maximizar que acá no existen). ── */
+.semaforo--cerrar {
+  position: relative;
+}
+
+.semaforo--cerrar::after {
+  content: "×";
+  position: absolute;
+  inset: 0; /* ocupa todo el circulito, para centrar el glifo adentro */
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  /* La × de la fuente no cae exactamente al centro óptico del círculo:
+     se corrige a ojo, subiéndola apenas */
+  transform: translateY(-1px);
+  color: rgba(77, 0, 4, 0.7); /* bordó oscuro, como el glifo real de macOS */
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+/* La × aparece al posar el mouse sobre CUALQUIERA de las tres luces,
+   igual que macOS trata el grupo como una sola zona de hover.
+   :has() se lee: "la barra que contiene un semáforo hovereado". */
+.semaforo--cerrar:hover::after,
+.ventana__barra:has(.semaforo:hover) .semaforo--cerrar::after,
+.widget-spotify__barra:has(.semaforo:hover) .semaforo--cerrar::after {
+  opacity: 1;
+}
 
 .ventana__titulo {
   flex: 1;
