@@ -110,9 +110,32 @@ span.semaforo--max {
 }
 
 .caso-contenido {
-  max-width: 720px;
+  /* El contenedor es ancho (menos margen desperdiciado a los costados) y las
+     imágenes lo aprovechan entero. Pero el TEXTO no: se limita aparte, más
+     abajo, con --medida-lectura. Ensanchar el texto junto con todo lo demás
+     lo volvería incómodo de leer. */
+  max-width: 980px;
   margin: 0 auto;
   padding: var(--espacio-6) var(--espacio-5) 96px;
+}
+
+/* ── Medida de lectura ──
+   El ancho cómodo para leer son 60-80 caracteres por línea. Con el cuerpo en
+   16px eso son ~700px. Más ancho que eso y el ojo se pierde al volver al
+   principio del renglón siguiente.
+   Todo lo que es TEXTO se limita a esta medida; las imágenes y las grillas de
+   puntos, no: esas usan el ancho completo del contenedor. */
+.caso-contenido {
+  --medida-lectura: 700px;
+}
+
+.caso-header,
+.caso-seccion > p,
+.caso-seccion > h2,
+.caso-seccion > h3,
+.caso-nota,
+.caso-figura figcaption {
+  max-width: var(--medida-lectura);
 }
 
 /* ── Cabecera del caso ── */
@@ -235,6 +258,30 @@ span.semaforo--max {
   border-radius: var(--radio-md);
   padding: var(--espacio-5);
   margin-top: var(--espacio-6);
+}
+
+/* ── Cierre a dos columnas: el recuadro de aprendizaje al lado de una imagen ──
+   Es OPCIONAL: solo aplica si envolvés el .caso-aprendizaje y una .caso-figura
+   dentro de un .caso-cierre. Los casos que no lo usan siguen igual que siempre.
+   align-items: center = la imagen queda centrada verticalmente respecto del
+   recuadro, aunque midan distinto. */
+.caso-cierre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-5);
+  align-items: center;
+  margin-top: var(--espacio-6);
+}
+
+/* Adentro de la grilla los márgenes propios sobran: los pone la grilla */
+.caso-cierre .caso-aprendizaje,
+.caso-cierre .caso-figura {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  /* En pantalla angosta 50/50 no entra: pasan uno debajo del otro */
+  .caso-cierre { grid-template-columns: 1fr; }
 }
 
 .caso-siguiente {
