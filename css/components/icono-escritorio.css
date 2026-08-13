@@ -100,3 +100,38 @@
   line-height: 1.25;
   display: block;
 }
+
+/* ── TELÉFONOS CHICOS (hasta 380px) ──
+   Los tres íconos entran en una fila, pero "Proyectos anteriores" es una
+   etiqueta larga para 82px de ancho: se parte en tres renglones y empuja
+   hacia abajo. Texto más chico = menos renglones. */
+/* ── MÓVIL: los tres íconos, exactamente del mismo tamaño ──
+   En escritorio conviven dos formas: la carpeta es cuadrada (58×58) y el
+   thumbnail es apaisado (72×54). Apilados en una columna esa diferencia
+   canta: no alinean ni por ancho ni por alto. En celular se igualan a un
+   mismo cuadrado y el thumbnail recorta la imagen para llenarlo
+   (background-size: cover ya está puesto en el componente).
+   Y el texto va alineado a la izquierda, como la columna. */
+@media (max-width: 700px) {
+  .icono { text-align: left; }
+
+  .icono__folder,
+  .icono__thumb {
+    width: 58px;
+    height: 58px;
+    margin: 0 0 var(--espacio-2); /* sin `auto`: pegados a la izquierda */
+  }
+}
+
+@media (max-width: 380px) {
+  .icono__label {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .icono__folder,
+  .icono__thumb {
+    width: 52px;
+    height: 52px;
+  }
+}

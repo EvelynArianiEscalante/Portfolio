@@ -11,8 +11,8 @@
   right: 0;
   height: 42px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: var(--espacio-4);
   padding: 0 var(--espacio-5);
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: var(--glass-blur);
@@ -34,6 +34,60 @@
   color: var(--color-texto);
 }
 
+/* Bloque derecho: reloj + hamburguesa.
+   `margin-left: auto` se come todo el espacio libre y lo empuja al borde
+   derecho — reemplaza al viejo justify-content: space-between, que con tres
+   bloques dejaba el menú flotando en el medio. */
+.menubar__der {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+/* ── Botón hamburguesa ──
+   Solo existe en celular; en escritorio el menú está siempre desplegado. */
+.menubar__hamburguesa {
+  display: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  /* Columna de tres rayitas centradas */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.menubar__hamburguesa span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-texto);
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+
+/* ── Hamburguesa → X ──
+   Las rayitas no se reemplazan por otro ícono: se MUEVEN. La de arriba baja
+   y rota 45°, la de abajo sube y rota al revés, y la del medio se desvanece.
+   El resultado es una X, y la transición entre los dos estados se ve como
+   una sola animación continua. */
+.menubar__hamburguesa[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menubar__hamburguesa[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menubar__hamburguesa[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 /* Links de navegación: sobrios, se iluminan al pasar */
 .menubar__link {
   transition: color 0.15s ease;
@@ -41,4 +95,90 @@
 
 .menubar__link:hover {
   color: var(--color-texto);
+}
+
+/* ── MÓVIL: la barra se queda con lo esencial ──
+   Seis elementos no entran en 390px: se desbordan y se pisan. Se van los dos
+   que no son navegación real (el rol, que ya lo dice el hero, y el link a la
+   página de Sistema de diseño, que todavía no existe). */
+@media (max-width: 700px) {
+  .menubar {
+    /* fixed y no absolute: ahora la home scrollea, y la barra tiene que
+       quedarse arriba, como la barra de estado de un teléfono */
+    position: fixed;
+    height: 38px;
+    padding: 0 var(--espacio-3);
+    font-size: 0.78rem;
+    /* Sin esto la barra crece hacia abajo cuando algo no entra, en vez de
+       mantenerse en una línea */
+    white-space: nowrap;
+  }
+
+  /* Nada de partirse en dos renglones: cada elemento se mantiene entero */
+  .menubar__izq > * { white-space: nowrap; }
+
+  .menubar__nombre { font-size: 0.88rem; }
+
+  /* El reloj no se comprime: el JS ya le dejó solo la hora */
+  #reloj { flex-shrink: 0; }
+
+  /* Aparece el botón (en escritorio está en display: none) */
+  .menubar__hamburguesa { display: flex; }
+
+  /* ── El menú se pliega en un panel desplegable ──
+     top: 100% = "arrancá justo donde termina la barra". Nace cerrado y el
+     JS le pone la clase .abierto al tocar la hamburguesa. */
+  .menubar__izq {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--espacio-2) var(--espacio-3) var(--espacio-3);
+    background: rgba(18, 18, 20, 0.92);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  .menubar__izq.abierto { display: flex; }
+
+  .menubar__izq .menubar__link {
+    padding: 13px 4px; /* área de toque cómoda: 44px de alto aprox. */
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .menubar__izq .menubar__link:last-child { border-bottom: none; }
+
+  /* El rol no es un link: sirve de encabezado del panel */
+  .menubar__izq > span {
+    padding: 6px 4px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+  }
+
+  /* El link que apunta a "#" y no abre ninguna ventana = página pendiente.
+     Cuando la página exista y tenga href real, vuelve a aparecer sola. */
+  .menubar__link[href="#"]:not([data-ventana]) { display: none; }
+}
+
+/* ── TELÉFONOS CHICOS (hasta 380px) ──
+   Con el nombre + tres links + el reloj, la barra se desborda por debajo de
+   los ~375px. Se va "Contacto": el sobre del dock cumple exactamente esa
+   función, así que no se pierde ningún camino. */
+@media (max-width: 380px) {
+  .menubar {
+    font-size: 0.72rem;
+    padding: 0 var(--espacio-2);
+  }
+
+  .menubar__nombre { font-size: 0.8rem; }
 }

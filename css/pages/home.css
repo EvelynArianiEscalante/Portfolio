@@ -47,6 +47,10 @@
                     url('https://picsum.photos/id/1011/400/250?grayscale');
 }
 
+/* Utilidad: elementos que existen solo en la versión celular.
+   Se encienden dentro del @media de más abajo. */
+.solo-movil { display: none; }
+
 /* ── Posiciones de los íconos: columna ordenada a la derecha ── */
 /* Agrupados por proximidad (Gestalt): los proyectos juntos como grupo,
    el Design System aparte, más abajo */
@@ -158,15 +162,230 @@
   margin-right: 50px; /* compensa los semáforos para centrar */
 }
 
-/* ── Ajustes para pantallas chicas ── */
-@media (max-width: 700px) {
-  #icono-siotyx     { top: 10%; right: 4%; }
-  #icono-anteriores { top: 30%; right: 4%; }
-  #icono-ds         { top: 50%; right: 4%; }
-  /* #icono-sobre-mi   { top: 70%; right: 4%; } */
+/* ═══════════════════════════════════════════════
+   ADAPTACIÓN A PANTALLAS MÁS CHICAS
+   El escritorio está armado con posiciones absolutas: cada pieza tiene su
+   lugar fijo. Eso funciona muy bien en pantalla grande, pero al angostar la
+   ventana las piezas se acercan hasta pisarse. Acá las vamos reacomodando.
+   ═══════════════════════════════════════════════ */
+
+/* ── TABLET / VENTANA ANGOSTA (hasta 1024px) ──
+   El problema concreto: el texto central mide hasta 560px y los íconos viven
+   pegados al borde derecho. Por debajo de ~1000px se tocan. */
+@media (max-width: 1024px) {
+  .centro {
+    /* El hero se hace más angosto y sube un poco: le deja la derecha libre
+       a los íconos y no queda apretado contra el dock. */
+    max-width: 400px;
+    transform: translate(-50%, -60%);
+  }
 
   .centro h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  /* Íconos más chicos y más pegados al borde: ocupan menos ancho */
+  .icono { width: 74px; }
+
+  #icono-siotyx     { top: 11%; right: 2%; }
+  #icono-anteriores { top: 26%; right: 2%; }
+  #icono-ds         { top: 52%; right: 2%; }
+
+  /* El widget de música mide 340px y arranca a la izquierda; el dock está
+     centrado abajo. En pantalla angosta se solapan. La música es ambiente,
+     no contenido: se va, y con ella su ícono del dock. */
+  .widget-spotify,
+  #dock-spotify {
+    display: none;
+  }
+}
+
+/* ── MÓVIL (hasta 700px): home tipo iPhone ──
+   Deja de ser un escritorio de Mac y pasa a leerse como la pantalla de inicio
+   de un teléfono: el título arriba, los íconos en una fila centrada, el dock
+   abajo al alcance del pulgar. */
+@media (max-width: 700px) {
+  /* ── Dos columnas: texto a la izquierda, carpetas a la derecha ──
+     Antes el hero estaba centrado y los íconos en fila en el medio: se
+     pisaban. Separándolos en dos columnas, cada uno tiene su territorio y
+     no pueden chocar por más que el texto crezca. */
+  /* ⚠️ Estos tres reseteos son obligatorios: el bloque de 1024px de más
+     arriba le puso al hero un max-width y un transform para centrarlo, y
+     como este archivo se carga después que escritorio.css, ahí no alcanzaba
+     con anularlos. Sin esto, el hero se va fuera de la pantalla. */
+  .centro {
+    order: 1;
+    transform: none;
+    max-width: none;
+  }
+
+  .centro {
+    /* Aire respecto de la barra: pegado arriba se leía como parte de ella.
+       Abajo, más espacio: separa el hero del primer grupo de proyectos. */
+    margin-top: var(--espacio-3);
+    margin-bottom: var(--espacio-6);
+  }
+
+  .centro__rol {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em; /* menos espaciado = menos renglones */
+    /* Pegado al título: el kicker y el h1 son UNA unidad. Cuanto más cerca
+       están entre sí que del resto, más se leen como una sola cosa
+       (proximidad, la misma ley de Gestalt que usamos en el escritorio). */
+    margin-bottom: var(--espacio-1);
+  }
+
+  .centro h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  /* ═══ HOME DE CELULAR: sin carpetas, cada proyecto es su propio acceso ═══
+     Decisión de Evelyn (2026-08-13): en un teléfono, abrir una carpeta para
+     ver dos tiles es un paso de más. Así que las ventanas Finder dejan de ser
+     ventanas y se convierten en SECCIONES de la home. Los tiles que ya vivían
+     adentro pasan a ser los íconos de la pantalla de inicio.
+     Lo importante: no se duplicó nada en el HTML. Los proyectos siguen
+     escritos una sola vez, adentro de sus carpetas — acá solo cambia cómo
+     se muestran. Si agregás un proyecto, lo agregás una vez y aparece en los
+     dos lados. */
+
+  /* El orden visual lo decide `order`, no el HTML */
+  #ventana-siotyx     { order: 2; }
+  #ventana-anteriores { order: 3; }
+
+  /* Se enciende el tile del Design System que vive dentro de la carpeta
+     Siotyx: así comparte fila con Transporte y Retail. */
+  .solo-movil { display: block; }
+
+  /* Los tres íconos sueltos del escritorio no van en celular: las dos
+     carpetas porque su contenido ya está a la vista, y el Design System
+     porque ahora se muestra como tile dentro del grupo Siotyx. */
+  #icono-siotyx,
+  #icono-anteriores,
+  #icono-ds {
+    display: none;
+  }
+
+  /* ── Las ventanas Finder, convertidas en secciones ──
+     Van con id porque tienen que ganarle a las reglas de .ventana
+     (que en celular las manda a pantalla completa). */
+  #ventana-siotyx,
+  #ventana-anteriores {
+    display: block;
+    position: static;   /* dejan de flotar: son parte de la columna */
+    width: auto;
+    height: auto;
+    /* Aire entre un grupo y el siguiente. El espacio ENTRE grupos tiene que
+       ser mayor que el que hay entre el título y sus íconos (12px, más abajo):
+       así cada título se lee pegado a lo que titula y no al grupo anterior. */
+    margin: 0 0 var(--espacio-6);
+    background: none;   /* sin la superficie blanca: van sobre el wallpaper */
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  /* La barra de título pasa a ser el título de la sección */
+  #ventana-siotyx > .ventana__barra,
+  #ventana-anteriores > .ventana__barra {
+    position: static;
+    display: block;
+    background: none;
+    border: none;
+    padding: 0 0 var(--espacio-3);
+  }
+
+  /* Los semáforos no tienen sentido en algo que ya no es una ventana */
+  #ventana-siotyx .semaforo,
+  #ventana-anteriores .semaforo {
+    display: none;
+  }
+
+  /* Título de sección discreto, como los rótulos de la Biblioteca de Apps */
+  #ventana-siotyx .ventana__titulo,
+  #ventana-anteriores .ventana__titulo {
+    text-align: left;
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-texto-suave);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* legible sobre el wallpaper */
+  }
+
+  /* ── Título corto en celular ──
+     En la ventana de escritorio el título largo ubica al visitante. Como
+     rótulo de sección en un teléfono, sobra. Truco: se apaga el texto
+     original (font-size: 0) y se dibuja el corto con `content: attr()`,
+     que lee el atributo data-corto del HTML. El texto sigue estando en el
+     HTML — no queda escondido dentro del CSS. */
+  #ventana-siotyx .ventana__titulo[data-corto] {
+    font-size: 0;
+  }
+
+  #ventana-siotyx .ventana__titulo[data-corto]::after {
+    content: attr(data-corto);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Grilla de 4 columnas: exactamente como la home de un iPhone ──
+     4 columnas fijas (no "las que entren"): un iPhone siempre muestra 4,
+     de un SE a un Pro Max. Lo que cambia es el tamaño del ícono, no la
+     cantidad. Por eso 1fr y no un ancho en píxeles. */
+  #ventana-siotyx .finder__grid,
+  #ventana-anteriores .finder__grid {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    gap: var(--espacio-4) var(--espacio-3);
+  }
+
+  /* ── El tile deja de ser un rectángulo y pasa a ser un ícono de app ──
+     aspect-ratio 1 = cuadrado. El radio grande es lo que hace que se lea
+     como ícono de iOS y no como una foto recortada. La imagen se recorta
+     sola al centro (background-size: cover ya viene del componente). */
+  #ventana-siotyx .finder__thumb,
+  #ventana-anteriores .finder__thumb {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    /* ── Por qué max-width y no width ──
+       La celda de la grilla mide distinto en cada teléfono (de 63 a 90px).
+       Si el ícono llenara la celda, en un Pro Max saldría enorme. Un iPhone
+       real usa siempre ~60px, sin importar la pantalla: lo que cambia es el
+       aire entre íconos, no el ícono. Con max-width se mantiene el tamaño y
+       `margin-inline: auto` lo deja centrado en su celda. */
+    width: 100%;
+    max-width: 60px;
+    margin: 0 auto var(--espacio-1);
+    border-radius: 23%; /* proporción del squircle de iOS */
+    /* La foto se recorta desde el centro (background-size: cover viene del
+       componente): con capturas apaisadas se ve la franja del medio. */
+    background-position: center;
+  }
+
+  /* Etiquetas chicas y centradas debajo del ícono, sobre el wallpaper */
+  #ventana-siotyx .finder__item span,
+  #ventana-anteriores .finder__item span {
+    display: block;
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--color-texto);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+  }
+
+  /* ── El resto de las ventanas SÍ siguen a pantalla completa ──
+     Estas se abren al tocar un proyecto y se cierran con el semáforo rojo. */
+  #ventana-sobre-mi-app,
+  #ventana-notas,
+  .ventana--proyecto {
+    width: auto;
+    height: auto;
+    top: 0;
+    left: 0;
+    margin-left: 0;
   }
 
   .proyecto__imagen {

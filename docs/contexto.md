@@ -109,9 +109,25 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
      ya están en el `<head>` de `index.html` y `health-app.html` apuntando a
      ese nombre. Sin la imagen el preview sale sin foto, no se rompe nada.
 
-1. **Responsive / mobile** — el sitio NO está adaptado a mobile aún. Decidir
-   qué es el "escritorio" en un celular. Prioritario: los reclutadores abren
-   desde el teléfono.
+1. ✅ **Responsive / mobile — PRIMERA VERSIÓN HECHA el 2026-08-13.**
+   Dos cortes: **1024px** (tablet / ventana angosta) y **700px** (celular).
+   - Tablet: hero más angosto (400px), íconos más chicos y pegados al borde.
+     El widget de Spotify y su ícono del dock **se ocultan** — decisión de
+     Evelyn: la música es solo de escritorio. Además sus 340px chocaban con
+     el dock.
+   - Celular: fachada tipo iPhone (decidido con ella). Hero arriba, los tres
+     íconos en una fila centrada, dock abajo. Las ventanas pasan a **pantalla
+     completa** con la barra sticky (el semáforo rojo hace de "volver"), el
+     arrastre se desactiva por JS (`window.innerWidth <= 700` en ventanas.js),
+     el Finder va a una columna, el sidebar del CV pasa a fila horizontal
+     arriba y la ficha de Sobre mí se apila.
+   - Menubar en celular: se ocultan el rol y el link a "Sistema de diseño"
+     (selector `[href="#"]:not([data-ventana])` — vuelve solo cuando la
+     página exista).
+   - Los íconos se centran con `left` + `margin-left` negativo y NO con
+     transform, porque transform ya lo usan sus animaciones de entrada/rebote.
+   ⚠️ FALTA PROBARLO EN UN TELÉFONO REAL. No se pudo verificar visualmente
+   (no hay navegador en el entorno de Claude): revisado solo por código.
 2. **Screenshots de Figma** — reemplazar la foto placeholder repetida
    (picsum, clase `.thumb--placeholder`) por captures reales. Es el mayor
    salto de calidad disponible.

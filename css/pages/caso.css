@@ -296,9 +296,79 @@ span.semaforo--max {
 .caso-siguiente a { color: var(--color-carpeta-oscuro); }
 .caso-siguiente a:hover { text-decoration: underline; }
 
+/* ═══════════════════════════════════════════════
+   MÓVIL: el caso deja de ser una ventana de Mac
+   En un teléfono el marco de ventana es decoración que cuesta espacio: los
+   semáforos no hacen lo que prometen, el título se parte en dos renglones y
+   el margen deja ver un pedacito de wallpaper que no aporta.
+   Se reemplaza por lo que una persona espera en un celular: una barra de
+   navegación fina con "Volver".
+   ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
-  .ventana-max { inset: 8px; }
+  /* A pantalla completa, sin marco ni esquinas redondeadas */
+  .ventana-max {
+    inset: 0;
+    border-radius: 0;
+  }
 
+  /* ── Barra de "Volver" ──
+     env(safe-area-inset-top) es el alto de la muesca / isla dinámica del
+     teléfono. En un navegador de escritorio vale 0, así que no molesta; en un
+     iPhone real evita que el botón quede debajo del notch. El 14px es el aire
+     mínimo que queremos siempre. */
+  .ventana-max__barra {
+    padding: calc(14px + env(safe-area-inset-top, 0px)) 16px 14px;
+  }
+
+  /* Amarillo y verde afuera: en celular no hay nada que minimizar */
+  .ventana-max .semaforo--min,
+  .ventana-max .semaforo--max {
+    display: none;
+  }
+
+  /* El semáforo rojo se convierte en el botón "Volver".
+     Es el MISMO link de siempre (ya llevaba al escritorio): solo cambia cómo
+     se dibuja. Nada de agregar otro botón que haga lo mismo. */
+  .ventana-max .semaforo--cerrar {
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+  }
+
+  .ventana-max .semaforo--cerrar::after {
+    content: "‹  Volver";
+    position: static;   /* deja de estar encimado adentro del circulito */
+    display: block;
+    opacity: 1;         /* no espera al hover: en el celular no hay hover */
+    transform: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-carpeta-oscuro);
+  }
+
+  /* El título de la barra sobra: el h1 del caso, un poco más abajo, dice lo
+     mismo y más grande. Además se partía en dos renglones. */
+  .ventana-max__titulo {
+    display: none;
+  }
+
+  /* Títulos a escala de teléfono: venían del tamaño de escritorio */
+  .caso-header h1 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  .caso-header .bajada {
+    font-size: 1rem;
+  }
+
+  .caso-contenido {
+    padding: var(--espacio-5) var(--espacio-4) 72px;
+  }
+
+  .caso-seccion h2 { font-size: 1.1rem; }
+  .caso-seccion h3 { font-size: 1rem; }
 }
 
 
@@ -330,11 +400,17 @@ ul.puntos {
 ul.puntos--problema { --acento: var(--color-alerta); }
 ul.puntos--solucion { --acento: var(--color-exito); }
 
-.punto {
+/* `li.punto` y no `.punto` a secas: más arriba hay una regla `.caso-seccion li`
+   que le mete un margin-bottom pensado para listas normales. Esa separación se
+   SUMABA al gap de la grilla, y las cards quedaban al doble de distancia una de
+   otra. Acá se anula: la única separación la decide el `gap` de ul.puntos, así
+   es igual entre todas y se ajusta en un solo lugar. */
+li.punto {
   display: flex;
   gap: var(--espacio-3);
   align-items: flex-start;
   padding: var(--espacio-4);
+  margin-bottom: 0;
   border: 1px solid var(--color-borde-claro);
   border-left: 3px solid var(--acento);
   border-radius: var(--radio-md);

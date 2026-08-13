@@ -133,15 +133,28 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* Los íconos traen aire transparente alrededor dentro del lienzo de Figma;
-     este scale los empareja visualmente con el recuadro del memoji.
-     Ajustar el valor si algún ícono se ve más chico o más grande. */
-  transform: scale(1.14);
 }
 
-/* El SVG de LinkedIn trae más aire interno que los otros: se empareja aparte */
+/* ── Escalas MEDIDAS, no estimadas (2026-08-13) ──
+   Antes había un scale 1.14 para todos, con la idea de que los archivos
+   traían aire transparente alrededor. Se midió archivo por archivo cuánto
+   del lienzo ocupa realmente el dibujo, y resultó que casi no traen aire:
+   el 1.14 los estaba agrandando de más, y por eso Mail se veía más grande
+   que el memoji.
+
+     memoji.mp4    llena el 100% del cuadro  → escala 1.00 (no lleva)
+     mail.png      llena el 100%             → escala 1.00
+     notes.png     llena el  98%             → escala 1.02
+     linkedin.svg  el tile mide 824 de 1024  → escala 1.24
+
+   Con estos números los cuatro se ven exactamente del mismo tamaño. Si
+   algún día cambiás un ícono, medí el nuevo en vez de estimar. */
+.app--icono img[alt="Notas"] {
+  transform: scale(1.02);
+}
+
 .app--icono img[alt="LinkedIn"] {
-  transform: scale(1.32);
+  transform: scale(1.24);
 }
 
 /* ── App Notes: réplica del ícono real (ya no se usa; ver .app--icono) ── */
@@ -217,4 +230,64 @@
    devuelve el ocultamiento con la especificidad necesaria. */
 .dock__app[hidden] {
   display: none;
+}
+
+/* ── MÓVIL: dock al alcance del pulgar ──
+   Íconos apenas más chicos y menos aire, para que la fila entre cómoda en
+   un teléfono angosto. El tooltip se desactiva: en una pantalla táctil no
+   existe el "pasar por encima", así que solo estorbaría. */
+@media (max-width: 700px) {
+  .dock {
+    /* fixed: la home scrollea y el dock tiene que quedarse abajo, siempre
+       al alcance del pulgar (como el dock real de un iPhone) */
+    position: fixed;
+    bottom: 20px;
+    gap: 10px;      /* más aire: los íconos se veían pegados */
+    padding: 10px 14px;
+  }
+
+  .dock__app {
+    width: 52px;
+    height: 52px;
+  }
+
+  /* El separador estaba pisado contra el sobre. Necesita su propio aire a
+     ambos lados para leerse como una división y no como un borde del ícono. */
+  .dock__sep {
+    height: 32px;
+    margin: 0 var(--espacio-2);
+  }
+
+  /* Las escalas ya están medidas arriba y valen para todos los tamaños:
+     acá no hay nada que corregir. Con los cuatro íconos del mismo tamaño
+     visual, los espacios entre ellos quedan parejos solos. */
+
+  .dock__app::after,
+  .dock__app::before {
+    display: none;
+  }
+
+  /* Sin efecto de crecer al pasar: no hay cursor que se acerque */
+  .dock:hover { transform: translateX(-50%); }
+}
+
+/* ── TELÉFONOS CHICOS (iPhone SE y anteriores, hasta 380px) ──
+   La cuenta: 5 apps de 52px + separador + espacios + padding daban ~339px.
+   Entra justo en un iPhone 14 Pro (393px), pero se desborda en 320px.
+   Con 44px la fila baja a ~279px y entra con aire en cualquier teléfono. */
+@media (max-width: 380px) {
+  .dock {
+    gap: 8px;
+    padding: 9px 12px;
+  }
+
+  .dock__app {
+    width: 46px;
+    height: 46px;
+  }
+
+  .dock__sep {
+    height: 28px;
+    margin: 0 6px;
+  }
 }

@@ -13,6 +13,19 @@ let zIndice = 100;
 // ── 1. ABRIR ──
 document.querySelectorAll('[data-ventana]').forEach(function (disparador) {
   disparador.addEventListener('click', function () {
+
+    // ── Atajo de celular: derecho al caso ──
+    // En escritorio, tocar un proyecto abre una ventana de vista previa con
+    // su ficha (rol, alcance, herramientas) y adentro el link al caso.
+    // En un teléfono esa ventana es una escala de más: si el proyecto tiene
+    // data-directo, vamos directo a su página.
+    // Los que todavía no tienen caso escrito no llevan data-directo, así que
+    // siguen mostrando la vista previa: no queda ningún toque sin respuesta.
+    if (window.innerWidth <= 700 && disparador.dataset.directo) {
+      window.location.href = disparador.dataset.directo;
+      return;
+    }
+
     const ventana = document.getElementById(disparador.dataset.ventana);
     if (!ventana) return; // si el id no existe, no rompe: simplemente no hace nada
     ventana.classList.add('abierta');
@@ -33,6 +46,11 @@ document.querySelectorAll('[data-cierra]').forEach(function (boton) {
 // ── 3. ARRASTRAR ──
 document.querySelectorAll('[data-arrastra]').forEach(function (barra) {
   barra.addEventListener('pointerdown', function (evento) {
+    // En celular las ventanas ocupan toda la pantalla (ver el @media de
+    // ventana.css): arrastrarlas no tiene sentido y además rompería el
+    // layout, porque el arrastre escribe left/top directo en el elemento.
+    if (window.innerWidth <= 700) return;
+
     // Si el clic empezó en el botón de cerrar, no arrastramos
     if (evento.target.dataset.cierra !== undefined) return;
 

@@ -64,3 +64,34 @@ body {
   color: var(--color-texto-suave);
   margin-bottom: var(--espacio-3);
 }
+
+/* ── MÓVIL: el escritorio deja de ser una pantalla fija y pasa a scrollear ──
+   En desktop todo vive en una sola pantalla y cada pieza tiene su posición
+   absoluta. En un teléfono no entra: los proyectos van uno debajo del otro,
+   como la pantalla de inicio de un iPhone, y se scrollea.
+   `display: flex` acá permite además reordenar los bloques con `order`
+   sin tocar el HTML (ver css/pages/home.css). */
+@media (max-width: 700px) {
+  body {
+    overflow: auto; /* en desktop está en hidden */
+  }
+
+  .escritorio {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Arriba deja pasar la barra de menú; abajo, el dock */
+    padding: 54px var(--espacio-4) 124px;
+  }
+
+  .centro {
+    position: static; /* deja de flotar: es el primer bloque de la columna */
+    transform: none;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: var(--espacio-5);
+  }
+}

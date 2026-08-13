@@ -35,15 +35,15 @@
        archivo nuevo y lo baja sí o sí.
        REGLA: cada vez que toques un CSS y publiques, subí el número: v=2, v=3…
        Es lo único que hay que acordarse. -->
-  <link rel="stylesheet" href="css/base/reset.css?v=1">
-  <link rel="stylesheet" href="css/base/variables.css?v=1">
-  <link rel="stylesheet" href="css/base/tipografia.css?v=1">
-  <link rel="stylesheet" href="css/layout/escritorio.css?v=1">
-  <link rel="stylesheet" href="css/layout/menubar.css?v=1">
-  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=1">
-  <link rel="stylesheet" href="css/components/ventana.css?v=1">
-  <link rel="stylesheet" href="css/components/dock.css?v=1">
-  <link rel="stylesheet" href="css/pages/home.css?v=1">
+  <link rel="stylesheet" href="css/base/reset.css?v=17">
+  <link rel="stylesheet" href="css/base/variables.css?v=17">
+  <link rel="stylesheet" href="css/base/tipografia.css?v=17">
+  <link rel="stylesheet" href="css/layout/escritorio.css?v=17">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=17">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=17">
+  <link rel="stylesheet" href="css/components/ventana.css?v=17">
+  <link rel="stylesheet" href="css/components/dock.css?v=17">
+  <link rel="stylesheet" href="css/pages/home.css?v=17">
 </head>
 
 <body>
@@ -52,8 +52,11 @@
 
     <!-- ═══ BARRA DE MENÚ: estética macOS + navegación real ═══ -->
     <header class="menubar">
-      <nav class="menubar__izq" aria-label="Navegación principal">
-        <span class="menubar__nombre">Evelyn Ariani</span>
+      <!-- El nombre salió de adentro del <nav>: no es un link de navegación,
+           y así puede quedarse en la barra cuando el menú se pliega en celular. -->
+      <span class="menubar__nombre">Evelyn Ariani</span>
+
+      <nav class="menubar__izq" id="menu-principal" aria-label="Navegación principal">
         <span>UX/UI Designer</span>
         <a class="menubar__link" href="pages/casos-de-estudio/index.html">Proyectos</a>
         <a class="menubar__link" href="#">Sistema de diseño</a>       <!-- página pendiente -->
@@ -62,7 +65,21 @@
         <a class="menubar__link" href="#" data-ventana="ventana-sobre-mi-app">Sobre mí</a>
         <a class="menubar__link" href="mailto:evelynescalante.25@gmail.com">Contacto</a>
       </nav>
-      <span id="reloj">—</span>
+
+      <div class="menubar__der">
+        <span id="reloj">—</span>
+        <!-- Botón hamburguesa: solo se ve en celular (lo enciende el CSS).
+             aria-expanded le cuenta a los lectores de pantalla si el menú
+             está abierto o cerrado; aria-controls, a qué menú controla.
+             Los tres <span> son las tres rayitas. -->
+        <button class="menubar__hamburguesa"
+                id="boton-menu"
+                aria-controls="menu-principal"
+                aria-expanded="false"
+                aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
 
     <!-- ═══ HERO CENTRAL (a futuro: tu imagen en b/n) ═══ -->
@@ -107,7 +124,11 @@
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
         <span class="semaforo semaforo--min"></span>
         <span class="semaforo semaforo--max"></span>
-        <span class="ventana__titulo">Siotyx — plataforma B2B de logística con RFID</span>
+        <!-- data-corto: la versión breve del título, para celular. El CSS la
+             usa cuando esta barra deja de ser una ventana y pasa a ser el
+             rótulo de una sección (ver css/pages/home.css). Así el texto
+             sigue viviendo en el HTML y no escondido dentro de una regla. -->
+        <span class="ventana__titulo" data-corto="Siotyx">Siotyx — plataforma B2B de logística con RFID</span>
       </div>
       <div class="finder__grid">
         <!-- Core dejó de ser un proyecto propio: ahora se cuenta dentro del Design System. -->
@@ -119,6 +140,17 @@
         <button class="finder__item finder__item--thumb" data-ventana="ventana-retail">
           <span class="finder__thumb fthumb--pendiente"></span>
           <span>Retail</span>
+        </button>
+        <!-- ⚠️ OJO: el Design System aparece en DOS lugares del HTML, a propósito.
+             · Como ícono suelto del escritorio (#icono-ds, más arriba) → solo desktop
+             · Como tile de esta carpeta (este bloque)                 → solo celular
+             Es la única manera de que en el celular quede en la MISMA FILA que
+             Transporte y Retail (para compartir fila hay que compartir grilla, y
+             eso no se puede hacer solo con CSS) sin cambiar el escritorio.
+             Si algún día le cambiás el nombre, cambialo en los dos lados. -->
+        <button class="finder__item finder__item--thumb solo-movil" data-ventana="ventana-ds">
+          <span class="finder__thumb fthumb--pendiente"></span>
+          <span>Design System</span>
         </button>
       </div>
     </section>
@@ -135,19 +167,19 @@
         <span class="ventana__titulo">Proyectos anteriores</span>
       </div>
       <div class="finder__grid">
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-health">
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-health" data-directo="pages/casos-de-estudio/health-app.html">
           <span class="finder__thumb fthumb--health"></span>
           <span>Health App Redesign</span>
         </button>
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-wifi">
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-wifi" data-directo="pages/casos-de-estudio/wifi-marketing.html">
           <span class="finder__thumb fthumb--wifi"></span>
           <span>Sistema WiFi Marketing</span>
         </button>
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-pedidos">
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-pedidos" data-directo="pages/casos-de-estudio/pedidos-gestion.html">
           <span class="finder__thumb fthumb--pedidos"></span>
           <span>Pedidos &amp; Gestión</span>
         </button>
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-aika">
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-aika" data-directo="pages/casos-de-estudio/aika.html">
           <span class="finder__thumb fthumb--aika"></span>
           <span>AIKA</span>
         </button>
@@ -647,9 +679,10 @@
   </div>
 
   <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
-  <script src="js/components/ventanas.js"></script>
-  <script src="js/components/dock.js"></script>
-  <script src="js/components/reloj.js"></script>
-  <script src="js/components/avatar-switch.js"></script>
+  <script src="js/components/ventanas.js?v=17"></script>
+  <script src="js/components/dock.js?v=17"></script>
+  <script src="js/components/menu.js?v=17"></script>
+  <script src="js/components/reloj.js?v=17"></script>
+  <script src="js/components/avatar-switch.js?v=17"></script>
 </body>
 </html>
