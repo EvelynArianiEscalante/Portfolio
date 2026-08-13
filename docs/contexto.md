@@ -116,11 +116,23 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
    (picsum, clase `.thumb--placeholder`) por captures reales. Es el mayor
    salto de calidad disponible.
 3. **Páginas de caso restantes** — el molde es `pages/casos-de-estudio/health-app.html`
-   (+ `css/pages/caso.css`). Falta: Pedidos, AIKA (contenido listo en
-   `docs/contenido-casos.md`), WiFi (contenido pendiente de extraer), y los
-   casos de Siotyx (contenido a construir con Evelyn).
-4. **Contenido WiFi Marketing** — el nodo de Figma `4075:8974` da error del
-   servidor; pedirle a Evelyn el texto o reintentar.
+   (+ `css/pages/caso.css`). ✅ HECHAS el 2026-08-13: `pedidos-gestion.html` y
+   `aika.html` (contenido de `docs/contenido-casos.md`, una sola imagen cada
+   una — la 1-preview — hasta que Evelyn exporte más capturas de Figma).
+   Links "Ver caso completo" conectados en home e índice de proyectos; la
+   navegación circular: health → pedidos → wifi → aika → health.
+   ✅ También `wifi-marketing.html` (ver punto 4). Falta solo: los casos de
+   Siotyx (contenido a construir con Evelyn).
+4. ✅ **Contenido WiFi Marketing — RESUELTO el 2026-08-13.** El nodo viejo
+   `4075:8974` sigue dando error, pero Evelyn pasó el node-id correcto:
+   **`4076:15550`** (archivo `EW8YfHJvbhoD7LMmSvoLyS`, página "Design System").
+   Se leyó por screenshot y se armó la página. ⚠️ Dato a confirmar con ella:
+   en el portfolio viejo la bajada de este caso decía "Wordpress E-commerce…",
+   que no corresponde a WiFi — se usó la bajada del sitio nuevo en su lugar.
+   Timeline correcto: **Jun 2024 – Oct 2024** (lo corrigió Evelyn; yo lo había
+   leído mal del screenshot escalado. Lección: para leer texto chico de Figma,
+   pedir el screenshot con maxDimension alto o por secciones, no confiar en la
+   miniatura).
 5. **Páginas Sistema de diseño y Sobre mí** — links de menubar en `#`.
 6. **Duraciones de proyectos Siotyx** — el dato "Duración" de la ficha de
    Transporte se quitó (estaba vacío). Volver a agregarlo con el número real.
