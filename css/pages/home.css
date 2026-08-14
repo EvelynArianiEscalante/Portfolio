@@ -353,11 +353,13 @@
        La celda de la grilla mide distinto en cada teléfono (de 63 a 90px).
        Si el ícono llenara la celda, en un Pro Max saldría enorme. Un iPhone
        real usa siempre ~60px, sin importar la pantalla: lo que cambia es el
-       aire entre íconos, no el ícono. Con max-width se mantiene el tamaño y
-       `margin-inline: auto` lo deja centrado en su celda. */
+       aire entre íconos, no el ícono.
+       Pegado al borde IZQUIERDO de su celda (no centrado): así el primer
+       ícono de cada fila queda en la misma vertical que el título de la
+       sección, y todas las columnas comparten eje con su etiqueta. */
     width: 100%;
     max-width: 60px;
-    margin: 0 auto var(--espacio-1);
+    margin: 0 0 var(--espacio-1);
     border-radius: 23%; /* proporción del squircle de iOS */
     /* La foto se recorta desde el centro (background-size: cover viene del
        componente): con capturas apaisadas se ve la franja del medio. */
