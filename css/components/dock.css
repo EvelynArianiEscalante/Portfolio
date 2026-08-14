@@ -153,17 +153,9 @@
   transform: scale(1.02);
 }
 
-/* LinkedIn se agranda con width/height REALES y no con transform.
-   La diferencia importa en iOS: `transform: scale()` no redibuja el SVG —
-   Safari lo rasteriza al tamaño chico y estira esa imagen, y se ve pixelado.
-   Con width/height el navegador dibuja el vector al tamaño final, nítido.
-   El margin negativo (-12% por lado = 24% total) compensa el excedente para
-   que el ícono no empuje a sus vecinos ni se descentre. */
-.app--icono img[alt="LinkedIn"] {
-  width: 124%;
-  height: 124%;
-  margin: -12%;
-}
+/* LinkedIn ya no necesita escala propia: el PNG nuevo viene recortado al
+   contenido (sin el aire transparente que traía el SVG de Figma), así que
+   llena su caja igual que notes.png y mail.png. */
 
 /* ── App Notes: réplica del ícono real (ya no se usa; ver .app--icono) ── */
 .app--notas {

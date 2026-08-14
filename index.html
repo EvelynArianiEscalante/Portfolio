@@ -35,15 +35,15 @@
        archivo nuevo y lo baja sí o sí.
        REGLA: cada vez que toques un CSS y publiques, subí el número: v=2, v=3…
        Es lo único que hay que acordarse. -->
-  <link rel="stylesheet" href="css/base/reset.css?v=31">
-  <link rel="stylesheet" href="css/base/variables.css?v=31">
-  <link rel="stylesheet" href="css/base/tipografia.css?v=31">
-  <link rel="stylesheet" href="css/layout/escritorio.css?v=31">
-  <link rel="stylesheet" href="css/layout/menubar.css?v=31">
-  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=31">
-  <link rel="stylesheet" href="css/components/ventana.css?v=31">
-  <link rel="stylesheet" href="css/components/dock.css?v=31">
-  <link rel="stylesheet" href="css/pages/home.css?v=31">
+  <link rel="stylesheet" href="css/base/reset.css?v=33">
+  <link rel="stylesheet" href="css/base/variables.css?v=33">
+  <link rel="stylesheet" href="css/base/tipografia.css?v=33">
+  <link rel="stylesheet" href="css/layout/escritorio.css?v=33">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=33">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=33">
+  <link rel="stylesheet" href="css/components/ventana.css?v=33">
+  <link rel="stylesheet" href="css/components/dock.css?v=33">
+  <link rel="stylesheet" href="css/pages/home.css?v=33">
 </head>
 
 <body>
@@ -663,7 +663,12 @@
         <img src="assets/icons/escritorio/mail.png" alt="Contacto">
       </a>
       <a class="dock__app app--icono" href="https://www.linkedin.com/in/evelynarianiescalante/" target="_blank" rel="noopener" data-label="LinkedIn" aria-label="LinkedIn">
-        <img src="assets/icons/escritorio/linkedin.svg" alt="LinkedIn">
+        <!-- PNG y no el SVG original: ese SVG traía 9 filtros de blur del
+             efecto glass de Figma, que a 52px se veían turbios (los filtros
+             SVG se calculan al tamaño final). El PNG ya viene "horneado" a
+             192px, nítido como notes.png y mail.png. El SVG queda en la
+             carpeta como fuente. -->
+        <img src="assets/icons/escritorio/linkedin.png" alt="LinkedIn">
       </a>
       <!-- Reabre el widget de música. Nace oculto: solo aparece si el
            visitante cerró el widget (no le roba jerarquía al dock). -->
@@ -679,10 +684,10 @@
   </div>
 
   <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
-  <script src="js/components/ventanas.js?v=31"></script>
-  <script src="js/components/dock.js?v=31"></script>
-  <script src="js/components/menu.js?v=31"></script>
-  <script src="js/components/reloj.js?v=31"></script>
-  <script src="js/components/avatar-switch.js?v=31"></script>
+  <script src="js/components/ventanas.js?v=33"></script>
+  <script src="js/components/dock.js?v=33"></script>
+  <script src="js/components/menu.js?v=33"></script>
+  <script src="js/components/reloj.js?v=33"></script>
+  <script src="js/components/avatar-switch.js?v=33"></script>
 </body>
 </html>

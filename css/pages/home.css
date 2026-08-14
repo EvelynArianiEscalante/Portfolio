@@ -366,11 +366,13 @@
     background-position: center;
   }
 
-  /* Etiquetas chicas y centradas debajo del ícono, sobre el wallpaper */
+  /* Etiquetas chicas debajo del ícono, sobre el wallpaper.
+     Alineadas a la IZQUIERDA, igual que el ícono: si el ícono va al borde
+     de la celda y el texto centrado, cada uno seguía un eje distinto. */
   #ventana-siotyx .finder__item span,
   #ventana-anteriores .finder__item span {
     display: block;
-    text-align: center;
+    text-align: left;
     font-size: 0.68rem;
     font-weight: 500;
     line-height: 1.25;
