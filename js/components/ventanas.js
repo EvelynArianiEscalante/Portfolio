@@ -39,7 +39,30 @@ document.querySelectorAll('[data-cierra]').forEach(function (boton) {
   boton.addEventListener('click', function (evento) {
     // stopPropagation: que el clic en "cerrar" no dispare también el arrastre
     evento.stopPropagation();
-    boton.closest('.ventana').classList.remove('abierta');
+    const ventana = boton.closest('.ventana');
+
+    // ── En celular, este botón es el "volver" de la barra de navegación ──
+    // Si estás DENTRO de una nota, volver significa ir al listado, no salir
+    // de la ventana. Es cómo funciona iOS: el back te sube un nivel por vez,
+    // no te expulsa a la pantalla de inicio.
+    if (ventana.classList.contains('viendo-nota')) {
+      ventana.classList.remove('viendo-nota');
+      ventana.querySelectorAll('.notas__item').forEach(function (i) {
+        i.classList.remove('activo');
+      });
+      // Limpiar el display INLINE que puso el JS al abrir la nota.
+      // Sin esto, el "display: block" escrito en el elemento le gana al
+      // CSS que esconde los contenidos en el listado (un estilo inline
+      // siempre le gana a la hoja de estilos), y la nota quedaba visible
+      // abajo del listado después de volver.
+      ventana.querySelectorAll('.notas__contenido').forEach(function (c) {
+        c.style.display = '';
+      });
+      ventana.scrollTop = 0;
+      return;
+    }
+
+    ventana.classList.remove('abierta');
   });
 });
 
@@ -132,5 +155,14 @@ document.querySelectorAll('[data-nota]').forEach(function (item) {
     document.querySelectorAll('.notas__contenido').forEach(function (contenido) {
       contenido.style.display = (contenido.id === 'nota-' + item.dataset.nota) ? 'block' : 'none';
     });
+
+    // ── En celular: pasar del listado al detalle ──
+    // En escritorio la lista y el contenido conviven, así que no hace falta
+    // "entrar" a ningún lado. En el teléfono se turnan: la clase .viendo-nota
+    // le avisa al CSS que esconda la lista y muestre el botón de volver.
+    // (Ver el @media de css/components/ventana.css)
+    const ventanaNotas = item.closest('.ventana');
+    if (ventanaNotas) ventanaNotas.classList.add('viendo-nota');
   });
 });
+

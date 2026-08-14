@@ -23,75 +23,7 @@
   display: flex;
 }
 
-/* ── MÓVIL: la ventana deja de flotar y ocupa la pantalla entera ──
-   Las MEDIDAS de cada ventana se anulan en css/pages/home.css (ahí viven).
-   Acá se cambia lo que es del componente: cómo se ve y cómo scrollea. */
-@media (max-width: 700px) {
-  .ventana {
-    position: fixed; /* fixed y no absolute: no se mueve si la página scrollea */
-    inset: 0;        /* pegada a los cuatro bordes */
-    border-radius: 0;
-    /* El contenido scrollea dentro de la ventana, como una app */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 
-  /* La barra queda fija arriba mientras el contenido pasa por debajo:
-     el botón de volver (el semáforo rojo) tiene que estar siempre a mano. */
-  .ventana__barra {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    cursor: default; /* en mobile no se arrastra */
-  }
-
-  /* Área de toque más generosa para los semáforos: el dedo no tiene la
-     puntería del mouse. La zona crece sin que el círculo cambie de tamaño. */
-  .semaforo::before { inset: -10px; }
-
-  /* Finder: en celular las dos ventanas Finder ya no son ventanas — se
-     muestran como secciones de la home. Su grilla se define en
-     css/pages/home.css, que es donde vive esa decisión de página. */
-
-  /* ── Notes (el CV): el sidebar deja de ser columna y pasa arriba ──
-     180px de menú lateral se comen medio teléfono. Apilado, el visitante
-     ve primero las secciones y después el contenido. */
-  .notas__cuerpo {
-    flex-direction: column;
-  }
-
-  .notas__sidebar {
-    width: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--color-borde-claro);
-    /* Los items en fila, scrolleables de costado si no entran */
-    flex-direction: row;
-    gap: 6px;
-    overflow-x: auto;
-  }
-
-  .notas__item {
-    width: auto;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  /* El CTA del CV estaba empujado al fondo del sidebar con margin-top:auto;
-     ahora que el sidebar es una fila, ese empujón no corresponde. */
-  .notas__cta {
-    margin-top: 0;
-    flex-shrink: 0;
-  }
-
-  /* ── Sobre mí: foto arriba y datos debajo ── */
-  .sobremi__ficha {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .sobremi__cuerpo { padding: 20px 18px; }
-}
 
 /* ── Barra de título (también es la zona de arrastre) ── */
 .ventana__barra {
@@ -247,7 +179,13 @@ span.semaforo--max {
   margin-bottom: 6px;
 }
 
-/* ═══ Variante NOTES: sidebar + contenido ═══ */
+/* ═══ Variante NOTES: sidebar + contenido ═══
+
+   Botón "‹ Notas": no existe en escritorio, donde la lista y el detalle se
+   ven al mismo tiempo y no hay a dónde volver. Se enciende en el @media
+   de celular, y solo cuando estás dentro de una nota. */
+
+.notas__volver { display: none; }
 
 .notas__cuerpo {
   display: flex;
@@ -745,4 +683,354 @@ span.semaforo--max {
   font-size: var(--texto-base);
   color: var(--color-tinta-cuerpo);
   line-height: 1.5;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ADAPTACIÓN A CELULAR — VA AL FINAL DEL ARCHIVO, A PROPÓSITO
+
+   Un @media NO suma especificidad: solo agrega la condición de tamaño.
+   Entre dos reglas con el mismo selector gana la que está más abajo.
+   Este bloque estaba arriba de todo y las reglas de escritorio (que vienen
+   después) lo pisaban: los estilos de celular no se aplicaban nunca.
+   REGLA PARA NO REPETIRLO: los @media que corrigen estilos existentes van
+   siempre DESPUÉS de lo que corrigen.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── MÓVIL: la ventana deja de flotar y ocupa la pantalla entera ──
+   Las MEDIDAS de cada ventana se anulan en css/pages/home.css (ahí viven).
+   Acá se cambia lo que es del componente: cómo se ve y cómo scrollea. */
+@media (max-width: 700px) {
+  .ventana {
+    position: fixed; /* fixed y no absolute: no se mueve si la página scrollea */
+    inset: 0;        /* pegada a los cuatro bordes */
+    border-radius: 0;
+    /* El contenido scrollea dentro de la ventana, como una app */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ══ BARRA DE NAVEGACIÓN ESTILO iOS ══
+     En un teléfono no hay ventanas, así que la barra de título deja de ser
+     chrome de macOS y pasa a ser lo que corresponde: una nav bar. Botón de
+     volver circular a la izquierda, título centrado en negrita.
+     Queda fija arriba mientras el contenido scrollea por debajo. */
+  .ventana__barra {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    cursor: default; /* en mobile no se arrastra */
+    background: var(--color-superficie);
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 14px 12px;
+  }
+
+  /* Amarillo y verde no van: no minimizan ni maximizan nada */
+  .ventana .semaforo--min,
+  .ventana .semaforo--max {
+    display: none;
+  }
+
+  /* El semáforo rojo se convierte en el botón de volver. Es el mismo
+     elemento de siempre — solo cambia cómo se dibuja. */
+  .ventana .semaforo--cerrar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--color-fondo-agrupado);
+    flex-shrink: 0;
+  }
+
+  .ventana .semaforo--cerrar::after {
+    content: "‹";
+    opacity: 1;              /* no espera al hover: en el celular no hay hover */
+    color: var(--color-tinta);
+    font-size: 1.4rem;
+    font-weight: 400;
+    transform: translateY(-2px);
+  }
+
+  .ventana .semaforo::before { inset: 0; } /* el botón ya mide 34px: alcanza */
+
+  .ventana__titulo {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--color-tinta);
+    /* Compensa el ancho del botón de la izquierda para que el título quede
+       centrado de verdad respecto de la pantalla, no del espacio sobrante. */
+    margin-right: 34px;
+  }
+
+  /* ── Sin efectos de hover en pantallas táctiles ──
+     En un celular no existe "pasar por encima": el navegador simula un hover
+     al tocar y lo DEJA PUESTO hasta que tocás otra cosa. Resultado: el ícono
+     que tocaste se queda agrandado. Se apagan el crecimiento y su transición.
+     El feedback del toque lo da la propia navegación, que es inmediata. */
+  .finder__item {
+    transition: none;
+  }
+
+  .finder__item:hover,
+  .finder__item:active {
+    transform: none;
+  }
+
+  /* Finder: en celular las dos ventanas Finder ya no son ventanas — se
+     muestran como secciones de la home. Su grilla se define en
+     css/pages/home.css, que es donde vive esa decisión de página. */
+
+  /* ═══ Notes en celular: listado → detalle, como la app Notas del iPhone ═══
+     En escritorio conviven las dos cosas: menú a la izquierda, contenido a la
+     derecha. En un teléfono no hay ancho para las dos, así que se turnan:
+     primero ves la LISTA de notas; al tocar una, la lista se va y aparece el
+     DETALLE con un "‹ Notas" para volver. Es el patrón maestro-detalle, el
+     mismo de Mail, Ajustes y Contactos.
+     Quién manda: la clase .viendo-nota que el JS le pone a la ventana. */
+  .notas__cuerpo {
+    flex-direction: column;
+  }
+
+  /* ── Vista LISTA ──
+     Como la app Notas: las notas NO son filas sueltas, son una sola tarjeta
+     redondeada con líneas finas adentro. El redondeo va en el grupo (primera
+     y última), no en cada ítem: por eso se lee como un bloque y no como tres
+     botones apilados. Y no lleva chevron: la app tampoco lo usa. */
+  .notas__sidebar {
+    width: auto;
+    border-right: none;
+    background: none;   /* el gris de fondo lo pone la ventana */
+    padding: var(--espacio-4);
+  }
+
+  /* ── El fondo gris que hace visibles las tarjetas ──
+     Sin esto, tarjetas blancas sobre ventana blanca = no se ve nada.
+     Es la base del patrón agrupado de iOS. */
+  #ventana-notas {
+    background: var(--color-fondo-agrupado);
+  }
+
+  .notas__item {
+    width: 100%;
+    border-radius: 0;
+    padding: 13px 34px 13px 16px; /* espacio a la derecha para el chevron */
+    background: var(--color-superficie);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+  }
+
+  /* El chevron de "acá se entra", como cada fila de Ajustes */
+  .notas__item::after {
+    content: "›";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--color-tinta-suave);
+  }
+
+  /* ── Separador con sangría ──
+     En iOS la línea entre filas NO llega hasta el borde izquierdo: arranca
+     alineada con el texto. Eso hace que el grupo se lea como una sola tarjeta
+     con divisiones adentro, y no como filas sueltas pegadas.
+     Como un `border` siempre ocupa todo el ancho, la línea se dibuja con un
+     pseudo-elemento posicionado, que sí puede empezar donde uno quiera. */
+  .notas__item + .notas__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px; /* mismo retiro de los dos lados, como los otros grupos */
+    height: 1px;
+    background: var(--color-borde-claro);
+  }
+
+  /* Solo las puntas del grupo se redondean.
+     :last-of-type = el último BOTÓN (el CTA de abajo es un <a>, así que no
+     entra en la cuenta). */
+  .notas__item:first-of-type {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .notas__item:last-of-type {
+    border-radius: 0 0 12px 12px;
+  }
+
+  .notas__item strong {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .notas__item span {
+    font-size: 0.85rem;
+    color: var(--color-tinta-suave);
+  }
+
+  /* En el listado, "activo" no significa nada: ninguna está abierta todavía.
+     Ese resaltado es del escritorio, donde la lista y el detalle conviven. */
+  .notas__item.activo { background: var(--color-superficie); }
+
+  /* El CTA del CV cierra el listado, con aire propio */
+  .notas__cta {
+    margin: var(--espacio-5) 0 0;
+  }
+
+  /* El contenido de las notas se esconde: se muestra al entrar en una */
+  .notas__contenido { display: none; }
+
+  /* ── Vista DETALLE (la ventana lleva .viendo-nota) ──
+     No hay un segundo botón de volver: el de la barra de navegación cambia
+     de trabajo. Estando dentro de una nota, vuelve al listado; en el listado,
+     cierra la ventana. Un nivel por vez, como iOS. Eso lo decide el JS
+     (ver el bloque CERRAR en js/components/ventanas.js). */
+  #ventana-notas.viendo-nota .notas__sidebar { display: none; }
+
+  /* ══ EL DETALLE, EN TARJETAS ══
+     La regla de iOS: el contenido NO se separa con líneas de punta a punta.
+     Se agrupa en TARJETAS REDONDEADAS, y adentro de cada una las filas se
+     dividen con una línea fina con sangría. Entre tarjeta y tarjeta hay
+     espacio vacío, no una línea. El título de cada grupo va afuera, arriba,
+     chiquito y apagado.
+     Abajo se arma ese mismo patrón para los tres bloques del CV. */
+  .notas__contenido {
+    padding: var(--espacio-4);
+  }
+
+  /* Rótulo de grupo: afuera de la tarjeta, como "GENERAL" en Ajustes.
+     El `>` es clave: solo los títulos sueltos del contenido, NO los que están
+     adentro de una tarjeta (el nombre de cada puesto, por ejemplo). */
+  .notas__contenido > h3 {
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-tinta-suave);
+    margin: var(--espacio-5) 0 var(--espacio-2) 4px;
+  }
+
+  .notas__contenido > h3:first-child { margin-top: 0; }
+
+  /* ── Tarjeta suelta: el resumen y el párrafo de habilidades ── */
+  .notas__resumen,
+  #nota-skills > p {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 0 0 var(--espacio-5);
+  }
+
+  /* ── Grupo EXPERIENCIA: cada puesto es una fila de la misma tarjeta ── */
+  /* ── Cada puesto, apilado y todo sobre el mismo margen izquierdo ──
+     Estructura acordada con Evelyn (2026-08-13), igual en todos:
+       [logo]
+       [rol · empresa]
+       [lugar · fechas]
+       [tareas]
+     En escritorio el logo va como columna a la izquierda (flex row); acá
+     eso corría todo el texto 48px a la derecha y desalineaba la lectura. */
+  /* Cada puesto es su PROPIA tarjeta (no filas de una tarjeta compartida):
+     redondeo completo y aire entre una y otra, sin líneas divisorias.
+     Estructura (acordada con Evelyn):
+       [logo] [rol · empresa]
+              [lugar · fechas]
+       [tareas, a todo el ancho de la tarjeta]
+     El logo acompaña al título en la misma línea; las tareas van debajo
+     ocupando el ancho completo. */
+  .notas__puesto {
+    background: var(--color-superficie);
+    border-bottom: none;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 0 var(--espacio-3);
+    position: relative;
+    flex-direction: row;  /* logo a la izquierda del título */
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .notas__puesto:last-of-type { margin-bottom: 0; }
+
+  /* ── Las tareas: sin marcador, el aire hace la separación ──
+     Ni discos ni guiones: cada tarea es un bloque corto de texto y el
+     espacio entre una y otra alcanza para distinguirlas (decisión de
+     Evelyn, 2026-08-13). Menos ruido y todo el texto arranca en la misma
+     vertical, alineado con el margen de la tarjeta. */
+  .notas__puesto ul {
+    list-style: none;
+    /* El -48px de la izquierda deshace el corrimiento del logo (36px de
+       logo + 12px de gap): las tareas escapan de la columna del texto y
+       vuelven al margen izquierdo de la tarjeta, a todo el ancho.
+       Si cambiás el tamaño del logo o el gap, cambiá este valor también. */
+    margin: var(--espacio-2) 0 0 -48px;
+    padding: 0;
+  }
+
+  .notas__puesto li {
+    margin-bottom: var(--espacio-3);
+  }
+
+  /* ── Grupo EDUCACIÓN ──
+     Ojo con la especificidad: la regla de escritorio `.notas__contenido ul`
+     (clase + etiqueta) le gana a `.notas__lista` (clase sola) aunque este
+     bloque venga después — por eso la tarjeta aparecía corrida 18px a la
+     derecha. El selector de acá la iguala en contexto y la supera. */
+  .notas__contenido .notas__lista {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .notas__lista li {
+    padding: 13px 16px;
+    margin: 0;
+    position: relative;
+    /* La línea de escritorio se apaga: acá la divisón la dibuja el ::before
+       con sangría. Sin esto convivían las dos líneas, una arriba de la otra. */
+    border-bottom: none;
+  }
+
+  /* ── Grupo HERRAMIENTAS ── */
+  .notas__tools {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .notas__tools > div {
+    padding: 13px 16px;
+    position: relative;
+    /* La línea de escritorio se apaga (igual que en Educación): acá la
+       división la dibuja el ::before. Sin esto se veían dos líneas. */
+    border-bottom: none;
+  }
+
+  /* ── La línea divisoria dentro de Educación y Herramientas ──
+     (Experiencia ya no la lleva: cada puesto es su propia tarjeta.)
+     Va en el segundo elemento en adelante (`+`), así la primera fila no
+     arranca con una línea colgando arriba.
+     Con el MISMO retiro de los dos lados (16px, igual que el padding de la
+     tarjeta): una línea que toca un borde y el otro no se lee como error. */
+  .notas__lista li + li::before,
+  .notas__tools > div + div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: var(--color-borde-claro);
+  }
+
+  /* ── Sobre mí: foto arriba y datos debajo ── */
+  .sobremi__ficha {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .sobremi__cuerpo { padding: 20px 18px; }
 }

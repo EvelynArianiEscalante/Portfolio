@@ -13,6 +13,12 @@ const ESCALA_MAX = 1.5;  // cuánto crece el ícono bajo el cursor
 const RANGO = 100;       // a cuántos px de distancia deja de afectar
 
 dock.addEventListener('mousemove', function (evento) {
+  // En celular esto no corre: la magnificación se calcula según la posición
+  // del cursor, y en una pantalla táctil no hay cursor. Al tocar, el navegador
+  // dispara un mousemove falso y los íconos quedaban agrandados y corridos
+  // hasta que tocabas otra cosa.
+  if (window.innerWidth <= 700) return;
+
   apps.forEach(function (app) {
     const rect = app.getBoundingClientRect();
     const centro = rect.left + rect.width / 2;

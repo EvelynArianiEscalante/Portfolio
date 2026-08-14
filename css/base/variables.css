@@ -22,6 +22,11 @@
   --color-superficie: #ffffff;
   --color-superficie-barra: #f6f6f6;
   --color-superficie-lateral: #fafafa;
+  /* Fondo de las pantallas con contenido agrupado en tarjetas (celular).
+     El truco de iOS: el FONDO es gris y las TARJETAS son blancas. Al revés
+     no funciona — una tarjeta #fafafa sobre un fondo #ffffff no se ve, que
+     es exactamente lo que nos pasó. */
+  --color-fondo-agrupado: #f1f1f4;
   --color-borde-claro: #e5e5e5;
 
   /* ── Color: texto sobre superficies claras ── */

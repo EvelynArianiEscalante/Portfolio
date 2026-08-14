@@ -105,6 +105,23 @@
    Los tres íconos entran en una fila, pero "Proyectos anteriores" es una
    etiqueta larga para 82px de ancho: se parte en tres renglones y empuja
    hacia abajo. Texto más chico = menos renglones. */
+/* ── MÓVIL: sin animaciones de entrada ni rebote ──
+   Los íconos del escritorio no se muestran en celular (los reemplazan los
+   tiles de cada proyecto), pero se apagan igual sus animaciones: si algún día
+   volvemos a mostrarlos, la cascada de entrada y el rebote de atención son
+   lenguaje de escritorio — en un teléfono, donde el contenido llega
+   scrolleando, solo demoran la lectura. */
+@media (max-width: 700px) {
+  .icono,
+  #icono-siotyx,
+  #icono-anteriores {
+    animation: none;
+  }
+
+  .icono { transition: none; }
+  .icono:hover { transform: none; }
+}
+
 /* ── MÓVIL: los tres íconos, exactamente del mismo tamaño ──
    En escritorio conviven dos formas: la carpeta es cuadrada (58×58) y el
    thumbnail es apaisado (72×54). Apilados en una columna esa diferencia
