@@ -552,14 +552,29 @@ span.semaforo--max {
   margin-bottom: var(--espacio-2);
 }
 
+/* Las tareas de cada puesto: sin viñetas y al ras del margen izquierdo,
+   igual que en celular (decisión de Evelyn, 2026-08-15). Cada tarea es una
+   frase corta: el AIRE entre una y otra hace la separación, no el punto.
+   Un solo criterio en los dos mundos. */
 .notas__puesto ul,
 .notas__lista {
-  margin: 0 0 0 18px;
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
+/* Las tareas escapan de la columna del texto y se alinean con el LOGO
+   (el borde izquierdo del bloque). El -48px deshace el corrimiento que
+   impone el logo como columna: 36px de logo + 12px de gap del flex.
+   Mismo truco que ya usa la versión de celular. Si cambiás el tamaño del
+   logo o el gap del .notas__puesto, este número va de la mano. */
+.notas__puesto ul {
+  margin-left: -48px;
+  margin-top: var(--espacio-2);
+}
+
 .notas__puesto li,
-.notas__lista li { margin-bottom: 5px; }
+.notas__lista li { margin-bottom: var(--espacio-2); }
 
 .notas__lista {
   list-style: none;
@@ -803,10 +818,9 @@ span.semaforo--max {
   }
 
   /* ── Vista LISTA ──
-     Como la app Notas: las notas NO son filas sueltas, son una sola tarjeta
-     redondeada con líneas finas adentro. El redondeo va en el grupo (primera
-     y última), no en cada ítem: por eso se lee como un bloque y no como tres
-     botones apilados. Y no lleva chevron: la app tampoco lo usa. */
+     Cada sección (Experiencia, Educación, Skills) es su PROPIA tarjeta
+     con chevron, separadas por aire — igual que las tarjetas de los
+     puestos en el detalle. Un solo lenguaje de tarjetas en toda la app. */
   .notas__sidebar {
     width: auto;
     border-right: none;
@@ -823,13 +837,14 @@ span.semaforo--max {
 
   .notas__item {
     width: 100%;
-    border-radius: 0;
-    padding: 13px 34px 13px 16px; /* espacio a la derecha para el chevron */
+    border-radius: 12px; /* tarjeta propia: redondeo completo */
+    padding: 14px 34px 14px 16px; /* espacio a la derecha para el chevron */
     background: var(--color-superficie);
     display: flex;
     flex-direction: column;
     gap: 2px;
     position: relative;
+    margin-bottom: var(--espacio-3); /* aire entre tarjetas, no líneas */
   }
 
   /* El chevron de "acá se entra", como cada fila de Ajustes */
@@ -843,32 +858,8 @@ span.semaforo--max {
     color: var(--color-tinta-suave);
   }
 
-  /* ── Separador con sangría ──
-     En iOS la línea entre filas NO llega hasta el borde izquierdo: arranca
-     alineada con el texto. Eso hace que el grupo se lea como una sola tarjeta
-     con divisiones adentro, y no como filas sueltas pegadas.
-     Como un `border` siempre ocupa todo el ancho, la línea se dibuja con un
-     pseudo-elemento posicionado, que sí puede empezar donde uno quiera. */
-  .notas__item + .notas__item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 16px;
-    right: 16px; /* mismo retiro de los dos lados, como los otros grupos */
-    height: 1px;
-    background: var(--color-borde-claro);
-  }
-
-  /* Solo las puntas del grupo se redondean.
-     :last-of-type = el último BOTÓN (el CTA de abajo es un <a>, así que no
-     entra en la cuenta). */
-  .notas__item:first-of-type {
-    border-radius: 12px 12px 0 0;
-  }
-
-  .notas__item:last-of-type {
-    border-radius: 0 0 12px 12px;
-  }
+  /* (Las líneas divisorias y el redondeo por grupo se fueron: ahora cada
+     sección es una tarjeta independiente, separada por aire.) */
 
   .notas__item strong {
     font-size: 1rem;
