@@ -49,7 +49,10 @@ document.querySelectorAll('[data-cierra]').forEach(function (boton) {
     // Si estás DENTRO de una nota, volver significa ir al listado, no salir
     // de la ventana. Es cómo funciona iOS: el back te sube un nivel por vez,
     // no te expulsa a la pantalla de inicio.
-    if (ventana.classList.contains('viendo-nota')) {
+    // El chequeo de ancho es OBLIGATORIO: esta lógica es solo del celular.
+    // Sin él, en escritorio el rojo "volvía al listado" (que en escritorio
+    // no existe) y destapaba los tres contenidos a la vez.
+    if (window.innerWidth <= 700 && ventana.classList.contains('viendo-nota')) {
       ventana.classList.remove('viendo-nota');
       ventana.querySelectorAll('.notas__item').forEach(function (i) {
         i.classList.remove('activo');
@@ -67,6 +70,9 @@ document.querySelectorAll('[data-cierra]').forEach(function (boton) {
     }
 
     ventana.classList.remove('abierta');
+    // Limpieza por si quedó estado del celular colgado (ej.: alguien achicó
+    // la ventana del navegador, navegó una nota y volvió a agrandarla)
+    ventana.classList.remove('viendo-nota');
   });
 });
 
@@ -160,13 +166,14 @@ document.querySelectorAll('[data-nota]').forEach(function (item) {
       contenido.style.display = (contenido.id === 'nota-' + item.dataset.nota) ? 'block' : 'none';
     });
 
-    // ── En celular: pasar del listado al detalle ──
-    // En escritorio la lista y el contenido conviven, así que no hace falta
-    // "entrar" a ningún lado. En el teléfono se turnan: la clase .viendo-nota
-    // le avisa al CSS que esconda la lista y muestre el botón de volver.
-    // (Ver el @media de css/components/ventana.css)
-    const ventanaNotas = item.closest('.ventana');
-    if (ventanaNotas) ventanaNotas.classList.add('viendo-nota');
+    // ── SOLO en celular: pasar del listado al detalle ──
+    // En escritorio la lista y el contenido conviven, así que no hay que
+    // "entrar" a ningún lado — y marcar el estado igual dejaba a la ventana
+    // en modo celular sin estarlo (el bug de las tres columnas).
+    if (window.innerWidth <= 700) {
+      const ventanaNotas = item.closest('.ventana');
+      if (ventanaNotas) ventanaNotas.classList.add('viendo-nota');
+    }
   });
 });
 
