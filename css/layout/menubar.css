@@ -32,11 +32,15 @@
   font-weight: 700;
   font-size: 1rem;
   color: var(--color-texto);
-  /* Lockup nombre + pez: texto vivo con el isotipo SVG al lado.
-     inline-flex los alinea por centro vertical sin trucos. */
+  /* Lockup pez + nombre: el isotipo SVG con el texto vivo al lado.
+     inline-flex los alinea por centro vertical sin trucos.
+     gap 5px: lo justo para que respiren pero se lean como UNA marca
+     (proximidad: más cerca entre sí que de cualquier otra cosa). */
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
+  /* Ahora es un link a la home: sin subrayado, color firme */
+  text-decoration: none;
 }
 
 .menubar__logo {
