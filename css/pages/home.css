@@ -331,14 +331,20 @@
   }
 
   /* ── Grilla de 4 columnas: exactamente como la home de un iPhone ──
-     4 columnas fijas (no "las que entren"): un iPhone siempre muestra 4,
-     de un SE a un Pro Max. Lo que cambia es el tamaño del ícono, no la
-     cantidad. Por eso 1fr y no un ancho en píxeles. */
+     Columnas FIJAS del ancho del ícono + space-between: el navegador reparte
+     el sobrante en partes iguales entre las columnas. Es como lo hace iOS:
+     el ícono mide siempre lo mismo, el primero queda al ras del margen
+     izquierdo (alineado con el título), el último al ras del derecho, y
+     TODOS los espacios intermedios salen idénticos.
+     (Antes eran columnas elásticas de 1fr con el ícono fijo adentro: en
+     pantallas anchas sobraba espacio muerto distinto en cada celda y los
+     gaps se veían desparejos.) */
   #ventana-siotyx .finder__grid,
   #ventana-anteriores .finder__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 64px);
+    justify-content: space-between;
     padding: 0;
-    gap: var(--espacio-4) var(--espacio-3);
+    gap: var(--espacio-4) 0; /* el gap horizontal lo pone space-between */
   }
 
   /* ── El tile deja de ser un rectángulo y pasa a ser un ícono de app ──
@@ -353,12 +359,9 @@
        La celda de la grilla mide distinto en cada teléfono (de 63 a 90px).
        Si el ícono llenara la celda, en un Pro Max saldría enorme. Un iPhone
        real usa siempre ~60px, sin importar la pantalla: lo que cambia es el
-       aire entre íconos, no el ícono.
-       Pegado al borde IZQUIERDO de su celda (no centrado): así el primer
-       ícono de cada fila queda en la misma vertical que el título de la
-       sección, y todas las columnas comparten eje con su etiqueta. */
+       aire entre íconos, no el ícono. La celda ya mide 64px (fijo, en la
+       grilla): el ícono simplemente la llena. */
     width: 100%;
-    max-width: 60px;
     margin: 0 0 var(--espacio-1);
     border-radius: 23%; /* proporción del squircle de iOS */
     /* La foto se recorta desde el centro (background-size: cover viene del
@@ -373,9 +376,13 @@
   #ventana-anteriores .finder__item span {
     display: block;
     text-align: left;
-    font-size: 0.68rem;
+    /* 0.75rem = 12px, el tamaño de las etiquetas de la home de iOS.
+       El 0.68 anterior (11px) quedaba chico, sobre todo en pantallas
+       grandes. Sigue en rem: escala si el usuario agranda la tipografía
+       del sistema. */
+    font-size: 0.75rem;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.3;
     color: var(--color-texto);
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
   }

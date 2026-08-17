@@ -32,6 +32,17 @@
   font-weight: 700;
   font-size: 1rem;
   color: var(--color-texto);
+  /* Lockup nombre + pez: texto vivo con el isotipo SVG al lado.
+     inline-flex los alinea por centro vertical sin trucos. */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menubar__logo {
+  width: 17px;
+  height: auto;
+  flex-shrink: 0; /* el pez no se comprime aunque falte espacio */
 }
 
 /* Bloque derecho: reloj + hamburguesa.
@@ -109,6 +120,23 @@
     height: 38px;
     padding: 0 var(--espacio-3);
     font-size: 0.78rem;
+    /* ⚠️ SIN backdrop-filter, a propósito. Un elemento con backdrop-filter
+       se vuelve la "raíz de fondo" de sus descendientes: el panel del menú
+       (que es hijo de esta barra) intentaba blurear y solo veía a la barra,
+       no a la página — por eso el vidrio no funcionaba y el texto de atrás
+       se leía nítido. La barra usa un color casi opaco (se ve igual) y el
+       blur de verdad lo hace el panel. */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(13, 14, 16, 0.92);
+    /* Modelo de capas del celular, explícito:
+         contenido de la home  →  en flujo (sin capa)
+         barra + su panel      →  300
+         apps a pantalla llena →  500+ (lo pone el JS al abrirlas)
+       Así el menú SIEMPRE tapa la home, y una app abierta SIEMPRE tapa
+       al menú. Antes la barra estaba en 50 y el orden quedaba librado a
+       sutilezas de stacking: el panel se abría atrás de los íconos. */
+    z-index: 300;
     /* Sin esto la barra crece hacia abajo cuando algo no entra, en vez de
        mantenerse en una línea */
     white-space: nowrap;
@@ -137,10 +165,13 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: var(--espacio-2) var(--espacio-3) var(--espacio-3);
-    background: rgba(18, 18, 20, 0.92);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    padding: var(--espacio-2) var(--espacio-4) var(--espacio-4);
+    /* Vidrio esmerilado de verdad: fondo bien translúcido + blur fuerte.
+       Lo de abajo se INTUYE (formas y luz del cemento) pero no se LEE.
+       El saturate aviva los colores que atraviesan, como hace iOS. */
+    background: rgba(16, 17, 20, 0.55);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
   }
@@ -148,8 +179,8 @@
   .menubar__izq.abierto { display: flex; }
 
   .menubar__izq .menubar__link {
-    padding: 13px 4px; /* área de toque cómoda: 44px de alto aprox. */
-    font-size: 0.95rem;
+    padding: 16px 4px; /* filas más aireadas: ~52px de alto de toque */
+    font-size: 1rem;
     color: var(--color-texto);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }

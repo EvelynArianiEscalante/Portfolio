@@ -400,6 +400,19 @@ span.semaforo--max {
 
 .sobremi__bio p { margin-bottom: var(--espacio-3); }
 
+/* Gustos: en escritorio se ven como la línea de siempre, uno al lado del
+   otro. (En celular pasan a tarjetitas en grilla: ver el @media al final.) */
+.sobremi__gustos {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0 0 var(--espacio-4);
+  padding: 0;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-cuerpo);
+}
+
 /* ═══ Variante PROYECTO: imagen grande + caption ═══ */
 
 .proyecto__imagen {
@@ -1025,12 +1038,133 @@ span.semaforo--max {
     background: var(--color-borde-claro);
   }
 
-  /* ── Sobre mí: foto arriba y datos debajo ── */
-  .sobremi__ficha {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+  /* ══ SOBRE MÍ: mismo patrón agrupado que el CV ══
+     Fondo gris, contenido en tarjetas blancas redondeadas, rótulos afuera.
+     Un solo lenguaje para todas las "apps" del teléfono. */
+  #ventana-sobre-mi-app {
+    background: var(--color-fondo-agrupado);
   }
 
-  .sobremi__cuerpo { padding: 20px 18px; }
+  .sobremi__cuerpo { padding: var(--espacio-4); }
+
+  /* ── Tarjeta 1: avatar a la izquierda, datos a la derecha ── */
+  .sobremi__ficha {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    padding: 14px 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: var(--espacio-3);
+  }
+
+  /* El avatar un poco más contenido, para que los datos respiren al lado */
+  .sobremi__avatar {
+    width: 84px;
+    height: 84px;
+  }
+
+  /* ── Los datos: la jerarquía la hace la TIPOGRAFÍA, no las líneas ──
+     Nombre grande y en negrita (es lo principal), rol mediano, mail chico.
+     Con tres pesos distintos, las líneas divisorias y las etiquetas
+     NOMBRE/ROL/MAIL no agregan información: se van.
+     min-width: 0 permite que el mail (que es largo) se corte con … en vez
+     de desbordar la tarjeta — un flex item no se achica más que su
+     contenido salvo que se lo permitas explícitamente. */
+  .sobremi__datos {
+    min-width: 0;
+  }
+
+  .sobremi__datos p {
+    border-bottom: none;
+    padding: 2px 0;
+  }
+
+  .sobremi__label {
+    display: none;
+  }
+
+  /* Primera línea: el nombre, protagonista */
+  .sobremi__datos p:nth-child(1) {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-tinta);
+  }
+
+  /* Segunda: el rol, secundario */
+  .sobremi__datos p:nth-child(2) {
+    font-size: 0.85rem;
+    color: var(--color-tinta-suave);
+  }
+
+  /* Tercera: el mail, terciario y truncado con puntos suspensivos si no entra */
+  .sobremi__datos p:nth-child(3) {
+    font-size: 0.8rem;
+  }
+
+  .sobremi__datos p:nth-child(3) a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ── Tarjeta 2: la bio ── */
+  .sobremi__bio {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: var(--espacio-3);
+  }
+
+  .sobremi__bio p:last-child { margin-bottom: 0; }
+
+  /* ── Los gustos: tarjetitas en grilla de 2 columnas ── */
+  .sobremi__gustos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espacio-2);
+    margin: 0 0 var(--espacio-3);
+  }
+
+  .sobremi__gustos li {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* ── "Cómo trabajo" y "Ubicación": rótulo afuera, contenido en tarjeta ── */
+  /* La línea de arriba de cada sección era de la ventana de escritorio.
+     Acá las tarjetas ya se separan solas con el espacio y el fondo gris:
+     línea + espacio = doble separador. */
+  .sobremi__seccion {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .sobremi__seccion h3 {
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-tinta-suave);
+    margin: var(--espacio-4) 0 var(--espacio-2) 4px;
+  }
+
+  .sobremi__card {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .sobremi__card p:last-child { margin-bottom: 0; }
+
+  /* El mapa ya es un bloque: solo toma la forma de tarjeta */
+  .sobremi__mapa .mapa {
+    background: var(--color-superficie);
+    border-radius: 12px;
+    overflow: hidden; /* que el iframe respete las esquinas redondeadas */
+  }
 }

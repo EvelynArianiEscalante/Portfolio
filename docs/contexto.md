@@ -86,6 +86,12 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
 
 ## PENDIENTES (en orden sugerido)
 
+0-bis. **Etiquetas de los íconos de proyectos (2026-08-14):** se acortaron para
+   que entren en un renglón en la home mobile (Health App · WiFi · Pedidos ·
+   AIKA). A Evelyn **no la convencen del todo** — quedó en avanzar y revisarlo
+   después. Si aparecen nombres mejores, se cambian en index.html (los <span>
+   de los .finder__item).
+
 0. **PENDIENTES DE EVELYN (el código ya está listo y esperándolos):**
    - `assets/docs/cv-evelyn-ariani-escalante.pdf` → el botón "Descargar CV" del
      sidebar de Perfil profesional está maquetado con `hidden`. Al subir el PDF,

@@ -14,17 +14,24 @@
   padding: 11px 20px; /* generoso a los lados, contenido en altura */
   /* Efecto "frozen glass": más blur + saturación del fondo que atraviesa,
      borde de luz y un brillo interno arriba, como el dock real */
-  background: rgba(255, 255, 255, 0.06); /* apenas más transparente: se intuye el fondo */
-  backdrop-filter: blur(28px) saturate(170%);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  background: rgba(255, 255, 255, 0.05);
+  /* blur 16 y no 28: con 28 el fondo quedaba TAN licuado que se veía como
+     un gris plano y el vidrio no se notaba. Con 16 las formas del cemento
+     se intuyen atravesando el dock — que es justamente el efecto. Regla
+     del frosted glass: si no se adivina qué hay atrás, parece pintura. */
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     0 12px 32px rgba(0, 0, 0, 0.35);
   border-radius: 28px;
-  /* Esquinas "continuas" tipo macOS (squircle): CSS nuevo, los navegadores
-     que aún no lo soportan simplemente lo ignoran y usan el radio normal */
-  corner-shape: squircle;
+  /* ⚠️ corner-shape: squircle ELIMINADO (2026-08-15).
+     Es una propiedad experimental que en Chrome se lleva mal con
+     backdrop-filter: al combinarlas, el navegador dejaba de dibujar el
+     blur y el "vidrio" quedaba como pintura gris plana. El squircle era
+     un detalle; el vidrio es el efecto. Si algún día el bug se arregla,
+     se puede volver a probar. */
   z-index: var(--capa-barra);
 }
 

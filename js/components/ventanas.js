@@ -8,7 +8,11 @@
    ═══════════════════════════════════════════════ */
 
 // Contador global de capas: cada vez que se toca una ventana, sube.
-let zIndice = 100;
+// Arranca en 500 para quedar SIEMPRE por encima de la barra de menú del
+// celular (capa 300): una app abierta a pantalla completa tiene que tapar
+// a la barra y su menú, no convivir con ellos. En escritorio no cambia
+// nada: las ventanas ya quedaban arriba de la barra (50) desde antes.
+let zIndice = 500;
 
 // ── 1. ABRIR ──
 document.querySelectorAll('[data-ventana]').forEach(function (disparador) {

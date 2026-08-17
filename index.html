@@ -20,6 +20,14 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Tipografía: Figtree -->
+  <!-- ═══ FAVICON ═══
+       El SVG es el principal (nítido a cualquier tamaño y pesa nada);
+       el PNG de 32 es el plan B para Safari, que no acepta SVG acá;
+       el de 180 es el que usa iOS al "Agregar a pantalla de inicio". -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/favicon-180.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,15 +43,15 @@
        archivo nuevo y lo baja sí o sí.
        REGLA: cada vez que toques un CSS y publiques, subí el número: v=2, v=3…
        Es lo único que hay que acordarse. -->
-  <link rel="stylesheet" href="css/base/reset.css?v=33">
-  <link rel="stylesheet" href="css/base/variables.css?v=33">
-  <link rel="stylesheet" href="css/base/tipografia.css?v=33">
-  <link rel="stylesheet" href="css/layout/escritorio.css?v=33">
-  <link rel="stylesheet" href="css/layout/menubar.css?v=33">
-  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=33">
-  <link rel="stylesheet" href="css/components/ventana.css?v=33">
-  <link rel="stylesheet" href="css/components/dock.css?v=33">
-  <link rel="stylesheet" href="css/pages/home.css?v=33">
+  <link rel="stylesheet" href="css/base/reset.css?v=41">
+  <link rel="stylesheet" href="css/base/variables.css?v=41">
+  <link rel="stylesheet" href="css/base/tipografia.css?v=41">
+  <link rel="stylesheet" href="css/layout/escritorio.css?v=41">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=41">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=41">
+  <link rel="stylesheet" href="css/components/ventana.css?v=41">
+  <link rel="stylesheet" href="css/components/dock.css?v=41">
+  <link rel="stylesheet" href="css/pages/home.css?v=41">
 </head>
 
 <body>
@@ -53,12 +61,25 @@
     <!-- ═══ BARRA DE MENÚ: estética macOS + navegación real ═══ -->
     <header class="menubar">
       <!-- El nombre salió de adentro del <nav>: no es un link de navegación,
-           y así puede quedarse en la barra cuando el menú se pliega en celular. -->
-      <span class="menubar__nombre">Evelyn Ariani</span>
+           y así puede quedarse en la barra cuando el menú se pliega en celular.
+           El pez va INLINE (no como <img>): así no genera otra petición al
+           servidor y hereda contexto de CSS si algún día hace falta. El nombre
+           sigue siendo texto vivo: seleccionable, indexable, accesible.
+           aria-hidden en el SVG: es decorativo, el nombre ya dice quién es. -->
+      <span class="menubar__nombre">
+        Evelyn Ariani
+        <svg class="menubar__logo" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8899 15.7312L18.8574 8.52076L11.8899 1.31307L4.50245 1.45408L8.0655 5.1203L6.28398 6.8829L0.459763 1.10156V16.1542L6.28398 10.1409L8.0655 12.1002L4.50245 15.7312H11.8899ZM11.8899 2.15912L18.1121 8.52076L11.7656 15.1385L5.41384 8.52076L11.8899 2.15912ZM5.77007 2.01812L8.47662 4.66202L11.0804 2.01812H5.77007ZM5.77007 15.1385L8.47662 12.4527L11.0804 15.1385H5.77007ZM1.04219 2.44114L5.90711 7.41168L4.70801 8.52076L5.90711 9.77357L0.939404 14.7441L1.04219 2.44114Z" fill="#B0CAF3" stroke="#B0CAF3" stroke-width="0.919883"/>
+        </svg>
+      </span>
 
       <nav class="menubar__izq" id="menu-principal" aria-label="Navegación principal">
         <span>UX/UI Designer</span>
         <a class="menubar__link" href="pages/casos-de-estudio/index.html">Proyectos</a>
+        <!-- Abre la ventana del CV (Perfil profesional), como el ícono de
+             Notas del dock: dos caminos al mismo lugar, está bien — el menú
+             es la navegación formal, el dock la lúdica. -->
+        <a class="menubar__link" href="#" data-ventana="ventana-notas">Experiencia</a>
         <a class="menubar__link" href="#">Sistema de diseño</a>       <!-- página pendiente -->
         <!-- data-ventana: el JS abre cualquier elemento que tenga este atributo.
              Antes era un link muerto; ahora abre la ventana Sobre mí. -->
@@ -169,15 +190,17 @@
       <div class="finder__grid">
         <button class="finder__item finder__item--thumb" data-ventana="ventana-health" data-directo="pages/casos-de-estudio/health-app.html">
           <span class="finder__thumb fthumb--health"></span>
-          <span>Health App Redesign</span>
+          <!-- Etiquetas cortas, como apps de un teléfono. El nombre completo
+               vive en la vista previa y en la página del caso. -->
+          <span>Health App</span>
         </button>
         <button class="finder__item finder__item--thumb" data-ventana="ventana-wifi" data-directo="pages/casos-de-estudio/wifi-marketing.html">
           <span class="finder__thumb fthumb--wifi"></span>
-          <span>Sistema WiFi Marketing</span>
+          <span>WiFi</span>
         </button>
         <button class="finder__item finder__item--thumb" data-ventana="ventana-pedidos" data-directo="pages/casos-de-estudio/pedidos-gestion.html">
           <span class="finder__thumb fthumb--pedidos"></span>
-          <span>Pedidos &amp; Gestión</span>
+          <span>Pedidos</span>
         </button>
         <button class="finder__item finder__item--thumb" data-ventana="ventana-aika" data-directo="pages/casos-de-estudio/aika.html">
           <span class="finder__thumb fthumb--aika"></span>
@@ -241,19 +264,33 @@
           logística, construyendo design systems desde cero. Lo que más me define:
           llevar lo digital al mundo físico, diseñando para dispositivos y
           contextos reales de uso.</p>
-          <p>🧉 Mate · 🎧 Música · 🎮 Videojuegos · ⚽️🏑 Fútbol y hockey</p>
         </div>
+
+        <!-- Gustos como lista (antes era un párrafo con puntos medios):
+             semánticamente SON items separados, y así en celular cada uno
+             puede ser su propia tarjetita en grilla. -->
+        <ul class="sobremi__gustos">
+          <li>🧉 Mate</li>
+          <li>🎧 Música</li>
+          <li>🎮 Videojuegos</li>
+          <li>⚽️🏑 Fútbol y hockey</li>
+        </ul>
 
         <!-- ═══ CÓMO TRABAJO ═══
              ⚠️ EVELYN: este texto es una propuesta. Leelo con calma y cambiá
              lo que no te represente — habla de vos, tiene que sonarte tuyo. -->
         <section class="sobremi__seccion">
           <h3>Cómo trabajo</h3>
-          <p>Aprendí a programar lo suficiente como para dejar de entregar
-          mockups estáticos. Este portfolio está hecho a mano en HTML y CSS,
-          versionado en Git, trabajando con Claude como par técnico.</p>
-          <p>No me volvió desarrolladora: me volvió una diseñadora que puede
-          poner algo funcionando delante de un dev, en vez de una imagen.</p>
+          <!-- El div permite que en celular el título quede AFUERA de la
+               tarjeta (como los rótulos del CV) y el texto adentro. En
+               escritorio es transparente: no cambia nada. -->
+          <div class="sobremi__card">
+            <p>Aprendí a programar lo suficiente como para dejar de entregar
+            mockups estáticos. Este portfolio está hecho a mano en HTML y CSS,
+            versionado en Git, trabajando con Claude como par técnico.</p>
+            <p>No me volvió desarrolladora: me volvió una diseñadora que puede
+            poner algo funcionando delante de un dev, en vez de una imagen.</p>
+          </div>
         </section>
 
         <!-- ═══ UBICACIÓN ═══
@@ -684,10 +721,10 @@
   </div>
 
   <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
-  <script src="js/components/ventanas.js?v=33"></script>
-  <script src="js/components/dock.js?v=33"></script>
-  <script src="js/components/menu.js?v=33"></script>
-  <script src="js/components/reloj.js?v=33"></script>
-  <script src="js/components/avatar-switch.js?v=33"></script>
+  <script src="js/components/ventanas.js?v=41"></script>
+  <script src="js/components/dock.js?v=41"></script>
+  <script src="js/components/menu.js?v=41"></script>
+  <script src="js/components/reloj.js?v=41"></script>
+  <script src="js/components/avatar-switch.js?v=41"></script>
 </body>
 </html>

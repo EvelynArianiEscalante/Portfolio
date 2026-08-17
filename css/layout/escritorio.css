@@ -81,8 +81,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Arriba deja pasar la barra de menú; abajo, el dock */
-    padding: 54px var(--espacio-4) 124px;
+    /* Arriba deja pasar la barra de menú; abajo, el dock.
+       El margen lateral acompaña al teléfono, como hace iOS: 16px en
+       pantallas compactas, 20px de ~400px para arriba (14 Pro, Pro Max).
+       clamp(mínimo, preferido, máximo): entre 390 y 430px de pantalla
+       crece suave de 16 a 20. */
+    padding: 54px clamp(16px, 16px + (100vw - 390px) * 0.1, 20px) 124px;
   }
 
   .centro {
