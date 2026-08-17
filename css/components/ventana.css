@@ -263,10 +263,11 @@ span.semaforo--max {
   margin-top: auto;
   display: flex;
   align-items: center;
-  /* flex-start, no center: los items del sidebar arrancan a la izquierda y el
-     botón tiene que seguir esa misma línea. Texto centrado adentro de una
-     columna alineada a la izquierda rompe el eje de lectura. */
-  justify-content: flex-start;
+  /* Ícono + texto CENTRADOS en el botón (corrección de Evelyn, 2026-08-15).
+     La regla anterior los alineaba a la izquierda para seguir el eje del
+     sidebar, pero un botón primario es una pieza en sí misma: su contenido
+     se centra, como cualquier CTA. */
+  justify-content: center;
   gap: var(--espacio-2);
   padding: 10px var(--espacio-3);
   border-radius: 8px;
