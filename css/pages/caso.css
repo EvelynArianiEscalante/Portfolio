@@ -110,32 +110,15 @@ span.semaforo--max {
 }
 
 .caso-contenido {
-  /* El contenedor es ancho (menos margen desperdiciado a los costados) y las
-     imágenes lo aprovechan entero. Pero el TEXTO no: se limita aparte, más
-     abajo, con --medida-lectura. Ensanchar el texto junto con todo lo demás
-     lo volvería incómodo de leer. */
-  max-width: 980px;
+  /* UNA sola medida para todo (decisión de Evelyn, 2026-08-15): título,
+     bajada, ficha, texto, cards e imágenes comparten el mismo ancho y los
+     mismos bordes. Antes el texto se limitaba a 700px y las imágenes iban
+     a 980: dos anchos conviviendo se leían como desalineación, no como
+     jerarquía. El contenedor baja a 880px como punto medio: las líneas de
+     texto quedan largas pero razonables, y las imágenes pierden poco. */
+  max-width: 880px;
   margin: 0 auto;
   padding: var(--espacio-6) var(--espacio-5) 96px;
-}
-
-/* ── Medida de lectura ──
-   El ancho cómodo para leer son 60-80 caracteres por línea. Con el cuerpo en
-   16px eso son ~700px. Más ancho que eso y el ojo se pierde al volver al
-   principio del renglón siguiente.
-   Todo lo que es TEXTO se limita a esta medida; las imágenes y las grillas de
-   puntos, no: esas usan el ancho completo del contenedor. */
-.caso-contenido {
-  --medida-lectura: 700px;
-}
-
-.caso-header,
-.caso-seccion > p,
-.caso-seccion > h2,
-.caso-seccion > h3,
-.caso-nota,
-.caso-figura figcaption {
-  max-width: var(--medida-lectura);
 }
 
 /* ── Cabecera del caso ── */
@@ -369,6 +352,9 @@ span.semaforo--max {
 
   .caso-seccion h2 { font-size: 1.1rem; }
   .caso-seccion h3 { font-size: 1rem; }
+
+  /* En celular las 2 columnas no entran: todas las cards a una columna */
+  ul.puntos { grid-template-columns: 1fr; }
 }
 
 
@@ -388,8 +374,24 @@ ul.puntos {
   margin-left: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* ── SIEMPRE 2 columnas (regla de grilla acordada con Evelyn) ──
+     Antes era auto-fit: el navegador metía las columnas que entraran (3, 4…)
+     y el resto quedaba huérfano en una fila desalineada — 3 cards arriba y
+     1 gigante abajo, sin simetría. Con 2 columnas fijas el resultado es
+     predecible para cualquier cantidad:
+       2 items → 1 fila pareja       4 items → 2×2
+       3 items → 2 + 1 a lo ancho    5 items → 2×2 + 1 a lo ancho
+     Las cards de una misma fila miden lo mismo de alto solas: es el
+     comportamiento por defecto de grid (stretch). */
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--espacio-3);
+}
+
+/* El item impar que queda solo al final ocupa el ancho completo:
+   :last-child + :nth-child(odd) = "es el último Y es impar".
+   Así nunca queda una card suelta desalineada a la izquierda. */
+ul.puntos > .punto:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 /* ATENCIÓN — el mismo tropiezo de antes, ahora entre reglas mías:
