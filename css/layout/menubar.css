@@ -169,9 +169,11 @@
     /* Vidrio esmerilado de verdad: fondo bien translúcido + blur fuerte.
        Lo de abajo se INTUYE (formas y luz del cemento) pero no se LEE.
        El saturate aviva los colores que atraviesan, como hace iOS. */
-    background: rgba(16, 17, 20, 0.55);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    background: rgba(16, 17, 20, 0.5);
+    /* Mismo criterio que el dock: blur moderado para que el fondo se
+       desenfoque pero no se convierta en color plano. */
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
   }

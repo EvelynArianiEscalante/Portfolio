@@ -14,13 +14,18 @@
   padding: 11px 20px; /* generoso a los lados, contenido en altura */
   /* Efecto "frozen glass": más blur + saturación del fondo que atraviesa,
      borde de luz y un brillo interno arriba, como el dock real */
-  background: rgba(255, 255, 255, 0.05);
-  /* blur 16 y no 28: con 28 el fondo quedaba TAN licuado que se veía como
-     un gris plano y el vidrio no se notaba. Con 16 las formas del cemento
-     se intuyen atravesando el dock — que es justamente el efecto. Regla
-     del frosted glass: si no se adivina qué hay atrás, parece pintura. */
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background: rgba(255, 255, 255, 0.04);
+  /* ── Vidrio "líquido" en dos capas (referencia: el dock de iOS 26) ──
+     El vidrio real no es blur parejo: en el centro se ve casi nítido y en
+     los bordes la luz se dobla y distorsiona. CSS no tiene refracción,
+     pero se aproxima así:
+       · esta capa (el dock entero): blur MÍNIMO — el fondo se ve pasar
+       · el ::before de abajo: blur FUERTE solo en un anillo pegado a los
+         bordes (recortado con mask)
+     El contraste centro-nítido / borde-derretido es lo que el ojo lee
+     como lente. */
+  backdrop-filter: blur(3px) saturate(150%) brightness(1.04);
+  -webkit-backdrop-filter: blur(3px) saturate(150%) brightness(1.04);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
@@ -33,6 +38,24 @@
      un detalle; el vidrio es el efecto. Si algún día el bug se arregla,
      se puede volver a probar. */
   z-index: var(--capa-barra);
+}
+
+/* La segunda capa del vidrio: un anillo de blur fuerte pegado a los bordes.
+   La máscara radial deja este pseudo-elemento visible SOLO cerca del borde
+   (transparente en el centro): ahí el fondo se derrite más, simulando la
+   distorsión de la luz al entrar al vidrio. z-index -1 = debajo de los
+   íconos, que no se enteran de nada. */
+.dock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  mask: radial-gradient(ellipse at center, transparent 55%, black 92%);
+  -webkit-mask: radial-gradient(ellipse at center, transparent 55%, black 92%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .dock__app {
