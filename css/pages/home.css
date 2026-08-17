@@ -370,12 +370,13 @@
   }
 
   /* Etiquetas chicas debajo del ícono, sobre el wallpaper.
-     Alineadas a la IZQUIERDA, igual que el ícono: si el ícono va al borde
-     de la celda y el texto centrado, cada uno seguía un eje distinto. */
+     CENTRADAS bajo su ícono, como las etiquetas reales de iOS/macOS.
+     El ícono llena su celda de 64px, así que el centro de la etiqueta
+     coincide con el centro del ícono. */
   #ventana-siotyx .finder__item span,
   #ventana-anteriores .finder__item span {
     display: block;
-    text-align: left;
+    text-align: center;
     /* 0.75rem = 12px, el tamaño de las etiquetas de la home de iOS.
        El 0.68 anterior (11px) quedaba chico, sobre todo en pantallas
        grandes. Sigue en rem: escala si el usuario agranda la tipografía

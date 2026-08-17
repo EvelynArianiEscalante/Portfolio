@@ -130,13 +130,14 @@
    (background-size: cover ya está puesto en el componente).
    Y el texto va alineado a la izquierda, como la columna. */
 @media (max-width: 700px) {
-  .icono { text-align: left; }
+  /* Etiquetas centradas bajo el ícono, como en un sistema real */
+  .icono { text-align: center; }
 
   .icono__folder,
   .icono__thumb {
     width: 58px;
     height: 58px;
-    margin: 0 0 var(--espacio-2); /* sin `auto`: pegados a la izquierda */
+    margin: 0 auto var(--espacio-2);
   }
 }
 
