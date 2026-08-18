@@ -144,12 +144,12 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
    Links "Ver caso completo" conectados en home e índice de proyectos; la
    navegación circular: health → pedidos → wifi → aika → health.
    ✅ También `wifi-marketing.html` (ver punto 4).
-   ✅ 2026-08-15: **`transporte.html` (Siotyx Flota)** con el contenido del
+   ✅ 2026-08-15: **`transporte.html` (Siotyx Transporte)** con el contenido del
    handoff que Evelyn armó con su Claude de contexto de Siotyx (texto A–E
    aprobado). Las PANTALLAS todavía no están: cada lugar donde va una imagen
    quedó como comentario 📷 en el HTML con qué exportar, epígrafe sugerido
    y ⚠️ de datos sensibles (dominios, EPC, conductores → ficticios).
-   El título público del caso es "Siotyx Flota". La ficha usa
+   El título público del caso es "Siotyx Transporte" (decisión 2026-08-17; antes fue "Siotyx Flota"). En prosa, "flota" minúscula sigue siendo válida cuando refiere a los vehículos. La ficha usa
    Rol/Plataformas/Alcance/Herramientas (no Sector/Timeline como los
    anteriores) porque así vino del handoff. Teasers de home e índice
    actualizados; data-directo en mobile. Regla del handoff: NO mencionar
