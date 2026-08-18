@@ -34,10 +34,18 @@
   --color-tinta-suave: #6e6e73;
   --color-tinta-cuerpo: #3a3a3c;
 
-  /* ── Color: acentos del sistema ── */
-  --color-carpeta: #5ba8f2;         /* azul carpeta macOS */
-  --color-carpeta-oscuro: #3c8be0;
-  --color-carpeta-claro: #74bcf9;
+  /* ── Color: acentos del sistema ──
+     Azul empolvado (elegido por Evelyn, 2026-08-17). Reemplazó al celeste
+     macOS #3c8be0: más sobrio y ADEMÁS más legible — el viejo daba 3.52:1
+     de contraste sobre blanco (no pasaba AA para texto normal), este da
+     6.18:1. Los tres tonos son la misma familia: oscuro = links/botones/
+     íconos, base = hovers, claro = anillo de foco.
+     2ª pasada (mismo día): un tonito más claro a pedido de Evelyn.
+     #4d6ca0 es el TECHO de claridad — da 5.29:1 en blanco y 4.69:1 en el
+     gris agrupado; un paso más y perdía AA sobre el gris. */
+  --color-carpeta: #5a7cae;
+  --color-carpeta-oscuro: #4d6ca0;
+  --color-carpeta-claro: #a3b7d6;
   --color-nota: #f7c948;            /* amarillo de la app Notes */
 
   /* Rojo de diagnóstico: marca hallazgos y problemas detectados.

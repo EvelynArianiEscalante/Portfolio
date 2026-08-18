@@ -23,10 +23,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../css/base/reset.css?v=16">
-  <link rel="stylesheet" href="../../css/base/variables.css?v=16">
-  <link rel="stylesheet" href="../../css/base/tipografia.css?v=16">
-  <link rel="stylesheet" href="../../css/pages/caso.css?v=16">
+  <link rel="stylesheet" href="../../css/base/reset.css?v=18">
+  <link rel="stylesheet" href="../../css/base/variables.css?v=18">
+  <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=18">
 </head>
 <body>
 
@@ -62,7 +62,7 @@
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Transporte de cargas</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · 5 sprints</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Design system · Mobile + Web · RFID</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Mobile + Web · RFID</dd></div>
       </dl>
     </header>
 
@@ -132,7 +132,7 @@
            ⚠️ Dominio "AB 123 VE", conductor "Gabriel Romero",
            "Scania R450 – JFK-026" → reemplazar por datos de ejemplo. -->
 
-      <h3>Wizards para lo complejo</h3>
+      <h3>Lo complejo, partido en pasos</h3>
       <p>Partí las tareas densas en pasos con revisión final: alta de
       vehículo (5), programación de viaje (4) y auditoría (3). Bajan la
       carga cognitiva en campo y el error en decisiones encadenadas, como
@@ -144,15 +144,9 @@
            (Buen lugar para el hook de las configuraciones de camión
            ilustradas.) -->
 
-      <h3>Siotyx Core: un sistema, no pantallas sueltas</h3>
-      <p>Construí desde cero el sistema de diseño base de toda la suite:
-      tokens y componentes reutilizados (navegación, cards, chips, message
-      box, estados de neumático). Dio consistencia a 5 sprints entre Mobile
-      y Web y hoy es la base sobre la que se levanta el resto de los
-      módulos.</p>
-      <!-- 📷 SOLUCIÓN C → página de documentación del DS / librería de
-           componentes. Epígrafe: "Siotyx Core: el sistema que sostiene
-           toda la suite." -->
+      <!-- Siotyx Core SACADO de este caso (decisión de Evelyn, 2026-08-16):
+           Core se consolidó DESPUÉS de Flota, así que contarlo acá rompía
+           la línea de tiempo. El sistema de diseño tendrá su propio caso. -->
     </section>
 
     <!-- ⚠️ EVELYN: esta sección la agregué YO (2026-08-15) después de
@@ -210,8 +204,7 @@
       operativo completo de una flota, con caminos infelices incluidos
       (vacío, error, incompatible, no reparable). Los cinco sprints se
       cumplieron y el funcionamiento del hardware se validó con pruebas
-      físicas de RFID sobre vehículos de prueba. El sistema de diseño quedó
-      como base viva de toda la suite. Presentado en expo.</p>
+      físicas de RFID sobre vehículos de prueba. Presentado en expo.</p>
       <!-- 📷 IMPACTO → "estado neumáticos - vista ejes" y/o "Sección flota
            (vehículos)". Epígrafe: "El estado de cada neumático, por eje:
            toda la operación en una vista."
@@ -221,9 +214,7 @@
     <div class="caso-aprendizaje">
       <h2>💭 Mi aprendizaje</h2>
       <p>Diseñar para hardware me obligó a pensar en estados antes que en
-      pantallas: el camino infeliz no es un extra, es el producto. Y
-      comprobé que un sistema de diseño, aun hecho por una sola persona,
-      es lo que vuelve escalable el caos.</p>
+      pantallas: el camino infeliz no es un extra, es el producto.</p>
       <!-- 📷 APRENDIZAJE → "Resultados - neumáticos incompatibles" o
            "No reparable" (Sprint 4). Epígrafe: "El camino infeliz como
            producto: incompatible, no reparable, error."

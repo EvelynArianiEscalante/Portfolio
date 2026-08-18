@@ -481,15 +481,62 @@ span.semaforo--max {
    `width: fit-content` hace que la caja mida lo que mide el texto: sin eso un
    block ocupa TODO el ancho y quedaría clickeable media ventana. */
 .proyecto__link {
-  display: block;
+  /* Botón OUTLINED (decisión de Evelyn, 2026-08-17): acción secundaria.
+     La jerarquía queda: relleno (Descargar CV) = primaria, contorno
+     (Ver caso) = secundaria. Mismo border-radius que el CTA del CV (8px)
+     para que se lean como familia.
+     display: flex (SIN inline): por fuera es caja de bloque — renglón
+     propio, alineado a la izquierda, como el link que reemplaza — y por
+     dentro es flex para centrar texto y flecha. Con inline-flex volvía
+     al renglón del texto (mismo bug que ya habíamos arreglado acá).
+     width: fit-content evita que el bloque ocupe todo el ancho. */
+  display: flex;
+  align-items: center;
+  gap: 7px;
   width: fit-content;
   margin-top: var(--espacio-3);
+  padding: 8px var(--espacio-3);
+  border: 1.5px solid var(--color-carpeta-oscuro);
+  border-radius: 8px;
+  font-size: var(--texto-sm);
   font-weight: 600;
+  line-height: 1.2;
   color: var(--color-carpeta-oscuro);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
+/* Hover: el outlined se "llena" — patrón clásico de botón secundario.
+   El texto pasa a blanco porque el azul de fondo ya no da contraste
+   con el azul del texto. */
 .proyecto__link:hover {
-  text-decoration: underline;
+  background: var(--color-carpeta-oscuro);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.proyecto__link:focus-visible {
+  outline: 2px solid var(--color-carpeta-claro);
+  outline-offset: 2px;
+}
+
+/* ── La flecha del botón ──
+   Antes era el carácter "→": su grosor lo decidía la FUENTE (finito) y su
+   alineado era el del renglón de texto, no el centro del botón. Como SVG,
+   el trazo 2.5 pesa igual que el texto en 600 y el flex la centra exacto.
+   currentColor = hereda el color del botón, así en hover pasa a blanco
+   sola, sin regla extra. */
+.proyecto__link__flecha {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+/* Micro-animación: en hover la flecha se desliza un pasito a la derecha —
+   la señal universal de "esto te lleva a algún lado". Se anima transform
+   (no margin/left): transform no recalcula el layout, lo dibuja la GPU. */
+.proyecto__link:hover .proyecto__link__flecha {
+  transform: translateX(3px);
 }
 
 
