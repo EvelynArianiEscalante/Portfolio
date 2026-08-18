@@ -86,6 +86,19 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
 
 ## PENDIENTES (en orden sugerido)
 
+0-ter. **CV online (2026-08-17): `pages/cv.html` existe pero es BORRADOR — está
+   en .gitignore, NO se publica.** Decisión de Evelyn (motivo pendiente de
+   conversar); para publicarla, borrar sus líneas del .gitignore. Detalle
+   técnico de la página: estilo iOS Notes,
+   reusa los estilos de `#ventana-notas` de ventana.css + el marco ventana-max
+   de caso.css, con JS propio inline (master–detail en mobile, un nivel por
+   vez). Tiene favicon propio (`assets/icons/favicon-cv.svg/-32/-180`, diseño
+   de Evelyn tal cual lo subió) y botón Descargar PDF. OJO: el contenido de
+   experiencia/educación/skills está DUPLICADO de index.html — si se edita el
+   CV en un lado, replicar en el otro (candidato a unificar algún día).
+   Falta: que Evelyn lo pruebe y decidir desde dónde se linkea (¿menubar?
+   ¿sidebar de Notas? por ahora solo por URL directa).
+
 0-bis. **Etiquetas de los íconos de proyectos (2026-08-14):** se acortaron para
    que entren en un renglón en la home mobile (Health App · WiFi · Pedidos ·
    AIKA). A Evelyn **no la convencen del todo** — quedó en avanzar y revisarlo

@@ -8,3 +8,13 @@
 # Configuración local de VS Code (es personal, no del proyecto)
 .vscode/
 
+
+# ═══ BORRADOR: CV online (2026-08-17) ═══
+# La página existe y funciona, pero Evelyn decidió NO publicarla todavía
+# (motivo a conversar). Queda guardada en la compu; git no la sube.
+# Para publicarla algún día: borrar estas líneas de acá.
+pages/cv.html
+assets/icons/favicon-cv.svg
+assets/icons/favicon-cv-32.png
+assets/icons/favicon-cv-180.png
+assets/icons/faviconcv.svg
