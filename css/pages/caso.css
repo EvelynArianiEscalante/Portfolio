@@ -136,6 +136,13 @@ span.semaforo--max {
   margin-bottom: var(--espacio-5);
 }
 
+/* ── Ficha del caso ──
+   Fila liviana de rótulo + valor, acompañando el estilo del header.
+   (Se probaron cards y chips el 2026-08-15: las cards eran demasiado
+   mueble y los chips comían mucho vertical en mobile — se volvió a esta
+   versión.) Regla de contenido que SÍ quedó: los cinco casos usan los
+   mismos cuatro campos, en el mismo orden: Sector · Timeline · Rol ·
+   Skills. Otro dato → se cuenta en el cuerpo del caso, no acá. */
 .caso-ficha {
   display: flex;
   flex-wrap: wrap;
@@ -145,19 +152,31 @@ span.semaforo--max {
   border-bottom: 1px solid var(--color-borde-claro);
 }
 
+/* Título del dato al estilo del portfolio anterior de Evelyn:
+   ícono + palabra con peso (nada de mayúsculas espaciadas), y el valor
+   debajo en tono más suave. */
 .caso-ficha .dato dt {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-tinta-suave);
-  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-tinta);
+  margin-bottom: 4px;
+}
+
+.dato__icono {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  /* stroke: currentColor dentro del SVG; el color lo pone esta regla */
+  color: var(--color-carpeta-oscuro);
 }
 
 .caso-ficha .dato dd {
   font-size: var(--texto-md);
-  font-weight: 500;
-  color: var(--color-tinta);
+  font-weight: 400;
+  color: var(--color-tinta-cuerpo);
 }
 
 /* ── Relato ── */
@@ -353,8 +372,7 @@ span.semaforo--max {
   .caso-seccion h2 { font-size: 1.1rem; }
   .caso-seccion h3 { font-size: 1rem; }
 
-  /* En celular las 2 columnas no entran: todas las cards a una columna */
-  ul.puntos { grid-template-columns: 1fr; }
+
 }
 
 
@@ -446,3 +464,27 @@ li.punto {
 
 /* Si el último queda solo en su fila, que ocupe el ancho completo. */
 ul.puntos .punto:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MÓVIL: LAS GRILLAS DE CARDS, A UNA COLUMNA — VA AL FINAL A PROPÓSITO
+   Un @media no suma especificidad: entre reglas iguales gana la que está
+   más abajo. Esta regla vivía ANTES de la base de ul.puntos (que pone las
+   2 columnas) y por eso nunca se aplicaba: en el teléfono se veían dos
+   columnas flacas. Regla de la casa: los @media que corrigen estilos van
+   SIEMPRE después de lo que corrigen.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  ul.puntos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ficha en celular: los cuatro datos apilados en columna, alineados a la
+   izquierda — como el portfolio anterior de Evelyn. (Al final del archivo,
+   como todo @media que corrige estilos.) */
+@media (max-width: 700px) {
+  .caso-ficha {
+    flex-direction: column;
+    gap: var(--espacio-4);
+  }
+}

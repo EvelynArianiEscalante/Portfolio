@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siotyx Flota — Evelyn Ariani</title>
+  <meta name="description" content="Caso de estudio: el ciclo operativo completo de una flota resuelto desde un lector RFID. Alta, viaje, taller y auditoría, con sistema de diseño propio.">
+
+  <!-- Open Graph: preview del link al compartir este caso suelto. URLs absolutas. -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Siotyx Flota — Caso de estudio de Evelyn Ariani">
+  <meta property="og:description" content="Un lector RFID como única puerta de entrada al ciclo operativo completo de una flota: alta, viaje, taller y auditoría.">
+  <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/transporte.html">
+  <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../../assets/icons/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/base/reset.css?v=16">
+  <link rel="stylesheet" href="../../css/base/variables.css?v=16">
+  <link rel="stylesheet" href="../../css/base/tipografia.css?v=16">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=16">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CASO SIOTYX FLOTA (TRANSPORTE)
+       Contenido volcado del handoff aprobado por Evelyn (2026-08-15),
+       elaborado con su Claude de contexto de Siotyx.
+       PANTALLAS: todavía sin exportar. Cada lugar donde va una imagen
+       está marcado con un comentario 📷 que dice QUÉ exportar de Figma,
+       el epígrafe sugerido y sus ⚠️ de datos sensibles. Al recibir los
+       exports se convierten en <figure> como en los otros casos.
+       Regla de la casa: nada que diga "pendiente" se publica — por eso
+       son comentarios y no recuadros grises.
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="ventana-max">
+    <div class="ventana-max__barra">
+      <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
+      <span class="semaforo semaforo--min"></span>
+      <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
+      <span class="ventana-max__titulo">Siotyx Flota — Caso de estudio</span>
+    </div>
+    <div class="ventana-max__scroll">
+  <main class="caso-contenido">
+
+    <header class="caso-header">
+      <h1>Siotyx Flota</h1>
+      <!-- Bajada: opción principal del handoff. La alternativa era:
+           "Diseñar para hardware no es diseñar pantallas: es diseñar
+           estados. Todo el operativo de una flota resuelto desde un
+           lector RFID." — por si Evelyn quiere cambiarla. -->
+      <p class="bajada">Un lector RFID como única puerta de entrada al ciclo operativo completo de una flota: alta, viaje, taller y auditoría.</p>
+      <dl class="caso-ficha">
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Transporte de cargas</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · 5 sprints</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Design system · Mobile + Web · RFID</dd></div>
+      </dl>
+    </header>
+
+    <!-- 📷 PORTADA — pendiente de elegir. Sugerencia: la pantalla más
+         representativa del scanner en uso, o un compuesto Mobile + Web.
+         Sin loading="lazy" cuando exista (es lo primero que se ve). -->
+
+    <section class="caso-seccion">
+      <h2>⛔ Problema</h2>
+      <p>Empezamos sin lenguaje visual ni sistema de diseño: solo un SRS con
+      user stories y un lector RFID como protagonista. El reto no era una
+      pantalla, sino traducir todo el operativo de una flota —alta de
+      vehículos y neumáticos, viajes, taller y auditorías— a flujos usables,
+      atados a lo que el hardware puede y no puede detectar.</p>
+      <p><strong>Objetivo:</strong> que un operario resuelva cada tarea con
+      el scanner, sin ambigüedad.</p>
+      <!-- 📷 PROBLEMA → pantalla "Tag no identificada" (Sprint 1).
+           Muestra: el hardware detecta algo que no reconoce, con message box.
+           Epígrafe: "Cuando el hardware detecta pero no reconoce: el estado
+           que obligó a diseñar más allá del happy path."
+           ⚠️ ID/EPC visible → reemplazar por código de ejemplo ficticio. -->
+    </section>
+
+    <section class="caso-seccion">
+      <h2>🛠️ Proceso</h2>
+      <ul class="puntos puntos--solucion">
+        <li class="punto">
+          <span class="punto__num">01</span>
+          <p><strong>Acuerdos de alcance sprint a sprint</strong><br>
+          Con referentes técnicos y directores, decidiendo qué user stories
+          del SRS entraban en cada corte (gestionado en Jira/Confluence).</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">02</span>
+          <p><strong>Ida y vuelta con la investigación de hardware</strong><br>
+          Pruebas físicas con tags en neumáticos sobre vehículos de prueba
+          atravesando portales RFID, para confirmar qué estados reales
+          devuelve el lector.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">03</span>
+          <p><strong>Anotaciones directas en Figma</strong><br>
+          Sticky notes por pantalla para dejar decisiones y dudas trazables
+          ante desarrollo.</p>
+        </li>
+      </ul>
+      <!-- 📷 PROCESO → tablero del Scanner con sticky notes al lado
+           (flujo alta de tags). Muestra: pantallas + anotaciones de
+           decisiones. Epígrafe: "Decisiones y dudas anotadas por pantalla,
+           trazables para desarrollo."
+           ⚠️ Las sticky notes pueden mencionar cliente/negocio → revisar
+           y ocultar/recortar antes de exportar. -->
+    </section>
+
+    <section class="caso-seccion">
+      <h2>💡 Solución</h2>
+
+      <h3>El scanner como actor, no como botón</h3>
+      <p>Modelé los estados posibles de "tag detectado" —vehículo asignado,
+      con neumático, sin asignar, no identificado— en lugar de un único
+      happy path. El hardware es incierto: diseñé la UI para que se haga
+      cargo de esa incertidumbre y el operario siempre sepa qué hacer.</p>
+      <!-- 📷 SOLUCIÓN A → frames "Tag detectado" lado a lado
+           (asignado / sin asignar / no identificada).
+           Epígrafe: "Un escaneo, cuatro realidades: cada estado del tag
+           tiene su pantalla."
+           ⚠️ Dominio "AB 123 VE", conductor "Gabriel Romero",
+           "Scania R450 – JFK-026" → reemplazar por datos de ejemplo. -->
+
+      <h3>Wizards para lo complejo</h3>
+      <p>Partí las tareas densas en pasos con revisión final: alta de
+      vehículo (5), programación de viaje (4) y auditoría (3). Bajan la
+      carga cognitiva en campo y el error en decisiones encadenadas, como
+      configurar ejes o asignar neumáticos por posición.</p>
+      <!-- 📷 SOLUCIÓN B → "Registro 1/5 Configuración de ejes"
+           (rígido/tractor/bitrén) + "Registro 5/5 Revisión final".
+           Epígrafe: "Alta de vehículo en 5 pasos: de configurar los ejes
+           a la revisión final."
+           (Buen lugar para el hook de las configuraciones de camión
+           ilustradas.) -->
+
+      <h3>Siotyx Core: un sistema, no pantallas sueltas</h3>
+      <p>Construí desde cero el sistema de diseño base de toda la suite:
+      tokens y componentes reutilizados (navegación, cards, chips, message
+      box, estados de neumático). Dio consistencia a 5 sprints entre Mobile
+      y Web y hoy es la base sobre la que se levanta el resto de los
+      módulos.</p>
+      <!-- 📷 SOLUCIÓN C → página de documentación del DS / librería de
+           componentes. Epígrafe: "Siotyx Core: el sistema que sostiene
+           toda la suite." -->
+    </section>
+
+    <!-- ⚠️ EVELYN: esta sección la agregué YO (2026-08-15) después de
+         recorrer los 10 tableros de Figma, porque el caso no transmitía la
+         dimensión real del proyecto. El contenido sale de tu handoff
+         (sección G, alcance por sprint) + lo que vi en los tableros.
+         Revisala: es la única parte del caso que no vino aprobada. -->
+    <section class="caso-seccion">
+      <h2>🗺️ La dimensión: cinco sprints, dos plataformas</h2>
+      <p>Cada sprint se diseñó en Mobile y Web en paralelo — diez tableros
+      de punta a punta, con sus caminos infelices, estados vacíos y
+      anotaciones para desarrollo incluidos.</p>
+      <ul class="puntos puntos--solucion">
+        <li class="punto">
+          <span class="punto__num">S1</span>
+          <p><strong>Base + Scanner</strong><br>
+          Login, Home con KPIs, los cinco estados de "tag detectado" más el
+          no identificado, y el alta de tags con resultado ok/error. En web:
+          dashboard con métricas y gestión de usuarios.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">S2</span>
+          <p><strong>Vehículos y neumáticos</strong><br>
+          Alta de vehículo en wizard de 5 pasos (ejes rígido, tractor,
+          bitrén), registro de neumático con medición por sonda (INT/CEN/EXT),
+          carga de fotos y niveles de desgaste.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">S3</span>
+          <p><strong>Viajes y flota</strong><br>
+          Programación de viaje en 4 pasos con validación del estado de los
+          neumáticos antes de salir, baja y reasignación de tags, y la
+          gestión de flota en vista por ejes y vista lista.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">S4</span>
+          <p><strong>Taller</strong><br>
+          Ocho operaciones diseñadas: rotación, desmontaje, montaje,
+          apareamiento (compatibles, incompatibles, en margen), calibración
+          de presión, reparación, recapado y retiro de servicio.</p>
+        </li>
+        <li class="punto">
+          <span class="punto__num">S5</span>
+          <p><strong>Auditorías</strong><br>
+          Wizard de 3 pasos —kilometraje, neumáticos, revisión— y el ciclo
+          completo de estados: pendiente, en curso, incompleta y finalizada
+          en óptimo, advertencia o crítico.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="caso-seccion">
+      <h2>💥 Impacto</h2>
+      <p>De cero a un producto funcional y desarrollado que cubre el ciclo
+      operativo completo de una flota, con caminos infelices incluidos
+      (vacío, error, incompatible, no reparable). Los cinco sprints se
+      cumplieron y el funcionamiento del hardware se validó con pruebas
+      físicas de RFID sobre vehículos de prueba. El sistema de diseño quedó
+      como base viva de toda la suite. Presentado en expo.</p>
+      <!-- 📷 IMPACTO → "estado neumáticos - vista ejes" y/o "Sección flota
+           (vehículos)". Epígrafe: "El estado de cada neumático, por eje:
+           toda la operación en una vista."
+           ⚠️ Dominios/EPC → datos de ejemplo. -->
+    </section>
+
+    <div class="caso-aprendizaje">
+      <h2>💭 Mi aprendizaje</h2>
+      <p>Diseñar para hardware me obligó a pensar en estados antes que en
+      pantallas: el camino infeliz no es un extra, es el producto. Y
+      comprobé que un sistema de diseño, aun hecho por una sola persona,
+      es lo que vuelve escalable el caos.</p>
+      <!-- 📷 APRENDIZAJE → "Resultados - neumáticos incompatibles" o
+           "No reparable" (Sprint 4). Epígrafe: "El camino infeliz como
+           producto: incompatible, no reparable, error."
+           Si se usa: armar el cierre 50/50 con .caso-cierre, como en
+           Pedidos & Gestión. -->
+    </div>
+
+    <nav class="caso-siguiente">
+      <a href="index.html">← Todos los proyectos</a>
+      <a href="health-app.html">Siguiente caso →</a>
+    </nav>
+
+  </main>
+    </div>
+  </div>
+</body>
+</html>

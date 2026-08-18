@@ -143,8 +143,19 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
    una — la 1-preview — hasta que Evelyn exporte más capturas de Figma).
    Links "Ver caso completo" conectados en home e índice de proyectos; la
    navegación circular: health → pedidos → wifi → aika → health.
-   ✅ También `wifi-marketing.html` (ver punto 4). Falta solo: los casos de
-   Siotyx (contenido a construir con Evelyn).
+   ✅ También `wifi-marketing.html` (ver punto 4).
+   ✅ 2026-08-15: **`transporte.html` (Siotyx Flota)** con el contenido del
+   handoff que Evelyn armó con su Claude de contexto de Siotyx (texto A–E
+   aprobado). Las PANTALLAS todavía no están: cada lugar donde va una imagen
+   quedó como comentario 📷 en el HTML con qué exportar, epígrafe sugerido
+   y ⚠️ de datos sensibles (dominios, EPC, conductores → ficticios).
+   El título público del caso es "Siotyx Flota". La ficha usa
+   Rol/Plataformas/Alcance/Herramientas (no Sector/Timeline como los
+   anteriores) porque así vino del handoff. Teasers de home e índice
+   actualizados; data-directo en mobile. Regla del handoff: NO mencionar
+   que el proyecto quedó pausado; versión pública: "la dirección priorizó
+   el siguiente módulo de la suite".
+   Falta: Retail y Design System (Evelyn va a repetir el proceso de handoff).
 4. ✅ **Contenido WiFi Marketing — RESUELTO el 2026-08-13.** El nodo viejo
    `4075:8974` sigue dando error, pero Evelyn pasó el node-id correcto:
    **`4076:15550`** (archivo `EW8YfHJvbhoD7LMmSvoLyS`, página "Design System").
