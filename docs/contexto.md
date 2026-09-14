@@ -86,6 +86,39 @@ Evelyn NO está aplicando activamente todavía. El plan: terminar el sitio
 
 ## PENDIENTES (en orden sugerido)
 
+⚙️ **HERRAMIENTA NUEVA (2026-08-18): Claude ahora puede VER el sitio antes de
+   entregar.** En el sandbox: playwright + chromium headless (falta libXdamage
+   → hay un stub compilado en `/sessions/.../locallibs`, lanzar con
+   `LD_LIBRARY_PATH`). Regla nueva: **ningún layout se entrega sin captura**.
+   La v1 de Transporte salió rota por no mirarla (especificidad otra vez:
+   `.cadena__marco svg` (0,1,1) le ganó a `.cadena--vertical` (0,1,0) y el
+   diagrama mobile se mostró gigante en desktop; + grid stretch rompiendo
+   aspect-ratio → cajas superpuestas; + placeholders de teléfono a 550px de
+   ancho). Todo corregido en caso-transporte.css v2.
+
+0-quater-bis. **Iteración post-captura del caso Transporte (2026-08-18):**
+   tras varias correcciones de Evelyn quedó TODO alineado al sistema:
+   secciones = .caso-seccion, header = .caso-header, ficha = .caso-ficha
+   unificada de 4 campos, contenedor 880px, textos a ancho completo (sin
+   max-width tipo ch). El diagrama de la cadena (bloque 05) SE QUITÓ por
+   decisión de Evelyn — no se entendía; markup en historial de git y hay
+   un prompt listo por si algún día lo redibuja ella en Figma. Lección
+   grabada: página nueva = clases del sistema primero, nunca clases
+   propias que dupliquen componentes existentes.
+
+0-quater. **Caso Transporte v2 (2026-08-18): reconstrucción COMPLETA con el
+   handoff de 14 bloques** (`caso-siotyx-transporte.md`, del Claude de Siotyx).
+   Decisiones de Evelyn: reemplaza todo lo anterior · ficha del handoff (6
+   filas, NO la unificada de 4 campos — este caso es la excepción) · se
+   publica con placeholders grises. CSS propio: `css/pages/caso-transporte.css`
+   (capa sobre caso.css; contenedor 1120px, bloques alternados con `order`,
+   clímax oscuro #171b23, grilla despareja, diagrama SVG doble
+   horizontal/vertical). Ajustes de regla de la casa sobre el handoff: rol
+   "Ssr" (nunca "única"), h1 "Siotyx Transporte" (no "Gestión de flotas").
+   PENDIENTE DE EVELYN: exportar los 17 screenshots (guías 📷 en el HTML) y
+   ANTES corregir en Figma: patentes/IDs dummy repetidos + botón "Reasignar"
+   que debe decir "Asignar" en neumático sin vehículo.
+
 0-ter. **CV online (2026-08-17): `pages/cv.html` existe pero es BORRADOR — está
    en .gitignore, NO se publica.** Decisión de Evelyn (motivo pendiente de
    conversar); para publicarla, borrar sus líneas del .gitignore. Detalle
@@ -208,6 +241,14 @@ fue extraído y está en `docs/contenido-casos.md` (casos) y `docs/cv.md` (CV
 completo con fechas). Figma fuente: archivo `EW8YfHJvbhoD7LMmSvoLyS`.
 
 ## Decisiones tomadas (log)
+
+- 2026-08-18: **Lógica de roles Siotyx (SAGRADA, no mezclar jamás):** el
+  OPERARIO opera (mobile, taller/campo, scanner RFID y sonda); el
+  ADMINISTRADOR mira y decide (web, oficina, nada operativo — en Retail
+  directamente no hace nada operativo). Cualquier texto que los mezcle está
+  mal. Y regla de redacción: el storytelling NUNCA inventa ni deforma
+  hechos; si una frase queda linda pero ambigua sobre quién hace qué, se
+  corrige la frase.
 
 - 2026-08-02: estructura de carpetas + README.
 - 2026-08-02: dirección visual macOS aprobada (maquetas en pages/lab).

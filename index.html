@@ -43,15 +43,15 @@
        archivo nuevo y lo baja sí o sí.
        REGLA: cada vez que toques un CSS y publiques, subí el número: v=2, v=3…
        Es lo único que hay que acordarse. -->
-  <link rel="stylesheet" href="css/base/reset.css?v=54">
-  <link rel="stylesheet" href="css/base/variables.css?v=54">
-  <link rel="stylesheet" href="css/base/tipografia.css?v=54">
-  <link rel="stylesheet" href="css/layout/escritorio.css?v=54">
-  <link rel="stylesheet" href="css/layout/menubar.css?v=54">
-  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=54">
-  <link rel="stylesheet" href="css/components/ventana.css?v=54">
-  <link rel="stylesheet" href="css/components/dock.css?v=54">
-  <link rel="stylesheet" href="css/pages/home.css?v=54">
+  <link rel="stylesheet" href="css/base/reset.css?v=55">
+  <link rel="stylesheet" href="css/base/variables.css?v=55">
+  <link rel="stylesheet" href="css/base/tipografia.css?v=55">
+  <link rel="stylesheet" href="css/layout/escritorio.css?v=55">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=55">
+  <link rel="stylesheet" href="css/components/icono-escritorio.css?v=55">
+  <link rel="stylesheet" href="css/components/ventana.css?v=55">
+  <link rel="stylesheet" href="css/components/dock.css?v=55">
+  <link rel="stylesheet" href="css/pages/home.css?v=55">
 </head>
 
 <body>
@@ -126,7 +126,10 @@
       <span class="icono__label">Proyectos anteriores</span>
     </button>
 
-    <button class="icono" id="icono-ds" data-ventana="ventana-ds">
+    <!-- OCULTO hasta que exista el caso (2026-08-21, modo búsqueda laboral):
+         un portfolio sin promesas vacías se ve terminado. Para reactivar:
+         borrar el atributo hidden. -->
+    <button class="icono" id="icono-ds" data-ventana="ventana-ds" hidden>
       <span class="icono__thumb thumb--placeholder"></span>
       <span class="icono__label">Design System</span>
     </button>
@@ -160,7 +163,8 @@
           <span class="finder__thumb fthumb--pendiente"></span>
           <span>Transporte</span>
         </button>
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail">
+        <!-- Retail OCULTO hasta que exista su caso (2026-08-21). Reactivar: quitar hidden. -->
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail" hidden>
           <span class="finder__thumb fthumb--pendiente"></span>
           <span>Retail</span>
         </button>
@@ -171,7 +175,7 @@
              Transporte y Retail (para compartir fila hay que compartir grilla, y
              eso no se puede hacer solo con CSS) sin cambiar el escritorio.
              Si algún día le cambiás el nombre, cambialo en los dos lados. -->
-        <button class="finder__item finder__item--thumb solo-movil" data-ventana="ventana-ds">
+        <button class="finder__item finder__item--thumb solo-movil" data-ventana="ventana-ds" hidden>
           <span class="finder__thumb fthumb--pendiente"></span>
           <span>Design System</span>
         </button>
@@ -722,10 +726,10 @@
   </div>
 
   <!-- JS al final del body: el HTML ya está dibujado cuando corre -->
-  <script src="js/components/ventanas.js?v=54"></script>
-  <script src="js/components/dock.js?v=54"></script>
-  <script src="js/components/menu.js?v=54"></script>
-  <script src="js/components/reloj.js?v=54"></script>
-  <script src="js/components/avatar-switch.js?v=54"></script>
+  <script src="js/components/ventanas.js?v=55"></script>
+  <script src="js/components/dock.js?v=55"></script>
+  <script src="js/components/menu.js?v=55"></script>
+  <script src="js/components/reloj.js?v=55"></script>
+  <script src="js/components/avatar-switch.js?v=55"></script>
 </body>
 </html>

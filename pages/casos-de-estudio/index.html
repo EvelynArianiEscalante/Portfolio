@@ -138,29 +138,34 @@
             <!-- Retail ocupa la fila entera: es el caso que abre el grupo.
                  grid-column: 1 / -1 = "andá de la primera línea de columna a la
                  última", o sea, ocupá todo el ancho de la grilla. -->
+<!-- Retail OCULTO hasta que exista su caso (2026-08-21). Para reactivar,
+                 descomentar y devolverle a Transporte su tamaño normal.
             <a class="card-proyecto card-proyecto--ancha" href="#">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Retail</p>
                 <p class="card-proyecto__resumen">El escaneo confirma y registra: un cambio de modelo mental que reescribió pantallas y copy.</p>
               </div>
-            </a>
+            </a> -->
             <!-- Abajo, mitad y mitad. El orden en el HTML es el orden en pantalla:
                  primero Transporte (izquierda), después el Design System (derecha). -->
-            <a class="card-proyecto" href="transporte.html">
+            <!-- Transporte ocupa la fila completa MIENTRAS es el único caso
+                 visible del grupo (Retail y DS ocultos). -->
+            <a class="card-proyecto card-proyecto--ancha" href="transporte.html">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Siotyx Transporte</p>
                 <p class="card-proyecto__resumen">Un lector RFID como puerta al ciclo operativo completo de una flota.</p>
               </div>
             </a>
+<!-- Design System OCULTO hasta que exista su caso (2026-08-21).
             <a class="card-proyecto" href="#">
               <div class="card-proyecto__imagen thumb--placeholder"></div>
               <div class="card-proyecto__texto">
                 <p class="card-proyecto__titulo">Design System desde cero</p>
                 <p class="card-proyecto__resumen">Tokens, componentes y 13 páginas de documentación para toda la plataforma: las verticales de Transporte y Retail, más Core — la capa transversal de acceso, scanner, etiquetas y conectividad.</p>
               </div>
-            </a>
+            </a> -->
           </div>
         </section>
 

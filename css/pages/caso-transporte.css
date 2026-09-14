@@ -1,0 +1,348 @@
+/* ═══════════════════════════════════════════════════════════
+   CASO SIOTYX TRANSPORTE — capa editorial propia
+   Se carga DESPUÉS de caso.css: hereda la ventana Mac, los
+   semáforos y el mobile nav, y encima define los layouts que
+   este caso pide (lowfi del handoff 2026-08-18): columnas
+   alternadas, bloque clímax con fondo propio, grilla despareja.
+   Todo con los tokens de variables.css — cero colores nuevos,
+   salvo el fondo oscuro del clímax (abajo, documentado).
+   REGLA DE LA CASA: el @media mobile va AL FINAL del archivo.
+   ═══════════════════════════════════════════════════════════ */
+
+/* El contenedor respeta la regla de la casa escrita en caso.css:
+   UNA sola medida para todo, 880px, igual que los otros cuatro casos.
+   (La primera versión usaba 1120px "para que respiren las grillas" y
+   fue un error: rompía la consistencia y los textos parecían angostos
+   porque no llenaban su propio contenedor.) */
+.caso-contenido--transporte {
+  max-width: 880px;
+}
+
+/* Ritmo vertical, tipografía de h2/h3, color de párrafos y sangrías:
+   TODO viene de .caso-seccion (caso.css), el mismo componente que usan
+   los otros cuatro casos. Acá no se redefine nada de eso a propósito —
+   la primera versión usaba una clase propia (.bloque) y por eso la
+   estructura "no se veía como los demás": ningún estilo del sistema
+   aplicaba. Lección: nueva página = clases del sistema primero. */
+
+/* ── 01 · HERO ── sin reglas propias: usa .caso-header del sistema. */
+
+/* ── 02 · FICHA ──
+   Usa .caso-ficha de caso.css, el MISMO componente que los otros cuatro
+   casos (ícono + título en negrita, valor debajo). La tabla de dos
+   columnas del lowfi se probó y se descartó (2026-08-18): parecía un
+   formulario. Acá no hay reglas propias a propósito: si la ficha cambia
+   en caso.css, esta cambia sola. */
+
+/* ── 04 · DOS USUARIOS ── */
+.dos-usuarios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+}
+
+/* Cada usuario es una card estilo refe Contelas/Aeline (2026-08-18):
+   aire generoso, radio amplio, y el ícono NO va suelto — vive dentro
+   de un cuadradito redondeado con un tinte del acento. Ese contenedor
+   es lo que hace que el ícono se lea como pieza y no como adorno. */
+.dos-usuarios .usuario {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 16px;
+  padding: var(--espacio-5);
+}
+
+.dos-usuarios .usuario p:last-child {
+  margin-bottom: 0;
+}
+
+/* El cuadradito tintado del ícono: 44px, radio 12, acento al 10% */
+.usuario__tile {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 10%, transparent);
+  margin-bottom: var(--espacio-3);
+}
+
+.dos-usuarios .usuario__icono {
+  width: 22px;
+  height: 22px;
+  color: var(--color-carpeta-oscuro);
+}
+
+.dos-usuarios h3 {
+  margin-bottom: 2px;
+}
+
+.dos-usuarios .usuario__meta {
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-2);
+}
+
+/* La frase de cierre cruza las dos columnas, un punto más grande.
+   SIN max-width: el texto llena el ancho del contenedor como todo lo
+   demás (era el último "texto a medias" que quedaba, 2026-08-18). */
+.dos-usuarios__cierre {
+  grid-column: 1 / -1;
+  font-size: var(--texto-md);
+}
+
+/* ── 05 · LA CADENA — QUITADO (2026-08-18, decisión de Evelyn): el
+   diagrama no se entendía. Sus reglas se borraron; historial en git. ── */
+
+/* ── 06 / 07 / 11 · BLOQUES DE DOS COLUMNAS (texto 40 / imagen 60) ── */
+.bloque--partido {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: var(--espacio-6);
+  align-items: start;
+}
+
+/* La alternancia (07 invierte): la imagen pasa a la izquierda.
+   `order` cambia el dibujo sin tocar el HTML: el orden del documento
+   —texto primero— se conserva para lectores de pantalla y para mobile. */
+.bloque--partido.bloque--invertido .bloque__texto { order: 2; }
+.bloque--partido.bloque--invertido .bloque__figuras { order: 1; }
+
+/* Las figuras internas de cada bloque: pares y apilados */
+.bloque__figuras {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+}
+
+.par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  /* align-items: start es OBLIGATORIO acá: el stretch por defecto del grid
+     estira la ALTURA de cada ítem a la de la fila, y una caja con
+     aspect-ratio recalcula su ancho desde esa altura estirada → desborda
+     y se superpone (pasó con el par teléfono + cuadrado del bloque 07). */
+  align-items: start;
+}
+
+.trio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--espacio-3);
+  align-items: start;
+}
+
+/* ── PLACEHOLDERS de screenshots ──
+   Cajas grises del tamaño real de lo que va a ir: el layout ya queda
+   comprometido con las proporciones correctas y al llegar los exports
+   solo se cambia el div por <img>, sin re-maquetar nada.
+   Sin texto adentro: regla de la casa, nada que diga "pendiente". */
+.ph {
+  background: var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.ph--web      { aspect-ratio: 16 / 10; } /* pantalla web 1440 */
+.ph--panorama { aspect-ratio: 21 / 9; }  /* hero: dashboard recortado abajo */
+.ph--cuadrado { aspect-ratio: 1 / 1; max-width: 320px; } /* detalles ampliados */
+.ph--apaisado { aspect-ratio: 16 / 9; }  /* grillas y composiciones anchas */
+
+/* Un teléfono nunca es más ancho que un teléfono: sin este tope, en la
+   grilla de 1120px cada mitad mide ~550px y una caja 9/14 se va a un metro
+   de alto (la "pared de gris" de la primera versión). 9/14 y no 9/16:
+   el lowfi pide las pantallas mobile cortadas por abajo. */
+.ph--movil {
+  aspect-ratio: 9 / 14;
+  max-width: 240px;
+  margin-inline: auto; /* centrada en su celda */
+}
+
+/* ── 09 · EL VIAJE — el clímax ──
+   Único color fuera de tokens: un azul-noche neutro emparentado con
+   la menubar (rgba(13,14,16)) pero un paso más cálido, para que las
+   pantallas del producto (verde/azul Siotyx) no choquen encima. */
+.bloque--climax {
+  background: #171b23;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-6);
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: var(--espacio-6);
+  align-items: center;
+}
+
+.bloque--climax h2 {
+  color: #fff;
+}
+
+.bloque--climax .bloque__texto p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* El placeholder sobre fondo oscuro necesita su propio tono */
+.bloque--climax .ph {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ── 10 · EL TALLER — serie de pares texto + imagen chica ── */
+.taller-serie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-5);
+  margin-top: var(--espacio-5);
+}
+
+/* Texto siempre del mismo lado (izquierda): se lee como serie */
+.taller-serie__item {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--espacio-5);
+  align-items: center;
+}
+
+.taller-serie__item h3 {
+  margin-bottom: var(--espacio-1);
+}
+
+/* ── 12 · CONTROL DE ACCESOS ── */
+/* La etiqueta "En producción": la señal de credibilidad del caso */
+.chip-produccion {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 12%, transparent);
+  color: var(--color-carpeta-oscuro);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--espacio-3);
+}
+
+.accesos__figuras {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+  align-items: start;
+}
+
+/* ── 13 · TIRA DE DETALLES — grilla deliberadamente despareja ── */
+.detalles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-4);
+}
+
+/* El primero manda: ancho completo. Los otros tres, en fila debajo. */
+.detalle:first-child {
+  grid-column: 1 / -1;
+}
+
+.detalle {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.detalle h3 {
+  font-size: var(--texto-md);
+}
+
+.detalle p {
+  font-size: var(--texto-base);
+  color: var(--color-tinta-suave);
+  margin: 0;
+}
+
+/* El segundo contenedor con fondo propio donde vive la imagen
+   (el componente ampliado apoyado sobre su mockup, cortado abajo) */
+.detalle__visor {
+  background: var(--color-fondo-agrupado);
+  border-radius: 12px;
+  padding: var(--espacio-3);
+  margin-top: auto; /* empuja el visor al pie: los 4 quedan alineados */
+}
+
+.detalle__visor .ph {
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* En el detalle ancho la imagen respira mejor apaisada */
+.detalle:first-child .detalle__visor .ph { aspect-ratio: 21 / 9; }
+
+/* ── 14 · ALCANCE Y HONESTIDAD — tres columnas de texto plano ── */
+.alcance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-5);
+  margin-top: var(--espacio-4);
+}
+
+.alcance h3 {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-2);
+}
+
+.alcance p {
+  font-size: var(--texto-base);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — VA AL FINAL DEL ARCHIVO, A PROPÓSITO (regla de la casa:
+   un @media que corrige tiene que venir DESPUÉS de lo que corrige)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+
+  /* Todas las composiciones de columnas se apilan. Gracias a que la
+     inversión del 07 se hizo con `order`, acá el texto vuelve solo
+     a quedar arriba sin ninguna regla extra. */
+  .bloque--partido,
+  .dos-usuarios,
+  .taller-serie__item,
+  .accesos__figuras,
+  .bloque--climax {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-4);
+  }
+
+  .bloque--partido.bloque--invertido .bloque__figuras { order: 2; }
+  .bloque--partido.bloque--invertido .bloque__texto { order: 1; }
+
+  .bloque--climax {
+    padding: var(--espacio-5) var(--espacio-4);
+  }
+
+  /* (La ficha ya no necesita regla mobile propia: .caso-ficha trae la
+     suya desde caso.css — se apila en columna sola.) */
+
+  /* La tira de detalles se vuelve una columna: el "primero ancho"
+     ya no significa nada cuando todos ocupan el mismo ancho */
+  .detalles {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle:first-child .detalle__visor .ph { aspect-ratio: 16 / 9; }
+
+  /* Alcance: de tres columnas a tres filas, como pide el lowfi */
+  .alcance {
+    grid-template-columns: 1fr;
+  }
+
+  /* Los pares de pantallas mobile se mantienen lado a lado (dos
+     teléfonos angostos entran bien a 360), pero los tríos no */
+  .trio { grid-template-columns: 1fr; }
+}

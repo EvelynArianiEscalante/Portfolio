@@ -404,3 +404,13 @@
     height: 220px;
   }
 }
+
+
+/* ═══ Ocultos temporales (modo búsqueda laboral, 2026-08-21) ═══
+   El atributo hidden del navegador pierde contra cualquier regla de clase
+   que declare display (ya nos pasó con el dock). Esta regla lo blinda.
+   Se usa para Retail y Design System hasta que existan sus casos. */
+.icono[hidden],
+.finder__item[hidden] {
+  display: none !important;
+}
