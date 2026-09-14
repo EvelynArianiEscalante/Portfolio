@@ -132,6 +132,15 @@
   align-items: start;
 }
 
+/* ── 06 · las 4 pantallas mobile en UNA fila a lo ancho ── */
+.cuarteto {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-4);
+  align-items: start;
+  margin-top: var(--espacio-4);
+}
+
 /* ── PLACEHOLDERS de screenshots ──
    Cajas grises del tamaño real de lo que va a ir: el layout ya queda
    comprometido con las proporciones correctas y al llegar los exports
@@ -345,4 +354,16 @@
   /* Los pares de pantallas mobile se mantienen lado a lado (dos
      teléfonos angostos entran bien a 360), pero los tríos no */
   .trio { grid-template-columns: 1fr; }
+
+  /* 4 pantallas en fila → 2×2 en mobile (4 juntas quedan diminutas) */
+  .cuarteto { grid-template-columns: 1fr 1fr; }
 }
+
+/* Placeholder .ph convertido en <img> real: la imagen llena la caja con la
+   proporción del bloque; en mobile (9/14) se recorta por abajo, como pide
+   el lowfi. Agregado al conectar los screenshots de Transporte. */
+img.ph { object-fit: cover; object-position: top center; display: block; }
+
+/* Las pantallas mobile REALES van completas: se ve la barra de acciones de
+   abajo. El recorte 9/14 queda solo para los placeholders vacíos (div.ph). */
+img.ph--movil { aspect-ratio: auto; height: auto; object-fit: contain; }

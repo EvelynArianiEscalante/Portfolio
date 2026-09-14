@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=18">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=11">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=14">
 </head>
 <body>
 
@@ -142,8 +142,8 @@
          armado en la conversación del 2026-08-18). El markup completo está
          en el historial de git (buscar "cadena--horizontal"). -->
 
-    <!-- ═══ 06 · EL TAG — texto izquierda, imágenes derecha ═══ -->
-    <section class="caso-seccion bloque--partido">
+    <!-- ═══ 06 · EL TAG — texto a lo ancho + 4 pantallas en fila (2026-09) ═══ -->
+    <section class="caso-seccion">
       <div class="bloque__texto">
         <h2>Una lectura, cinco respuestas posibles</h2>
         <p>Todo empieza al acercar el lector a una etiqueta. Pero una lectura
@@ -158,20 +158,13 @@
         detectó y desglosa el resultado. En una operación masiva, el éxito
         parcial es lo normal.</p>
       </div>
-      <div class="bloque__figuras">
-        <!-- 📷 06 principal → dos pantallas mobile lado a lado:
-             "tag detectado con neumático asignado" y "tag no identificada".
-             ⚠️ EPCs/IDs visibles → ficticios. -->
-        <div class="par">
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: tag detectado con neumático asignado"></div>
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: tag no identificada"></div>
-        </div>
-        <!-- 📷 06 secundaria → "tags detectadas (12 listas)" junto a
-             "resultado de altas 12 / 10 / 2". Van en par o no se entienden. -->
-        <div class="par">
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: 12 tags detectadas listas para dar de alta"></div>
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: resultado de altas, 12 leídas, 10 exitosas, 2 con error"></div>
-        </div>
+      <div class="cuarteto">
+        <!-- Las 4 pantallas mobile en una sola fila, en orden de lectura:
+             tag detectado · tag no identificada · 12 detectadas · resultado. -->
+        <img class="ph ph--movil" src="../../assets/images/casos-de-estudio/transporte/tag-detectado.webp" alt="App mobile de Siotyx: tag RFID detectada con neumático y vehículo asignado, con la acción Asignar." loading="lazy">
+        <img class="ph ph--movil" src="../../assets/images/casos-de-estudio/transporte/tag-no-identificada.webp" alt="App mobile de Siotyx: tag no identificada, con el botón Reportar tag." loading="lazy">
+        <img class="ph ph--movil" src="../../assets/images/casos-de-estudio/transporte/tags-detectadas.webp" alt="App mobile de Siotyx: 12 etiquetas RFID detectadas listas para dar de alta." loading="lazy">
+        <img class="ph ph--movil" src="../../assets/images/casos-de-estudio/transporte/resultado-altas.webp" alt="App mobile de Siotyx: resultado de altas, 12 registradas, 10 exitosas, 2 con error." loading="lazy">
       </div>
     </section>
 
