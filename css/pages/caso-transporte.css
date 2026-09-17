@@ -18,6 +18,9 @@
   max-width: 880px;
 }
 
+/* Más aire entre bloques: que respire, sin amontonar información. */
+.caso-contenido--transporte .caso-seccion { margin-top: 7rem; }
+
 /* Ritmo vertical, tipografía de h2/h3, color de párrafos y sangrías:
    TODO viene de .caso-seccion (caso.css), el mismo componente que usan
    los otros cuatro casos. Acá no se redefine nada de eso a propósito —
@@ -105,6 +108,9 @@
    `order` cambia el dibujo sin tocar el HTML: el orden del documento
    —texto primero— se conserva para lectores de pantalla y para mobile. */
 .bloque--partido.bloque--invertido .bloque__texto { order: 2; }
+
+/* Bloque 07: la composición (figuras) ocupa MÁS ancho que el texto. */
+.bloque--sonda { grid-template-columns: 3fr 2fr; }
 .bloque--partido.bloque--invertido .bloque__figuras { order: 1; }
 
 /* Las figuras internas de cada bloque: pares y apilados */
@@ -367,3 +373,48 @@ img.ph { object-fit: cover; object-position: top center; display: block; }
 /* Las pantallas mobile REALES van completas: se ve la barra de acciones de
    abajo. El recorte 9/14 queda solo para los placeholders vacíos (div.ph). */
 img.ph--movil { aspect-ratio: auto; height: auto; object-fit: contain; }
+
+/* ═══ 07 · COMPOSICIÓN DE LA SONDA — frame base + 2 bottom sheets flotando ═══
+   Sin fondo: los WebP ya traen transparencia y sombra. Las piezas se separan
+   para que se vea la pantalla de fondo. Reveal con stagger (js/animations/reveal.js). */
+.sonda-comp { position: relative; width: 100%; aspect-ratio: 1 / 1.18; }
+.sonda-comp__frame {
+  position: absolute; top: 0; left: 25%; width: 50%;
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 12px;   /* igual que las pantallas de los otros bloques */
+}
+.sonda-comp__sheet { position: absolute; }
+.sonda-comp__sheet--1 { width: 42%; left: 0;  bottom: 0; }   /* Preparar medición, abajo-izq */
+.sonda-comp__sheet--2 {
+  width: 38%; right: 0; top: 2%;                 /* Resultado EXT, arriba-der */
+  filter: drop-shadow(0 16px 28px rgba(18, 28, 45, .22));  /* sombra como el sheet izq */
+}
+
+.sonda-comp [class*="sonda-comp__"] {
+  transition: opacity .6s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+  will-change: opacity, transform;
+}
+.sonda-comp.reveal-ready .sonda-comp__frame    { opacity: 0; transform: translateY(28px); }
+.sonda-comp.reveal-ready .sonda-comp__sheet--1 { opacity: 0; transform: translate(-22px, 60px); }
+.sonda-comp.reveal-ready .sonda-comp__sheet--2 { opacity: 0; transform: translate(26px, -40px); }
+.sonda-comp.is-in .sonda-comp__frame    { opacity: 1; transform: none; transition-delay: 0s; }
+.sonda-comp.is-in .sonda-comp__sheet--1 { opacity: 1; transform: none; transition-delay: .18s; }
+.sonda-comp.is-in .sonda-comp__sheet--2 { opacity: 1; transform: none; transition-delay: .36s; }
+
+/* MOBILE: se apilan y se ven completas (nada de 3 flotando a 360px). */
+@media (max-width: 700px) {
+  .sonda-comp { aspect-ratio: auto; }
+  .caso-contenido--transporte .caso-seccion { margin-top: 4.5rem; }
+  .sonda-comp__frame { position: static; width: 74%; margin: 0 auto; }
+  .sonda-comp__sheet { position: static; }
+  .sonda-comp__sheet--1 { width: 88%; margin: var(--espacio-5) auto 0; }
+  .sonda-comp__sheet--2 { width: 76%; margin: var(--espacio-5) auto 0; }
+  .sonda-comp.reveal-ready .sonda-comp__sheet--1 { transform: translateY(44px); }
+  .sonda-comp.reveal-ready .sonda-comp__sheet--2 { transform: translateY(44px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sonda-comp [class*="sonda-comp__"] {
+    transition: none !important; opacity: 1 !important; transform: none !important;
+  }
+}

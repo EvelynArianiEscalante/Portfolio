@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=18">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=14">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=18">
 </head>
 <body>
 
@@ -169,7 +169,7 @@
     </section>
 
     <!-- ═══ 07 · EL NEUMÁTICO — invertido: imagen izquierda ═══ -->
-    <section class="caso-seccion bloque--partido bloque--invertido">
+    <section class="caso-seccion bloque--partido bloque--invertido bloque--sonda">
       <div class="bloque__texto">
         <h2>Medir con una sonda, no con un formulario</h2>
         <p>Un neumático no se registra escribiendo números: se mide. Una sonda
@@ -178,18 +178,14 @@
         <p>El procedimiento lo definió el equipo de hardware. Yo lo traduje a
         pantalla: ilustré el neumático con los cuatro puntos de lectura y
         la propia interfaz explica por qué se miden tres bandas.</p>
-        <p>El resultado —balanceado, irregular o crítico— condiciona lo que
-        sigue: un recapado no puede registrarse como nuevo, y el sistema
-        retira esa opción de la pantalla.</p>
       </div>
       <div class="bloque__figuras">
-        <div class="par">
-          <!-- 📷 07 principal → pantalla "Preparar medición" completa
-               (diagrama INT/CEN/EXT/PSI + los cuatro pasos numerados). -->
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: preparar medición, con el diagrama del neumático y los cuatro pasos"></div>
-          <!-- 📷 07 detalle → SOLO el diagrama del neumático con los cuatro
-               puntos, recortado de la pantalla y ampliado. -->
-          <div class="ph ph--cuadrado" role="img" aria-label="Detalle ampliado: diagrama del neumático con los puntos INT, CEN, EXT y PSI"></div>
+        <!-- Composición de la sonda: frame base + 2 bottom sheets flotando,
+             reveal con stagger al entrar en viewport (js/animations/reveal.js). -->
+        <div class="sonda-comp" data-reveal>
+          <img class="sonda-comp__frame" src="../../assets/images/casos-de-estudio/transporte/formulario-registro.webp" alt="App mobile de Siotyx: formulario de registro de neumático, con la opción de usar sonda de medición." loading="lazy">
+          <img class="sonda-comp__sheet sonda-comp__sheet--1" src="../../assets/images/casos-de-estudio/transporte/preparar-medicion.webp" alt="Bottom sheet Preparar medición: diagrama del neumático con los puntos INT, CEN, EXT y presión, y los cuatro pasos." loading="lazy">
+          <img class="sonda-comp__sheet sonda-comp__sheet--2" src="../../assets/images/casos-de-estudio/transporte/resultado-ext.webp" alt="Bottom sheet de medición: posición 3 de 4 banda externa, con las profundidades INT, CEN y EXT en milímetros." loading="lazy">
         </div>
       </div>
     </section>
@@ -424,5 +420,6 @@
   </main>
     </div>
   </div>
+  <script src="../../js/animations/reveal.js?v=2" defer></script>
 </body>
 </html>
