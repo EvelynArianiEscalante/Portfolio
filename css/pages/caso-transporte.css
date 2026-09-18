@@ -15,7 +15,7 @@
    fue un error: rompía la consistencia y los textos parecían angostos
    porque no llenaban su propio contenedor.) */
 .caso-contenido--transporte {
-  max-width: 880px;
+  max-width: 1040px;
 }
 
 /* Más aire entre bloques: que respire, sin amontonar información. */
@@ -417,4 +417,44 @@ img.ph--movil { aspect-ratio: auto; height: auto; object-fit: contain; }
   .sonda-comp [class*="sonda-comp__"] {
     transition: none !important; opacity: 1 !important; transform: none !important;
   }
+}
+
+
+/* ═══ 08 · COMPOSICIÓN REGISTRO DE VEHÍCULO — dashboard + 2 flotantes, CENTRADA ═══
+   Igual mecánica que .sonda-comp pero apaisada y a todo el ancho. Sin fondo:
+   los WebP traen transparencia y sombra. Reveal con stagger (reveal.js). */
+.veh-comp { position: relative; width: 100%; margin-inline: auto; aspect-ratio: 2 / 1.28; }
+.veh-comp__frame {
+  position: absolute; top: 6%; left: 9%; width: 82%;
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 12px;
+}
+.veh-comp__float { position: absolute; }
+.veh-comp__float--card     { width: 30%; left: 0;  bottom: 0; }   /* camión, abajo-izq */
+.veh-comp__float--acordeon { width: 35%; right: 0; top: 0; }      /* 4 ejes, arriba-der */
+
+.veh-comp [class*="veh-comp__"] {
+  transition: opacity .6s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+  will-change: opacity, transform;
+}
+.veh-comp.reveal-ready .veh-comp__frame           { opacity: 0; transform: translateY(28px); }
+.veh-comp.reveal-ready .veh-comp__float--card     { opacity: 0; transform: translate(-26px, 46px); }
+.veh-comp.reveal-ready .veh-comp__float--acordeon { opacity: 0; transform: translate(28px, -30px); }
+.veh-comp.is-in .veh-comp__frame           { opacity: 1; transform: none; transition-delay: 0s; }
+.veh-comp.is-in .veh-comp__float--card     { opacity: 1; transform: none; transition-delay: .18s; }
+.veh-comp.is-in .veh-comp__float--acordeon { opacity: 1; transform: none; transition-delay: .36s; }
+
+/* MOBILE: se apilan y se ven completos. */
+@media (max-width: 700px) {
+  .veh-comp { aspect-ratio: auto; }
+  .veh-comp__frame { position: static; width: 100%; }
+  .veh-comp__float { position: static; display: block; }
+  .veh-comp__float--card     { width: 66%; margin: var(--espacio-4) auto 0; }
+  .veh-comp__float--acordeon { width: 84%; margin: var(--espacio-4) auto 0; }
+  .veh-comp.reveal-ready .veh-comp__float--card,
+  .veh-comp.reveal-ready .veh-comp__float--acordeon { transform: translateY(40px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veh-comp [class*="veh-comp__"] { transition: none !important; opacity: 1 !important; transform: none !important; }
 }

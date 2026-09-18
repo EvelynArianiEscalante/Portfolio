@@ -26,10 +26,10 @@
   <link rel="stylesheet" href="../../css/base/reset.css?v=18">
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
-  <link rel="stylesheet" href="../../css/pages/caso.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=20">
 </head>
 <body>
 
@@ -202,19 +202,13 @@
         <p>El registro completo son cinco pasos con validación al vuelo. Y si
         algo no cierra, queda pendiente en vez de perderse.</p>
       </div>
-      <div class="bloque__figuras" style="margin-top: var(--espacio-4)">
-        <!-- 📷 08 principal → grilla de ilustraciones de camión, varias
-             juntas, SIN interfaz alrededor: el activo más difícil de
-             replicar del portfolio, merece verse solo. -->
-        <div class="ph ph--apaisado" role="img" aria-label="Grilla de ilustraciones de configuraciones de camión, sin interfaz alrededor"></div>
-        <div class="par">
-          <!-- 📷 08 secundaria → mobile "Configuración de ejes" con el
-               acordeón abierto (S1-D1), camión ilustrado y chips. -->
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: configuración de ejes con el acordeón S1-D1 abierto"></div>
-          <!-- 📷 08 tercera → ficha web "Detalles del vehículo": croquis de
-               ejes a la izquierda, cards de posición a la derecha, una
-               posición marcada en amarillo. ⚠️ patente/dominio → ficticio. -->
-          <div class="ph ph--web" role="img" aria-label="Ficha web de detalles del vehículo, con croquis de ejes y cards de posición"></div>
+      <div class="bloque__figuras" style="margin-top: var(--espacio-6)">
+        <!-- Composición registro de vehículo: dashboard base + acordeón (arriba-der)
+             + card del camión (abajo-izq). Centrada, a todo el ancho. Reveal stagger. -->
+        <div class="veh-comp" data-reveal>
+          <img class="veh-comp__frame" src="../../assets/images/casos-de-estudio/transporte/registro-vehiculo.webp" alt="Dashboard web de Siotyx: registro de vehículo, selección de configuración de ejes con el camión ilustrado y el diagrama de ejes." loading="lazy">
+          <img class="veh-comp__float veh-comp__float--card" src="../../assets/images/casos-de-estudio/transporte/card-config.webp" alt="Card de configuración S1-D1: camión ilustrado, 6 neumáticos más aux, 16.5 toneladas." loading="lazy">
+          <img class="veh-comp__float veh-comp__float--acordeon" src="../../assets/images/casos-de-estudio/transporte/acordeon-config.webp" alt="Selector de configuración: 4 ejes, 4 configuraciones." loading="lazy">
         </div>
       </div>
     </section>

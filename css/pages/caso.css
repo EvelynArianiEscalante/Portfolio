@@ -116,7 +116,7 @@ span.semaforo--max {
      a 980: dos anchos conviviendo se leían como desalineación, no como
      jerarquía. El contenedor baja a 880px como punto medio: las líneas de
      texto quedan largas pero razonables, y las imágenes pierden poco. */
-  max-width: 880px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: var(--espacio-6) var(--espacio-5) 96px;
 }
