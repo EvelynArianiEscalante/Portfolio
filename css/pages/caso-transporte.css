@@ -183,10 +183,17 @@
   color: rgba(255, 255, 255, 0.92);
   border-radius: var(--radio-md);
   padding: var(--espacio-6);
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: var(--espacio-6);
-  align-items: center;
+}
+/* Clímax 09: texto corto arriba, imagen grande centrada + pie de imagen. */
+.bloque--climax .bloque__texto { max-width: 920px; margin: 0 auto var(--espacio-5); }
+.climax-figura { margin: 0; }
+.climax-figura img {
+  display: block; width: 100%; max-width: 920px; margin: 0 auto;
+  border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.climax-figura figcaption {
+  margin: var(--espacio-3) auto 0; max-width: 920px;   /* mismo ancho que la imagen */
+  text-align: left; font-size: var(--texto-sm); color: rgba(255, 255, 255, 0.6);
 }
 
 .bloque--climax h2 {
@@ -194,7 +201,9 @@
 }
 
 .bloque--climax .bloque__texto p {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.2rem;
+  line-height: 1.55;
 }
 
 /* El placeholder sobre fondo oscuro necesita su propio tono */
@@ -458,3 +467,7 @@ img.ph--movil { aspect-ratio: auto; height: auto; object-fit: contain; }
 @media (prefers-reduced-motion: reduce) {
   .veh-comp [class*="veh-comp__"] { transition: none !important; opacity: 1 !important; transform: none !important; }
 }
+
+/* Las pantallas web REALES van completas (ratio natural), no recortadas.
+   El 16/10 queda solo para los placeholders vacíos (div.ph--web). */
+img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
