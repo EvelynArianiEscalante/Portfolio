@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Siotyx Transporte — Evelyn Ariani</title>
+  <title>Siotyx Transporte · Evelyn Ariani</title>
   <meta name="description" content="Caso de estudio: el sistema que permite saber qué neumático está en qué posición de qué camión. UX/UI web y mobile para un producto B2B conectado a hardware RFID.">
 
   <!-- Open Graph: preview del link al compartir este caso suelto. URLs absolutas. -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Siotyx Transporte — Caso de estudio de Evelyn Ariani">
+  <meta property="og:title" content="Siotyx Transporte · Caso de estudio de Evelyn Ariani">
   <meta property="og:description" content="El sistema que permite saber qué neumático está en qué posición de qué camión, y qué puede hacerse con esa información.">
   <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/transporte.html">
   <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=24">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=27">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
       <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
       <span class="semaforo semaforo--min"></span>
       <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
-      <span class="ventana-max__titulo">Siotyx Transporte — Caso de estudio</span>
+      <span class="ventana-max__titulo">Siotyx Transporte · Caso de estudio</span>
     </div>
     <div class="ventana-max__scroll">
   <main class="caso-contenido caso-contenido--transporte">
@@ -97,14 +97,13 @@
       <div class="bloque__texto">
         <h2>El problema</h2>
         <p>En una flota, los neumáticos cambian de lugar todo el tiempo: se
-        montan, se rotan, pasan por el taller. Nada de eso quedaba en un
-        sistema — la información vivía dispersa y dependía del criterio de
+        montan, se rotan, pasan por el taller. Nada de eso quedaba en un sistema: la información vivía dispersa y dependía del criterio de
         cada operario.</p>
         <p>El resultado: nadie podía responder la pregunta básica de la
         operación. ¿Qué neumático está en qué posición de qué camión, y en
         qué estado?</p>
         <p>El desafío de diseño fue doble. Para el operario: una interfaz
-        mobile que funcione donde el trabajo ocurre — de pie en el taller,
+        mobile que funcione donde el trabajo ocurre: de pie en el taller,
         lector RFID en una mano, sonda en la otra. Para el administrador:
         una vista web que le permita, desde la oficina, entender el estado
         de la flota de un vistazo.</p>
@@ -131,7 +130,7 @@
         </div>
         <p class="dos-usuarios__cierre">Acá hay ida y vuelta: el operario
         reporta y el administrador habilita. El punto de contacto entre los
-        dos no es una pantalla — es un objeto.</p>
+        dos no es una pantalla: es un objeto.</p>
       </div>
     </section>
 
@@ -218,12 +217,12 @@
       <div class="bloque__texto">
         <h2>Frenar el viaje, no la operación</h2>
         <p>Al programar un viaje, el sistema valida los neumáticos. Con uno solo
-        en crítico no deja avanzar — prevalece el peor: uno crítico pesa más que
+        en crítico no deja avanzar. Prevalece el peor: uno crítico pesa más que
         siete óptimos.</p>
       </div>
       <figure class="climax-figura">
-        <img src="../../assets/images/casos-de-estudio/transporte/validacion-critica.webp" alt="Pantalla web de Siotyx: validación de neumáticos en estado crítico al programar un viaje — lista de neumáticos marcados, mensaje de bloqueo y las dos salidas." loading="lazy">
-        <figcaption>El bloqueo no es un callejón: ofrece dos salidas — elegir otro vehículo o enviarlo al taller. El umbral debería ser configurable por flota.</figcaption>
+        <img src="../../assets/images/casos-de-estudio/transporte/validacion-critica.webp" alt="Pantalla web de Siotyx: validación de neumáticos en estado crítico al programar un viaje: lista de neumáticos marcados, mensaje de bloqueo y las dos salidas." loading="lazy">
+        <figcaption>El bloqueo no es un callejón: ofrece dos salidas (elegir otro vehículo o enviarlo al taller). El umbral debería ser configurable por flota.</figcaption>
       </figure>
     </section>
 
@@ -231,15 +230,16 @@
     <section class="caso-seccion">
       <div class="bloque__texto">
         <h2>Ocho operaciones, un solo patrón</h2>
-        <p>Ocho operaciones —de la rotación al recapado— con la misma
+        <p>Ocho operaciones (de la rotación al recapado) con la misma
         estructura: escanear, ver el neumático, ejecutar, confirmar. El
         operario aprende una vez y las usa todas.</p>
         <p>El menú las agrupa por naturaleza del trabajo: mover un neumático
         no es lo mismo que repararlo.</p>
       </div>
       <div class="taller-serie">
-        <div class="taller-serie__item">
+        <div class="taller-serie__item taller-serie__item--recap" data-reveal>
           <div>
+            <span class="taller-kicker">Recapado</span>
             <h3>El sistema cuenta y avisa antes de que sea tarde</h3>
             <p>A los dos parches o recapados, aviso de monitoreo; al tercero, la
             alerta pasa a roja y el botón deja de decir "finalizar recapado"
@@ -247,10 +247,15 @@
           </div>
           <!-- 📷 10 → neumático con 2 recapados JUNTO al de 3: el cambio de
                color y de botón se ve solo. -->
-          <div class="ph ph--apaisado" role="img" aria-label="Comparación: neumático con dos recapados junto al mismo con tres, donde cambia el color y el botón"></div>
+          <div class="recap-comp">
+            <img class="recap-comp__phone recap-comp__phone--a" src="../../assets/images/casos-de-estudio/transporte/recap-2.webp" alt="Pantalla mobile: neumático con 2 recapados, aviso de monitoreo." loading="lazy">
+            <img class="recap-comp__phone recap-comp__phone--b" src="../../assets/images/casos-de-estudio/transporte/recap-3.webp" alt="Pantalla mobile: neumático con 3 recapados, alerta roja y botón retirar de servicio." loading="lazy">
+            <img class="recap-comp__modal" src="../../assets/images/casos-de-estudio/transporte/recap-modal.webp" alt="Modal de confirmación: retirar de servicio al neumático." loading="lazy">
+          </div>
         </div>
-        <div class="taller-serie__item">
+        <div class="taller-serie__item" data-reveal>
           <div>
+            <span class="taller-kicker">Apareamiento</span>
             <h3>El apareamiento da tres respuestas, no dos</h3>
             <p>Comparar dos neumáticos de un eje doble da tres respuestas:
             compatible, margen mínimo o incompatible. El del medio es el que
@@ -262,8 +267,9 @@
                Van juntos o no se entiende la gradación. -->
           <div class="ph ph--apaisado" role="img" aria-label="Los tres estados de apareamiento lado a lado: compatible, margen mínimo e incompatible"></div>
         </div>
-        <div class="taller-serie__item">
+        <div class="taller-serie__item" data-reveal>
           <div>
+            <span class="taller-kicker">Rotación y montaje</span>
             <h3>Para rotar o montar, el operario toca el camión</h3>
             <p>La selección de posición se hace sobre el croquis de ejes, no
             en un desplegable de texto.</p>
@@ -280,8 +286,7 @@
     <section class="caso-seccion bloque--partido">
       <div class="bloque__texto">
         <h2>El ciclo vuelve a empezar</h2>
-        <p>La auditoría se dispara sola —por kilometraje o a pedido del
-        administrador— y revisa rueda por rueda sobre el croquis del camión.
+        <p>La auditoría se dispara sola (por kilometraje o a pedido del administrador) y revisa rueda por rueda sobre el croquis del camión.
         Si el operario escanea un neumático que no pertenece a ese vehículo,
         el sistema frena: no deja registrar el dato equivocado.</p>
         <p><strong>El estado que casi nadie diseña es el que más pasa.</strong>
@@ -314,12 +319,10 @@
         en el portón, sin que nadie intervenga. Está operativo en producción.</p>
         <p>Cuando la lectura falla, el diseño explica por qué. Un camión puede
         llegar con trece etiquetas con error: la del vehículo y las de doce
-        neumáticos. Un único modal escala de 1 a 13 sin cambiar de patrón —
-        agrupa por eje, se colapsa y tipifica el motivo.</p>
+        neumáticos. Un único modal escala de 1 a 13 sin cambiar de patrón: agrupa por eje, se colapsa y tipifica el motivo.</p>
         <p>El tablero tiene cuatro indicadores, cada uno con su regla de
         polaridad: viajes finalizados sube y es verde; unidades en taller
-        sube y es rojo. Y la disponibilidad de flota no tiene dirección —
-        tiene un rango saludable.</p>
+        sube y es rojo. Y la disponibilidad de flota no tiene dirección: tiene un rango saludable.</p>
       </div>
       <div class="accesos__figuras">
         <!-- 📷 12 → los TRES modales de error juntos en una sola imagen:

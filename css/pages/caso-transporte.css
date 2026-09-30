@@ -222,10 +222,7 @@
 
 /* Texto siempre del mismo lado (izquierda): se lee como serie */
 .taller-serie__item {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: var(--espacio-5);
-  align-items: center;
+  display: block;   /* apilado: texto a lo ancho arriba, imagen centrada abajo */
 }
 
 .taller-serie__item h3 {
@@ -471,3 +468,36 @@ img.ph--movil { aspect-ratio: auto; height: auto; object-fit: contain; }
 /* Las pantallas web REALES van completas (ratio natural), no recortadas.
    El 16/10 queda solo para los placeholders vacíos (div.ph--web). */
 img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
+
+
+/* ── 10 · Taller: más aire + reveal por tarjeta (scroll dinámico) ── */
+.taller-serie { gap: 4rem; margin-top: 3rem; }
+.taller-serie__item { transition: opacity .6s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.taller-serie__item.reveal-ready { opacity: 0; transform: translateY(30px); }
+.taller-serie__item.is-in { opacity: 1; transform: none; }
+.taller-serie__item--recap { grid-template-columns: 2fr 3fr; align-items: start; }
+
+/* Composición recapado: 2 pantallas (2 vs 3 recapados) + modal, completas */
+.recap-comp { position: relative; width: 100%; max-width: 820px; margin: var(--espacio-5) auto 0; aspect-ratio: 1.5 / 1; }
+.recap-comp__phone {
+  position: absolute; height: auto; border-radius: 12px;
+  box-shadow: 0 10px 26px -12px rgba(20, 30, 50, .28);
+}
+.recap-comp__phone--a { left: 6%;  top: 0;   width: 31%; z-index: 1; }  /* 2 recapados, alta-izq */
+.recap-comp__phone--b { left: 37%; top: 16%; width: 31%; z-index: 2; }  /* 3 recapados, baja-der */
+.recap-comp__modal    { position: absolute; right: 4%; top: 34%;   width: 33%; height: auto; z-index: 3; }  /* al medio de B */
+
+@media (max-width: 700px) {
+  .taller-serie__item--recap { grid-template-columns: 1fr; }
+  .recap-comp { aspect-ratio: auto; }
+  .recap-comp__phone, .recap-comp__modal { position: static; display: block; margin: var(--espacio-4) auto 0; }
+  .recap-comp__phone { width: 72%; }
+  .recap-comp__modal { width: 84%; }
+}
+
+/* Rótulo de operación arriba del título de cada tarjeta del Taller */
+.taller-kicker { display: block; font-size: var(--texto-sm); font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--color-carpeta-oscuro);
+  margin-bottom: var(--espacio-1); }
+
+.taller-serie__item > .ph { max-width: 820px; margin: var(--espacio-5) auto 0; }
