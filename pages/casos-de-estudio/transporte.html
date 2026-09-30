@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=27">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=44">
 </head>
 <body>
 
@@ -265,7 +265,13 @@
           <!-- 📷 10 → los TRES estados de apareamiento juntos:
                compatible (0.5mm) / margen mínimo (3mm) / incompatible (5mm).
                Van juntos o no se entiende la gradación. -->
-          <div class="ph ph--apaisado" role="img" aria-label="Los tres estados de apareamiento lado a lado: compatible, margen mínimo e incompatible"></div>
+          <div class="apar-comp">
+            <img class="apar-comp__phone apar-comp__phone--1" src="../../assets/images/casos-de-estudio/transporte/apar-compatible.webp" alt="Apareamiento compatible: diferencia de surco 0.5 mm." loading="lazy">
+            <img class="apar-comp__phone apar-comp__phone--2" src="../../assets/images/casos-de-estudio/transporte/apar-margen.webp" alt="Apareamiento compatible por margen mínimo: diferencia 3 mm." loading="lazy">
+            <img class="apar-comp__phone apar-comp__phone--3" src="../../assets/images/casos-de-estudio/transporte/apar-incompatible.webp" alt="Apareamiento incompatible: diferencia 5 mm, cambiar neumático." loading="lazy">
+            <img class="apar-comp__sheet apar-comp__sheet--cual" src="../../assets/images/casos-de-estudio/transporte/apar-cual.webp" alt="Bottom sheet: ¿cuál neumático querés reemplazar?" loading="lazy">
+            <img class="apar-comp__sheet apar-comp__sheet--como" src="../../assets/images/casos-de-estudio/transporte/apar-como.webp" alt="Bottom sheet: ¿cómo seleccionás el reemplazo?" loading="lazy">
+          </div>
         </div>
         <div class="taller-serie__item" data-reveal>
           <div>
@@ -274,39 +280,27 @@
             <p>La selección de posición se hace sobre el croquis de ejes, no
             en un desplegable de texto.</p>
           </div>
-          <!-- 📷 10 → selección de posición sobre el croquis del camión.
-               (El menú de Taller con sus dos grupos puede sumarse acá o
-               quedar afuera: decisión de Evelyn al exportar.) -->
-          <div class="ph ph--apaisado" role="img" aria-label="Selección de posición del neumático sobre el croquis de ejes del camión"></div>
+          <div class="rota-comp">
+            <img class="rota-comp__phone rota-comp__phone--a" src="../../assets/images/casos-de-estudio/transporte/rota-1.webp" alt="Pantalla mobile: selección de nueva posición sobre el croquis de ejes del camión." loading="lazy">
+            <img class="rota-comp__phone rota-comp__phone--b" src="../../assets/images/casos-de-estudio/transporte/rota-2.webp" alt="Pantalla mobile: posición seleccionada confirmada sobre el croquis." loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ 11 · LA AUDITORÍA — cierra con la forma del 06 ═══ -->
-    <section class="caso-seccion bloque--partido">
-      <div class="bloque__texto">
-        <h2>El ciclo vuelve a empezar</h2>
-        <p>La auditoría se dispara sola (por kilometraje o a pedido del administrador) y revisa rueda por rueda sobre el croquis del camión.
-        Si el operario escanea un neumático que no pertenece a ese vehículo,
-        el sistema frena: no deja registrar el dato equivocado.</p>
-        <p><strong>El estado que casi nadie diseña es el que más pasa.</strong>
-        Una auditoría se puede interrumpir: queda incompleta, guarda el
-        progreso y el intento fallido va al historial, no se borra.</p>
-        <p>Y si el resultado es crítico, el botón final ya no dice
-        "finalizar": dice "enviar a taller". El ciclo vuelve a empezar.</p>
+    <!-- ═══ 11 · LA AUDITORÍA — control de estados (web) ═══ -->
+    <section class="caso-seccion">
+      <div class="audit-intro">
+        <span class="taller-kicker">Auditoría</span>
+        <h2>El control no está en escanear, está en el estado</h2>
+        <p>La auditoría la ejecuta el operario en la calle, pero quien la gobierna es el administrador desde el tablero. Cada auditoría tiene un estado, y el panel las muestra a todas juntas: pendientes, en curso, finalizadas e incompletas.</p>
+        <p><strong>El estado que casi nadie diseña es el de la auditoría interrumpida.</strong> No se pierde: guarda el progreso, marca cuántos neumáticos quedaron sin escanear y manda el intento al historial. Desde el detalle, el administrador decide si la elimina o notifica al operario para que la retome.</p>
       </div>
-      <div class="bloque__figuras">
-        <div class="par">
-          <!-- 📷 11 → auditoría en curso sobre el croquis de ejes, con las
-               posiciones ya escaneadas marcadas. -->
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: auditoría en curso sobre el croquis, con posiciones escaneadas"></div>
-          <!-- 📷 11 → revisión final en estado crítico, con el botón
-               "Enviar a taller". -->
-          <div class="ph ph--movil" role="img" aria-label="Pantalla mobile: revisión final de auditoría en estado crítico, con el botón enviar a taller"></div>
-        </div>
-        <!-- 📷 11 → detalle de auditoría incompleta en WEB: contador 4 de 8
-             y botón de notificar al operario. -->
-        <div class="ph ph--web" role="img" aria-label="Pantalla web: auditoría incompleta con contador cuatro de ocho y botón de notificar al operario"></div>
+      <div class="audit-comp" data-reveal>
+        <img class="audit-comp__dash" src="../../assets/images/casos-de-estudio/transporte/audit-dashboard.webp" alt="Tablero web de auditoría: indicadores por estado y listado de auditorías con estado, vehículo y fechas." loading="lazy">
+        <img class="audit-comp__modal audit-comp__modal--incompleta" src="../../assets/images/casos-de-estudio/transporte/audit-incompleta.webp" alt="Detalle de auditoría incompleta: progreso 4 de 8, neumáticos sin escanear y botón notificar al operario." loading="lazy">
+        <img class="audit-comp__modal audit-comp__modal--pendiente" src="../../assets/images/casos-de-estudio/transporte/audit-pendiente.webp" alt="Detalle de auditoría pendiente: todavía sin neumáticos escaneados." loading="lazy">
+        <img class="audit-comp__modal audit-comp__modal--encurso" src="../../assets/images/casos-de-estudio/transporte/audit-encurso.webp" alt="Detalle de auditoría en curso: los resultados quedan disponibles cuando el operario la finaliza." loading="lazy">
       </div>
     </section>
 
