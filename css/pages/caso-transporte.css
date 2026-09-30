@@ -254,7 +254,7 @@
 /* ── 13 · TIRA DE DETALLES — grilla deliberadamente despareja ── */
 .detalles {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--espacio-4);
   margin-top: var(--espacio-4);
 }
@@ -286,16 +286,19 @@
 /* El segundo contenedor con fondo propio donde vive la imagen
    (el componente ampliado apoyado sobre su mockup, cortado abajo) */
 .detalle__visor {
-  background: var(--color-fondo-agrupado);
   border-radius: 12px;
-  padding: var(--espacio-3);
-  margin-top: auto; /* empuja el visor al pie: los 4 quedan alineados */
+  overflow: hidden;      /* recorta la imagen a las esquinas redondeadas */
+  margin-top: auto;      /* empuja el visor al pie: quedan alineados */
+  box-shadow: 0 8px 24px -6px rgba(20, 30, 50, .22);  /* despega la pantalla de la card */
 }
 
 .detalle__visor .ph {
   border: none;
   background: rgba(0, 0, 0, 0.06);
 }
+
+/* imagen real dentro del visor: llena el marco, esquinas suaves */
+.detalle__visor img { display: block; width: 100%; height: auto; border-radius: 8px; }
 
 /* En el detalle ancho la imagen respira mejor apaisada */
 .detalle:first-child .detalle__visor .ph { aspect-ratio: 21 / 9; }
@@ -556,4 +559,27 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
   .audit-comp { aspect-ratio: auto; }
   .audit-comp img { position: static !important; display: block; margin: var(--espacio-4) auto 0; transform: none !important; opacity: 1 !important; transition: none !important; width: 94%; }
   .audit-comp__dash { width: 100%; }
+}
+
+
+/* ── 12 · Control de accesos: panel en vivo + 3 estados del modal de error ── */
+.acc-comp { position: relative; width: 100%; max-width: 1040px; margin: 3.5rem auto 0; aspect-ratio: 1.38 / 1; }
+.acc-comp img { position: absolute; height: auto; filter: drop-shadow(0 9px 16px rgba(20, 30, 50, .18)); }
+.acc-comp__panel { left: 12%; top: 0;   width: 76%; z-index: 1; }
+.acc-comp__modal--uno   { left: 0%;  top: 58%; width: 30%; z-index: 2; }  /* 1 error (export ya rotado a la izq) */
+.acc-comp__modal--lista { left: 34%; top: 55%; width: 28%; z-index: 4; }  /* 12 expandido, centro, adelante */
+.acc-comp__modal--ejes  { left: 64%; top: 59%; width: 30%; z-index: 3; }  /* 12 colapsado (export ya rotado a la der) */
+
+.acc-comp img { transition: opacity .6s ease, transform .8s cubic-bezier(.2, .7, .2, 1); will-change: opacity, transform; }
+.acc-comp.reveal-ready .acc-comp__panel { opacity: 0; transform: translateY(28px) scale(.96); }
+.acc-comp.reveal-ready .acc-comp__modal { opacity: 0; transform: translateY(52px) scale(.9); }
+.acc-comp.is-in .acc-comp__panel        { opacity: 1; transform: none; transition-delay: 0s; }
+.acc-comp.is-in .acc-comp__modal--uno   { opacity: 1; transform: none; transition-delay: .15s; }
+.acc-comp.is-in .acc-comp__modal--lista { opacity: 1; transform: none; transition-delay: .28s; }
+.acc-comp.is-in .acc-comp__modal--ejes  { opacity: 1; transform: none; transition-delay: .4s; }
+
+@media (max-width: 700px) {
+  .acc-comp { aspect-ratio: auto; }
+  .acc-comp img { position: static !important; display: block; margin: var(--espacio-4) auto 0; transform: none !important; opacity: 1 !important; transition: none !important; width: 92%; }
+  .acc-comp__panel { width: 100%; }
 }

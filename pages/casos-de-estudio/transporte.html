@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=44">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=50">
 </head>
 <body>
 
@@ -318,80 +318,33 @@
         polaridad: viajes finalizados sube y es verde; unidades en taller
         sube y es rojo. Y la disponibilidad de flota no tiene dirección: tiene un rango saludable.</p>
       </div>
-      <div class="accesos__figuras">
-        <!-- 📷 12 → los TRES modales de error juntos en una sola imagen:
-             un tag de vehículo / un neumático / doce neumáticos colapsados
-             y expandidos. La pieza técnica más fuerte del caso.
-             ⚠️ EPCs/patentes → ficticios. -->
-        <div class="ph ph--apaisado" role="img" aria-label="Los tres modales de error de acceso juntos: uno, dos y trece errores agrupados por eje"></div>
-        <!-- 📷 12 → dashboard web completo con las cuatro cards de KPI. -->
-        <div class="ph ph--web" role="img" aria-label="Dashboard web con las cuatro cards de indicadores"></div>
+      <div class="acc-comp" data-reveal>
+        <img class="acc-comp__panel" src="../../assets/images/casos-de-estudio/transporte/acc-panel.webp" alt="Panel Control de Accesos: registro en vivo de entradas y salidas de camiones con estado autorizado o error de validacion." loading="lazy">
+        <img class="acc-comp__modal acc-comp__modal--uno" src="../../assets/images/casos-de-estudio/transporte/acc-modal1.webp" alt="Detalle de acceso con un solo error: tag duplicada en un neumatico." loading="lazy">
+        <img class="acc-comp__modal acc-comp__modal--lista" src="../../assets/images/casos-de-estudio/transporte/acc-modal2.webp" alt="Detalle de acceso con doce errores, eje 1 expandido mostrando cada tag y su motivo." loading="lazy">
+        <img class="acc-comp__modal acc-comp__modal--ejes" src="../../assets/images/casos-de-estudio/transporte/acc-modal3.webp" alt="Detalle de acceso con doce errores agrupados por eje, colapsados." loading="lazy">
       </div>
     </section>
 
-    <!-- ═══ 13 · TIRA DE DETALLES — grilla deliberadamente despareja ═══ -->
+    <!-- ═══ 13 · TIRA DE DETALLES — decisiones chicas con recorte real ═══ -->
     <section class="caso-seccion">
-      <h2>Cuatro decisiones chicas</h2>
+      <h2>Tres decisiones chicas</h2>
       <div class="detalles">
         <article class="detalle">
-          <h3>El mismo modal aguanta 1 error o 13</h3>
-          <p>Agrupado por eje, colapsable, con el motivo tipificado en cada
-          fila.</p>
-          <!-- 📷 13 → los tres modales de error (reuso del export del 12,
-               apoyado sobre el mockup del que sale, cortado por abajo). -->
-          <div class="detalle__visor"><div class="ph" role="img" aria-label="Los tres modales de error, del más simple al de trece errores"></div></div>
-        </article>
-        <article class="detalle">
           <h3>Un número que sube no siempre es buena noticia</h3>
-          <p>Cada KPI tiene su propia regla de polaridad, y uno de ellos no
-          tiene dirección: tiene rango.</p>
-          <!-- 📷 13 → una card de KPI con su flecha de tendencia, extraída
-               y ampliada sobre el mockup. -->
-          <div class="detalle__visor"><div class="ph ph--apaisado" role="img" aria-label="Card de indicador con su flecha de tendencia"></div></div>
+          <p>Cada indicador tiene su propia regla de polaridad: viajes finalizados sube y es verde, unidades en taller sube y es rojo, y la disponibilidad de flota no tiene dirección, tiene un rango.</p>
+          <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-dashboard.webp" alt="Dashboard con cuatro indicadores, cada uno con su color segun su regla de polaridad." loading="lazy"></div>
         </article>
         <article class="detalle">
           <h3>La foto es obligatoria solo cuando hay algo que mostrar</h3>
-          <p>El motivo de baja define si el sistema pide evidencia. Robo no,
-          daño irreparable sí.</p>
-          <!-- 📷 13 → formulario de baja con foto obligatoria. -->
-          <div class="detalle__visor"><div class="ph ph--apaisado" role="img" aria-label="Formulario de baja con el campo de foto obligatoria"></div></div>
+          <p>Cuando el estado es crítico, el registro pide evidencia visual. La foto no es un trámite: es lo que confirma el diagnóstico.</p>
+          <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-card2.webp" alt="Registro de neumatico en estado critico con evidencia visual marcada como obligatoria." loading="lazy"></div>
         </article>
         <article class="detalle">
-          <h3>El operario nunca queda sin salida</h3>
-          <p>Tag no identificada, apareamiento incompatible, viaje bloqueado:
-          cada bloqueo ofrece la acción siguiente en la misma pantalla.</p>
-          <!-- 📷 13 → pantalla de tag no identificada con el botón
-               "Reportar tag" (reuso del export del 06). -->
-          <div class="detalle__visor"><div class="ph ph--apaisado" role="img" aria-label="Pantalla de tag no identificada con el botón reportar tag"></div></div>
+          <h3>Lo que no se puede deshacer, se confirma</h3>
+          <p>Ver detalles o asignar etiqueta son directos. Eliminar, que borra el vehículo del sistema sin vuelta atrás, siempre frena con una confirmación.</p>
+          <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-card1.webp" alt="Listado de neumaticos con menu de acciones y confirmacion antes de eliminar." loading="lazy"></div>
         </article>
-      </div>
-    </section>
-
-    <!-- ═══ 14 · ALCANCE Y HONESTIDAD — sin íconos, sin color ═══ -->
-    <section class="caso-seccion">
-      <h2>Qué fue diseño y qué no</h2>
-      <div class="alcance">
-        <div>
-          <h3>Mío</h3>
-          <p>El sistema visual de configuraciones de ejes, la ilustración de
-          neumáticos y ejes como componentes con estados, el estado intermedio
-          del apareamiento, la traducción del procedimiento de medición a
-          interfaz guiada, las reglas de polaridad de los indicadores, y la
-          negociación de alcance en alineación y balanceo, donde propuse una
-          versión simple al entender que la medición real la hacen máquinas
-          del taller.</p>
-        </div>
-        <div>
-          <h3>Del requerimiento</h3>
-          <p>El flujo de auditoría en tres pasos, el umbral configurable de
-          apareamiento, el retiro de servicio a los tres recapados, los roles
-          del sistema y el login federado.</p>
-        </div>
-        <div>
-          <h3>De otras áreas</h3>
-          <p>El procedimiento de medición con sonda lo definió el equipo de
-          hardware.</p>
-        </div>
       </div>
     </section>
 
