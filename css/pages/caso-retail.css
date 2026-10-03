@@ -1,0 +1,75 @@
+/* ═══════════════════════════════════════════════════════════
+   CASO SIOTYX RETAIL — capa propia del caso.
+   Por ahora SOLO los primitivos que el esqueleto necesita
+   (placeholders + dos usuarios), copiados de caso-transporte.
+   Las composiciones específicas de Retail se agregan cuando
+   lleguen los mockups.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Placeholders de imagen (se reemplazan por <img> al exportar) ── */
+.ph {
+  background: var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.ph--web      { aspect-ratio: 16 / 10; }  /* pantalla web */
+.ph--panorama { aspect-ratio: 21 / 9; }   /* hero: dashboard recortado abajo */
+.ph--apaisado { aspect-ratio: 16 / 9; }   /* composiciones anchas */
+.ph--movil {
+  aspect-ratio: 9 / 14;
+  max-width: 240px;
+  margin-inline: auto;
+}
+
+/* ── Dos usuarios (operario de depósito / supervisor) ── */
+.dos-usuarios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+}
+.dos-usuarios .usuario {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 16px;
+  padding: var(--espacio-5);
+}
+.dos-usuarios .usuario p:last-child { margin-bottom: 0; }
+.usuario__tile {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 10%, transparent);
+  margin-bottom: var(--espacio-3);
+}
+.dos-usuarios .usuario__icono {
+  width: 22px;
+  height: 22px;
+  color: var(--color-carpeta-oscuro);
+}
+.dos-usuarios h3 { margin-bottom: 2px; }
+.dos-usuarios .usuario__meta {
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-2);
+}
+.dos-usuarios__cierre {
+  grid-column: 1 / -1;
+  font-size: var(--texto-md);
+}
+
+/* ── Par de pantallas lado a lado (mobile/web) para los bloques de proceso ── */
+.retail-par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  align-items: start;
+  margin-top: var(--espacio-5);
+}
+
+@media (max-width: 700px) {
+  .dos-usuarios,
+  .retail-par { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siotyx Retail · Evelyn Ariani</title>
+  <meta name="description" content="Caso de estudio: control de inventario de depósito con trazabilidad RFID y código de barras. UX/UI web y mobile para un producto B2B conectado a hardware.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Siotyx Retail · Caso de estudio de Evelyn Ariani">
+  <meta property="og:description" content="Recibir, ubicar y despachar mercadería con trazabilidad: del escaneo al pedido.">
+  <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/retail.html">
+  <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../../assets/icons/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/base/reset.css?v=18">
+  <link rel="stylesheet" href="../../css/base/variables.css?v=18">
+  <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=1">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CASO SIOTYX RETAIL — ESQUELETO BÁSICO (2026-10-02)
+       Estructura base para empezar a cargar mockups.
+       El texto es borrador: se afina con contenido (Gemini / Evelyn).
+       Las imágenes son placeholders .ph con su proporción; cada una
+       lleva un comentario 📷 con QUÉ pantalla va. Al exportar, se
+       cambia el <div class="ph"> por un <img>.
+       Modelo del producto: Tag → Ítem → Ubicación → Pedido.
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="ventana-max">
+    <div class="ventana-max__barra">
+      <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
+      <span class="semaforo semaforo--min"></span>
+      <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
+      <span class="ventana-max__titulo">Siotyx Retail · Caso de estudio</span>
+    </div>
+    <div class="ventana-max__scroll">
+  <main class="caso-contenido">
+
+    <!-- ═══ 01 · HERO ═══ -->
+    <header class="caso-header">
+      <h1>Siotyx Retail</h1>
+      <p class="bajada">Diseñé el control de inventario de depósito de Siotyx:
+      recibir, ubicar y despachar mercadería con trazabilidad, del escaneo al
+      pedido. [borrador]</p>
+      <dl class="caso-ficha">
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Depósito y Retail</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · en curso</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Mobile + Web · RFID y código de barras</dd></div>
+      </dl>
+    </header>
+
+    <!-- 📷 01 → HERO: dashboard web de Retail (4 KPI + tabla), recortado abajo. -->
+    <figure class="caso-figura">
+      <div class="ph ph--panorama" role="img" aria-label="Dashboard web de Siotyx Retail"></div>
+    </figure>
+
+    <!-- ═══ 02 · EL PROBLEMA ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>El problema</h2>
+        <p>El inventario de un depósito se mueve todo el tiempo: entra, se ubica,
+        se despacha. Sin trazabilidad, cada movimiento dependía de una planilla y
+        del criterio de quien lo cargaba. [borrador]</p>
+        <p>La pregunta básica de la operación (qué hay, cuánto y dónde) no tenía
+        una respuesta confiable. [borrador]</p>
+      </div>
+    </section>
+
+    <!-- ═══ 03 · LOS DOS USUARIOS ═══ -->
+    <section class="caso-seccion">
+      <h2>Dos personas, un mismo inventario</h2>
+      <div class="dos-usuarios">
+        <div class="usuario">
+          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+          <h3>Supervisor</h3>
+          <p class="usuario__meta">Oficina · Web</p>
+          <p>Controla recepción, almacén y pedidos desde el tablero. Necesita ver
+          el estado del depósito de un vistazo. [borrador]</p>
+        </div>
+        <div class="usuario">
+          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+          <h3>Operario de depósito</h3>
+          <p class="usuario__meta">Depósito · Mobile</p>
+          <p>Recibe, escanea, ingresa, hace picking y busca productos. De pie, con
+          las manos ocupadas y a veces sin señal. [borrador]</p>
+        </div>
+        <p class="dos-usuarios__cierre">El punto de contacto entre los dos no es
+        una pantalla: es el ítem físico y su etiqueta. [borrador]</p>
+      </div>
+    </section>
+
+    <!-- ═══ 04 · RECEPCIÓN ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Recepción: lo que entra, contado y ubicado</h2>
+        <p>El operario recibe en mobile (progress cards, filtros por tipo y
+        estado); el supervisor lo ve en web, en tabla con hora, evento, detalle,
+        ubicación y estado. [borrador]</p>
+      </div>
+      <!-- 📷 04 → par: mobile (ítems de recepción con barra de progreso) + web (tabla de recepción). -->
+      <div class="retail-par">
+        <div class="ph ph--movil" role="img" aria-label="Mobile: ítems de recepción con progreso y filtros"></div>
+        <div class="ph ph--web" role="img" aria-label="Web: tabla de recepción"></div>
+      </div>
+    </section>
+
+    <!-- ═══ 05 · ESCANEO: UNITARIO VS LOTE ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Un mismo escáner, dos modos</h2>
+        <p>El escáner de código de barras resuelve recepción unitaria y por lote,
+        más los estados que el depósito impone de verdad: sin conexión, código no
+        coincide, falla de lectura. [borrador]</p>
+      </div>
+      <!-- 📷 05 → los estados del escáner: unitario / lote / sin conexión / no coincide. -->
+      <div class="ph ph--apaisado" role="img" aria-label="Estados del escáner de código de barras: unitario, lote, sin conexión, no coincide"></div>
+    </section>
+
+    <!-- ═══ 06 · INGRESO Y ASIGNACIÓN DE TAGS ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>El dato cambia según de dónde viene</h2>
+        <p>Al asignar tags, la pantalla se adapta al origen del dato: tipo de
+        producto externo vs. tipo de producto desde Siotyx. Dos variantes del
+        mismo paso. [borrador]</p>
+      </div>
+      <!-- 📷 06 → par mobile: Tag detectada (externo) vs Tag detectada (desde Siotyx). -->
+      <div class="retail-par">
+        <div class="ph ph--movil" role="img" aria-label="Mobile: tag detectada, producto externo"></div>
+        <div class="ph ph--movil" role="img" aria-label="Mobile: tag detectada, producto desde Siotyx"></div>
+      </div>
+    </section>
+
+    <!-- ═══ 07 · PEDIDOS (WEB) ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Armar un pedido sin perder el hilo</h2>
+        <p>La creación de pedido es un modal que crece en cuatro estados (de vacío
+        a lista con scroll interno), con un buscador que distingue producto
+        unitario de lote y un contador por ítem. [borrador]</p>
+      </div>
+      <!-- 📷 07 → web: modal de creación de pedido (estado con lista + buscador unitario/lote). -->
+      <div class="ph ph--web" role="img" aria-label="Web: creación de pedido con buscador y contador por producto"></div>
+    </section>
+
+    <!-- ═══ 08 · BUSCADOR DE PROXIMIDAD ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Encontrar un producto en el depósito</h2>
+        <p>El buscador usa el manómetro de proximidad del Core: el lector guía
+        físicamente hasta la etiqueta, y la ubicación se desglosa en Pasillo,
+        Fila y Nivel. [borrador]</p>
+      </div>
+      <!-- 📷 08 → mobile: producto encontrado con ubicación Pasillo / Fila / Nivel. -->
+      <div class="ph ph--movil" role="img" aria-label="Mobile: producto encontrado, ubicación desglosada"></div>
+    </section>
+
+    <!-- ═══ 09 · APRENDIZAJE ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>El aprendizaje</h2>
+        <p>El escaneo no identifica el ítem: lo confirma y lo registra. Ese cambio
+        de modelo mental reescribió pantallas y copy, y es lo que mantiene la
+        misma lógica de Transporte (tag → unidad → ubicación → operación) viva en
+        Retail sin rediseñar la base. [borrador]</p>
+      </div>
+    </section>
+
+    <nav class="caso-siguiente">
+      <a href="index.html">← Todos los proyectos</a>
+      <a href="transporte.html">Ver Transporte →</a>
+    </nav>
+
+  </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=50">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=56">
 </head>
 <body>
 
@@ -82,7 +82,7 @@
          sin inclinación. La portada vive FUERA del header, dentro de
          caso-figura: exactamente la misma distancia que en los otros casos. -->
     <figure class="caso-figura">
-      <div class="ph ph--panorama" role="img" aria-label="Dashboard web de Siotyx Transporte"></div>
+      <img src="../../assets/images/casos-de-estudio/transporte/portada.webp" alt="Portada de Siotyx Transporte: flota de camiones, el dashboard web y la app mobile en un lector rugerizado." loading="eager">
     </figure>
 
     <!-- ═══ 02 · FICHA ═══ Integrada al header, como en TODOS los casos:
@@ -269,8 +269,10 @@
             <img class="apar-comp__phone apar-comp__phone--1" src="../../assets/images/casos-de-estudio/transporte/apar-compatible.webp" alt="Apareamiento compatible: diferencia de surco 0.5 mm." loading="lazy">
             <img class="apar-comp__phone apar-comp__phone--2" src="../../assets/images/casos-de-estudio/transporte/apar-margen.webp" alt="Apareamiento compatible por margen mínimo: diferencia 3 mm." loading="lazy">
             <img class="apar-comp__phone apar-comp__phone--3" src="../../assets/images/casos-de-estudio/transporte/apar-incompatible.webp" alt="Apareamiento incompatible: diferencia 5 mm, cambiar neumático." loading="lazy">
-            <img class="apar-comp__sheet apar-comp__sheet--cual" src="../../assets/images/casos-de-estudio/transporte/apar-cual.webp" alt="Bottom sheet: ¿cuál neumático querés reemplazar?" loading="lazy">
-            <img class="apar-comp__sheet apar-comp__sheet--como" src="../../assets/images/casos-de-estudio/transporte/apar-como.webp" alt="Bottom sheet: ¿cómo seleccionás el reemplazo?" loading="lazy">
+            <div class="apar-comp__sheets">
+              <img class="apar-comp__sheet apar-comp__sheet--cual" src="../../assets/images/casos-de-estudio/transporte/apar-cual.webp" alt="Bottom sheet: ¿cuál neumático querés reemplazar?" loading="lazy">
+              <img class="apar-comp__sheet apar-comp__sheet--como" src="../../assets/images/casos-de-estudio/transporte/apar-como.webp" alt="Bottom sheet: ¿cómo seleccionás el reemplazo?" loading="lazy">
+            </div>
           </div>
         </div>
         <div class="taller-serie__item" data-reveal>
@@ -299,8 +301,10 @@
       <div class="audit-comp" data-reveal>
         <img class="audit-comp__dash" src="../../assets/images/casos-de-estudio/transporte/audit-dashboard.webp" alt="Tablero web de auditoría: indicadores por estado y listado de auditorías con estado, vehículo y fechas." loading="lazy">
         <img class="audit-comp__modal audit-comp__modal--incompleta" src="../../assets/images/casos-de-estudio/transporte/audit-incompleta.webp" alt="Detalle de auditoría incompleta: progreso 4 de 8, neumáticos sin escanear y botón notificar al operario." loading="lazy">
-        <img class="audit-comp__modal audit-comp__modal--pendiente" src="../../assets/images/casos-de-estudio/transporte/audit-pendiente.webp" alt="Detalle de auditoría pendiente: todavía sin neumáticos escaneados." loading="lazy">
-        <img class="audit-comp__modal audit-comp__modal--encurso" src="../../assets/images/casos-de-estudio/transporte/audit-encurso.webp" alt="Detalle de auditoría en curso: los resultados quedan disponibles cuando el operario la finaliza." loading="lazy">
+        <div class="audit-comp__cortos">
+          <img class="audit-comp__modal audit-comp__modal--pendiente" src="../../assets/images/casos-de-estudio/transporte/audit-pendiente.webp" alt="Detalle de auditoría pendiente: todavía sin neumáticos escaneados." loading="lazy">
+          <img class="audit-comp__modal audit-comp__modal--encurso" src="../../assets/images/casos-de-estudio/transporte/audit-encurso.webp" alt="Detalle de auditoría en curso: los resultados quedan disponibles cuando el operario la finaliza." loading="lazy">
+        </div>
       </div>
     </section>
 
@@ -320,9 +324,11 @@
       </div>
       <div class="acc-comp" data-reveal>
         <img class="acc-comp__panel" src="../../assets/images/casos-de-estudio/transporte/acc-panel.webp" alt="Panel Control de Accesos: registro en vivo de entradas y salidas de camiones con estado autorizado o error de validacion." loading="lazy">
-        <img class="acc-comp__modal acc-comp__modal--uno" src="../../assets/images/casos-de-estudio/transporte/acc-modal1.webp" alt="Detalle de acceso con un solo error: tag duplicada en un neumatico." loading="lazy">
         <img class="acc-comp__modal acc-comp__modal--lista" src="../../assets/images/casos-de-estudio/transporte/acc-modal2.webp" alt="Detalle de acceso con doce errores, eje 1 expandido mostrando cada tag y su motivo." loading="lazy">
-        <img class="acc-comp__modal acc-comp__modal--ejes" src="../../assets/images/casos-de-estudio/transporte/acc-modal3.webp" alt="Detalle de acceso con doce errores agrupados por eje, colapsados." loading="lazy">
+        <div class="acc-comp__cortos">
+          <img class="acc-comp__modal acc-comp__modal--uno" src="../../assets/images/casos-de-estudio/transporte/acc-modal1.webp" alt="Detalle de acceso con un solo error: tag duplicada en un neumatico." loading="lazy">
+          <img class="acc-comp__modal acc-comp__modal--ejes" src="../../assets/images/casos-de-estudio/transporte/acc-modal3.webp" alt="Detalle de acceso con doce errores agrupados por eje, colapsados." loading="lazy">
+        </div>
       </div>
     </section>
 

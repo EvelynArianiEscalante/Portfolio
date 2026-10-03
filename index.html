@@ -51,7 +51,7 @@
   <link rel="stylesheet" href="css/components/icono-escritorio.css?v=55">
   <link rel="stylesheet" href="css/components/ventana.css?v=55">
   <link rel="stylesheet" href="css/components/dock.css?v=55">
-  <link rel="stylesheet" href="css/pages/home.css?v=55">
+  <link rel="stylesheet" href="css/pages/home.css?v=56">
 </head>
 
 <body>
@@ -160,11 +160,11 @@
         <!-- Core dejó de ser un proyecto propio: ahora se cuenta dentro del Design System. -->
         <!-- Tiles con imagen: dentro del Finder se muestra el trabajo, no carpetas. -->
         <button class="finder__item finder__item--thumb" data-ventana="ventana-transporte" data-directo="pages/casos-de-estudio/transporte.html">
-          <span class="finder__thumb fthumb--pendiente"></span>
+          <span class="finder__thumb fthumb--transporte"></span>
           <span>Transporte</span>
         </button>
         <!-- Retail OCULTO hasta que exista su caso (2026-08-21). Reactivar: quitar hidden. -->
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail" hidden>
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail" data-directo="pages/casos-de-estudio/retail.html">
           <span class="finder__thumb fthumb--pendiente"></span>
           <span>Retail</span>
         </button>
@@ -524,7 +524,7 @@
         <span class="semaforo semaforo--min"></span><span class="semaforo semaforo--max"></span>
         <span class="ventana__titulo">Transporte</span>
       </div>
-      <div class="proyecto__imagen thumb--placeholder">Vista previa del proyecto</div>
+      <div class="proyecto__imagen"></div>
       <!-- Caption y ficha: contenido del handoff aprobado (2026-08-15) -->
       <p class="proyecto__caption">
         <strong>Siotyx Transporte</strong>
@@ -564,9 +564,27 @@
         <strong>Retail</strong>
         El escaneo no identifica el ítem: lo confirma y lo registra.
         Un cambio de modelo mental que reescribió pantallas y copy.
-        <a class="proyecto__link" href="#">Ver caso completo <svg class="proyecto__link__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 6l6 6-6 6"/></svg></a>
+        <a class="proyecto__link" href="pages/casos-de-estudio/retail.html">Ver caso completo <svg class="proyecto__link__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 6l6 6-6 6"/></svg></a>
       </p>
-    </section>
+      <dl class="proyecto__meta">
+        <div class="proyecto__dato">
+          <dt>Rol</dt>
+          <dd>UX/UI Designer Ssr</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Plataformas</dt>
+          <dd>Mobile (Android) + Web</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Alcance</dt>
+          <dd>En curso · Mobile y Web</dd>
+        </div>
+        <div class="proyecto__dato">
+          <dt>Herramientas</dt>
+          <dd>Figma · Jira · Confluence · RFID</dd>
+        </div>
+      </dl>
+</section>
 
     <section class="ventana ventana--proyecto" id="ventana-ds">
       <div class="ventana__barra" data-arrastra>

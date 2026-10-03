@@ -35,9 +35,14 @@
   background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp');
 }
 
+#ventana-transporte .proyecto__imagen {
+  background-image: url('../../assets/images/casos-de-estudio/transporte/portada.webp');
+}
+
 /* ── Miniaturas de proyectos dentro de las ventanas Finder ──
    (rutas desde este archivo CSS: ../../assets/...) */
 .fthumb--health  { background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp'); }
+.fthumb--transporte { background-image: url('../../assets/images/casos-de-estudio/transporte/portada.webp'); }
 .fthumb--pedidos { background-image: url('../../assets/images/casos-de-estudio/pedidos-gestion/1-preview.webp'); }
 .fthumb--wifi    { background-image: url('../../assets/images/casos-de-estudio/wifi-marketing/1-preview.webp'); }
 .fthumb--aika    { background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp'); }
