@@ -18,3 +18,9 @@ assets/icons/favicon-cv.svg
 assets/icons/favicon-cv-32.png
 assets/icons/favicon-cv-180.png
 assets/icons/faviconcv.svg
+
+# ═══ Exportaciones crudas de Figma / PNG originales (2026-10-05) ═══
+# El sitio usa SOLO .webp. Estos PNG quedan en la compu para referencia,
+# pero NO se suben al repo (son ~30 MB de peso muerto, no los carga nadie).
+assets/images/casos-de-estudio/**/originals/
+assets/images/casos-de-estudio/transporte/_exportaciones-figma/
