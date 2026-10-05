@@ -254,15 +254,12 @@
 /* ── 13 · TIRA DE DETALLES — grilla deliberadamente despareja ── */
 .detalles {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--espacio-4);
   margin-top: var(--espacio-4);
 }
-
-/* El primero manda: ancho completo. Los otros tres, en fila debajo. */
-.detalle:first-child {
-  grid-column: 1 / -1;
-}
+/* Tres decisiones parejas: mismo gradiente, misma jerarquía (antes había
+   una ancha + dos; ahora las tres comparten tamaño porque son un set). */
 
 .detalle {
   border: 1px solid var(--color-borde-claro);
