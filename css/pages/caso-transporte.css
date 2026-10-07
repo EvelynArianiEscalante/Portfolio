@@ -1078,3 +1078,6 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
 
 /* Ocultar los chevrones/flechas del carrusel (queda dots + swipe + click). */
 .vcar__arrow { display: none; }
+
+/* Aún más distancia del carrusel respecto de lo de arriba y lo de abajo. */
+.vcar { margin: 11rem 0 12rem; }
