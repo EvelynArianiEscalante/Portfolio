@@ -831,3 +831,250 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
 /* Cards Mobile/Web: 24px más arriba que el resto de los bloques (pedido de Evelyn). */
 .caso-contenido--transporte .caso-seccion--cards { margin-top: calc(7rem - 24px); }
 @media (max-width: 700px) { .caso-contenido--transporte .caso-seccion--cards { margin-top: calc(4.5rem - 24px); } }
+
+/* ── Info cards: cards simples sin color (patrón nuevo, reemplaza bullets).
+   2 columnas en desktop, 1 en mobile. Título + texto, borde fino, sin acento. ── */
+.info-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.info-card {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+}
+.info-card h3 {
+  margin: 0 0 var(--espacio-2);
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+}
+.info-card p {
+  margin: 0;
+  font-size: var(--texto-base);
+  line-height: 1.5;
+  color: var(--color-tinta-suave);
+}
+@media (max-width: 700px) {
+  .info-cards { grid-template-columns: 1fr; }
+}
+
+/* Info cards: textos más grandes (se leían chicos) + variante centrada título-solo. */
+.info-card h3 { font-size: 1.125rem; }
+.info-card p { font-size: 1rem; }
+.info-card--centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 96px;
+}
+.info-card--centro h3 { margin: 0; }
+
+/* Cards de sonda: semibold y un poco más chico (pedido de Evelyn). */
+.info-card--centro h3 { font-weight: 600; font-size: 1rem; }
+
+/* ══════════════════════════════════════════════════════════════
+   Carrusel de cards de configuración (registro de vehículos)
+   Scroll-snap horizontal + flechas (JS en el HTML). Scrollbar oculta.
+   Card = ilustración (placeholder gris, se carga <img> luego) + número
+   + código + radio + pills. En mobile: cards al 80vw y swipe (sin flechas).
+   ══════════════════════════════════════════════════════════════ */
+.carrusel { position: relative; margin-top: var(--espacio-5); }
+.carrusel__track {
+  display: flex;
+  gap: var(--espacio-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: var(--espacio-1) 2px var(--espacio-2);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.carrusel__track::-webkit-scrollbar { display: none; }
+
+.config-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+}
+.config-card__ilustracion {
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: var(--color-fondo-agrupado);
+  overflow: hidden;
+}
+.config-card__ilustracion img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+.config-card__info { display: flex; align-items: center; gap: var(--espacio-2); }
+.config-card__num {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: #1b2a4a;
+  color: #fff;
+  font-size: var(--texto-sm);
+  font-weight: 700;
+}
+.config-card__codigo { font-weight: 600; font-size: var(--texto-md); color: var(--color-tinta); }
+.config-card__codigo--ph { color: var(--color-tinta-suave); font-weight: 500; }
+.config-card__radio {
+  margin-left: auto;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--color-borde-claro);
+}
+.config-card__pills { display: flex; gap: var(--espacio-2); flex-wrap: wrap; }
+.config-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  background: #d9dcea;
+  color: #3a3a3c;
+}
+.config-pill--neum { background: #e6d8ef; color: #4a3a57; }
+
+.carrusel__flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie);
+  box-shadow: 0 6px 18px -8px rgba(20, 30, 50, .35);
+  color: var(--color-tinta);
+  font-size: 1.4rem; line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: opacity .2s ease, background .2s ease;
+}
+.carrusel__flecha--prev { left: -10px; }
+.carrusel__flecha--next { right: -10px; }
+.carrusel__flecha:hover { background: var(--color-superficie-lateral); }
+.carrusel__flecha:disabled { opacity: 0; pointer-events: none; }
+
+@media (max-width: 700px) {
+  .config-card { flex-basis: 80vw; }
+  .carrusel__flecha { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Carrusel de foco central (estilo "velocity"): card activa centrada
+   y grande, vecinas escaladas y desvanecidas. Fade en bordes, dots,
+   flechas, click-to-focus, drag/swipe y teclado (JS en el HTML).
+   ══════════════════════════════════════════════════════════════ */
+.vcar { position: relative; margin-top: var(--espacio-6); }
+.vcar__viewport {
+  position: relative;
+  overflow: hidden;
+  padding: var(--espacio-3) 0;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.vcar__viewport:active { cursor: grabbing; }
+.vcar__viewport::before,
+.vcar__viewport::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0;
+  width: 14%;
+  z-index: 2;
+  pointer-events: none;
+}
+.vcar__viewport::before { left: 0;  background: linear-gradient(90deg, var(--color-superficie), transparent); }
+.vcar__viewport::after  { right: 0; background: linear-gradient(270deg, var(--color-superficie), transparent); }
+
+.vcar__track {
+  display: flex;
+  gap: var(--espacio-4);
+  will-change: transform;
+  transition: transform .55s cubic-bezier(.22, .61, .36, 1);
+}
+.vcar .config-card {
+  flex: 0 0 360px;
+  opacity: .3;
+  transform-origin: center center;
+  transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .45s ease, box-shadow .45s ease;
+  user-select: none;
+}
+.vcar .config-card:not(.is-active) { cursor: pointer; }
+.vcar .config-card.is-active { box-shadow: 0 22px 48px -24px rgba(20, 30, 50, .45); }
+.vcar .config-card * { pointer-events: none; }
+
+.vcar__arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie);
+  box-shadow: 0 8px 20px -8px rgba(20, 30, 50, .4);
+  color: var(--color-tinta);
+  font-size: 1.4rem; line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+  transition: opacity .2s ease, background .2s ease;
+}
+.vcar__arrow--prev { left: 4px; }
+.vcar__arrow--next { right: 4px; }
+.vcar__arrow:hover { background: var(--color-superficie-lateral); }
+.vcar__arrow:disabled { opacity: 0; pointer-events: none; }
+
+.vcar__dots { display: flex; justify-content: center; gap: 8px; margin-top: var(--espacio-3); }
+.vcar__dot {
+  width: 8px; height: 8px; padding: 0;
+  border: none; border-radius: 999px;
+  background: var(--color-borde-claro);
+  cursor: pointer;
+  transition: width .25s ease, background .25s ease;
+}
+.vcar__dot.is-active { width: 22px; background: var(--color-carpeta-oscuro); }
+
+@media (max-width: 700px) {
+  .vcar .config-card { flex-basis: 78vw; }
+  .vcar__arrow { display: none; }
+}
+
+/* Sin sombra en la card activa (pedido de Evelyn): van sin sombras. */
+.vcar .config-card.is-active { box-shadow: none; }
+
+/* Dashboard de registro de vehículo SIN cards flotantes: solo el frame, a todo el ancho. */
+.veh-comp--solo { aspect-ratio: auto; }
+.veh-comp--solo .veh-comp__frame { position: static; top: auto; left: auto; width: 100%; }
+
+/* Un respiro del camión dentro del recuadro de la card. */
+.config-card__ilustracion { padding: var(--espacio-2); }
+
+/* Más aire arriba y abajo del carrusel (separado del dashboard y de la sección siguiente). */
+.vcar { margin: 4rem 0 2.5rem; }
+
+/* Título del carrusel, alineado a la izquierda. El título toma la separación
+   de arriba (del dashboard) y el carrusel queda pegado debajo. */
+.vcar-titulo { margin: 4rem 0 var(--espacio-3); font-size: 1.05rem; font-weight: 700; color: var(--color-tinta); }
+.vcar { margin-top: var(--espacio-3); }
+
+/* Más separación del carrusel: un poco más arriba (del dashboard) y bastante
+   más abajo (el bloque siguiente no está relacionado con las configuraciones). */
+.vcar-titulo { margin-top: 5rem; }
+.vcar { margin-bottom: 10rem; }
+
+/* +40px más de aire entre el título del carrusel y el dashboard de arriba. */
+.vcar-titulo { margin-top: calc(5rem + 40px); }
+
+/* Sin título: el carrusel apartado arriba y abajo (según la referencia de Evelyn). */
+.vcar { margin: 8rem 0 9rem; }
+
+/* Ocultar los chevrones/flechas del carrusel (queda dots + swipe + click). */
+.vcar__arrow { display: none; }

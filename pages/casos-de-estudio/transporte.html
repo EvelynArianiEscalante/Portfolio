@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=59">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=72">
 </head>
 <body>
 
@@ -108,7 +108,10 @@
       </div>
     </section>
 
-    <!-- ═══ 05 · CADENA DE HABILITACIÓN — callout con pills (regla de negocio) ═══ -->
+    <!-- ═══ 05 · CADENA DE HABILITACIÓN — OCULTA de momento (pedido de Evelyn,
+         2026-10-07): se veía demasiado genérica. Markup comentado abajo para
+         recuperarla fácil cuando haga falta. ═══ -->
+    <!--
     <section class="caso-seccion">
       <div class="caso-callout caso-callout--regla">
         <h3 class="caso-callout__titulo">Cadena de habilitación</h3>
@@ -126,19 +129,20 @@
         cadena y frena la salida del vehículo hasta resolverlo en taller.</p>
       </div>
     </section>
+    -->
 
     <!-- ═══ 06 · EL TAG — captura masiva + 4 pantallas en fila ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
         <h2>Captura masiva y trazabilidad RFID</h2>
         <p>La tecnología RFID permite <strong>individualizar cada activo</strong>
-        con su historial único de parches, kilometraje y desgaste. Si un tag no
-        existe en el sistema, el operario lo reporta y el administrador recibe
-        el aviso.</p>
-        <ul class="bullets">
-          <li><strong>Procesamiento masivo:</strong> da de alta y audita decenas de etiquetas en segundos.</li>
-          <li><strong>Éxito parcial:</strong> la interfaz tolera lecturas incompletas en playa de maniobras sin frenar la operación.</li>
-        </ul>
+        con su historial único de parches, kilometraje y desgaste, y procesarlos
+        <strong>de a muchos</strong>: da de alta y audita decenas de etiquetas en
+        segundos.</p>
+        <p>Si un tag no existe en el sistema, el operario lo reporta y el
+        administrador recibe el aviso. Y como en la playa de maniobras el éxito
+        parcial es lo normal, la interfaz tolera <strong>lecturas incompletas</strong>
+        sin frenar la operación.</p>
       </div>
       <div class="cuarteto">
         <!-- Las 4 pantallas mobile en una sola fila, en orden de lectura:
@@ -153,14 +157,14 @@
     <!-- ═══ 07 · EL NEUMÁTICO — invertido: imagen izquierda ═══ -->
     <section class="caso-seccion bloque--partido bloque--invertido bloque--sonda">
       <div class="bloque__texto">
-        <h2>Medir con una sonda, no con un formulario</h2>
-        <p>Trabajé con el equipo de Hardware/Research para traducir la medición
-        de la <strong>sonda física Bluetooth</strong> a una interfaz guiada paso
-        a paso.</p>
-        <ul class="bullets">
-          <li><strong>Onboarding interactivo:</strong> guía al operario en las 3 zonas del neumático (INT / CEN / EXT) y la presión en PSI.</li>
-          <li><strong>Fallback manual:</strong> misma validación visual para clientes sin accesorio Bluetooth.</li>
-        </ul>
+        <h2>Registro de neumáticos: de lo complejo a lo intuitivo</h2>
+        <p>Luego de trabajar en conjunto con el equipo de Hardware/Research,
+        traduje un procedimiento técnico de medición con sonda, en un flujo
+        guiado paso a paso.</p>
+        <div class="info-cards">
+          <div class="info-card info-card--centro"><h3>Guía interactiva para medición con sonda</h3></div>
+          <div class="info-card info-card--centro"><h3>Carga manual de respaldo</h3></div>
+        </div>
       </div>
       <div class="bloque__figuras">
         <!-- Composición de la sonda: frame base + 2 bottom sheets flotando,
@@ -176,36 +180,109 @@
     <!-- ═══ 08 · EL VEHÍCULO — sistema de 29 configuraciones de ejes ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <span class="badge badge--ia">Criterio humano sobre IA</span>
-        <h2>Elegir un camión mirando un dibujo</h2>
+        <h2>Registro de vehículos</h2>
         <p>A partir de las configuraciones admitidas por ley, simplifiqué la
-        arquitectura organizando los <strong>29 modelos</strong> en
-        <strong>tabs categorizadas</strong> (Rígido, Tractor, Bitrén) para
-        evitar el scroll infinito.</p>
-        <ul class="bullets">
-          <li><strong>Ilustraciones propias:</strong> diseñé las autopartes vectoriales en un lenguaje visual unificado.</li>
-          <li><strong>Componentes dinámicos:</strong> neumáticos con <strong>6 estados</strong> y ejes con <strong>3 tipos</strong>.</li>
-        </ul>
+        arquitectura organizando los <strong>29 modelos</strong> en tabs
+        categorizadas <strong>(Rígido, Tractor, Bitrén)</strong> para evitar el
+        scroll infinito.</p>
+        <div class="info-cards">
+          <div class="info-card info-card--centro"><h3>Ilustración de autopartes vectoriales</h3></div>
+          <div class="info-card info-card--centro"><h3>Componentes dinámicos de neumáticos y ejes</h3></div>
+        </div>
       </div>
       <div class="bloque__figuras" style="margin-top: var(--espacio-6)">
         <!-- Composición registro de vehículo: dashboard base + acordeón (arriba-der)
              + card del camión (abajo-izq). Centrada, a todo el ancho. Reveal stagger. -->
-        <div class="veh-comp" data-reveal>
+        <div class="veh-comp veh-comp--solo" data-reveal>
           <img class="veh-comp__frame" src="../../assets/images/casos-de-estudio/transporte/registro-vehiculo.webp" alt="Dashboard web de Siotyx: registro de vehículo, selección de configuración de ejes con el camión ilustrado y el diagrama de ejes." loading="lazy">
-          <img class="veh-comp__float veh-comp__float--card" src="../../assets/images/casos-de-estudio/transporte/card-config.webp" alt="Card de configuración S1-D1: camión ilustrado, 6 neumáticos más aux, 16.5 toneladas." loading="lazy">
-          <img class="veh-comp__float veh-comp__float--acordeon" src="../../assets/images/casos-de-estudio/transporte/acordeon-config.webp" alt="Selector de configuración: 4 ejes, 4 configuraciones." loading="lazy">
         </div>
       </div>
-      <!-- Carrusel de ilustraciones de autopartes (miniaturas). Placeholder
-           hasta que lleguen los exports: al tenerlos, reemplazar los .carrusel-ph__slot
-           por <img>. -->
-      <div class="carrusel-ph" role="img" aria-label="Carrusel de ilustraciones de autopartes (próximamente)">
-        <span class="carrusel-ph__slot"></span>
-        <span class="carrusel-ph__slot"></span>
-        <span class="carrusel-ph__slot"></span>
-        <span class="carrusel-ph__slot"></span>
-        <span class="carrusel-ph__slot"></span>
-        <span class="carrusel-ph__label">Carrusel de ilustraciones de autopartes · próximamente</span>
+      <!-- Carrusel de cards de configuración (configs 6, 8, 12, 18, 22, 23).
+           Datos ya cargados. Falta SOLO la ilustración: cuando lleguen los SVG
+           (en assets/images/casos-de-estudio/transporte/ejes/), reemplazar el div
+           .config-card__ilustracion vacío de cada card por:
+           <img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-6.svg" alt="Camión config S1-S1-D2">
+           (cada card indica su archivo en el comentario interno). -->
+      <div class="vcar" data-vcar tabindex="0" aria-label="Carrusel de configuraciones ilustradas">
+        <button class="vcar__arrow vcar__arrow--prev" type="button" aria-label="Configuración anterior">‹</button>
+        <div class="vcar__viewport">
+          <div class="vcar__track">
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-6.svg" alt="Camión configuración S1 - S1-D2" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">6</span>
+              <span class="config-card__codigo">S1 - S1-D2</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">12 neum, + aux</span>
+              <span class="config-pill">30t</span>
+            </div>
+          </article>
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-8.svg" alt="Camión configuración S1 - D1- D1" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">8</span>
+              <span class="config-card__codigo">S1 - D1- D1</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">10 neum, + aux</span>
+              <span class="config-pill">27t</span>
+            </div>
+          </article>
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-12.svg" alt="Camión configuración S1 - D2- D1 - D1" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">12</span>
+              <span class="config-card__codigo">S1 - D2- D1 - D1</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">18 neum, + aux</span>
+              <span class="config-pill">45t</span>
+            </div>
+          </article>
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-18.svg" alt="Camión configuración S1 - D2- D1 - D1" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">18</span>
+              <span class="config-card__codigo">S1 - D2- D1 - D1</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">18 neum, + 2 aux</span>
+              <span class="config-pill">45t</span>
+            </div>
+          </article>
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-22.svg" alt="Camión configuración S1 - D2 - D2" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">22</span>
+              <span class="config-card__codigo">S1 - D2 - D2</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">18 neum, + 2 aux</span>
+              <span class="config-pill">42t</span>
+            </div>
+          </article>
+          <article class="config-card">
+            <div class="config-card__ilustracion"><img src="../../assets/images/casos-de-estudio/transporte/ejes/camion-23.svg" alt="Camión configuración S1 - D2 - D1 - D1" loading="lazy"></div>
+            <div class="config-card__info">
+              <span class="config-card__num">23</span>
+              <span class="config-card__codigo">S1 - D2 - D1 - D1</span>
+              <span class="config-card__radio" aria-hidden="true"></span>
+            </div>
+            <div class="config-card__pills">
+              <span class="config-pill config-pill--neum">18 neum, + 2 aux</span>
+              <span class="config-pill">45t</span>
+            </div>
+          </article>
+          </div>
+        </div>
+        <button class="vcar__arrow vcar__arrow--next" type="button" aria-label="Configuración siguiente">›</button>
+        <div class="vcar__dots" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -370,5 +447,101 @@
     </div>
   </div>
   <script src="../../js/animations/reveal.js?v=2" defer></script>
+  <!-- Carrusel de foco central (velocity-style): card activa centrada y grande,
+       vecinas escaladas y desvanecidas. Flechas, dots, click-to-focus, drag/swipe
+       y teclado. Self-contained, sin libs. -->
+  <script>
+    document.querySelectorAll('[data-vcar]').forEach(function (root) {
+      var viewport = root.querySelector('.vcar__viewport');
+      var track = root.querySelector('.vcar__track');
+      var prev = root.querySelector('.vcar__arrow--prev');
+      var next = root.querySelector('.vcar__arrow--next');
+      var dotsWrap = root.querySelector('.vcar__dots');
+      if (!viewport || !track) return;
+      var originals = Array.prototype.slice.call(track.children);
+      var n = originals.length;
+      if (n === 0) return;
+
+      // Loop infinito: clonar un set antes y uno después, para que la card
+      // activa siempre tenga vecinas a ambos lados (incluida la primera).
+      function cloneSet() {
+        return originals.map(function (c) {
+          var cl = c.cloneNode(true);
+          cl.setAttribute('aria-hidden', 'true');
+          cl.classList.add('is-clone');
+          return cl;
+        });
+      }
+      var frag = document.createDocumentFragment();
+      cloneSet().forEach(function (c) { frag.appendChild(c); });
+      track.insertBefore(frag, track.firstChild);
+      cloneSet().forEach(function (c) { track.appendChild(c); });
+      var cards = Array.prototype.slice.call(track.children); // 3n
+      var active = n;        // primera card real
+      var moved = false;
+
+      var dots = originals.map(function (_, i) {
+        var d = document.createElement('button');
+        d.className = 'vcar__dot';
+        d.type = 'button';
+        d.setAttribute('aria-label', 'Ir a la configuración ' + (i + 1));
+        d.addEventListener('click', function () { goTo(n + i); });
+        if (dotsWrap) dotsWrap.appendChild(d);
+        return d;
+      });
+
+      function layout(animate) {
+        var card = cards[active];
+        if (!card) return;
+        track.style.transition = animate ? '' : 'none';
+        var offset = card.offsetLeft + card.offsetWidth / 2;
+        track.style.transform = 'translateX(' + (viewport.clientWidth / 2 - offset) + 'px)';
+        cards.forEach(function (c, i) {
+          var dist = Math.abs(i - active);
+          var scale = dist === 0 ? 1 : (dist === 1 ? 0.86 : 0.78);
+          var op = dist === 0 ? 1 : (dist === 1 ? 0.5 : 0.28);
+          c.style.transform = 'scale(' + scale + ')';
+          c.style.opacity = op;
+          c.classList.toggle('is-active', i === active);
+        });
+        var real = ((active % n) + n) % n;
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === real); });
+        if (!animate) { void track.offsetWidth; track.style.transition = ''; }
+      }
+      function normalize() {
+        if (active < n) { active += n; layout(false); }
+        else if (active >= 2 * n) { active -= n; layout(false); }
+      }
+      function step(delta) { active += delta; layout(true); }
+      function goTo(idx) { active = idx; layout(true); }
+
+      track.addEventListener('transitionend', function (e) {
+        if (e.propertyName === 'transform') normalize();
+      });
+      if (prev) prev.addEventListener('click', function () { step(-1); });
+      if (next) next.addEventListener('click', function () { step(1); });
+      cards.forEach(function (c, i) {
+        c.addEventListener('click', function () { if (moved) return; if (i !== active) goTo(i); });
+      });
+
+      var startX = 0, dragging = false;
+      viewport.addEventListener('pointerdown', function (e) { startX = e.clientX; dragging = true; moved = false; });
+      window.addEventListener('pointermove', function (e) { if (dragging && Math.abs(e.clientX - startX) > 8) moved = true; });
+      window.addEventListener('pointerup', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = e.clientX - startX;
+        if (dx <= -40) step(1);
+        else if (dx >= 40) step(-1);
+      });
+
+      root.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+      });
+      window.addEventListener('resize', function () { layout(false); });
+      layout(false);
+    });
+  </script>
 </body>
 </html>
