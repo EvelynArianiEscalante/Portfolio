@@ -497,6 +497,7 @@
         var offset = card.offsetLeft + card.offsetWidth / 2;
         track.style.transform = 'translateX(' + (viewport.clientWidth / 2 - offset) + 'px)';
         cards.forEach(function (c, i) {
+          c.style.transition = animate ? '' : 'none';   // en el salto (animate=false) las cards tampoco animan
           var dist = Math.abs(i - active);
           var scale = dist === 0 ? 1 : (dist === 1 ? 0.86 : 0.78);
           var op = dist === 0 ? 1 : (dist === 1 ? 0.5 : 0.28);
@@ -506,13 +507,19 @@
         });
         var real = ((active % n) + n) % n;
         dots.forEach(function (d, i) { d.classList.toggle('is-active', i === real); });
-        if (!animate) { void track.offsetWidth; track.style.transition = ''; }
+        if (!animate) {
+          void track.offsetWidth;                          // forzar reflow antes de restaurar
+          track.style.transition = '';
+          cards.forEach(function (c) { c.style.transition = ''; });
+        }
       }
       function normalize() {
         if (active < n) { active += n; layout(false); }
         else if (active >= 2 * n) { active -= n; layout(false); }
       }
-      function step(delta) { active += delta; layout(true); }
+      // Normalización preventiva: si venimos de una zona clon, recentramos sin
+      // animar ANTES de animar el próximo paso (evita saltos al dar la vuelta).
+      function step(delta) { if (active < n || active >= 2 * n) normalize(); active += delta; layout(true); }
       function goTo(idx) { active = idx; layout(true); }
 
       track.addEventListener('transitionend', function (e) {
