@@ -643,3 +643,191 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
   }
   .acc-comp__cortos img { width: 100%; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COMPONENTES DE CONTENIDO VISUAL (2026-10-07)
+   Reescritura del caso por componentes: bullets limpios, callouts, cadena
+   de pills, pasos, badges y placeholder de carrusel. Todo con los tokens
+   del sistema. Van al final del archivo; el @media mobile propio, más abajo.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Bullets limpios ──
+   Reemplazan el disco por defecto por un cuadradito del acento. Pisan las
+   reglas .caso-seccion ul / li (sangría y margin) con mayor especificidad
+   (ul.bullets). Se usan dentro de cards de usuario, bloques de texto y
+   el intro de auditoría. */
+.caso-seccion ul.bullets {
+  list-style: none;
+  margin: var(--espacio-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-2);
+}
+.caso-seccion ul.bullets li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.5em;
+  font-size: var(--texto-base);
+  color: var(--color-tinta-suave);
+  line-height: 1.5;
+}
+.caso-seccion ul.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-carpeta-oscuro);
+}
+
+/* ── Callout box ──
+   Caja con borde izquierdo de acento. Dos variantes: regla de negocio
+   (azul empolvado) y seguridad (rojo de diagnóstico). */
+.caso-callout {
+  border: 1px solid var(--color-borde-claro);
+  border-left: 3px solid var(--color-carpeta-oscuro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  background: var(--color-superficie-lateral);
+}
+.caso-callout__titulo {
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  margin: 0 0 var(--espacio-3);
+}
+.caso-callout p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-tinta-cuerpo);
+}
+.caso-callout p + p { margin-top: var(--espacio-2); }
+.caso-callout__accion {
+  font-size: var(--texto-base);
+  color: var(--color-tinta-suave);
+}
+.caso-callout--regla {
+  border-left-color: var(--color-carpeta-oscuro);
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 5%, var(--color-superficie));
+}
+.caso-callout--seguridad {
+  border-left-color: var(--color-alerta);
+  background: var(--color-alerta-tenue);
+}
+.caso-callout--seguridad .caso-callout__titulo { color: var(--color-alerta); }
+
+/* Callout dentro del clímax (fondo oscuro): invertir el texto para que se lea */
+.bloque--climax .caso-callout {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-left-color: var(--color-alerta);
+}
+.bloque--climax .caso-callout p { color: rgba(255, 255, 255, 0.88); font-size: 1.05rem; }
+.bloque--climax .caso-callout__accion { color: rgba(255, 255, 255, 0.6); }
+.bloque--climax .caso-callout__titulo { color: #ff6b61; }
+
+/* ── Cadena de pills + flechas (regla de negocio) ── */
+.cadena,
+.pasos {
+  list-style: none;
+  margin: 0 0 var(--espacio-4);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+.cadena__pill,
+.pasos__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-claro);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-tinta);
+  white-space: nowrap;
+}
+.cadena__sep,
+.pasos__sep {
+  color: var(--color-carpeta-oscuro);
+  font-weight: 700;
+  font-size: var(--texto-md);
+}
+/* Los pasos del taller, un punto más apagados que la cadena de negocio */
+.pasos__pill {
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 6%, var(--color-superficie));
+}
+.pasos { margin-top: var(--espacio-3); }
+
+/* ── Badges / pills de rótulo ── */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--espacio-3);
+}
+.badge--ux { background: color-mix(in srgb, var(--color-exito) 14%, transparent); color: var(--color-exito); }
+.badge--ia { background: color-mix(in srgb, var(--color-carpeta-oscuro) 12%, transparent); color: var(--color-carpeta-oscuro); }
+
+/* Fila de rótulo + badge en el intro de auditoría */
+.audit-intro__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--espacio-2);
+}
+.audit-intro__meta .taller-kicker { margin-bottom: 0; }
+.audit-intro__meta .badge { margin-bottom: 0; }
+
+/* ── Placeholder del carrusel de ilustraciones de autopartes ── */
+.carrusel-ph {
+  margin-top: var(--espacio-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-5);
+  border: 1.5px dashed var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie-lateral);
+}
+.carrusel-ph__slot {
+  width: 96px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--color-borde-claro);
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 8%, var(--color-superficie));
+}
+.carrusel-ph__label {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: var(--espacio-2);
+  font-size: var(--texto-sm);
+  letter-spacing: 0.03em;
+  color: var(--color-tinta-suave);
+}
+
+/* ── MÓVIL (va al final, después de las reglas que corrige) ── */
+@media (max-width: 700px) {
+  .cadena,
+  .pasos { gap: var(--espacio-1) var(--espacio-2); }
+  .carrusel-ph__slot { width: 72px; height: 54px; }
+}
+
+/* Negrita dentro del clímax (fondo oscuro): el strong del sistema es tinta oscura y se perdía. Forzar claro. */
+.bloque--climax strong { color: #fff; }
+
+/* Cards Mobile/Web: 24px más arriba que el resto de los bloques (pedido de Evelyn). */
+.caso-contenido--transporte .caso-seccion--cards { margin-top: calc(7rem - 24px); }
+@media (max-width: 700px) { .caso-contenido--transporte .caso-seccion--cards { margin-top: calc(4.5rem - 24px); } }

@@ -29,27 +29,21 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=57">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=59">
 </head>
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
-       CASO SIOTYX TRANSPORTE — reconstrucción completa (2026-08-18)
-       Contenido: handoff de 14 bloques del Claude de contexto Siotyx,
-       aprobado por Evelyn. El texto de los bloques NO se reescribe.
-       Dos ajustes de regla de la casa sobre el handoff:
-       · Rol "única diseñadora del producto" → "UX/UI Designer Ssr"
-         (pedido enfático de Evelyn, 2026-08-15).
-       · El hero del handoff decía "Siotyx · Gestión de flotas"; en
-         títulos va "Transporte" (decisión 2026-08-17), así que el h1
-         es "Siotyx Transporte" y "flota" queda para la prosa.
-       IMÁGENES: 17 screenshots aún sin exportar → placeholders grises
-       (.ph) con la proporción real. Cada uno lleva al lado un
-       comentario 📷 con QUÉ exportar. Al llegar el export, se cambia
-       el <div class="ph"> por un <img> y listo.
-       ⚠️ ANTES DE EXPORTAR (notas del handoff): variar patentes/IDs
-       dummy repetidos, y corregir el botón "Reasignar" en la pantalla
-       de neumático sin vehículo (debe decir "Asignar").
+       CASO SIOTYX TRANSPORTE
+       Contenido reescrito por componentes visuales (2026-10-07) sobre el
+       doc de Content Designer de Evelyn: párrafos ultra cortos, negritas
+       estratégicas, cards / callouts / bullets / pills / badges. Se
+       conservan TODAS las composiciones de imágenes ya corregidas; solo
+       cambia el texto y se agregan contenedores visuales.
+       Decisiones del 2026-10-07 (Evelyn): el h1 sigue siendo "Siotyx
+       Transporte" (no se renombra a "Flota"); el bloque 13 mantiene sus
+       3 imágenes; el carrusel de ilustraciones de ejes queda como
+       placeholder hasta que lleguen las miniaturas.
        ═══════════════════════════════════════════════════════════ -->
   <div class="ventana-max">
     <div class="ventana-max__barra">
@@ -61,14 +55,13 @@
     <div class="ventana-max__scroll">
   <main class="caso-contenido caso-contenido--transporte">
 
-    <!-- ═══ 01 · HERO ═══ Usa .caso-header, el componente del sistema:
-         h1, bajada, ficha y espaciados idénticos a los otros casos. -->
+    <!-- ═══ 01 · HERO ═══ -->
     <header class="caso-header">
       <h1>Siotyx Transporte</h1>
-      <p class="bajada">Diseñé el sistema que permite saber qué neumático está
-      en qué posición de qué camión, y qué puede hacerse con esa información.</p>
-      <!-- La tira de metadatos del handoff ("UX/UI · Web y mobile · ...")
-           se quitó (2026-08-18): duplicaba lo que la ficha ya dice. -->
+      <p class="bajada">Diseñé el ecosistema digital (web y mobile) que
+      transforma lecturas RFID y datos de sensores en tiempo real en
+      decisiones operativas: del control de kilometraje a la automatización
+      de taller, auditorías y viajes.</p>
       <dl class="caso-ficha">
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Transporte de cargas</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · 5 sprints</dd></div>
@@ -77,85 +70,75 @@
       </dl>
     </header>
 
-    <!-- 📷 01 → dashboard web completo, recortado apenas por abajo para
-         que se vea que continúa. Sin marco de navegador, sin sombra dura,
-         sin inclinación. La portada vive FUERA del header, dentro de
-         caso-figura: exactamente la misma distancia que en los otros casos. -->
     <figure class="caso-figura">
       <img src="../../assets/images/casos-de-estudio/transporte/portada.webp" alt="Portada de Siotyx Transporte: flota de camiones, el dashboard web y la app mobile en un lector rugerizado." loading="eager">
     </figure>
 
-    <!-- ═══ 02 · FICHA ═══ Integrada al header, como en TODOS los casos:
-         mismos 4 campos (Sector · Timeline · Rol · Skills), mismo orden.
-         Se probó la de 6 filas del handoff dos veces (tabla y con íconos)
-         y se descartó: rompía la consistencia del sistema. Los datos extra
-         (Empresa, Equipo, Input) ya viven en el texto y en el CV.
-         ⚠️ Timeline "2026 · 5 sprints": meses exactos sin confirmar. -->
+    <!-- ═══ 02 · FICHA ═══ Integrada al header. -->
 
-    <!-- ═══ 03 · EL PROBLEMA — el bloque más silencioso, a propósito ═══ -->
+    <!-- ═══ 03 · EL PROBLEMA ═══ (sin cambios de contenido: el doc no lo cubre) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
         <h2>El problema</h2>
         <p>En una flota, los neumáticos cambian de lugar todo el tiempo: se
-        montan, se rotan, pasan por el taller. Nada de eso quedaba en un sistema: la información vivía dispersa y dependía del criterio de
+        montan, se rotan, pasan por el taller. Nada de eso quedaba en un
+        sistema: la información vivía dispersa y dependía del criterio de
         cada operario.</p>
         <p>El resultado: nadie podía responder la pregunta básica de la
-        operación. ¿Qué neumático está en qué posición de qué camión, y en
-        qué estado?</p>
-        <p>El desafío de diseño fue doble. Para el operario: una interfaz
-        mobile que funcione donde el trabajo ocurre: de pie en el taller,
-        lector RFID en una mano, sonda en la otra. Para el administrador:
-        una vista web que le permita, desde la oficina, entender el estado
-        de la flota de un vistazo.</p>
+        operación. <strong>¿Qué neumático está en qué posición de qué camión,
+        y en qué estado?</strong></p>
       </div>
     </section>
 
-    <!-- ═══ 04 · LOS DOS USUARIOS ═══ -->
-    <section class="caso-seccion">
-      <h2>Dos personas, dos lugares, el mismo neumático</h2>
+    <!-- ═══ 04 · LOS DOS USUARIOS — 2 cards (Mobile / Web) ═══ -->
+    <section class="caso-seccion caso-seccion--cards">
       <div class="dos-usuarios">
         <div class="usuario">
-          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
-          <h3>Administrador</h3>
-          <p class="usuario__meta">Oficina · Web</p>
-          <p>Supervisa la flota, programa viajes y decide cuándo un camión va
-          al taller. Necesita ver mucho a la vez y entenderlo rápido.</p>
+          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+          <h3>Mobile</h3>
+          <p>Una interfaz que funciona donde ocurre el trabajo: de pie en el
+          taller, con el lector RFID en una mano y la sonda en la otra.</p>
         </div>
         <div class="usuario">
-          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
-          <h3>Operario</h3>
-          <p class="usuario__meta">Taller y playa · Mobile</p>
-          <p>Lee tags, mide neumáticos y ejecuta el mantenimiento físico. De
-          pie, con las manos ocupadas y a veces sin señal.</p>
+          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+          <h3>Web</h3>
+          <p>Una vista de supervisión para entender, desde la oficina, el
+          estado de la flota entera de un solo vistazo.</p>
         </div>
-        <p class="dos-usuarios__cierre">Acá hay ida y vuelta: el operario
-        reporta y el administrador habilita. El punto de contacto entre los
-        dos no es una pantalla: es un objeto.</p>
       </div>
     </section>
 
-    <!-- ═══ 05 · LA CADENA — QUITADO (decisión de Evelyn, 2026-08-18) ═══
-         El diagrama de la cadena de habilitación se sacó: no terminaba de
-         entenderse ni con etiquetas y leyenda. Si algún día vuelve, que sea
-         redibujado por Evelyn en Figma con su propio estilo (hay un prompt
-         armado en la conversación del 2026-08-18). El markup completo está
-         en el historial de git (buscar "cadena--horizontal"). -->
+    <!-- ═══ 05 · CADENA DE HABILITACIÓN — callout con pills (regla de negocio) ═══ -->
+    <section class="caso-seccion">
+      <div class="caso-callout caso-callout--regla">
+        <h3 class="caso-callout__titulo">Cadena de habilitación</h3>
+        <ol class="cadena" aria-label="Cadena de habilitación: etiqueta RFID, neumático, vehículo, viaje">
+          <li class="cadena__pill">Etiqueta RFID</li>
+          <li class="cadena__sep" aria-hidden="true">→</li>
+          <li class="cadena__pill">Neumático</li>
+          <li class="cadena__sep" aria-hidden="true">→</li>
+          <li class="cadena__pill">Vehículo</li>
+          <li class="cadena__sep" aria-hidden="true">→</li>
+          <li class="cadena__pill">Viaje</li>
+        </ol>
+        <p>Mantenimiento y auditoría actúan como <strong>interrupciones de
+        seguridad</strong>: si un neumático está crítico, el sistema corta la
+        cadena y frena la salida del vehículo hasta resolverlo en taller.</p>
+      </div>
+    </section>
 
-    <!-- ═══ 06 · EL TAG — texto a lo ancho + 4 pantallas en fila (2026-09) ═══ -->
+    <!-- ═══ 06 · EL TAG — captura masiva + 4 pantallas en fila ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Una lectura, cinco respuestas posibles</h2>
-        <p>Todo empieza al acercar el lector a una etiqueta. Pero una lectura
-        puede significar cinco cosas: vehículo listo para salir, neumático
-        montado, neumático suelto, tag libre o tag desconocida. Diseñé las
-        cinco resoluciones como estados del mundo físico, cada una con su
-        acción: asignar, reasignar o reportar.</p>
-        <p>Si el tag no existe en el sistema, el operario no queda en un
-        callejón: lo reporta y el administrador recibe el aviso. Ahí aparece
-        el ida y vuelta entre los dos roles.</p>
-        <p>El sistema también lee de a muchos: muestra cuántas etiquetas
-        detectó y desglosa el resultado. En una operación masiva, el éxito
-        parcial es lo normal.</p>
+        <h2>Captura masiva y trazabilidad RFID</h2>
+        <p>La tecnología RFID permite <strong>individualizar cada activo</strong>
+        con su historial único de parches, kilometraje y desgaste. Si un tag no
+        existe en el sistema, el operario lo reporta y el administrador recibe
+        el aviso.</p>
+        <ul class="bullets">
+          <li><strong>Procesamiento masivo:</strong> da de alta y audita decenas de etiquetas en segundos.</li>
+          <li><strong>Éxito parcial:</strong> la interfaz tolera lecturas incompletas en playa de maniobras sin frenar la operación.</li>
+        </ul>
       </div>
       <div class="cuarteto">
         <!-- Las 4 pantallas mobile en una sola fila, en orden de lectura:
@@ -171,12 +154,13 @@
     <section class="caso-seccion bloque--partido bloque--invertido bloque--sonda">
       <div class="bloque__texto">
         <h2>Medir con una sonda, no con un formulario</h2>
-        <p>Un neumático no se registra escribiendo números: se mide. Una sonda
-        toma tres profundidades en la banda de rodamiento más la presión;
-        las diferencias entre zonas revelan el desgaste irregular.</p>
-        <p>El procedimiento lo definió el equipo de hardware. Yo lo traduje a
-        pantalla: ilustré el neumático con los cuatro puntos de lectura y
-        la propia interfaz explica por qué se miden tres bandas.</p>
+        <p>Trabajé con el equipo de Hardware/Research para traducir la medición
+        de la <strong>sonda física Bluetooth</strong> a una interfaz guiada paso
+        a paso.</p>
+        <ul class="bullets">
+          <li><strong>Onboarding interactivo:</strong> guía al operario en las 3 zonas del neumático (INT / CEN / EXT) y la presión en PSI.</li>
+          <li><strong>Fallback manual:</strong> misma validación visual para clientes sin accesorio Bluetooth.</li>
+        </ul>
       </div>
       <div class="bloque__figuras">
         <!-- Composición de la sonda: frame base + 2 bottom sheets flotando,
@@ -189,17 +173,19 @@
       </div>
     </section>
 
-    <!-- ═══ 08 · EL VEHÍCULO — el bloque más ancho ═══ -->
+    <!-- ═══ 08 · EL VEHÍCULO — sistema de 29 configuraciones de ejes ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
+        <span class="badge badge--ia">Criterio humano sobre IA</span>
         <h2>Elegir un camión mirando un dibujo</h2>
-        <p>El requerimiento venía en notación técnica: cantidad de ejes,
-        ruedas simples o dobles, códigos como S1-D1. Lo traduje a un sistema
-        visual: ilustré 29 configuraciones de camión por partes y convertí
-        neumáticos y ejes en componentes con estados. El operario elige
-        mirando el camión que tiene adelante, no leyendo una nomenclatura.</p>
-        <p>El registro completo son cinco pasos con validación al vuelo. Y si
-        algo no cierra, queda pendiente en vez de perderse.</p>
+        <p>A partir de las configuraciones admitidas por ley, simplifiqué la
+        arquitectura organizando los <strong>29 modelos</strong> en
+        <strong>tabs categorizadas</strong> (Rígido, Tractor, Bitrén) para
+        evitar el scroll infinito.</p>
+        <ul class="bullets">
+          <li><strong>Ilustraciones propias:</strong> diseñé las autopartes vectoriales en un lenguaje visual unificado.</li>
+          <li><strong>Componentes dinámicos:</strong> neumáticos con <strong>6 estados</strong> y ejes con <strong>3 tipos</strong>.</li>
+        </ul>
       </div>
       <div class="bloque__figuras" style="margin-top: var(--espacio-6)">
         <!-- Composición registro de vehículo: dashboard base + acordeón (arriba-der)
@@ -210,15 +196,28 @@
           <img class="veh-comp__float veh-comp__float--acordeon" src="../../assets/images/casos-de-estudio/transporte/acordeon-config.webp" alt="Selector de configuración: 4 ejes, 4 configuraciones." loading="lazy">
         </div>
       </div>
+      <!-- Carrusel de ilustraciones de autopartes (miniaturas). Placeholder
+           hasta que lleguen los exports: al tenerlos, reemplazar los .carrusel-ph__slot
+           por <img>. -->
+      <div class="carrusel-ph" role="img" aria-label="Carrusel de ilustraciones de autopartes (próximamente)">
+        <span class="carrusel-ph__slot"></span>
+        <span class="carrusel-ph__slot"></span>
+        <span class="carrusel-ph__slot"></span>
+        <span class="carrusel-ph__slot"></span>
+        <span class="carrusel-ph__slot"></span>
+        <span class="carrusel-ph__label">Carrusel de ilustraciones de autopartes · próximamente</span>
+      </div>
     </section>
 
-    <!-- ═══ 09 · EL VIAJE — CLÍMAX: texto corto arriba, imagen grande centrada + pie ═══ -->
+    <!-- ═══ 09 · EL VIAJE — CLÍMAX: callout de seguridad + imagen grande + pie ═══ -->
     <section class="caso-seccion bloque--climax">
       <div class="bloque__texto">
         <h2>Frenar el viaje, no la operación</h2>
-        <p>Al programar un viaje, el sistema valida los neumáticos. Con uno solo
-        en crítico no deja avanzar. Prevalece el peor: uno crítico pesa más que
-        siete óptimos.</p>
+        <p>Al programar un viaje prevalece el estado más grave:
+        <strong>un solo neumático crítico bloquea la salida del
+        vehículo</strong>.</p>
+        <p>Acción secundaria: deriva la unidad a la cola de taller desde el
+        mismo intento fallido.</p>
       </div>
       <figure class="climax-figura">
         <img src="../../assets/images/casos-de-estudio/transporte/validacion-critica.webp" alt="Pantalla web de Siotyx: validación de neumáticos en estado crítico al programar un viaje: lista de neumáticos marcados, mensaje de bloqueo y las dos salidas." loading="lazy">
@@ -226,26 +225,23 @@
       </figure>
     </section>
 
-    <!-- ═══ 10 · EL TALLER — serie de pares, texto siempre a la izquierda ═══ -->
+    <!-- ═══ 10 · EL TALLER — patrón unificado + serie de pares ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Ocho operaciones, un solo patrón</h2>
-        <p>Ocho operaciones (de la rotación al recapado) con la misma
-        estructura: escanear, ver el neumático, ejecutar, confirmar. El
-        operario aprende una vez y las usa todas.</p>
-        <p>El menú las agrupa por naturaleza del trabajo: mover un neumático
-        no es lo mismo que repararlo.</p>
+        <h2>Taller</h2>
+        <p>Diseñé un patrón unificado para las <strong>8 operaciones</strong> de
+        mantenimiento de los vehículos y neumáticos.</p>
       </div>
       <div class="taller-serie">
         <div class="taller-serie__item taller-serie__item--recap" data-reveal>
           <div>
             <span class="taller-kicker">Recapado</span>
-            <h3>El sistema cuenta y avisa antes de que sea tarde</h3>
-            <p>A los dos parches o recapados, aviso de monitoreo; al tercero, la
-            alerta pasa a roja y el botón deja de decir "finalizar recapado"
-            para decir "retirar de servicio".</p>
+            <h3>Alerta preventiva y retiro de servicio</h3>
+            <p>Al 2º recapado el sistema emite una <strong>alerta
+            preventiva</strong>. Al 3º pasa a <strong>roja</strong> y la acción
+            cambia a "retirar de servicio", evitando accidentes en ruta.</p>
           </div>
-          <!-- 📷 10 → neumático con 2 recapados JUNTO al de 3: el cambio de
+          <!-- 10 → neumático con 2 recapados JUNTO al de 3: el cambio de
                color y de botón se ve solo. -->
           <div class="recap-comp">
             <img class="recap-comp__phone recap-comp__phone--a" src="../../assets/images/casos-de-estudio/transporte/recap-2.webp" alt="Pantalla mobile: neumático con 2 recapados, aviso de monitoreo." loading="lazy">
@@ -256,13 +252,12 @@
         <div class="taller-serie__item" data-reveal>
           <div>
             <span class="taller-kicker">Apareamiento</span>
-            <h3>El apareamiento da tres respuestas, no dos</h3>
-            <p>Comparar dos neumáticos de un eje doble da tres respuestas:
-            compatible, margen mínimo o incompatible. El del medio es el que
-            importa: pasa, pero conviene revisar. Y cuando no pasa, la misma
-            pantalla resuelve el reemplazo.</p>
+            <h3>Apareamiento inteligente</h3>
+            <p>Compara neumáticos de un mismo eje y despliega un <strong>bottom
+            sheet de reemplazo directo</strong> desde inventario o escáner, sin
+            salir del flujo.</p>
           </div>
-          <!-- 📷 10 → los TRES estados de apareamiento juntos:
+          <!-- 10 → los TRES estados de apareamiento juntos:
                compatible (0.5mm) / margen mínimo (3mm) / incompatible (5mm).
                Van juntos o no se entiende la gradación. -->
           <div class="apar-comp">
@@ -278,9 +273,10 @@
         <div class="taller-serie__item" data-reveal>
           <div>
             <span class="taller-kicker">Rotación y montaje</span>
-            <h3>Para rotar o montar, el operario toca el camión</h3>
-            <p>La selección de posición se hace sobre el croquis de ejes, no
-            en un desplegable de texto.</p>
+            <h3>Toque sobre el croquis</h3>
+            <p>Visualización cenital interactiva sobre el croquis de ejes, con
+            feedback gráfico de origen y destino para evitar errores en
+            taller.</p>
           </div>
           <div class="rota-comp">
             <img class="rota-comp__phone rota-comp__phone--a" src="../../assets/images/casos-de-estudio/transporte/rota-1.webp" alt="Pantalla mobile: selección de nueva posición sobre el croquis de ejes del camión." loading="lazy">
@@ -293,10 +289,15 @@
     <!-- ═══ 11 · LA AUDITORÍA — control de estados (web) ═══ -->
     <section class="caso-seccion">
       <div class="audit-intro">
-        <span class="taller-kicker">Auditoría</span>
+        <div class="audit-intro__meta">
+          <span class="taller-kicker">Auditoría</span>
+          <span class="badge badge--ux">Aporte de UX destacado</span>
+        </div>
         <h2>El control no está en escanear, está en el estado</h2>
-        <p>La auditoría la ejecuta el operario en la calle, pero quien la gobierna es el administrador desde el tablero. Cada auditoría tiene un estado, y el panel las muestra a todas juntas: pendientes, en curso, finalizadas e incompletas.</p>
-        <p><strong>El estado que casi nadie diseña es el de la auditoría interrumpida.</strong> No se pierde: guarda el progreso, marca cuántos neumáticos quedaron sin escanear y manda el intento al historial. Desde el detalle, el administrador decide si la elimina o notifica al operario para que la retome.</p>
+        <ul class="bullets">
+          <li><strong>Reglas automáticas:</strong> se disparan por kilometraje o tiempo configurado por el cliente.</li>
+          <li><strong>Guardado en progreso:</strong> si la auditoría se interrumpe en la playa, no se pierden datos. Guarda lo escaneado y permite al Admin notificar para retomarla.</li>
+        </ul>
       </div>
       <div class="audit-comp" data-reveal>
         <img class="audit-comp__dash" src="../../assets/images/casos-de-estudio/transporte/audit-dashboard.webp" alt="Tablero web de auditoría: indicadores por estado y listado de auditorías con estado, vehículo y fechas." loading="lazy">
@@ -312,15 +313,14 @@
     <section class="caso-seccion">
       <span class="chip-produccion">En producción</span>
       <div class="bloque__texto">
-        <h2>Lo que ya está funcionando</h2>
-        <p>El portal registra entradas y salidas de camiones por lectura RFID
-        en el portón, sin que nadie intervenga. Está operativo en producción.</p>
-        <p>Cuando la lectura falla, el diseño explica por qué. Un camión puede
-        llegar con trece etiquetas con error: la del vehículo y las de doce
-        neumáticos. Un único modal escala de 1 a 13 sin cambiar de patrón: agrupa por eje, se colapsa y tipifica el motivo.</p>
-        <p>El tablero tiene cuatro indicadores, cada uno con su regla de
-        polaridad: viajes finalizados sube y es verde; unidades en taller
-        sube y es rojo. Y la disponibilidad de flota no tiene dirección: tiene un rango saludable.</p>
+        <h2>Portal de accesos: lectura RFID en tiempo real</h2>
+        <p>El portal registra entradas y salidas de camiones por lectura RFID en
+        el portón, sin que nadie intervenga. Está operativo en producción.</p>
+        <ul class="bullets">
+          <li><strong>Legibilidad industrial:</strong> diseñado para pantallas gigantes en portones de ingreso y egreso.</li>
+          <li><strong>Soporte light y dark:</strong> adaptado a luz solar directa o garitas nocturnas.</li>
+          <li><strong>Escalabilidad de errores:</strong> ante fallas de lectura, un modal <strong>agrupa de 1 a 13 errores por eje</strong> sin saturar la pantalla.</li>
+        </ul>
       </div>
       <div class="acc-comp" data-reveal>
         <img class="acc-comp__panel" src="../../assets/images/casos-de-estudio/transporte/acc-panel.webp" alt="Panel Control de Accesos: registro en vivo de entradas y salidas de camiones con estado autorizado o error de validacion." loading="lazy">
@@ -332,23 +332,30 @@
       </div>
     </section>
 
-    <!-- ═══ 13 · TIRA DE DETALLES — decisiones chicas con recorte real ═══ -->
+    <!-- ═══ 13 · PRINCIPIOS DE SISTEMA — decisiones chicas con recorte real ═══ -->
     <section class="caso-seccion">
-      <h2>Tres decisiones chicas</h2>
+      <h2>Principios de sistema</h2>
       <div class="detalles">
         <article class="detalle">
-          <h3>La foto es obligatoria solo cuando hay algo que mostrar</h3>
-          <p>Cuando el estado es crítico, el registro pide evidencia visual. La foto no es un trámite: es lo que confirma el diagnóstico.</p>
+          <h3>Evidencia condicional</h3>
+          <p>Foto obligatoria solo en fallas críticas: es lo que confirma el
+          diagnóstico. En rutinas pasa a <strong>opcional</strong> para agilizar
+          el trabajo.</p>
           <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-card2.webp" alt="Registro de neumatico en estado critico con evidencia visual marcada como obligatoria." loading="lazy"></div>
         </article>
         <article class="detalle">
-          <h3>Lo que no se puede deshacer, se confirma</h3>
-          <p>Ver detalles o asignar etiqueta son directos. Eliminar, que borra el vehículo del sistema sin vuelta atrás, siempre frena con una confirmación.</p>
+          <h3>Confirmación destructiva</h3>
+          <p>Ver detalles o asignar etiqueta son directos. Lo que no se puede
+          deshacer, como eliminar del sistema, siempre frena con una
+          <strong>confirmación explícita</strong>.</p>
           <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-card1.webp" alt="Listado de neumaticos con menu de acciones y confirmacion antes de eliminar." loading="lazy"></div>
         </article>
         <article class="detalle">
-          <h3>Una sola baja para el neumático y para el camión</h3>
-          <p>El formulario de baja es el mismo componente para un neumático y para un vehículo: cambia solo el dato de cabecera (medida y DOT, o dominio) y el resto (motivo, observaciones, evidencia, confirmación) se mantiene. Un patrón que escala, no dos pantallas.</p>
+          <h3>Una sola baja, dos activos</h3>
+          <p>El formulario de baja es <strong>el mismo componente</strong> para
+          neumático y vehículo: cambia solo el dato de cabecera y el resto
+          (motivo, observaciones, evidencia, confirmación) se mantiene. Un
+          patrón que escala, no dos pantallas.</p>
           <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-baja.webp" alt="Dos formularios de baja con el mismo componente: uno de neumatico y otro de vehiculo, con motivo, observaciones y evidencia." loading="lazy"></div>
         </article>
       </div>
