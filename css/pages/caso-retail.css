@@ -1,66 +1,488 @@
 /* ═══════════════════════════════════════════════════════════
    CASO SIOTYX RETAIL — capa propia del caso.
-   Por ahora SOLO los primitivos que el esqueleto necesita
-   (placeholders + dos usuarios), copiados de caso-transporte.
-   Las composiciones específicas de Retail se agregan cuando
-   lleguen los mockups.
+   Reconstruido sobre traspaso-retail.md (2026-10-08). Mismo sistema
+   que Transporte: tokens, tipografía y grilla compartidos; componentes
+   nuevos para el recorrido, el esquema de recorridos y las stats.
+   Paleta: SOLO los tokens del portfolio (acento azul empolvado). Los
+   colores del producto (crema/navy/verde) viven dentro del manómetro
+   y las capturas reales, no en la maqueta.
+   Reglas de la casa: los @media que corrigen van SIEMPRE al final.
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Placeholders de imagen (se reemplazan por <img> al exportar) ── */
+/* ── Placeholders de imagen ──
+   A diferencia de Transporte, acá SÍ muestran su código de export a la
+   vista (pedido de Evelyn): sabe qué captura de Figma va en cada hueco.
+   Al exportar, se reemplaza el <div class="ph"> por un <img>. */
 .ph {
+  position: relative;
+  display: grid;
+  place-items: center;
   background: var(--color-fondo-agrupado);
   border: 1px solid var(--color-borde-claro);
   border-radius: 12px;
   width: 100%;
 }
+.ph[data-code]::after {
+  content: attr(data-code);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta-suave);
+  opacity: 0.5;
+}
 
-.ph--web      { aspect-ratio: 16 / 10; }  /* pantalla web */
-.ph--panorama { aspect-ratio: 21 / 9; }   /* hero: dashboard recortado abajo */
-.ph--apaisado { aspect-ratio: 16 / 9; }   /* composiciones anchas */
+.ph--web      { aspect-ratio: 16 / 10; }   /* pantalla web */
+.ph--grande   { aspect-ratio: 16 / 9; }    /* dashboard a todo el ancho */
+.ph--panorama { aspect-ratio: 21 / 9; }
+.ph--apaisado { aspect-ratio: 16 / 9; }
 .ph--movil {
   aspect-ratio: 9 / 14;
   max-width: 240px;
   margin-inline: auto;
 }
 
-/* ── Dos usuarios (operario de depósito / supervisor) ── */
-.dos-usuarios {
+/* ── Línea de tensión (bajada display) ──
+   Frase corta y grande que abre el caso. El tramo clave, en el acento. */
+.caso-tension {
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-tinta);
+  max-width: 20ch;
+  margin: var(--espacio-4) 0 var(--espacio-5);
+}
+.caso-tension__hl { color: var(--color-carpeta-oscuro); }
+
+/* Lead: primer párrafo de una sección, un punto más grande que el cuerpo. */
+.caso-lead {
+  font-size: 1.12rem !important;
+  color: var(--color-tinta-cuerpo);
+  line-height: 1.5;
+}
+
+/* ── Ficha en lista (Producto / Empresa / Rol / Base / Estado) ── */
+.ficha-lista {
+  border-top: 1px solid var(--color-borde-claro);
+  border-bottom: 1px solid var(--color-borde-claro);
+  margin-bottom: var(--espacio-6);
+}
+.ficha-lista__fila {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) 0;
+}
+.ficha-lista__fila + .ficha-lista__fila { border-top: 1px solid var(--color-borde-claro); }
+.ficha-lista dt {
+  font-size: var(--texto-base);
+  font-weight: 700;
+  color: var(--color-tinta);
+}
+.ficha-lista dd {
+  font-size: 1rem;
+  color: var(--color-tinta-cuerpo);
+}
+
+/* ── Las dos plataformas (Mobile · Operario / Web · Administrador) ── */
+.plataformas {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--espacio-4);
 }
-.dos-usuarios .usuario {
+.plataforma {
   border: 1px solid var(--color-borde-claro);
   border-radius: 16px;
   padding: var(--espacio-5);
 }
-.dos-usuarios .usuario p:last-child { margin-bottom: 0; }
-.usuario__tile {
+.plataforma__head {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  margin-bottom: var(--espacio-4);
+}
+.plataforma__tile {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
+  flex-shrink: 0;
   border-radius: 12px;
   background: color-mix(in srgb, var(--color-carpeta-oscuro) 10%, transparent);
-  margin-bottom: var(--espacio-3);
 }
-.dos-usuarios .usuario__icono {
-  width: 22px;
-  height: 22px;
-  color: var(--color-carpeta-oscuro);
+.plataforma__tile svg { width: 22px; height: 22px; color: var(--color-carpeta-oscuro); }
+.plataforma__rotulo {
+  display: block;
+  font-size: var(--texto-md);
+  font-weight: 700;
+  color: var(--color-tinta);
 }
-.dos-usuarios h3 { margin-bottom: 2px; }
-.dos-usuarios .usuario__meta {
+.plataforma__rol {
+  display: block;
   font-size: var(--texto-sm);
   color: var(--color-tinta-suave);
-  margin-bottom: var(--espacio-2);
 }
-.dos-usuarios__cierre {
-  grid-column: 1 / -1;
-  font-size: var(--texto-md);
+.plataforma__ops {
+  list-style: none;
+  margin: 0 0 var(--espacio-4);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+.plataforma__ops li {
+  margin: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--color-superficie-lateral);
+  border: 1px solid var(--color-borde-claro);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-tinta);
+}
+.plataforma__hw {
+  margin: 0;
+  padding-top: var(--espacio-3);
+  border-top: 1px solid var(--color-borde-claro);
+  font-size: var(--texto-base);
+  color: var(--color-tinta-cuerpo);
+}
+.plataforma__hw span:first-child {
+  display: inline-block;
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-right: var(--espacio-2);
+}
+.plataforma__hw-nada { font-weight: 700; color: var(--color-tinta); }
+
+/* ── Slot pendiente (visible, pedido de Evelyn) ──
+   Caja punteada que marca contenido/decisión que ella completa. */
+.slot-pendiente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-1);
+  text-align: center;
+  padding: var(--espacio-5);
+  border: 1.5px dashed var(--color-carpeta-claro);
+  border-radius: var(--radio-md);
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 4%, var(--color-superficie));
+  margin-top: var(--espacio-5);
+}
+.slot-pendiente--figura { min-height: 220px; margin-top: var(--espacio-5); }
+.slot-pendiente__tag {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-carpeta-oscuro);
+}
+.slot-pendiente__hint {
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+}
+.slot-pendiente-par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+}
+.slot-pendiente-par .slot-pendiente { margin-top: 0; min-height: 120px; }
+
+/* ── Diagrama de recorrido (4.1), construido en código ── */
+.recorrido {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  background: var(--color-superficie-lateral);
+  margin-top: var(--espacio-5);
+}
+.recorrido__flujo {
+  display: flex;
+  align-items: stretch;
+  gap: var(--espacio-2);
+}
+.recorrido__nodo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--espacio-4) var(--espacio-2);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+  color: var(--color-tinta);
+  font-family: inherit;
+  font-size: var(--texto-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.recorrido__nodo:hover { border-color: var(--color-carpeta-claro); }
+.recorrido__nodo.is-active {
+  border-color: var(--color-carpeta-oscuro);
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 8%, var(--color-superficie));
+  box-shadow: inset 0 0 0 1px var(--color-carpeta-oscuro);
+}
+.recorrido__nodo:focus-visible {
+  outline: 2px solid var(--color-carpeta-claro);
+  outline-offset: 2px;
+}
+.recorrido__num {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 12%, transparent);
+  color: var(--color-carpeta-oscuro);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.recorrido__nodo.is-active .recorrido__num {
+  background: var(--color-carpeta-oscuro);
+  color: #fff;
+}
+.recorrido__flecha {
+  align-self: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 2px;
+  background: var(--color-carpeta-claro);
+  position: relative;
+}
+.recorrido__flecha::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--color-carpeta-claro);
+  border-right: 2px solid var(--color-carpeta-claro);
+  transform: translateY(-50%) rotate(45deg);
+}
+.recorrido__desvios {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-3);
+}
+.recorrido__desvios-rotulo {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-right: var(--espacio-2);
+}
+.recorrido__nodo--loop {
+  flex: 0 1 auto;
+  flex-direction: row;
+  gap: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-4);
+  border-style: dashed;
+  font-size: var(--texto-sm);
+}
+.recorrido__panels { margin-top: var(--espacio-4); }
+.recorrido__panel { padding-top: var(--espacio-2); }
+.recorrido__panel h3 {
+  margin: 0 0 var(--espacio-2);
+  font-size: 1.05rem;
+  color: var(--color-tinta);
+}
+.recorrido__panel p {
+  margin: 0 0 var(--espacio-3);
+  font-size: 1rem;
+  color: var(--color-tinta-cuerpo);
+  line-height: 1.5;
+}
+.recorrido__panel-tag {
+  display: inline-block;
+  margin-left: var(--espacio-2);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 12%, transparent);
+  color: var(--color-carpeta-oscuro);
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  vertical-align: middle;
 }
 
-/* ── Par de pantallas lado a lado (mobile/web) para los bloques de proceso ── */
+/* Chips de etiqueta (en los paneles del recorrido) */
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+.chips li {
+  margin: 0;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--color-borde-claro);
+  background: var(--color-superficie);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-tinta-suave);
+}
+
+/* ── Callout (copiado del sistema de Transporte) ── */
+.caso-callout {
+  border: 1px solid var(--color-borde-claro);
+  border-left: 3px solid var(--color-carpeta-oscuro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  background: var(--color-superficie-lateral);
+  margin-top: var(--espacio-5);
+}
+.caso-callout__titulo {
+  font-size: var(--texto-md);
+  color: var(--color-tinta);
+  margin: 0 0 var(--espacio-3);
+}
+.caso-callout p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-tinta-cuerpo);
+}
+.caso-callout--regla {
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 5%, var(--color-superficie));
+}
+
+/* ── Tres frames en fila (despacho 5.2) ── */
+.frames-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-4);
+  align-items: start;
+  margin-top: var(--espacio-5);
+}
+
+/* ── Esquema de los dos recorridos (5.3), construido en código ── */
+.timelines {
+  display: grid;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-5);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie-lateral);
+}
+.timeline {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: var(--espacio-4);
+}
+.timeline__rotulo {
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+}
+.timeline__pasos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+.timeline__paso {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin: 0;
+  padding: 7px 14px 7px 12px;
+  border-radius: 999px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-claro);
+  font-size: var(--texto-base);
+  font-weight: 600;
+  color: var(--color-tinta);
+}
+.timeline__paso:not(:last-child)::after {
+  content: "";
+  width: 14px;
+  height: 2px;
+  margin-left: var(--espacio-1);
+  background: var(--color-carpeta-claro);
+}
+.timeline__punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-carpeta-oscuro);
+  flex-shrink: 0;
+}
+
+/* ── Stats (impacto, bloque 6) ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-4);
+  margin: var(--espacio-5) 0;
+}
+.stat {
+  text-align: center;
+  padding: var(--espacio-5) var(--espacio-3);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+}
+.stat__num {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-carpeta-oscuro);
+  font-variant-numeric: tabular-nums;
+}
+.stat__label {
+  margin-top: var(--espacio-2);
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+  line-height: 1.35;
+}
+
+/* ── Aprendizaje (bloque 7): panel claro, titular grande ── */
+.caso-aprendizaje--retail {
+  background: var(--color-superficie-lateral);
+  border: 1px solid var(--color-borde-claro);
+  border-left: 3px solid var(--color-carpeta-oscuro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-6);
+}
+.caso-aprendizaje--retail h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--espacio-3);
+}
+.caso-aprendizaje--retail p:last-child { margin-bottom: 0; }
+
+/* ── Cierre: nota fina que conecta con el Core / Transporte ── */
+.cierre-nota {
+  margin-top: var(--espacio-6);
+  padding-left: var(--espacio-3);
+  border-left: 2px solid var(--color-borde-claro);
+  font-size: var(--texto-md);
+  color: var(--color-tinta-suave);
+  line-height: 1.5;
+}
+.cierre-nota a { color: var(--color-carpeta-oscuro); font-weight: 600; }
+.cierre-nota a:hover { text-decoration: underline; }
+
+/* ── Par de pantallas lado a lado (mobile/web) ── */
 .retail-par {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -68,8 +490,42 @@
   align-items: start;
   margin-top: var(--espacio-5);
 }
+.caso-figura .retail-par { margin-top: 0; }
 
+/* ── Reveal on scroll (mismo patrón que Transporte) ── */
+[data-reveal].reveal-ready { opacity: 0; transform: translateY(24px); }
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MÓVIL — va al final (corrige lo de arriba)
+   ═══════════════════════════════════════════════════════════ */
 @media (max-width: 700px) {
-  .dos-usuarios,
-  .retail-par { grid-template-columns: 1fr; }
+  .plataformas,
+  .retail-par,
+  .slot-pendiente-par { grid-template-columns: 1fr; }
+
+  .ficha-lista__fila { grid-template-columns: 120px 1fr; gap: var(--espacio-3); }
+
+  .frames-3 { grid-template-columns: 1fr 1fr; }
+
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat__num { font-size: 2.2rem; }
+
+  /* El recorrido se apila: los nodos en columna y las flechas giran 90°. */
+  .recorrido__flujo { flex-direction: column; }
+  .recorrido__nodo { flex-direction: row; justify-content: flex-start; gap: var(--espacio-3); }
+  .recorrido__flecha { transform: rotate(90deg); margin: 2px auto; }
+  .recorrido__desvios { flex-wrap: wrap; }
+  .recorrido__nodo--loop { flex: 1; }
+
+  /* Las timelines: el rótulo arriba, los pasos abajo. */
+  .timeline { grid-template-columns: 1fr; gap: var(--espacio-2); }
+
+  .caso-tension { font-size: 1.5rem; max-width: none; }
+  .caso-aprendizaje--retail { padding: var(--espacio-5); }
+  .caso-aprendizaje--retail h2 { font-size: 1.3rem; }
 }

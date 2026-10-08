@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siotyx Retail · Evelyn Ariani</title>
-  <meta name="description" content="Caso de estudio: control de inventario de depósito con trazabilidad RFID y código de barras. UX/UI web y mobile para un producto B2B conectado a hardware.">
+  <meta name="description" content="Caso de estudio: control de inventario de depósito con trazabilidad RFID y código de barras. Una app mobile para el operario y una web de supervisión, sobre un Core compartido.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Siotyx Retail · Caso de estudio de Evelyn Ariani">
-  <meta property="og:description" content="Recibir, ubicar y despachar mercadería con trazabilidad: del escaneo al pedido.">
+  <meta property="og:description" content="Saber qué hay en un depósito es fácil. Saber dónde está cada unidad, quién la movió y cuándo, no.">
   <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/retail.html">
   <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -27,159 +27,379 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=1">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=2">
 </head>
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
-       CASO SIOTYX RETAIL — ESQUELETO BÁSICO (2026-10-02)
-       Estructura base para empezar a cargar mockups.
-       El texto es borrador: se afina con contenido (Gemini / Evelyn).
-       Las imágenes son placeholders .ph con su proporción; cada una
-       lleva un comentario 📷 con QUÉ pantalla va. Al exportar, se
-       cambia el <div class="ph"> por un <img>.
-       Modelo del producto: Tag → Ítem → Ubicación → Pedido.
+       CASO SIOTYX RETAIL — reconstruido sobre traspaso-retail.md (2026-10-08).
+       Mismo sistema visual que Transporte (tokens, tipografía, grilla,
+       componentes). Los colores del producto (crema/navy/verde) NO se usan
+       en la maqueta: solo viven dentro de los diagramas y capturas reales.
+       3 visuales previstos en código: diagrama de recorrido (4.1), esquema de
+       los dos recorridos de trazabilidad (5.3) y el manómetro (5.1 — queda
+       como SLOT: Evelyn define colores y carga las capturas).
+       Las capturas llevan su código de export (01-A … 08) a la vista.
        ═══════════════════════════════════════════════════════════ -->
   <div class="ventana-max">
     <div class="ventana-max__barra">
       <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
       <span class="semaforo semaforo--min"></span>
       <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
-      <span class="ventana-max__titulo">Siotyx Retail · Caso de estudio</span>
+      <span class="ventana-max__titulo">Siotyx Retail</span>
     </div>
     <div class="ventana-max__scroll">
-  <main class="caso-contenido">
+  <main class="caso-contenido caso-contenido--retail">
 
-    <!-- ═══ 01 · HERO ═══ -->
+    <!-- ═══ 01 · BAJADA ═══ -->
     <header class="caso-header">
       <h1>Siotyx Retail</h1>
-      <p class="bajada">Diseñé el control de inventario de depósito de Siotyx:
-      recibir, ubicar y despachar mercadería con trazabilidad, del escaneo al
-      pedido. [borrador]</p>
-      <dl class="caso-ficha">
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Depósito y Retail</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · en curso</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Mobile + Web · RFID y código de barras</dd></div>
-      </dl>
+      <p class="caso-tension">Saber qué hay en un depósito es fácil. Saber
+      <span class="caso-tension__hl">dónde está cada unidad, quién la movió y
+      cuándo</span>, no.</p>
+      <p class="bajada">Diseñé el control de inventario de depósito de Siotyx en
+      dos plataformas: una app mobile que el operario opera con lector RFID y
+      código de barras, y una web desde la que el administrador supervisa el
+      depósito entero. Un mismo inventario, dos formas de intervenirlo.</p>
     </header>
 
-    <!-- 📷 01 → HERO: dashboard web de Retail (4 KPI + tabla), recortado abajo. -->
+    <!-- 01-A / 01-B: par de portada (dashboard web + app mobile) -->
     <figure class="caso-figura">
-      <div class="ph ph--panorama" role="img" aria-label="Dashboard web de Siotyx Retail"></div>
+      <div class="retail-par">
+        <div class="ph ph--web" data-code="01-A" role="img" aria-label="Pendiente: dashboard web de Retail"></div>
+        <div class="ph ph--movil" data-code="01-B" role="img" aria-label="Pendiente: app mobile de Retail"></div>
+      </div>
     </figure>
 
-    <!-- ═══ 02 · EL PROBLEMA ═══ -->
+    <!-- ═══ 02 · FICHA ═══ -->
     <section class="caso-seccion">
-      <div class="bloque__texto">
-        <h2>El problema</h2>
-        <p>El inventario de un depósito se mueve todo el tiempo: entra, se ubica,
-        se despacha. Sin trazabilidad, cada movimiento dependía de una planilla y
-        del criterio de quien lo cargaba. [borrador]</p>
-        <p>La pregunta básica de la operación (qué hay, cuánto y dónde) no tenía
-        una respuesta confiable. [borrador]</p>
+      <dl class="ficha-lista">
+        <div class="ficha-lista__fila"><dt>Producto</dt><dd>Control de inventario de depósito (B2B)</dd></div>
+        <div class="ficha-lista__fila"><dt>Empresa</dt><dd>Supply Solutions</dd></div>
+        <div class="ficha-lista__fila"><dt>Rol</dt><dd>UX/UI, única diseñadora</dd></div>
+        <div class="ficha-lista__fila"><dt>Base</dt><dd>Core compartido + Design System propio</dd></div>
+        <div class="ficha-lista__fila"><dt>Estado</dt><dd>En curso</dd></div>
+      </dl>
+
+      <div class="plataformas">
+        <article class="plataforma">
+          <header class="plataforma__head">
+            <span class="plataforma__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+            <div>
+              <span class="plataforma__rotulo">Mobile</span>
+              <span class="plataforma__rol">Operario de depósito</span>
+            </div>
+          </header>
+          <ul class="plataforma__ops">
+            <li>Recepción</li><li>Ingreso</li><li>Picking</li>
+            <li>Movimiento</li><li>Despacho</li><li>Reingreso</li>
+          </ul>
+          <p class="plataforma__hw"><span>Hardware</span> Lector RFID + código de barras</p>
+        </article>
+
+        <article class="plataforma">
+          <header class="plataforma__head">
+            <span class="plataforma__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <div>
+              <span class="plataforma__rotulo">Web</span>
+              <span class="plataforma__rol">Administrador</span>
+            </div>
+          </header>
+          <ul class="plataforma__ops">
+            <li>Dashboard</li><li>Recepción</li><li>Ingresos</li><li>Almacén</li>
+            <li>Pedidos</li><li>Movimientos</li><li>Reingreso</li><li>Métricas</li>
+          </ul>
+          <p class="plataforma__hw"><span>Hardware</span> <span class="plataforma__hw-nada">—</span> solo supervisión</p>
+        </article>
       </div>
     </section>
 
-    <!-- ═══ 03 · LOS DOS USUARIOS ═══ -->
+    <!-- ═══ 03 · PROBLEMA ═══ -->
     <section class="caso-seccion">
-      <h2>Dos personas, un mismo inventario</h2>
-      <div class="dos-usuarios">
-        <div class="usuario">
-          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
-          <h3>Supervisor</h3>
-          <p class="usuario__meta">Oficina · Web</p>
-          <p>Controla recepción, almacén y pedidos desde el tablero. Necesita ver
-          el estado del depósito de un vistazo. [borrador]</p>
+      <div class="bloque__texto">
+        <h2>Un depósito pierde el rastro en los movimientos, no en el alta</h2>
+        <p class="caso-lead">Recibir mercadería es la parte simple. El problema
+        aparece después: cada traslado interno, cada salida y cada reingreso es
+        una oportunidad de perder la pista de una unidad.</p>
+        <p>Antes de Siotyx, el inventario vivía en planillas y en el criterio de
+        quien lo cargaba. El sistema tuvo que redefinir <strong>qué significa
+        trazar</strong>: no contar cuánto hay, sino registrar cada evento que
+        toca una unidad a lo largo de toda su vida en el depósito.</p>
+      </div>
+      <!-- Slot de contenido: Evelyn completa con el dato/escena del problema real. -->
+      <div class="slot-pendiente" role="note">
+        <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
+        <span class="slot-pendiente__hint">Escena o dato que ilustre el costo de no trazar</span>
+      </div>
+    </section>
+
+    <!-- ═══ 04 · PROCESO ═══ -->
+
+    <!-- 4.1 · Diagrama de recorrido (interactivo, construido en código) -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>El recorrido de una unidad</h2>
+        <p>Toda unidad atraviesa el mismo recorrido base, con dos desvíos que
+        pueden ocurrir en cualquier momento. Tocá cada etapa para ver qué resuelve.</p>
+      </div>
+
+      <div class="recorrido" data-recorrido>
+        <div class="recorrido__flujo" role="tablist" aria-label="Etapas del recorrido">
+          <button class="recorrido__nodo is-active" type="button" role="tab" aria-selected="true" data-panel="r-recepcion">
+            <span class="recorrido__num">1</span><span class="recorrido__label">Recepción</span>
+          </button>
+          <span class="recorrido__flecha" aria-hidden="true"></span>
+          <button class="recorrido__nodo" type="button" role="tab" aria-selected="false" data-panel="r-ingreso">
+            <span class="recorrido__num">2</span><span class="recorrido__label">Ingreso</span>
+          </button>
+          <span class="recorrido__flecha" aria-hidden="true"></span>
+          <button class="recorrido__nodo" type="button" role="tab" aria-selected="false" data-panel="r-picking">
+            <span class="recorrido__num">3</span><span class="recorrido__label">Picking</span>
+          </button>
+          <span class="recorrido__flecha" aria-hidden="true"></span>
+          <button class="recorrido__nodo" type="button" role="tab" aria-selected="false" data-panel="r-despacho">
+            <span class="recorrido__num">4</span><span class="recorrido__label">Despacho</span>
+          </button>
         </div>
-        <div class="usuario">
-          <span class="usuario__tile"><svg class="usuario__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
-          <h3>Operario de depósito</h3>
-          <p class="usuario__meta">Depósito · Mobile</p>
-          <p>Recibe, escanea, ingresa, hace picking y busca productos. De pie, con
-          las manos ocupadas y a veces sin señal. [borrador]</p>
+
+        <div class="recorrido__desvios">
+          <span class="recorrido__desvios-rotulo">Desvíos</span>
+          <button class="recorrido__nodo recorrido__nodo--loop" type="button" role="tab" aria-selected="false" data-panel="r-movimiento">
+            <span class="recorrido__label">Movimiento</span>
+          </button>
+          <button class="recorrido__nodo recorrido__nodo--loop" type="button" role="tab" aria-selected="false" data-panel="r-reingreso">
+            <span class="recorrido__label">Reingreso</span>
+          </button>
         </div>
-        <p class="dos-usuarios__cierre">El punto de contacto entre los dos no es
-        una pantalla: es el ítem físico y su etiqueta. [borrador]</p>
+
+        <div class="recorrido__panels">
+          <div class="recorrido__panel" id="r-recepcion" role="tabpanel">
+            <h3>Recepción</h3>
+            <p>Lo que llega se cuenta y se valida contra lo esperado. El operario
+            escanea de a uno o por lote, y la interfaz tolera lecturas parciales y
+            el estado sin conexión: la playa no siempre tiene señal.</p>
+            <ul class="chips"><li>Unitario / lote</li><li>Sin conexión</li><li>Progreso parcial</li></ul>
+          </div>
+          <div class="recorrido__panel" id="r-ingreso" role="tabpanel" hidden>
+            <h3>Ingreso</h3>
+            <p>Cada ítem recibe su tag y su ubicación. La pantalla cambia según de
+            dónde viene el dato: tipo de producto externo o tipo de producto desde
+            Siotyx. Dos variantes del mismo paso.</p>
+            <ul class="chips"><li>Asignación de tag</li><li>Externo / Siotyx</li><li>Pasillo · Fila · Nivel</li></ul>
+          </div>
+          <div class="recorrido__panel" id="r-picking" role="tabpanel" hidden>
+            <h3>Picking</h3>
+            <p>El operario arma pedidos recorriendo el depósito. El lector lo guía
+            físicamente hasta cada etiqueta con el manómetro de proximidad, y la
+            ubicación se desglosa en Pasillo, Fila y Nivel.</p>
+            <ul class="chips"><li>Manómetro</li><li>Escaneo múltiple</li><li>Ubicación desglosada</li></ul>
+          </div>
+          <div class="recorrido__panel" id="r-despacho" role="tabpanel" hidden>
+            <h3>Despacho</h3>
+            <p>La mercadería sale contra un pedido. El sistema confirma cada unidad
+            despachada y deja el movimiento registrado, así la salida queda atada a
+            su pedido de origen.</p>
+            <ul class="chips"><li>Contra pedido</li><li>Confirmación por unidad</li><li>Evento registrado</li></ul>
+          </div>
+          <div class="recorrido__panel" id="r-movimiento" role="tabpanel" hidden>
+            <h3>Movimiento <span class="recorrido__panel-tag">desvío</span></h3>
+            <p>Un ítem cambia de ubicación sin salir del circuito. Puede ser interno
+            (de una ubicación a otra del depósito) o externo (hacia otro destino, con
+            etapas de tránsito).</p>
+            <ul class="chips"><li>Interno / externo</li><li>Dos recorridos</li></ul>
+          </div>
+          <div class="recorrido__panel" id="r-reingreso" role="tabpanel" hidden>
+            <h3>Reingreso <span class="recorrido__panel-tag">desvío</span></h3>
+            <p>Lo que vuelve al depósito se reincorpora al stock con su historia
+            intacta: el reingreso no crea una unidad nueva, recupera la que ya
+            existía.</p>
+            <ul class="chips"><li>Vuelta a stock</li><li>Historial conservado</li></ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ═══ 04 · RECEPCIÓN ═══ -->
+    <!-- 4.2 · La web mira, el mobile hace -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Recepción: lo que entra, contado y ubicado</h2>
-        <p>El operario recibe en mobile (progress cards, filtros por tipo y
-        estado); el supervisor lo ve en web, en tabla con hora, evento, detalle,
-        ubicación y estado. [borrador]</p>
+        <h2>La web mira, el mobile hace</h2>
+        <p>La división de plataformas no es por comodidad: responde a dónde ocurre
+        el trabajo. El administrador necesita ver el depósito; el operario necesita
+        intervenirlo.</p>
+        <p>Por eso <strong>todo lo operativo vive en mobile, sin excepción</strong>.
+        La web nunca escanea ni mueve stock: observa, supervisa y arma pedidos. La
+        única fuente de verdad de un movimiento físico es el dispositivo que lo
+        presenció.</p>
       </div>
-      <!-- 📷 04 → par: mobile (ítems de recepción con barra de progreso) + web (tabla de recepción). -->
+      <!-- 03-A / 03-B: web (supervisión) + mobile (operación) del mismo flujo -->
       <div class="retail-par">
-        <div class="ph ph--movil" role="img" aria-label="Mobile: ítems de recepción con progreso y filtros"></div>
-        <div class="ph ph--web" role="img" aria-label="Web: tabla de recepción"></div>
+        <div class="ph ph--web" data-code="03-A" role="img" aria-label="Pendiente: vista de supervisión web"></div>
+        <div class="ph ph--movil" data-code="03-B" role="img" aria-label="Pendiente: operación en mobile"></div>
       </div>
     </section>
 
-    <!-- ═══ 05 · ESCANEO: UNITARIO VS LOTE ═══ -->
+    <!-- 4.3 · Unitario y lote -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Un mismo escáner, dos modos</h2>
-        <p>El escáner de código de barras resuelve recepción unitaria y por lote,
-        más los estados que el depósito impone de verdad: sin conexión, código no
-        coincide, falla de lectura. [borrador]</p>
+        <h2>Unitario y lote: una distinción que se propaga</h2>
+        <p>Un ítem puede rastrearse de a uno (unitario) o de a muchos bajo un mismo
+        tag (lote). Esa distinción no es un detalle de datos: <strong>cambia qué
+        significa escanear</strong>.</p>
+        <p>En unitario, un escaneo equivale a una unidad. En lote, un escaneo
+        equivale a un conjunto. La misma acción física produce resultados distintos,
+        y la interfaz lo hace explícito antes de leer, en recepción, ingreso y
+        picking.</p>
       </div>
-      <!-- 📷 05 → los estados del escáner: unitario / lote / sin conexión / no coincide. -->
-      <div class="ph ph--apaisado" role="img" aria-label="Estados del escáner de código de barras: unitario, lote, sin conexión, no coincide"></div>
-    </section>
-
-    <!-- ═══ 06 · INGRESO Y ASIGNACIÓN DE TAGS ═══ -->
-    <section class="caso-seccion">
-      <div class="bloque__texto">
-        <h2>El dato cambia según de dónde viene</h2>
-        <p>Al asignar tags, la pantalla se adapta al origen del dato: tipo de
-        producto externo vs. tipo de producto desde Siotyx. Dos variantes del
-        mismo paso. [borrador]</p>
-      </div>
-      <!-- 📷 06 → par mobile: Tag detectada (externo) vs Tag detectada (desde Siotyx). -->
+      <!-- 04-A / 04-B: dropdown buscador con íconos Unitario (Fingerprint) vs Lote (Stack) -->
       <div class="retail-par">
-        <div class="ph ph--movil" role="img" aria-label="Mobile: tag detectada, producto externo"></div>
-        <div class="ph ph--movil" role="img" aria-label="Mobile: tag detectada, producto desde Siotyx"></div>
+        <div class="ph ph--movil" data-code="04-A" role="img" aria-label="Pendiente: modo unitario"></div>
+        <div class="ph ph--movil" data-code="04-B" role="img" aria-label="Pendiente: modo lote"></div>
       </div>
     </section>
 
-    <!-- ═══ 07 · PEDIDOS (WEB) ═══ -->
+    <!-- ═══ 05 · SOLUCIÓN ═══ -->
+
+    <!-- 5.1 · Picking + manómetro (SLOT: Evelyn define colores y capturas) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Armar un pedido sin perder el hilo</h2>
-        <p>La creación de pedido es un modal que crece en cuatro estados (de vacío
-        a lista con scroll interno), con un buscador que distingue producto
-        unitario de lote y un contador por ítem. [borrador]</p>
+        <h2>Picking: el lector guía, la interfaz confirma</h2>
+        <p>Encontrar una unidad entre miles es un problema físico, no de pantalla.
+        El manómetro de proximidad traduce la señal RFID en una guía: cuanto más
+        cerca de la etiqueta, más sube la aguja. La interfaz solo tiene que decir
+        "acercate" y "movete lento".</p>
       </div>
-      <!-- 📷 07 → web: modal de creación de pedido (estado con lista + buscador unitario/lote). -->
-      <div class="ph ph--web" role="img" aria-label="Web: creación de pedido con buscador y contador por producto"></div>
+      <!-- 05: manómetro de proximidad. Evelyn define los colores y carga
+           las capturas (lejos / acercándose / muy cerca). -->
+      <div class="slot-pendiente slot-pendiente--figura" role="img" aria-label="Pendiente: manómetro de proximidad">
+        <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
+        <span class="slot-pendiente__hint">05 · manómetro de proximidad (colores + capturas)</span>
+      </div>
+      <div class="caso-callout caso-callout--regla">
+        <h3 class="caso-callout__titulo">Un componente, tres operaciones</h3>
+        <p>El mismo patrón de escaneo múltiple (0/6, 2/6, 6/6) resuelve recepción,
+        picking y auditoría. No es una pantalla por operación: es un componente que
+        cambia de contexto.</p>
+      </div>
     </section>
 
-    <!-- ═══ 08 · BUSCADOR DE PROXIMIDAD ═══ -->
+    <!-- 5.2 · Despacho -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Encontrar un producto en el depósito</h2>
-        <p>El buscador usa el manómetro de proximidad del Core: el lector guía
-        físicamente hasta la etiqueta, y la ubicación se desglosa en Pasillo,
-        Fila y Nivel. [borrador]</p>
+        <h2>Despacho: hacer visible el trabajo del sistema</h2>
+        <p>Cuando el sistema valida una salida, el operario no ve el cálculo: ve el
+        resultado. Diseñé el despacho para que cada confirmación muestre qué se
+        verificó y qué quedó registrado, así la máquina rinde cuentas de lo que hizo.</p>
       </div>
-      <!-- 📷 08 → mobile: producto encontrado con ubicación Pasillo / Fila / Nivel. -->
-      <div class="ph ph--movil" role="img" aria-label="Mobile: producto encontrado, ubicación desglosada"></div>
+      <!-- 06-A / 06-B / 06-C: los tres frames del despacho -->
+      <div class="frames-3">
+        <div class="ph ph--movil" data-code="06-A" role="img" aria-label="Pendiente: despacho, frame 1"></div>
+        <div class="ph ph--movil" data-code="06-B" role="img" aria-label="Pendiente: despacho, frame 2"></div>
+        <div class="ph ph--movil" data-code="06-C" role="img" aria-label="Pendiente: despacho, frame 3"></div>
+      </div>
     </section>
 
-    <!-- ═══ 09 · APRENDIZAJE ═══ -->
+    <!-- 5.3 · Movimientos: dos recorridos (esquema construido en código) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>El aprendizaje</h2>
-        <p>El escaneo no identifica el ítem: lo confirma y lo registra. Ese cambio
-        de modelo mental reescribió pantallas y copy, y es lo que mantiene la
-        misma lógica de Transporte (tag → unidad → ubicación → operación) viva en
-        Retail sin rediseñar la base. [borrador]</p>
+        <h2>Movimientos: dos recorridos, no uno</h2>
+        <p>Mover un ítem no siempre significa lo mismo. Un movimiento interno va de
+        una ubicación a otra dentro del depósito; uno externo lo envía a otro destino
+        y suma etapas de tránsito.</p>
+      </div>
+
+      <div class="timelines" aria-label="Los dos recorridos de un movimiento">
+        <div class="timeline">
+          <span class="timeline__rotulo">Interno</span>
+          <ol class="timeline__pasos">
+            <li class="timeline__paso"><span class="timeline__punto"></span>Solicitado</li>
+            <li class="timeline__paso"><span class="timeline__punto"></span>Realizado</li>
+          </ol>
+        </div>
+        <div class="timeline">
+          <span class="timeline__rotulo">Externo</span>
+          <ol class="timeline__pasos">
+            <li class="timeline__paso"><span class="timeline__punto"></span>Solicitado</li>
+            <li class="timeline__paso"><span class="timeline__punto"></span>Salida</li>
+            <li class="timeline__paso"><span class="timeline__punto"></span>Llegada a destino</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="bloque__texto">
+        <p><strong>El modelo de estados de cada recorrido fue una decisión de
+        diseño</strong>, no un dato que vino dado: separar interno de externo evitó
+        forzar un flujo de tres pasos sobre un movimiento que solo tiene dos.</p>
+      </div>
+      <!-- 07: pantallas de movimientos (interno/externo) -->
+      <figure class="caso-figura" data-reveal>
+        <div class="ph ph--apaisado" data-code="07" role="img" aria-label="Pendiente: movimientos interno y externo"></div>
+      </figure>
+    </section>
+
+    <!-- 5.4 · Métricas -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Métricas: el dato operativo vuelve como insight</h2>
+        <p>Cada escaneo, cada movimiento y cada despacho deja un evento. Acumulados,
+        esos eventos dejan de ser registro y pasan a ser lectura del depósito.</p>
+        <p>El módulo de métricas devuelve lo que la operación generó: entre otros, un
+        Top 5 de productos más devueltos, una señal temprana de problemas de calidad
+        o de catálogo que antes se perdía en la planilla.</p>
+      </div>
+      <!-- 08: dashboard de métricas (a todo el ancho) -->
+      <figure class="caso-figura" data-reveal>
+        <div class="ph ph--web ph--grande" data-code="08" role="img" aria-label="Pendiente: dashboard de métricas"></div>
+      </figure>
+    </section>
+
+    <!-- ═══ 06 · IMPACTO ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Alcance diseñado</h2>
+      </div>
+      <dl class="stats">
+        <div class="stat"><dt class="stat__num">6</dt><dd class="stat__label">operaciones en mobile</dd></div>
+        <div class="stat"><dt class="stat__num">8</dt><dd class="stat__label">secciones en web</dd></div>
+        <div class="stat"><dt class="stat__num">2</dt><dd class="stat__label">tecnologías de captura</dd></div>
+        <div class="stat"><dt class="stat__num">1</dt><dd class="stat__label">Design System propio</dd></div>
+      </dl>
+      <div class="bloque__texto">
+        <p>Retail está en curso: hay flujos aprobados y otros en desarrollo. El
+        alcance ya diseñado cubre las seis operaciones del operario y las ocho
+        secciones del administrador, sobre un único Design System que comparte con
+        la vertical de transporte.</p>
+      </div>
+      <!-- Dos slots de impacto: Evelyn completa con resultados/métricas reales. -->
+      <div class="slot-pendiente-par">
+        <div class="slot-pendiente" role="note">
+          <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
+          <span class="slot-pendiente__hint">Resultado o métrica de impacto</span>
+        </div>
+        <div class="slot-pendiente" role="note">
+          <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
+          <span class="slot-pendiente__hint">Resultado o métrica de impacto</span>
+        </div>
       </div>
     </section>
+
+    <!-- ═══ 07 · APRENDIZAJE ═══ -->
+    <section class="caso-seccion">
+      <div class="caso-aprendizaje caso-aprendizaje--retail">
+        <h2>Escanear no identifica: confirma.</h2>
+        <p class="caso-lead">El cambio de modelo mental más importante del proyecto
+        cabe en una frase.</p>
+        <p>Al principio tratábamos el escaneo como el acto que identifica un ítem.
+        En la práctica, el ítem ya está identificado por su tag: escanear no lo
+        descubre, <strong>lo confirma y lo registra</strong>. Ese giro reescribió
+        pantallas y copy, y es lo que mantiene un mismo modelo vivo en dos verticales
+        sin rediseñar la base.</p>
+      </div>
+    </section>
+
+    <!-- Cierre: la relación con el Core y con Transporte. -->
+    <p class="cierre-nota">La capa de escaneo, la cobertura de estados y el manómetro
+    de proximidad son el mismo Core que ya resuelve la
+    <a href="transporte.html">vertical de transporte</a>: una lógica, dos negocios.</p>
 
     <nav class="caso-siguiente">
       <a href="index.html">← Todos los proyectos</a>
@@ -189,5 +409,36 @@
   </main>
     </div>
   </div>
+  <script src="../../js/animations/reveal.js?v=2" defer></script>
+  <!-- Diagrama de recorrido (4.1): tabs accesibles. Click/teclado cambian el
+       nodo activo y muestran su panel. Sin libs. -->
+  <script>
+    document.querySelectorAll('[data-recorrido]').forEach(function (root) {
+      var nodos = Array.prototype.slice.call(root.querySelectorAll('.recorrido__nodo'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.recorrido__panel'));
+      if (!nodos.length || !panels.length) return;
+
+      function activar(nodo) {
+        var id = nodo.getAttribute('data-panel');
+        nodos.forEach(function (n) {
+          var on = n === nodo;
+          n.classList.toggle('is-active', on);
+          n.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (p) { p.hidden = (p.id !== id); });
+      }
+
+      nodos.forEach(function (nodo, i) {
+        nodo.addEventListener('click', function () { activar(nodo); });
+        nodo.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault(); var t = nodos[(i + 1) % nodos.length]; t.focus(); activar(t);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault(); var t2 = nodos[(i - 1 + nodos.length) % nodos.length]; t2.focus(); activar(t2);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
