@@ -1081,3 +1081,30 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
 
 /* Aún más distancia del carrusel respecto de lo de arriba y lo de abajo. */
 .vcar { margin: 11rem 0 12rem; }
+
+/* Separar las pantallas del texto (pedido de Evelyn: al menos 32px). */
+.cuarteto { margin-top: 40px; }
+
+/* Epígrafe del clímax un poco más grande (pedido de Evelyn). */
+.climax-figura figcaption { font-size: 0.9rem; }
+
+/* Bullets un poco más grandes (auditoría / accesos). */
+.caso-seccion ul.bullets li { font-size: 1rem; }
+
+/* Portal del portón en los dos modos (claro / oscuro), lado a lado. */
+.portal-modos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin: 3.5rem auto 0;
+}
+.portal-modos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-borde-claro);
+}
+@media (max-width: 700px) {
+  .portal-modos { grid-template-columns: 1fr; }
+}

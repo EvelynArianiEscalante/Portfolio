@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=73">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=77">
 </head>
 <body>
 
@@ -314,8 +314,8 @@
             <span class="taller-kicker">Recapado</span>
             <h3>Alerta preventiva y retiro de servicio</h3>
             <p>Al 2º recapado el sistema emite una <strong>alerta
-            preventiva</strong>. Al 3º pasa a <strong>roja</strong> y la acción
-            cambia a "retirar de servicio", evitando accidentes en ruta.</p>
+            preventiva</strong>. Al 3º pasa a roja y la acción cambia a
+            <strong>"retirar de servicio"</strong>, evitando accidentes en ruta.</p>
           </div>
           <!-- 10 → neumático con 2 recapados JUNTO al de 3: el cambio de
                color y de botón se ve solo. -->
@@ -367,7 +367,6 @@
       <div class="audit-intro">
         <div class="audit-intro__meta">
           <span class="taller-kicker">Auditoría</span>
-          <span class="badge badge--ux">Aporte de UX destacado</span>
         </div>
         <h2>El control no está en escanear, está en el estado</h2>
         <ul class="bullets">
@@ -387,16 +386,21 @@
 
     <!-- ═══ 12 · CONTROL DE ACCESOS — lo que ya está funcionando ═══ -->
     <section class="caso-seccion">
-      <span class="chip-produccion">En producción</span>
       <div class="bloque__texto">
         <h2>Portal de accesos: lectura RFID en tiempo real</h2>
         <p>El portal registra entradas y salidas de camiones por lectura RFID en
         el portón, sin que nadie intervenga. Está operativo en producción.</p>
         <ul class="bullets">
           <li><strong>Legibilidad industrial:</strong> diseñado para pantallas gigantes en portones de ingreso y egreso.</li>
-          <li><strong>Soporte light y dark:</strong> adaptado a luz solar directa o garitas nocturnas.</li>
-          <li><strong>Escalabilidad de errores:</strong> ante fallas de lectura, un modal <strong>agrupa de 1 a 13 errores por eje</strong> sin saturar la pantalla.</li>
+          <li><strong>Soporte light y dark:</strong> la pantalla vive en el portón, a la intemperie. El modo claro rinde con luz solar directa de día y el oscuro evita el encandilamiento en la garita de noche. Más una decisión de legibilidad y accesibilidad que de estética.</li>
+          <li><strong>Escalabilidad de errores:</strong> cuando una lectura falla con muchos errores, la mejor forma de ordenarlos fue en <strong>componentes colapsables agrupados por eje</strong>, sin saturar la pantalla.</li>
         </ul>
+      </div>
+      <!-- Portal del portón en los dos modos: claro (sol directo de día) y oscuro
+           (garita de noche). Ilustra el bullet "Soporte light y dark". -->
+      <div class="portal-modos">
+        <img src="../../assets/images/casos-de-estudio/transporte/portal-light.webp" alt="Portal de accesos en modo claro: pantalla del portón con el movimiento del día y el detalle del vehículo." loading="lazy">
+        <img src="../../assets/images/casos-de-estudio/transporte/portal-dark.webp" alt="Portal de accesos en modo oscuro: la misma pantalla adaptada para la garita de noche." loading="lazy">
       </div>
       <div class="acc-comp" data-reveal>
         <img class="acc-comp__panel" src="../../assets/images/casos-de-estudio/transporte/acc-panel.webp" alt="Panel Control de Accesos: registro en vivo de entradas y salidas de camiones con estado autorizado o error de validacion." loading="lazy">
