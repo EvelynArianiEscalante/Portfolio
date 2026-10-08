@@ -1108,3 +1108,8 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
 @media (max-width: 700px) {
   .portal-modos { grid-template-columns: 1fr; }
 }
+
+/* Sub-bloque light/dark: espacio respecto de las pantallas de errores de arriba,
+   y el par de pantallas pegado debajo de su texto. */
+.portal-modos-intro { margin-top: 5rem; }
+.portal-modos { margin-top: var(--espacio-5); }

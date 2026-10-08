@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=77">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=78">
 </head>
 <body>
 
@@ -392,15 +392,8 @@
         el portón, sin que nadie intervenga. Está operativo en producción.</p>
         <ul class="bullets">
           <li><strong>Legibilidad industrial:</strong> diseñado para pantallas gigantes en portones de ingreso y egreso.</li>
-          <li><strong>Soporte light y dark:</strong> la pantalla vive en el portón, a la intemperie. El modo claro rinde con luz solar directa de día y el oscuro evita el encandilamiento en la garita de noche. Más una decisión de legibilidad y accesibilidad que de estética.</li>
           <li><strong>Escalabilidad de errores:</strong> cuando una lectura falla con muchos errores, la mejor forma de ordenarlos fue en <strong>componentes colapsables agrupados por eje</strong>, sin saturar la pantalla.</li>
         </ul>
-      </div>
-      <!-- Portal del portón en los dos modos: claro (sol directo de día) y oscuro
-           (garita de noche). Ilustra el bullet "Soporte light y dark". -->
-      <div class="portal-modos">
-        <img src="../../assets/images/casos-de-estudio/transporte/portal-light.webp" alt="Portal de accesos en modo claro: pantalla del portón con el movimiento del día y el detalle del vehículo." loading="lazy">
-        <img src="../../assets/images/casos-de-estudio/transporte/portal-dark.webp" alt="Portal de accesos en modo oscuro: la misma pantalla adaptada para la garita de noche." loading="lazy">
       </div>
       <div class="acc-comp" data-reveal>
         <img class="acc-comp__panel" src="../../assets/images/casos-de-estudio/transporte/acc-panel.webp" alt="Panel Control de Accesos: registro en vivo de entradas y salidas de camiones con estado autorizado o error de validacion." loading="lazy">
@@ -409,6 +402,17 @@
           <img class="acc-comp__modal acc-comp__modal--uno" src="../../assets/images/casos-de-estudio/transporte/acc-modal1.webp" alt="Detalle de acceso con un solo error: tag duplicada en un neumatico." loading="lazy">
           <img class="acc-comp__modal acc-comp__modal--ejes" src="../../assets/images/casos-de-estudio/transporte/acc-modal3.webp" alt="Detalle de acceso con doce errores agrupados por eje, colapsados." loading="lazy">
         </div>
+      </div>
+      <!-- Sub-bloque: soporte light y dark, con espacio, después de las pantallas de errores. -->
+      <div class="portal-modos-intro">
+        <h3>Soporte light y dark</h3>
+        <p>La pantalla vive en el portón, a la intemperie. El modo claro rinde con
+        luz solar directa de día y el oscuro evita el encandilamiento en la garita
+        de noche. Más una decisión de legibilidad y accesibilidad que de estética.</p>
+      </div>
+      <div class="portal-modos">
+        <img src="../../assets/images/casos-de-estudio/transporte/portal-light.webp" alt="Portal de accesos en modo claro: pantalla del portón con el movimiento del día y el detalle del vehículo." loading="lazy">
+        <img src="../../assets/images/casos-de-estudio/transporte/portal-dark.webp" alt="Portal de accesos en modo oscuro: la misma pantalla adaptada para la garita de noche." loading="lazy">
       </div>
     </section>
 
@@ -433,9 +437,8 @@
         <article class="detalle">
           <h3>Una sola baja, dos activos</h3>
           <p>El formulario de baja es <strong>el mismo componente</strong> para
-          neumático y vehículo: cambia solo el dato de cabecera y el resto
-          (motivo, observaciones, evidencia, confirmación) se mantiene. Un
-          patrón que escala, no dos pantallas.</p>
+          neumático y vehículo: solo cambian los datos propios de cada tipo de
+          activo y los títulos que lo identifican.</p>
           <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/transporte/deci-baja.webp" alt="Dos formularios de baja con el mismo componente: uno de neumatico y otro de vehiculo, con motivo, observaciones y evidencia." loading="lazy"></div>
         </article>
       </div>
