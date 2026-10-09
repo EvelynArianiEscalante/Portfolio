@@ -9,6 +9,11 @@
    Reglas de la casa: los @media que corrigen van SIEMPRE al final.
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Aire entre bloques ──
+   Mismo respiro que Transporte: las secciones van bien separadas, no pegadas.
+   7rem en desktop, 4.5rem en mobile (el @media, al final). */
+.caso-contenido--retail .caso-seccion { margin-top: 7rem; }
+
 /* ── Placeholders de imagen ──
    A diferencia de Transporte, acá SÍ muestran su código de export a la
    vista (pedido de Evelyn): sabe qué captura de Figma va en cada hueco.
@@ -200,6 +205,11 @@
   background: var(--color-superficie-lateral);
   margin-top: var(--espacio-5);
 }
+.recorrido__hint {
+  margin: 0 0 var(--espacio-4);
+  font-size: var(--texto-sm);
+  color: var(--color-tinta-suave);
+}
 .recorrido__flujo {
   display: flex;
   align-items: stretch;
@@ -268,28 +278,16 @@
   border-right: 2px solid var(--color-carpeta-claro);
   transform: translateY(-50%) rotate(45deg);
 }
-.recorrido__desvios {
-  display: flex;
-  align-items: center;
-  gap: var(--espacio-2);
+/* Movimiento y Reingreso quedan fuera del diagrama: un pie de diagrama corto
+   bajo el flujo lineal (decisión de Evelyn, 2026-10-08). Más chico y apagado,
+   como aclaración, pegado al diagrama. */
+.recorrido__extra {
   margin-top: var(--espacio-3);
-}
-.recorrido__desvios-rotulo {
-  font-size: var(--texto-xs);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-tinta-suave);
-  margin-right: var(--espacio-2);
-}
-.recorrido__nodo--loop {
-  flex: 0 1 auto;
-  flex-direction: row;
-  gap: var(--espacio-2);
-  padding: var(--espacio-2) var(--espacio-4);
-  border-style: dashed;
   font-size: var(--texto-sm);
+  color: var(--color-carpeta-oscuro);
+  line-height: 1.5;
 }
+.recorrido__extra strong { color: var(--color-carpeta-oscuro); }
 .recorrido__panels { margin-top: var(--espacio-4); }
 .recorrido__panel { padding-top: var(--espacio-2); }
 .recorrido__panel h3 {
@@ -315,16 +313,19 @@
   vertical-align: middle;
 }
 
-/* Chips de etiqueta (en los paneles del recorrido) */
-.chips {
+/* Chips de etiqueta (en los paneles del recorrido). Se pisa la sangría de
+   `.caso-seccion ul` (margin-left:20px) con mayor especificidad para que
+   queden pegados a la izquierda, sin rótulo. */
+.recorrido__panel .chips {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--espacio-2);
 }
-.chips li {
+.recorrido__panel .chips li {
   margin: 0;
   padding: 4px 11px;
   border-radius: 999px;
@@ -367,6 +368,36 @@
   align-items: start;
   margin-top: var(--espacio-5);
 }
+
+/* ── Cards de tipo de producto (unitario / lote), 4.3 ──
+   Mismo componente que los "detalle" de Transporte, pero solo título +
+   imagen (sin texto). La imagen ya trae su fondo navy y el elemento flotante. */
+.detalles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.detalle {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+}
+.detalle h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-tinta);
+}
+.detalle__visor {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: auto;
+  box-shadow: 0 8px 24px -6px rgba(20, 30, 50, 0.22);
+}
+.detalle__visor img { display: block; width: 100%; height: auto; }
 
 /* ── Esquema de los dos recorridos (5.3), construido en código ── */
 .timelines {
@@ -427,6 +458,68 @@
   background: var(--color-carpeta-oscuro);
   flex-shrink: 0;
 }
+
+/* ── Cards de movimiento interno / externo (5.3) ──
+   Ícono + título + descripción + estados + hueco de imagen abajo. La imagen
+   se empuja al fondo (margin-top:auto) para que las dos cards queden parejas. */
+.mov-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.mov-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 16px;
+  padding: var(--espacio-5);
+  background: var(--color-superficie);
+}
+.mov-card__ico {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-carpeta-oscuro) 12%, transparent);
+  margin-bottom: var(--espacio-4);
+}
+.mov-card__ico svg { width: 22px; height: 22px; color: var(--color-carpeta-oscuro); }
+.mov-card h3 {
+  margin: 0 0 var(--espacio-2);
+  font-size: 1.25rem;
+  color: var(--color-tinta);
+}
+.mov-card p {
+  margin: 0 0 var(--espacio-4);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-tinta-suave);
+}
+.mov-card__estados {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin-bottom: var(--espacio-5);
+}
+.mov-card__estado {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--color-superficie-lateral);
+  border: 1px solid var(--color-borde-claro);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-tinta);
+}
+.mov-card__sep { color: var(--color-carpeta-oscuro); font-weight: 700; }
+.mov-card__img {
+  margin-top: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mov-card__img img { display: block; width: 100%; height: auto; }
 
 /* ── Stats (impacto, bloque 6) ── */
 .stats {
@@ -500,13 +593,60 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* ── Composición Recepción (4.2): panel web de base + 2 mobile flotando ──
+   El reveal anima los HIJOS en stagger, así que el contenedor NO se oculta
+   (pisa la regla genérica de arriba por orden de aparición). */
+.recep-comp {
+  position: relative;
+  margin: var(--espacio-6) 0 var(--espacio-5);
+  padding-bottom: 2%;
+}
+.recep-comp__web {
+  display: block;
+  width: 66%;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid var(--color-borde-claro);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+/* Mobiles planos (0°, sin sombra): se les da redondeo + sombra por CSS, igual
+   que el web, y una rotación leve para el efecto flotante (controlada acá, no
+   horneada). La rotación se mantiene en el estado final del reveal. */
+.recep-comp__phone {
+  position: absolute;
+  width: 16%;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+.recep-comp__phone--a { left: 3%; top: 23%; transform: rotate(-5deg); }
+.recep-comp__phone--b { right: 6%; top: 32%; transform: rotate(5deg); z-index: 2; }
+
+.recep-comp.reveal-ready { opacity: 1; transform: none; }
+.recep-comp__web,
+.recep-comp__phone { transition: opacity 0.6s ease, transform 0.6s ease; }
+.recep-comp.reveal-ready .recep-comp__web     { opacity: 0; transform: translateY(28px) scale(.96); }
+.recep-comp.reveal-ready .recep-comp__phone--a { opacity: 0; transform: translate(-26px, 60px) scale(.9) rotate(-5deg); }
+.recep-comp.reveal-ready .recep-comp__phone--b { opacity: 0; transform: translate(26px, 60px) scale(.9) rotate(5deg); }
+.recep-comp.is-in .recep-comp__web     { opacity: 1; transform: none; transition-delay: 0s; }
+.recep-comp.is-in .recep-comp__phone--a { opacity: 1; transform: rotate(-5deg); transition-delay: .18s; }
+.recep-comp.is-in .recep-comp__phone--b { opacity: 1; transform: rotate(5deg); transition-delay: .34s; }
+
 /* ═══════════════════════════════════════════════════════════
    MÓVIL — va al final (corrige lo de arriba)
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 700px) {
+  .caso-contenido--retail .caso-seccion { margin-top: 4.5rem; }
+
   .plataformas,
+  .mov-cards,
+  .detalles,
   .retail-par,
   .slot-pendiente-par { grid-template-columns: 1fr; }
+
+  /* La composición se apila: web full width y los 2 mobile en fila abajo. */
+  .recep-comp { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espacio-3); padding-bottom: 0; }
+  .recep-comp__web { width: 100%; }
+  .recep-comp__phone { position: static; width: 48%; }
 
   .ficha-lista__fila { grid-template-columns: 120px 1fr; gap: var(--espacio-3); }
 
@@ -519,8 +659,6 @@
   .recorrido__flujo { flex-direction: column; }
   .recorrido__nodo { flex-direction: row; justify-content: flex-start; gap: var(--espacio-3); }
   .recorrido__flecha { transform: rotate(90deg); margin: 2px auto; }
-  .recorrido__desvios { flex-wrap: wrap; }
-  .recorrido__nodo--loop { flex: 1; }
 
   /* Las timelines: el rótulo arriba, los pasos abajo. */
   .timeline { grid-template-columns: 1fr; gap: var(--espacio-2); }

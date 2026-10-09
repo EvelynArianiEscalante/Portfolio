@@ -113,7 +113,7 @@
 
     <!-- ═══ ÍCONOS DEL ESCRITORIO: columna ordenada a la derecha ═══
          Jerarquía deliberada: dos carpetas que cuentan la historia
-         (Siotyx = presente, Proyectos anteriores = recorrido)
+         (Siotyx = destacado, Proyectos anteriores = recorrido)
          + Design System y Sobre mí como items propios. -->
 
     <button class="icono" id="icono-siotyx" data-ventana="ventana-siotyx">
@@ -144,7 +144,7 @@
     </button>
     -->
 
-    <!-- ═══ VENTANA FINDER: Siotyx (trabajo actual) ═══ -->
+    <!-- ═══ VENTANA FINDER: Siotyx (proyecto destacado) ═══ -->
     <section class="ventana" id="ventana-siotyx">
       <div class="ventana__barra" data-arrastra>
         <button class="semaforo semaforo--cerrar" data-cierra aria-label="Cerrar"></button>
@@ -159,14 +159,14 @@
       <div class="finder__grid">
         <!-- Core dejó de ser un proyecto propio: ahora se cuenta dentro del Design System. -->
         <!-- Tiles con imagen: dentro del Finder se muestra el trabajo, no carpetas. -->
+        <!-- Retail primero (2026-10-09): caso completo publicado. -->
+        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail" data-directo="pages/casos-de-estudio/retail.html">
+          <span class="finder__thumb fthumb--retail"></span>
+          <span>Retail</span>
+        </button>
         <button class="finder__item finder__item--thumb" data-ventana="ventana-transporte" data-directo="pages/casos-de-estudio/transporte.html">
           <span class="finder__thumb fthumb--transporte"></span>
           <span>Transporte</span>
-        </button>
-        <!-- Retail OCULTO hasta que exista su caso (2026-08-21). Reactivar: quitar hidden. -->
-        <button class="finder__item finder__item--thumb" data-ventana="ventana-retail" data-directo="pages/casos-de-estudio/retail.html">
-          <span class="finder__thumb fthumb--pendiente"></span>
-          <span>Retail</span>
         </button>
         <!-- ⚠️ OJO: el Design System aparece en DOS lugares del HTML, a propósito.
              · Como ícono suelto del escritorio (#icono-ds, más arriba) → solo desktop

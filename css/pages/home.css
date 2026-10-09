@@ -43,6 +43,7 @@
    (rutas desde este archivo CSS: ../../assets/...) */
 .fthumb--health  { background-image: url('../../assets/images/casos-de-estudio/health-app/2-preview.webp'); }
 .fthumb--transporte { background-image: url('../../assets/images/casos-de-estudio/transporte/cover-intro.webp'); }
+.fthumb--retail { background-image: url('../../assets/images/casos-de-estudio/retail/recep-web.webp'); }
 .fthumb--pedidos { background-image: url('../../assets/images/casos-de-estudio/pedidos-gestion/1-preview.webp'); }
 .fthumb--wifi    { background-image: url('../../assets/images/casos-de-estudio/wifi-marketing/1-preview.webp'); }
 .fthumb--aika    { background-image: url('../../assets/images/casos-de-estudio/aika/1-preview.webp'); }

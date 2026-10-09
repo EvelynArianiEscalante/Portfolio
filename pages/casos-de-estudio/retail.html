@@ -51,36 +51,28 @@
     <div class="ventana-max__scroll">
   <main class="caso-contenido caso-contenido--retail">
 
-    <!-- ═══ 01 · BAJADA ═══ -->
+    <!-- ═══ 01 · HERO ═══ Mismo arranque que Transporte: título, bajada, ficha, banner. -->
     <header class="caso-header">
       <h1>Siotyx Retail</h1>
-      <p class="caso-tension">Saber qué hay en un depósito es fácil. Saber
-      <span class="caso-tension__hl">dónde está cada unidad, quién la movió y
-      cuándo</span>, no.</p>
-      <p class="bajada">Diseñé el control de inventario de depósito de Siotyx en
-      dos plataformas: una app mobile que el operario opera con lector RFID y
-      código de barras, y una web desde la que el administrador supervisa el
-      depósito entero. Un mismo inventario, dos formas de intervenirlo.</p>
+      <p class="bajada">Saber qué hay en un depósito es fácil. Saber dónde está
+      cada unidad, quién la movió y cuándo, no. Diseñé un sistema de trazabilidad
+      que combina lectura RFID y código de barras, con la operación en mobile y el
+      control en web.</p>
+      <dl class="caso-ficha">
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Depósito y Retail</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · en curso</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Mobile + Web · RFID y código de barras</dd></div>
+      </dl>
     </header>
 
-    <!-- 01-A / 01-B: par de portada (dashboard web + app mobile) -->
+    <!-- 01 · BANNER de portada (espacio reservado: Evelyn lo exporta). -->
     <figure class="caso-figura">
-      <div class="retail-par">
-        <div class="ph ph--web" data-code="01-A" role="img" aria-label="Pendiente: dashboard web de Retail"></div>
-        <div class="ph ph--movil" data-code="01-B" role="img" aria-label="Pendiente: app mobile de Retail"></div>
-      </div>
+      <div class="ph ph--panorama" data-code="01 · banner" role="img" aria-label="Pendiente: banner de portada de Retail"></div>
     </figure>
 
-    <!-- ═══ 02 · FICHA ═══ -->
+    <!-- ═══ 02 · PLATAFORMAS ═══ Las dos plataformas y lo que hace cada una. -->
     <section class="caso-seccion">
-      <dl class="ficha-lista">
-        <div class="ficha-lista__fila"><dt>Producto</dt><dd>Control de inventario de depósito (B2B)</dd></div>
-        <div class="ficha-lista__fila"><dt>Empresa</dt><dd>Supply Solutions</dd></div>
-        <div class="ficha-lista__fila"><dt>Rol</dt><dd>UX/UI, única diseñadora</dd></div>
-        <div class="ficha-lista__fila"><dt>Base</dt><dd>Core compartido + Design System propio</dd></div>
-        <div class="ficha-lista__fila"><dt>Estado</dt><dd>En curso</dd></div>
-      </dl>
-
       <div class="plataformas">
         <article class="plataforma">
           <header class="plataforma__head">
@@ -117,19 +109,14 @@
     <!-- ═══ 03 · PROBLEMA ═══ -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Un depósito pierde el rastro en los movimientos, no en el alta</h2>
-        <p class="caso-lead">Recibir mercadería es la parte simple. El problema
+        <h2>Problema</h2>
+        <p>Recibir mercadería es la parte simple. El problema
         aparece después: cada traslado interno, cada salida y cada reingreso es
         una oportunidad de perder la pista de una unidad.</p>
         <p>Antes de Siotyx, el inventario vivía en planillas y en el criterio de
         quien lo cargaba. El sistema tuvo que redefinir <strong>qué significa
         trazar</strong>: no contar cuánto hay, sino registrar cada evento que
         toca una unidad a lo largo de toda su vida en el depósito.</p>
-      </div>
-      <!-- Slot de contenido: Evelyn completa con el dato/escena del problema real. -->
-      <div class="slot-pendiente" role="note">
-        <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
-        <span class="slot-pendiente__hint">Escena o dato que ilustre el costo de no trazar</span>
       </div>
     </section>
 
@@ -138,13 +125,12 @@
     <!-- 4.1 · Diagrama de recorrido (interactivo, construido en código) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>El recorrido de una unidad</h2>
-        <p>Toda unidad atraviesa el mismo recorrido base, con dos desvíos que
-        pueden ocurrir en cualquier momento. Tocá cada etapa para ver qué resuelve.</p>
+        <h2>Ciclo de vida de una unidad</h2>
       </div>
 
       <div class="recorrido" data-recorrido>
-        <div class="recorrido__flujo" role="tablist" aria-label="Etapas del recorrido">
+        <p class="recorrido__hint">Tocá una etapa para ver qué resuelve</p>
+        <div class="recorrido__flujo" role="tablist" aria-label="Etapas del ciclo de vida de una unidad">
           <button class="recorrido__nodo is-active" type="button" role="tab" aria-selected="true" data-panel="r-recepcion">
             <span class="recorrido__num">1</span><span class="recorrido__label">Recepción</span>
           </button>
@@ -162,61 +148,37 @@
           </button>
         </div>
 
-        <div class="recorrido__desvios">
-          <span class="recorrido__desvios-rotulo">Desvíos</span>
-          <button class="recorrido__nodo recorrido__nodo--loop" type="button" role="tab" aria-selected="false" data-panel="r-movimiento">
-            <span class="recorrido__label">Movimiento</span>
-          </button>
-          <button class="recorrido__nodo recorrido__nodo--loop" type="button" role="tab" aria-selected="false" data-panel="r-reingreso">
-            <span class="recorrido__label">Reingreso</span>
-          </button>
-        </div>
-
         <div class="recorrido__panels">
           <div class="recorrido__panel" id="r-recepcion" role="tabpanel">
             <h3>Recepción</h3>
             <p>Lo que llega se cuenta y se valida contra lo esperado. El operario
             escanea de a uno o por lote, y la interfaz tolera lecturas parciales y
             el estado sin conexión: la playa no siempre tiene señal.</p>
-            <ul class="chips"><li>Unitario / lote</li><li>Sin conexión</li><li>Progreso parcial</li></ul>
           </div>
           <div class="recorrido__panel" id="r-ingreso" role="tabpanel" hidden>
             <h3>Ingreso</h3>
             <p>Cada ítem recibe su tag y su ubicación. La pantalla cambia según de
             dónde viene el dato: tipo de producto externo o tipo de producto desde
             Siotyx. Dos variantes del mismo paso.</p>
-            <ul class="chips"><li>Asignación de tag</li><li>Externo / Siotyx</li><li>Pasillo · Fila · Nivel</li></ul>
           </div>
           <div class="recorrido__panel" id="r-picking" role="tabpanel" hidden>
             <h3>Picking</h3>
             <p>El operario arma pedidos recorriendo el depósito. El lector lo guía
             físicamente hasta cada etiqueta con el manómetro de proximidad, y la
             ubicación se desglosa en Pasillo, Fila y Nivel.</p>
-            <ul class="chips"><li>Manómetro</li><li>Escaneo múltiple</li><li>Ubicación desglosada</li></ul>
           </div>
           <div class="recorrido__panel" id="r-despacho" role="tabpanel" hidden>
             <h3>Despacho</h3>
             <p>La mercadería sale contra un pedido. El sistema confirma cada unidad
             despachada y deja el movimiento registrado, así la salida queda atada a
             su pedido de origen.</p>
-            <ul class="chips"><li>Contra pedido</li><li>Confirmación por unidad</li><li>Evento registrado</li></ul>
-          </div>
-          <div class="recorrido__panel" id="r-movimiento" role="tabpanel" hidden>
-            <h3>Movimiento <span class="recorrido__panel-tag">desvío</span></h3>
-            <p>Un ítem cambia de ubicación sin salir del circuito. Puede ser interno
-            (de una ubicación a otra del depósito) o externo (hacia otro destino, con
-            etapas de tránsito).</p>
-            <ul class="chips"><li>Interno / externo</li><li>Dos recorridos</li></ul>
-          </div>
-          <div class="recorrido__panel" id="r-reingreso" role="tabpanel" hidden>
-            <h3>Reingreso <span class="recorrido__panel-tag">desvío</span></h3>
-            <p>Lo que vuelve al depósito se reincorpora al stock con su historia
-            intacta: el reingreso no crea una unidad nueva, recupera la que ya
-            existía.</p>
-            <ul class="chips"><li>Vuelta a stock</li><li>Historial conservado</li></ul>
           </div>
         </div>
       </div>
+      <p class="recorrido__extra">Fuera del recorrido lineal, dos eventos pueden
+      reabrirlo: <strong>Movimiento</strong> (un ítem cambia de ubicación, interno
+      o externo) y <strong>Reingreso</strong> (lo que vuelve se reincorpora al stock
+      con su historial intacto).</p>
     </section>
 
     <!-- 4.2 · La web mira, el mobile hace -->
@@ -231,29 +193,36 @@
         única fuente de verdad de un movimiento físico es el dispositivo que lo
         presenció.</p>
       </div>
-      <!-- 03-A / 03-B: web (supervisión) + mobile (operación) del mismo flujo -->
-      <div class="retail-par">
-        <div class="ph ph--web" data-code="03-A" role="img" aria-label="Pendiente: vista de supervisión web"></div>
-        <div class="ph ph--movil" data-code="03-B" role="img" aria-label="Pendiente: operación en mobile"></div>
+      <!-- Composición: panel web de Recepción como base + 2 mobile flotando
+           encima, con reveal en stagger al entrar en viewport (reveal.js). -->
+      <div class="recep-comp" data-reveal>
+        <img class="recep-comp__web" src="../../assets/images/casos-de-estudio/retail/recep-web.webp" alt="Panel web de Recepción de Siotyx Retail: tabla con fecha, número de recepción, origen, unidades y estado, con buscador y filtro." loading="lazy">
+        <img class="recep-comp__phone recep-comp__phone--a" src="../../assets/images/casos-de-estudio/retail/recep-mobile.webp" alt="App mobile de Siotyx Retail: recepciones pendientes con barra de progreso y botón recibir." loading="lazy">
+        <img class="recep-comp__phone recep-comp__phone--b" src="../../assets/images/casos-de-estudio/retail/recep-items.webp" alt="App mobile de Siotyx Retail: ítems de una recepción, cada uno marcado como unitario o lote, listos para escanear." loading="lazy">
       </div>
     </section>
 
-    <!-- 4.3 · Unitario y lote -->
+    <!-- 4.3 · Tipos de producto (unitario / lote) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Unitario y lote: una distinción que se propaga</h2>
+        <h2>Tipos de producto que se pueden recibir</h2>
         <p>Un ítem puede rastrearse de a uno (unitario) o de a muchos bajo un mismo
         tag (lote). Esa distinción no es un detalle de datos: <strong>cambia qué
         significa escanear</strong>.</p>
         <p>En unitario, un escaneo equivale a una unidad. En lote, un escaneo
         equivale a un conjunto. La misma acción física produce resultados distintos,
-        y la interfaz lo hace explícito antes de leer, en recepción, ingreso y
-        picking.</p>
+        y la interfaz lo hace explícito antes de leer.</p>
       </div>
-      <!-- 04-A / 04-B: dropdown buscador con íconos Unitario (Fingerprint) vs Lote (Stack) -->
-      <div class="retail-par">
-        <div class="ph ph--movil" data-code="04-A" role="img" aria-label="Pendiente: modo unitario"></div>
-        <div class="ph ph--movil" data-code="04-B" role="img" aria-label="Pendiente: modo lote"></div>
+      <!-- Dos cards (estilo detalle de Transporte, solo título + imagen). -->
+      <div class="detalles detalles--2">
+        <article class="detalle">
+          <h3>Unitario</h3>
+          <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/retail/card-unitario.webp" alt="App mobile de Siotyx Retail: escaneo de código de barras de un producto unitario, con su número de serie único." loading="lazy"></div>
+        </article>
+        <article class="detalle">
+          <h3>Lote</h3>
+          <div class="detalle__visor"><img src="../../assets/images/casos-de-estudio/retail/card-lote.webp" alt="App mobile de Siotyx Retail: recepción de un producto por lote, varias unidades bajo un mismo tag." loading="lazy"></div>
+        </article>
       </div>
     </section>
 
@@ -307,33 +276,35 @@
         y suma etapas de tránsito.</p>
       </div>
 
-      <div class="timelines" aria-label="Los dos recorridos de un movimiento">
-        <div class="timeline">
-          <span class="timeline__rotulo">Interno</span>
-          <ol class="timeline__pasos">
-            <li class="timeline__paso"><span class="timeline__punto"></span>Solicitado</li>
-            <li class="timeline__paso"><span class="timeline__punto"></span>Realizado</li>
-          </ol>
-        </div>
-        <div class="timeline">
-          <span class="timeline__rotulo">Externo</span>
-          <ol class="timeline__pasos">
-            <li class="timeline__paso"><span class="timeline__punto"></span>Solicitado</li>
-            <li class="timeline__paso"><span class="timeline__punto"></span>Salida</li>
-            <li class="timeline__paso"><span class="timeline__punto"></span>Llegada a destino</li>
-          </ol>
-        </div>
+      <!-- Dos cards (interno / externo): ícono, título, descripción, estados y
+           hueco de imagen (07-A / 07-B) que Evelyn exporta. -->
+      <div class="mov-cards">
+        <article class="mov-card">
+          <span class="mov-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+          <h3>Movimiento interno</h3>
+          <p>El ítem cambia de ubicación dentro del mismo depósito, sin salir del circuito.</p>
+          <div class="mov-card__estados">
+            <span class="mov-card__estado">Solicitado</span>
+            <span class="mov-card__sep" aria-hidden="true">→</span>
+            <span class="mov-card__estado">Realizado</span>
+          </div>
+          <div class="mov-card__img"><img src="../../assets/images/casos-de-estudio/retail/card-mov-interno.webp" alt="App mobile de Siotyx Retail: movimiento interno de un ítem, de una ubicación a otra dentro del depósito." loading="lazy"></div>
+        </article>
+        <article class="mov-card">
+          <span class="mov-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          <h3>Movimiento externo</h3>
+          <p>El ítem se envía a otro destino y suma etapas de tránsito hasta llegar.</p>
+          <div class="mov-card__estados">
+            <span class="mov-card__estado">Solicitado</span>
+            <span class="mov-card__sep" aria-hidden="true">→</span>
+            <span class="mov-card__estado">Salida</span>
+            <span class="mov-card__sep" aria-hidden="true">→</span>
+            <span class="mov-card__estado">Llegada a destino</span>
+          </div>
+          <div class="mov-card__img"><img src="../../assets/images/casos-de-estudio/retail/card-mov-externo.webp" alt="App mobile de Siotyx Retail: movimiento externo de un ítem hacia otro destino, con etapas de tránsito." loading="lazy"></div>
+        </article>
       </div>
 
-      <div class="bloque__texto">
-        <p><strong>El modelo de estados de cada recorrido fue una decisión de
-        diseño</strong>, no un dato que vino dado: separar interno de externo evitó
-        forzar un flujo de tres pasos sobre un movimiento que solo tiene dos.</p>
-      </div>
-      <!-- 07: pantallas de movimientos (interno/externo) -->
-      <figure class="caso-figura" data-reveal>
-        <div class="ph ph--apaisado" data-code="07" role="img" aria-label="Pendiente: movimientos interno y externo"></div>
-      </figure>
     </section>
 
     <!-- 5.4 · Métricas -->
@@ -348,7 +319,7 @@
       </div>
       <!-- 08: dashboard de métricas (a todo el ancho) -->
       <figure class="caso-figura" data-reveal>
-        <div class="ph ph--web ph--grande" data-code="08" role="img" aria-label="Pendiente: dashboard de métricas"></div>
+        <img src="../../assets/images/casos-de-estudio/retail/metricas.webp" alt="Dashboard web de Métricas de Siotyx Retail: KPIs de unidades (despachadas, en almacén, devueltas, cambiadas), gráfico de unidades despachadas por mes, distribución de reingresos y el Top 5 de productos más devueltos." loading="lazy">
       </figure>
     </section>
 

@@ -90,6 +90,9 @@
     .card--transporte {
       background-image: url('../../assets/images/casos-de-estudio/transporte/proyectos-destacada.webp');
     }
+    .card--retail {
+      background-image: url('../../assets/images/casos-de-estudio/retail/recep-web.webp');
+    }
 
     /* Card que ocupa la fila completa de la grilla */
     .card-proyecto--ancha { grid-column: 1 / -1; }
@@ -136,7 +139,7 @@
         <section class="grupo">
           <!-- Solo el nombre del producto, para ser consistentes con el resto
                de los casos. Los empleadores viven en la ventana Notas / CV. -->
-          <h2 class="grupo__nombre">Siotyx · proyecto actual</h2>
+          <h2 class="grupo__nombre">Siotyx · plataforma B2B</h2>
           <div class="cards">
             <!-- Retail ocupa la fila entera: es el caso que abre el grupo.
                  grid-column: 1 / -1 = "andá de la primera línea de columna a la
@@ -154,6 +157,14 @@
                  primero Transporte (izquierda), después el Design System (derecha). -->
             <!-- Transporte ocupa la fila completa MIENTRAS es el único caso
                  visible del grupo (Retail y DS ocultos). -->
+            <!-- Retail reactivado (2026-10-09): caso completo publicado. Va primero. -->
+            <a class="card-proyecto card-proyecto--ancha" href="retail.html">
+              <div class="card-proyecto__imagen card--retail"></div>
+              <div class="card-proyecto__texto">
+                <p class="card-proyecto__titulo">Siotyx Retail</p>
+                <p class="card-proyecto__resumen">Trazabilidad de depósito con RFID y código de barras, de la recepción al despacho.</p>
+              </div>
+            </a>
             <a class="card-proyecto card-proyecto--ancha" href="transporte.html">
               <div class="card-proyecto__imagen card--transporte"></div>
               <div class="card-proyecto__texto">
