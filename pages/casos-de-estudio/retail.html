@@ -22,12 +22,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fuentes del producto (solo para la maqueta del manómetro 5.1) -->
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../../css/base/reset.css?v=18">
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=2">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=12">
 </head>
 <body>
 
@@ -60,7 +62,7 @@
       control en web.</p>
       <dl class="caso-ficha">
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Logística · Depósito y Retail</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>2026 · en curso</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>Julio 2026 – Oct 2026</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX/UI end-to-end · Mobile + Web · RFID y código de barras</dd></div>
       </dl>
@@ -184,7 +186,7 @@
     <!-- 4.2 · La web mira, el mobile hace -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Dos plataformas, una misma cadena operativa</h2>
+        <h2>La web mira, el mobile hace</h2>
         <p>La división de plataformas no es por comodidad: responde a dónde ocurre
         el trabajo. El administrador necesita ver el depósito; el operario necesita
         intervenirlo.</p>
@@ -230,6 +232,8 @@
 
     <!-- 5.1 · Picking + manómetro (SLOT: Evelyn define colores y capturas) -->
     <section class="caso-seccion">
+      <!-- Dos columnas: texto a la izquierda, mockup del teléfono a la derecha. -->
+      <div class="mano-bloque">
       <div class="bloque__texto">
         <h2>Picking: el lector guía, la interfaz confirma</h2>
         <p>Encontrar una unidad entre miles es un problema físico, no de pantalla.
@@ -237,18 +241,102 @@
         cerca de la etiqueta, más sube la aguja. La interfaz solo tiene que decir
         "acercate" y "movete lento".</p>
       </div>
-      <!-- 05: manómetro de proximidad. Evelyn define los colores y carga
-           las capturas (lejos / acercándose / muy cerca). -->
-      <div class="slot-pendiente slot-pendiente--figura" role="img" aria-label="Pendiente: manómetro de proximidad">
-        <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
-        <span class="slot-pendiente__hint">05 · manómetro de proximidad (colores + capturas)</span>
-      </div>
-      <div class="caso-callout caso-callout--regla">
-        <h3 class="caso-callout__titulo">Un componente, tres operaciones</h3>
-        <p>El mismo patrón de escaneo múltiple (0/6, 2/6, 6/6) resuelve recepción,
-        picking y auditoría. No es una pantalla por operación: es un componente que
-        cambia de contexto.</p>
-      </div>
+      <!-- 05 · Manómetro de proximidad — recreado en código.
+           Un teléfono, dos pantallas en bucle continuo (8s): la búsqueda
+           (manómetro con 3 estados: lejos / acercándose / muy cerca) cierra
+           en "Producto encontrado". Misma geometría, colores y copy que Figma. -->
+      <figure class="mano" data-reveal aria-label="Manómetro de proximidad: la señal RFID guía al operario hasta encontrar el producto">
+        <div class="mano__device">
+          <div class="mano__screen-area">
+            <div class="mano__statusbar">
+              <span class="mano__time">12:30</span>
+              <span class="mano__island" aria-hidden="true"></span>
+              <span class="mano__sysicons" aria-hidden="true">
+                <svg width="17" height="12" viewBox="0 0 17 12" fill="#1c2b4f"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1c2b4f" stroke-width="1.6" stroke-linecap="round"><path d="M2 4.5a9 9 0 0 1 12 0"/><path d="M4.4 7a5.5 5.5 0 0 1 7.2 0"/><circle cx="8" cy="9.6" r="1" fill="#1c2b4f" stroke="none"/></svg>
+                <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.6" y="0.6" width="20" height="10.8" rx="2.6" stroke="#1c2b4f" stroke-opacity="0.5" stroke-width="1"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.4" fill="#1c2b4f"/><rect x="22" y="3.6" width="1.6" height="4.8" rx="0.8" fill="#1c2b4f" fill-opacity="0.5"/></svg>
+              </span>
+            </div>
+            <div class="mano__screens">
+            <!-- Pantalla A · búsqueda (manómetro). Todo centrado, sobre el fondo
+                 (sin card), igual que Figma. -->
+            <div class="mano__screen mano__screen--busca">
+              <div class="mano__busca">
+                <h3 class="mano__titulo">Acercate a la etiqueta</h3>
+                <p class="mano__sub">Estás lejos. Movete lentamente hasta que el indicador se ponga en verde.</p>
+                <span class="mano__chip">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+                  Campera softshell mujer
+                </span>
+                <div class="mano__gauge">
+                  <div class="mano__estado mano__estado--lejos">
+                    <svg viewBox="0 0 280 168" aria-hidden="true"><g fill="none" stroke-linecap="round">
+                      <path d="M 20 150 A 120 120 0 0 1 260 150" stroke="#e9edf4" stroke-width="28"/>
+                      <path d="M 20 150 A 120 120 0 0 1 75.70 48.68" stroke="#e02020" stroke-width="28"/>
+                    </g>
+                    <path d="M 134.09 153.75 L 78.92 53.75 L 145.91 146.25 Z" fill="#0f1b35"/>
+                    <circle cx="140" cy="150" r="11" fill="#0f1b35"/></svg>
+                    <span class="mano__label">Lejos</span>
+                  </div>
+                  <div class="mano__estado mano__estado--acerc">
+                    <svg viewBox="0 0 280 168" aria-hidden="true"><g fill="none" stroke-linecap="round">
+                      <path d="M 20 150 A 120 120 0 0 1 260 150" stroke="#e9edf4" stroke-width="28"/>
+                      <path d="M 20 150 A 120 120 0 0 1 177.08 35.87" stroke="#e8a000" stroke-width="28"/>
+                    </g>
+                    <path d="M 133.34 147.84 L 175.23 41.58 L 146.66 152.16 Z" fill="#0f1b35"/>
+                    <circle cx="140" cy="150" r="11" fill="#0f1b35"/></svg>
+                    <span class="mano__label">Acercándose</span>
+                  </div>
+                  <div class="mano__estado mano__estado--cerca">
+                    <svg viewBox="0 0 280 168" aria-hidden="true"><g fill="none" stroke-linecap="round">
+                      <path d="M 20 150 A 120 120 0 0 1 260 150" stroke="#e9edf4" stroke-width="28"/>
+                      <path d="M 20 150 A 120 120 0 0 1 258.52 131.23" stroke="#17a15a" stroke-width="28"/>
+                    </g>
+                    <path d="M 138.90 143.09 L 252.60 132.17 L 141.10 156.91 Z" fill="#0f1b35"/>
+                    <circle cx="140" cy="150" r="11" fill="#0f1b35"/></svg>
+                    <span class="mano__label">Muy cerca</span>
+                  </div>
+                </div>
+              </div>
+              <span class="mano__close" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </span>
+            </div>
+            <!-- Pantalla B · producto encontrado -->
+            <div class="mano__screen mano__screen--found">
+              <span class="found__caret" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+              </span>
+              <div class="found__body">
+                <span class="found__pin" aria-hidden="true">
+                  <svg viewBox="0 0 124 124" width="94" height="94">
+                    <circle cx="62" cy="62" r="56" fill="#fff" stroke="#00ae9d" stroke-width="5"/>
+                    <path d="M62 36C50 36 40 46 40 58c0 15 22 34 22 34s22-19 22-34c0-12-10-22-22-22z" fill="#00ae9d"/>
+                    <circle cx="62" cy="56" r="8" fill="#fff"/>
+                  </svg>
+                </span>
+                <h3 class="found__titulo">Producto encontrado</h3>
+                <span class="mano__chip found__chip">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+                  Campera softshell mujer
+                </span>
+                <div class="found__ubic">
+                  <span class="found__ubiclabel">UBICACIÓN</span>
+                  <div class="found__cols">
+                    <div class="found__col"><span class="found__val">A</span><span class="found__collabel">PASILLO</span></div>
+                    <div class="found__col"><span class="found__val">04</span><span class="found__collabel">FILA</span></div>
+                    <div class="found__col"><span class="found__val">09</span><span class="found__collabel">NIVEL</span></div>
+                  </div>
+                </div>
+                <span class="found__btn">Marcar como recolectado</span>
+              </div>
+            </div>
+          </div>
+          </div>
+          <img class="mano__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
+        </div>
+      </figure>
+      </div><!-- /.mano-bloque -->
     </section>
 
     <!-- 5.2 · Despacho -->
@@ -340,15 +428,40 @@
         secciones del administrador, sobre un único Design System que comparte con
         la vertical de transporte.</p>
       </div>
-      <!-- Dos slots de impacto: Evelyn completa con resultados/métricas reales. -->
-      <div class="slot-pendiente-par">
-        <div class="slot-pendiente" role="note">
-          <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
-          <span class="slot-pendiente__hint">Resultado o métrica de impacto</span>
+    </section>
+
+    <!-- ═══ 06.5 · MOTION ═══
+         Cuadro oscuro con título "Motion" + bajada y una fila de 3 teléfonos
+         (el mockup de iPhone), cortados abajo por el borde del cuadro.
+         Scaffold: cada pantalla recibe una captura/animación (img/gif/video). -->
+    <section class="caso-seccion">
+      <div class="motion-box">
+        <div class="motion-box__head">
+          <h2 class="motion-box__titulo">Motion</h2>
+          <!-- BAJADA (borrador, ajustala): -->
+          <p class="motion-box__sub">Las transiciones y microinteracciones del sistema:
+          feedback de escaneo, cambios de estado y guías de movimiento. Las prototipé y
+          produje apoyándome en agentes de IA para iterar rápido sin perder el detalle.</p>
         </div>
-        <div class="slot-pendiente" role="note">
-          <span class="slot-pendiente__tag">Pendiente de Evelyn</span>
-          <span class="slot-pendiente__hint">Resultado o métrica de impacto</span>
+        <div class="motion-reel">
+          <div class="motion-phone">
+            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 1">
+              <span class="motion-phone__tag">Pantalla 1</span>
+            </div>
+            <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
+          </div>
+          <div class="motion-phone">
+            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 2">
+              <span class="motion-phone__tag">Pantalla 2</span>
+            </div>
+            <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
+          </div>
+          <div class="motion-phone">
+            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 3">
+              <span class="motion-phone__tag">Pantalla 3</span>
+            </div>
+            <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
+          </div>
         </div>
       </div>
     </section>

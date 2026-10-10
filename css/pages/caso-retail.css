@@ -631,6 +631,340 @@
 .recep-comp.is-in .recep-comp__phone--a { opacity: 1; transform: rotate(-5deg); transition-delay: .18s; }
 .recep-comp.is-in .recep-comp__phone--b { opacity: 1; transform: rotate(5deg); transition-delay: .34s; }
 
+/* ── Manómetro de proximidad (5.1) — recreado en código ──
+   Un teléfono, dos pantallas en bucle continuo (6s): la BÚSQUEDA (manómetro con
+   3 estados: lejos / acercándose / muy cerca) cierra en PRODUCTO ENCONTRADO
+   (pin + ubicación + CTA) y vuelve a empezar. Geometría del gauge: semicírculo
+   de 180°, track gris, segmento de color que crece de izquierda a derecha y
+   aguja navy que marca el valor. Acá SÍ viven los colores de producto
+   (rojo/ámbar/verde y el teal de la marca); la maqueta sigue en el acento. */
+/* Dos columnas: texto a la izquierda, mockup a la derecha.
+   El texto se alinea arriba (no al centro), un poco por debajo del tope del
+   teléfono, cerca de donde arranca su contenido. */
+.mano-bloque {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--espacio-6);
+  align-items: start;
+}
+.mano-bloque .bloque__texto { padding-top: 64px; }
+.mano {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  /* Fuentes del producto para la maqueta (Work Sans de base, Red Hat en títulos). */
+  font-family: "Work Sans", system-ui, sans-serif;
+}
+/* Marco: mockup de iPhone 16 (SVG) por encima; la animación vive dentro de la
+   apertura de pantalla. Las coordenadas de la apertura salen del propio SVG
+   (463×949): pantalla x8.46 y4.83 w445.9 h938.9, radio 70. */
+.mano__device {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  aspect-ratio: 463 / 949;
+}
+.mano__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  /* Sombra sutil: poco blur y bien clarita. */
+  filter: drop-shadow(0 8px 14px rgba(20, 30, 50, 0.1));
+}
+/* El contenido va INSETEADO dentro de la apertura para que se vea el marco
+   (una franja negra uniforme alrededor de la pantalla, como un teléfono real). */
+.mano__screen-area {
+  position: absolute;
+  left: 3.4%;
+  top: 1.55%;
+  width: 93.2%;
+  height: 96.9%;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 13% / 6.2%;
+  background: #fafbfd;
+  display: flex;
+  flex-direction: column;
+}
+.mano__statusbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 30px 2px;
+  flex-shrink: 0;
+}
+/* Isla dinámica (la del SVG queda tapada por la pantalla; se dibuja acá). */
+.mano__island {
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  transform: translateX(-50%);
+  width: 27%;
+  height: 25px;
+  background: #000;
+  border-radius: 999px;
+}
+.mano__time {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1c2b4f;
+  font-variant-numeric: tabular-nums;
+}
+.mano__sysicons { display: inline-flex; align-items: center; gap: 6px; }
+.mano__sysicons svg { display: block; }
+
+/* Las dos pantallas se apilan y hacen crossfade. */
+.mano__screens { position: relative; flex: 1; }
+.mano__screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  animation: 8s ease-in-out infinite both;
+}
+.mano__screen--busca { animation-name: mano-busca; }
+/* La pantalla final entra SOLA, lento y tranquilo (no es el crossfade del
+   manómetro): es una pantalla de cierre, no transmite datos. Y se queda más
+   tiempo para que se lea bien. */
+.mano__screen--found { animation-name: mano-found; animation-timing-function: ease; }
+@keyframes mano-busca { 0%,47%{opacity:1} 52%{opacity:0} 96%{opacity:0} 100%{opacity:1} }
+@keyframes mano-found { 0%,52%{opacity:0} 64%{opacity:1} 92%{opacity:1} 97%,100%{opacity:0} }
+
+/* Pantalla A · búsqueda (manómetro) — todo centrado, sin card, sobre el fondo. */
+.mano__screen--busca { padding: 30px 10px 20px; }
+.mano__busca { text-align: center; }
+/* Especificidad extra (.mano …) para ganarle a la regla global
+   `.caso-seccion h3/p`, que si no le pisa tamaño/peso al título y al subtítulo. */
+.mano .mano__titulo {
+  margin: 0 0 10px;
+  font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 1.22;
+  font-weight: 600;
+  color: #1c2b4f;
+}
+.mano .mano__sub {
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #334a6b;
+}
+.mano__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: #e9edf4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c2b4f;
+}
+.mano__chip svg { display: block; flex-shrink: 0; }
+.mano__gauge {
+  position: relative;
+  margin-top: 26px;
+}
+.mano__estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: 8s ease-in-out infinite both;
+}
+/* El primer estado queda en el flujo y reserva el alto; los otros dos se
+   superponen encima. Los tres tienen la misma altura. */
+.mano__estado:not(:first-child) { position: absolute; inset: 0; }
+.mano__estado svg { display: block; width: 84%; height: auto; }
+.mano__label {
+  margin-top: 2px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.mano__estado--lejos { animation-name: mano-lejos; }
+.mano__estado--acerc { animation-name: mano-acerc; }
+.mano__estado--cerca { animation-name: mano-cerca; }
+.mano__estado--lejos .mano__label { color: #e02020; }
+.mano__estado--acerc .mano__label { color: #e8a000; }
+.mano__estado--cerca .mano__label { color: #17a15a; }
+@keyframes mano-lejos { 0%,13%{opacity:1} 19%{opacity:0} 96%{opacity:0} 100%{opacity:1} }
+@keyframes mano-acerc { 0%,13%{opacity:0} 19%,30%{opacity:1} 36%,100%{opacity:0} }
+@keyframes mano-cerca { 0%,30%{opacity:0} 36%,47%{opacity:1} 52%,100%{opacity:0} }
+.mano__close {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #00ae9d;
+  border: 1px solid #00897d;
+  box-shadow: 0 6px 16px -4px rgba(0, 137, 125, 0.5);
+}
+.mano__close svg { display: block; }
+
+/* Pantalla B · producto encontrado */
+.mano__screen--found { padding: 6px 18px 20px; }
+.found__caret {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 2px 0 2px -4px;
+  flex-shrink: 0;
+}
+.found__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.found__pin { margin-top: 12px; }
+.found__pin svg { display: block; }
+.mano .found__titulo {
+  margin: 16px 0 12px;
+  font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #1c2b4f;
+}
+.found__ubic {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px 12px;
+  border: 1px solid #dde3ed;
+  border-radius: 14px;
+  background: #fff;
+}
+.found__ubiclabel {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #00897d;
+  margin-bottom: 14px;
+}
+.found__cols { display: flex; justify-content: space-around; }
+.found__col { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.found__val {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #00ae9d;
+}
+.found__collabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #6b7a99;
+}
+.found__btn {
+  margin-top: auto;
+  margin-bottom: 16px;   /* 16px más arriba */
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #00ae9d;
+  color: #fafbfd;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Respeto a quien pide menos movimiento: sin bucle, se muestra la búsqueda
+   en "muy cerca" (el gauge, que es la firma del componente). */
+@media (prefers-reduced-motion: reduce) {
+  .mano__screen, .mano__estado { animation: none !important; }
+  .mano__screen--found { opacity: 0; }
+  .mano__screen--busca { opacity: 1; }
+  .mano__estado--lejos, .mano__estado--acerc { opacity: 0; }
+  .mano__estado--cerca { opacity: 1; }
+}
+
+/* ── Bloque Motion (06.5) ──
+   Cuadro oscuro navy con título + bajada y una fila de 3 teléfonos que se
+   recortan abajo contra el borde del cuadro. Scaffold: cada pantalla recibe
+   una captura/animación (img/gif/video). */
+.motion-box {
+  border-radius: 20px;
+  background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
+  padding: var(--espacio-6) var(--espacio-6) 0;
+  overflow: hidden;   /* corta los teléfonos abajo */
+}
+.motion-box__head { max-width: 62ch; }
+/* Especificidad extra (.motion-box …) para ganarle a la regla global
+   `.caso-seccion h2/p`, que si no pinta el texto de tinta oscura e invisible. */
+.motion-box .motion-box__titulo {
+  margin: 0 0 var(--espacio-4);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.motion-box .motion-box__sub {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+}
+.motion-reel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-5);
+  height: 340px;        /* alto fijo: los teléfonos asoman y se cortan abajo */
+  margin-top: var(--espacio-6);
+  overflow: hidden;
+  align-items: start;
+}
+.motion-phone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 463 / 949;
+}
+.motion-phone__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.motion-phone__screen {
+  position: absolute;
+  left: 3.4%;
+  top: 1.55%;
+  width: 93.2%;
+  height: 96.9%;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 13% / 6.2%;
+  background: #fafbfd;
+  display: grid;
+  place-items: center;
+}
+/* La captura/animación llena la pantalla, anclada arriba (el pie se corta). */
+.motion-phone__screen img,
+.motion-phone__screen video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.motion-phone__tag {
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-carpeta-oscuro);
+}
+
 /* ═══════════════════════════════════════════════════════════
    MÓVIL — va al final (corrige lo de arriba)
    ═══════════════════════════════════════════════════════════ */
@@ -642,6 +976,15 @@
   .detalles,
   .retail-par,
   .slot-pendiente-par { grid-template-columns: 1fr; }
+
+  /* En móvil las 3 pantallas entran enteras (sin recorte) y con menos gap. */
+  .motion-box { padding: var(--espacio-5) var(--espacio-5) var(--espacio-5); }
+  .motion-reel { gap: var(--espacio-2); height: auto; margin-top: var(--espacio-5); }
+  .motion-box__titulo { font-size: 1.8rem; }
+
+  /* El teléfono baja debajo del texto, centrado. */
+  .mano-bloque { grid-template-columns: 1fr; gap: var(--espacio-5); }
+  .mano { margin-top: var(--espacio-2); }
 
   /* La composición se apila: web full width y los 2 mobile en fila abajo. */
   .recep-comp { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espacio-3); padding-bottom: 0; }
