@@ -113,12 +113,8 @@
       <div class="bloque__texto">
         <h2>Problema</h2>
         <p>Recibir mercadería es la parte simple. El problema
-        aparece después: cada traslado interno, cada salida y cada reingreso es
-        una oportunidad de perder la pista de una unidad.</p>
-        <p>Antes de Siotyx, el inventario vivía en planillas y en el criterio de
-        quien lo cargaba. El sistema tuvo que redefinir <strong>qué significa
-        trazar</strong>: no contar cuánto hay, sino registrar cada evento que
-        toca una unidad a lo largo de toda su vida en el depósito.</p>
+        aparece después: cada traslado interno, cada salida y cada reingreso es una oportunidad de  <strong> perder la pista de una unidad.</strong> </p>
+        <p>Para evolucionar los esquemas tradicionales basados en planillas, el sistema redefinió la lógica de inventario: pasar del conteo estático a la <strong>trazabilidad  por eventos, </strong> donde cada lectura registra la historia y <strong>ubicación exacta de la unidad.</strong> </p>
       </div>
     </section>
 
@@ -131,7 +127,7 @@
       </div>
 
       <div class="recorrido" data-recorrido>
-        <p class="recorrido__hint">Tocá una etapa para ver qué resuelve</p>
+        <p class="recorrido__hint">Tocá para ver que sucede en cada etapa</p>
         <div class="recorrido__flujo" role="tablist" aria-label="Etapas del ciclo de vida de una unidad">
           <button class="recorrido__nodo is-active" type="button" role="tab" aria-selected="true" data-panel="r-recepcion">
             <span class="recorrido__num">1</span><span class="recorrido__label">Recepción</span>
@@ -153,27 +149,19 @@
         <div class="recorrido__panels">
           <div class="recorrido__panel" id="r-recepcion" role="tabpanel">
             <h3>Recepción</h3>
-            <p>Lo que llega se cuenta y se valida contra lo esperado. El operario
-            escanea de a uno o por lote, y la interfaz tolera lecturas parciales y
-            el estado sin conexión: la playa no siempre tiene señal.</p>
+            <p>Verificación instantánea de ingresos contra lo planificado. La interfaz <strong>tolera escaneos por lote o unidad </strong> y contempla la pérdida de señal en playa de maniobras, <strong>permitiendo operar sin interrupciones.</strong> </p>
           </div>
           <div class="recorrido__panel" id="r-ingreso" role="tabpanel" hidden>
             <h3>Ingreso</h3>
-            <p>Cada ítem recibe su tag y su ubicación. La pantalla cambia según de
-            dónde viene el dato: tipo de producto externo o tipo de producto desde
-            Siotyx. Dos variantes del mismo paso.</p>
+            <p>Registro inicial donde <strong>la unidad se vincula a su tag RFID para iniciar su ciclo de vida.</strong> La pantalla se adapta automáticamente según el origen de la mercadería (proveedor externo o interno), reduciendo pasos de carga y obteniendo mayor detalle.</p>
           </div>
           <div class="recorrido__panel" id="r-picking" role="tabpanel" hidden>
             <h3>Picking</h3>
-            <p>El operario arma pedidos recorriendo el depósito. El lector lo guía
-            físicamente hasta cada etiqueta con el manómetro de proximidad, y la
-            ubicación se desglosa en Pasillo, Fila y Nivel.</p>
+            <p>Diseñé una interfaz de recolección que <strong>reduce tiempos de búsqueda en depósito.</strong> Combina navegación guiada por ubicación física con asistencia RFID por proximidad, simplificando la localización de productos.</p>
           </div>
           <div class="recorrido__panel" id="r-despacho" role="tabpanel" hidden>
             <h3>Despacho</h3>
-            <p>La mercadería sale contra un pedido. El sistema confirma cada unidad
-            despachada y deja el movimiento registrado, así la salida queda atada a
-            su pedido de origen.</p>
+            <p>Verificación final de la carga antes del envío. El sistema <strong>vincula cada tag RFID escaneado a su orden correspondiente,</strong> garantizando un <strong>control de salidas sin errores de despacho</strong> ni diferencias entre el stock físico y el sistema.</p>
           </div>
         </div>
       </div>
@@ -183,17 +171,11 @@
       con su historial intacto).</p>
     </section>
 
-    <!-- 4.2 · La web mira, el mobile hace -->
+    <!-- 4.2 ·Ecosistema Multiplataforma: Estrategia por Entorno Operativo -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>La web mira, el mobile hace</h2>
-        <p>La división de plataformas no es por comodidad: responde a dónde ocurre
-        el trabajo. El administrador necesita ver el depósito; el operario necesita
-        intervenirlo.</p>
-        <p>Por eso <strong>todo lo operativo vive en mobile, sin excepción</strong>.
-        La web nunca escanea ni mueve stock: observa, supervisa y arma pedidos. La
-        única fuente de verdad de un movimiento físico es el dispositivo que lo
-        presenció.</p>
+        <h2>Ecosistema multiplataforma: Estrategia por entorno operativo</h2>
+        <p>La división de plataformas no es una preferencia visual:  <strong>responde al contexto de uso.</strong> La plataforma Web actúa como centro de control para supervisar el stock y armar órdenes; el entorno Mobile es la herramienta de acción en terreno.</p>
       </div>
       <!-- Composición: panel web de Recepción como base + 2 mobile flotando
            encima, con reveal en stagger al entrar en viewport (reveal.js). -->
@@ -235,11 +217,8 @@
       <!-- Dos columnas: texto a la izquierda, mockup del teléfono a la derecha. -->
       <div class="mano-bloque">
       <div class="bloque__texto">
-        <h2>Picking: el lector guía, la interfaz confirma</h2>
-        <p>Encontrar una unidad entre miles es un problema físico, no de pantalla.
-        El manómetro de proximidad traduce la señal RFID en una guía: cuanto más
-        cerca de la etiqueta, más sube la aguja. La interfaz solo tiene que decir
-        "acercate" y "movete lento".</p>
+        <h2>Picking: de la señal física a la confirmación visual</h2>
+        <p>Localizar un producto específico entre miles es un desafío. <strong>El manómetro de proximidad traduce la intensidad de la señal en un indicador dinámico:</strong> a medida que el operario se acerca a la etiqueta, la interfaz responde en tiempo real confirmando la ubicación exacta.</p>
       </div>
       <!-- 05 · Manómetro de proximidad — recreado en código.
            Un teléfono, dos pantallas en bucle continuo (8s): la búsqueda
@@ -342,10 +321,8 @@
     <!-- 5.2 · Despacho -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Despacho: hacer visible el trabajo del sistema</h2>
-        <p>Cuando el sistema valida una salida, el operario no ve el cálculo: ve el
-        resultado. Diseñé el despacho para que cada confirmación muestre qué se
-        verificó y qué quedó registrado, así la máquina rinde cuentas de lo que hizo.</p>
+        <h2>Despacho: transparencia y visibilidad de estado</h2>
+        <p>Al validar una salida, la interfaz traduce el procesamiento de datos en un feedback visual claro: muestra exactamente qué unidades se verificaron y cuáles quedaron registradas en la orden, <strong>brindando certeza operativa e inmediata al operario.</strong></p>
       </div>
       <!-- 06-A / 06-B / 06-C: los tres frames del despacho -->
       <div class="frames-3">
@@ -358,10 +335,8 @@
     <!-- 5.3 · Movimientos: dos recorridos (esquema construido en código) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Movimientos: dos recorridos, no uno</h2>
-        <p>Mover un ítem no siempre significa lo mismo. Un movimiento interno va de
-        una ubicación a otra dentro del depósito; uno externo lo envía a otro destino
-        y suma etapas de tránsito.</p>
+        <h2>Gestión de movimientos</h2>
+        <p>Trasladar stock exige lógicas distintas según el destino. Diseñé dos flujos independientes para evitar pantallas recargadas: una interacción directa para reubicaciones internas y un proceso por etapas con seguimiento de tránsito para transferencias externas.</p>
       </div>
 
       <!-- Dos cards (interno / externo): ícono, título, descripción, estados y
@@ -398,7 +373,7 @@
     <!-- 5.4 · Métricas -->
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>Métricas: el dato operativo vuelve como insight</h2>
+        <h2>Métricas: del dato operativo a la inteligencia de negocio</h2>
         <p>Cada escaneo, cada movimiento y cada despacho deja un evento. Acumulados,
         esos eventos dejan de ser registro y pasan a ser lectura del depósito.</p>
         <p>El módulo de métricas devuelve lo que la operación generó: entre otros, un
@@ -422,12 +397,6 @@
         <div class="stat"><dt class="stat__num">2</dt><dd class="stat__label">tecnologías de captura</dd></div>
         <div class="stat"><dt class="stat__num">1</dt><dd class="stat__label">Design System propio</dd></div>
       </dl>
-      <div class="bloque__texto">
-        <p>Retail está en curso: hay flujos aprobados y otros en desarrollo. El
-        alcance ya diseñado cubre las seis operaciones del operario y las ocho
-        secciones del administrador, sobre un único Design System que comparte con
-        la vertical de transporte.</p>
-      </div>
     </section>
 
     <!-- ═══ 06.5 · MOTION ═══
