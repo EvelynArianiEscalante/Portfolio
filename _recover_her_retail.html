@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=12">
 </head>
 <body>
 
@@ -180,7 +180,7 @@
       <!-- Composición: panel web de Recepción como base + 2 mobile flotando
            encima, con reveal en stagger al entrar en viewport (reveal.js). -->
       <div class="recep-comp" data-reveal>
-        <img class="recep-comp__web" src="../../assets/images/casos-de-estudio/retail/recep-web.webp?v=3" alt="Panel web de Recepción de Siotyx Retail: tabla con fecha, número de recepción, origen, unidades y estado, con buscador y filtro." loading="lazy">
+        <img class="recep-comp__web" src="../../assets/images/casos-de-estudio/retail/recep-web.webp" alt="Panel web de Recepción de Siotyx Retail: tabla con fecha, número de recepción, origen, unidades y estado, con buscador y filtro." loading="lazy">
         <img class="recep-comp__phone recep-comp__phone--a" src="../../assets/images/casos-de-estudio/retail/recep-mobile.webp" alt="App mobile de Siotyx Retail: recepciones pendientes con barra de progreso y botón recibir." loading="lazy">
         <img class="recep-comp__phone recep-comp__phone--b" src="../../assets/images/casos-de-estudio/retail/recep-items.webp" alt="App mobile de Siotyx Retail: ítems de una recepción, cada uno marcado como unitario o lote, listos para escanear." loading="lazy">
       </div>
@@ -324,11 +324,11 @@
         <h2>Despacho: transparencia y visibilidad de estado</h2>
         <p>Al validar una salida, la interfaz traduce el procesamiento de datos en un feedback visual claro: muestra exactamente qué unidades se verificaron y cuáles quedaron registradas en la orden, <strong>brindando certeza operativa e inmediata al operario.</strong></p>
       </div>
-      <!-- Las tres pantallas de picking (mobile) -->
+      <!-- 06-A / 06-B / 06-C: los tres frames del despacho -->
       <div class="frames-3">
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-1.webp" alt="Picking: lista de pedidos a recolectar con progreso de cada uno." loading="lazy"></div>
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-2.webp" alt="Picking: detalle del pedido en recolección." loading="lazy"></div>
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-3.webp" alt="Picking: pedido recolectado y confirmación." loading="lazy"></div>
+        <div class="ph ph--movil" data-code="06-A" role="img" aria-label="Pendiente: despacho, frame 1"></div>
+        <div class="ph ph--movil" data-code="06-B" role="img" aria-label="Pendiente: despacho, frame 2"></div>
+        <div class="ph ph--movil" data-code="06-C" role="img" aria-label="Pendiente: despacho, frame 3"></div>
       </div>
     </section>
 
@@ -386,7 +386,20 @@
       </figure>
     </section>
 
-    <!-- ═══ 06 · MOTION ═══
+    <!-- ═══ 06 · IMPACTO ═══ -->
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Alcance diseñado</h2>
+      </div>
+      <dl class="stats">
+        <div class="stat"><dt class="stat__num">6</dt><dd class="stat__label">operaciones en mobile</dd></div>
+        <div class="stat"><dt class="stat__num">8</dt><dd class="stat__label">secciones en web</dd></div>
+        <div class="stat"><dt class="stat__num">2</dt><dd class="stat__label">tecnologías de captura</dd></div>
+        <div class="stat"><dt class="stat__num">1</dt><dd class="stat__label">Design System propio</dd></div>
+      </dl>
+    </section>
+
+    <!-- ═══ 06.5 · MOTION ═══
          Cuadro oscuro con título "Motion" + bajada y una fila de 3 teléfonos
          (el mockup de iPhone), cortados abajo por el borde del cuadro.
          Scaffold: cada pantalla recibe una captura/animación (img/gif/video). -->
@@ -401,128 +414,14 @@
         </div>
         <div class="motion-reel">
           <div class="motion-phone">
-            <div class="motion-phone__screen" role="img" aria-label="Animación: movimiento finalizado">
-              <div class="mph mph--congrats">
-                <div class="mph__status">
-                  <span class="mph__time">12:30</span>
-                  <span class="mph__island" aria-hidden="true"></span>
-                  <span class="mph__sys" aria-hidden="true">
-                    <svg viewBox="0 0 17 12" fill="#1c2b4f"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
-                    <svg viewBox="0 0 16 12" fill="none" stroke="#1c2b4f" stroke-width="1.6" stroke-linecap="round"><path d="M2 4.5a9 9 0 0 1 12 0"/><path d="M4.4 7a5.5 5.5 0 0 1 7.2 0"/><circle cx="8" cy="9.6" r="1" fill="#1c2b4f" stroke="none"/></svg>
-                    <svg viewBox="0 0 24 12" fill="none"><rect x="0.6" y="0.6" width="20" height="10.8" rx="2.6" stroke="#1c2b4f" stroke-opacity="0.5"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.4" fill="#1c2b4f"/><rect x="22" y="3.6" width="1.6" height="4.8" rx="0.8" fill="#1c2b4f" fill-opacity="0.5"/></svg>
-                  </span>
-                </div>
-                <span class="mph__caret" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-                </span>
-                <div class="mph__body">
-                  <h4 class="congrats__title">Movimiento finalizado correctamente</h4>
-                  <p class="congrats__sub">El movimiento se completó y el stock ya está actualizado</p>
-                  <span class="congrats__check" aria-hidden="true">
-                    <img class="congrats__img" src="../../assets/images/casos-de-estudio/retail/check-circle.svg" alt="">
-                  </span>
-                  <div class="congrats__cta">
-                    <span class="mbtn mbtn--primary">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M21 7H7a4 4 0 0 0-4 4v1"/><path d="M7 21l-4-4 4-4"/><path d="M3 17h14a4 4 0 0 0 4-4v-1"/></svg>
-                      Ir a movimientos
-                    </span>
-                    <span class="congrats__link">Volver al inicio</span>
-                  </div>
-                </div>
-              </div>
+            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 1">
+              <span class="motion-phone__tag">Pantalla 1</span>
             </div>
             <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
           </div>
           <div class="motion-phone">
-            <div class="motion-phone__screen" role="img" aria-label="Animación: escaneo múltiple RFID, procesado y finalizado">
-              <div class="mph mph--scan">
-                <div class="mph__status">
-                  <span class="mph__time">12:30</span>
-                  <span class="mph__island" aria-hidden="true"></span>
-                  <span class="mph__sys" aria-hidden="true">
-                    <svg viewBox="0 0 17 12" fill="#1c2b4f"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
-                    <svg viewBox="0 0 16 12" fill="none" stroke="#1c2b4f" stroke-width="1.6" stroke-linecap="round"><path d="M2 4.5a9 9 0 0 1 12 0"/><path d="M4.4 7a5.5 5.5 0 0 1 7.2 0"/><circle cx="8" cy="9.6" r="1" fill="#1c2b4f" stroke="none"/></svg>
-                    <svg viewBox="0 0 24 12" fill="none"><rect x="0.6" y="0.6" width="20" height="10.8" rx="2.6" stroke="#1c2b4f" stroke-opacity="0.5"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.4" fill="#1c2b4f"/><rect x="22" y="3.6" width="1.6" height="4.8" rx="0.8" fill="#1c2b4f" fill-opacity="0.5"/></svg>
-                  </span>
-                </div>
-                <span class="mph__caret" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-                </span>
-                <div class="mph__stages">
-                  <!-- Etapa A · listo para escanear (ondas RFID + contador que sube) -->
-                  <div class="mscan mscan--a">
-                    <h4 class="mscan__title">Listo para escanear</h4>
-                    <p class="mscan__sub">Mantené presionado el botón hasta leer todas las etiquetas</p>
-                    <span class="rfid rfid--pulse" aria-hidden="true">
-                      <img class="rfid__img" src="../../assets/images/casos-de-estudio/retail/scanner-waves.svg" alt="">
-                    </span>
-                    <span class="mscan__count">
-                      <span class="cn cn1">2/6</span><span class="cn cn2">4/6</span><span class="cn cn3">6/6</span>
-                    </span>
-                    <span class="mscan__lbl">LECTURAS</span>
-                    <div class="lecard">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">2/2</span>
-                        <span class="lecard__name">Campera softshell mujer</span>
-                        <span class="lecard__chev up"></span>
-                      </div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4051<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4052<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                    </div>
-                    <span class="mbtn mbtn--primary">
-                      <svg viewBox="0 0 140 100"><circle cx="70" cy="50" r="12" fill="#fff"/><path d="M90 38 A 18 18 0 0 1 90 62" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><path d="M50 38 A 18 18 0 0 0 50 62" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg>
-                      Escanear
-                    </span>
-                  </div>
-                  <!-- Etapa B · registrando movimiento (spinner + checklist que se prende) -->
-                  <div class="mscan mscan--b">
-                    <div class="mproc-card">
-                      <span class="mspin" aria-hidden="true">
-                        <svg viewBox="0 0 48 48">
-                          <circle cx="24" cy="24" r="20" fill="none" stroke="#e9edf4" stroke-width="5"/>
-                          <path d="M24 4 a20 20 0 0 1 20 20" fill="none" stroke="#00ae9d" stroke-width="5" stroke-linecap="round"/>
-                        </svg>
-                      </span>
-                      <h4 class="mscan__title">Registrando movimiento</h4>
-                      <p class="mscan__sub">Guardando etiquetas leídas y destino. Aguardá un momento.</p>
-                      <ul class="mchecklist">
-                        <li class="ck ck1"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Guardando las etiquetas leídas</li>
-                        <li class="ck ck2"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Registrando reubicación</li>
-                        <li class="ck ck3"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Guardando información</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- Etapa C · escaneo finalizado (ondas fijas + 6/6) -->
-                  <div class="mscan mscan--c">
-                    <h4 class="mscan__title">Escaneo finalizado</h4>
-                    <span class="rfid" aria-hidden="true">
-                      <img class="rfid__img" src="../../assets/images/casos-de-estudio/retail/scanner-waves.svg" alt="">
-                    </span>
-                    <span class="mscan__count"><span class="cn">6/6</span></span>
-                    <span class="mscan__lbl">LECTURAS</span>
-                    <div class="lecard">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">2/2</span>
-                        <span class="lecard__name">Campera softshell mujer</span>
-                        <span class="lecard__chev up"></span>
-                      </div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4051<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4052<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                    </div>
-                    <div class="lecard lecard--collapsed">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">4/4</span>
-                        <span class="lecard__name">Campera softshell hombre</span>
-                        <span class="lecard__chev down"></span>
-                      </div>
-                    </div>
-                    <span class="mbtn mbtn--primary">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-                      Confirmar movimiento
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 2">
+              <span class="motion-phone__tag">Pantalla 2</span>
             </div>
             <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
           </div>
@@ -535,6 +434,25 @@
         </div>
       </div>
     </section>
+
+    <!-- ═══ 07 · APRENDIZAJE ═══ -->
+    <section class="caso-seccion">
+      <div class="caso-aprendizaje caso-aprendizaje--retail">
+        <h2>Escanear no identifica: confirma.</h2>
+        <p class="caso-lead">El cambio de modelo mental más importante del proyecto
+        cabe en una frase.</p>
+        <p>Al principio tratábamos el escaneo como el acto que identifica un ítem.
+        En la práctica, el ítem ya está identificado por su tag: escanear no lo
+        descubre, <strong>lo confirma y lo registra</strong>. Ese giro reescribió
+        pantallas y copy, y es lo que mantiene un mismo modelo vivo en dos verticales
+        sin rediseñar la base.</p>
+      </div>
+    </section>
+
+    <!-- Cierre: la relación con el Core y con Transporte. -->
+    <p class="cierre-nota">La capa de escaneo, la cobertura de estados y el manómetro
+    de proximidad son el mismo Core que ya resuelve la
+    <a href="transporte.html">vertical de transporte</a>: una lógica, dos negocios.</p>
 
     <nav class="caso-siguiente">
       <a href="index.html">← Todos los proyectos</a>

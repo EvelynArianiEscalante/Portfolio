@@ -368,6 +368,14 @@
   align-items: start;
   margin-top: var(--espacio-5);
 }
+/* Capturas mobile (picking) en el bloque de despacho. */
+.frame-shot {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-borde-claro);
+  box-shadow: 0 10px 28px -8px rgba(20, 30, 50, 0.22);
+}
+.frame-shot img { display: block; width: 100%; height: auto; }
 
 /* ── Cards de tipo de producto (unitario / lote), 4.3 ──
    Mismo componente que los "detalle" de Transporte, pero solo título +
@@ -603,7 +611,7 @@
 }
 .recep-comp__web {
   display: block;
-  width: 66%;
+  width: 74%;
   margin: 0 auto;
   border-radius: 6px;
   border: 1px solid var(--color-borde-claro);
@@ -614,12 +622,12 @@
    horneada). La rotación se mantiene en el estado final del reveal. */
 .recep-comp__phone {
   position: absolute;
-  width: 16%;
-  border-radius: 8px;
+  width: 18.5%;
+  border-radius: 9px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
 }
-.recep-comp__phone--a { left: 3%; top: 23%; transform: rotate(-5deg); }
-.recep-comp__phone--b { right: 6%; top: 32%; transform: rotate(5deg); z-index: 2; }
+.recep-comp__phone--a { left: 1%; top: 23%; transform: rotate(-5deg); }
+.recep-comp__phone--b { right: 3%; top: 32%; transform: rotate(5deg); z-index: 2; }
 
 .recep-comp.reveal-ready { opacity: 1; transform: none; }
 .recep-comp__web,
@@ -896,10 +904,11 @@
 .motion-box {
   border-radius: 20px;
   background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
-  padding: var(--espacio-6) var(--espacio-6) 0;
-  overflow: hidden;   /* corta los teléfonos abajo */
+  padding: var(--espacio-6);
+  overflow: hidden;
 }
-.motion-box__head { max-width: 62ch; }
+/* La bajada ocupa todo el ancho de la card (dentro del padding de la caja). */
+.motion-box__head { max-width: none; }
 /* Especificidad extra (.motion-box …) para ganarle a la regla global
    `.caso-seccion h2/p`, que si no pinta el texto de tinta oscura e invisible. */
 .motion-box .motion-box__titulo {
@@ -919,9 +928,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--espacio-5);
-  height: 340px;        /* alto fijo: los teléfonos asoman y se cortan abajo */
   margin-top: var(--espacio-6);
-  overflow: hidden;
   align-items: start;
 }
 .motion-phone {
@@ -963,6 +970,176 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--color-carpeta-oscuro);
+}
+
+/* ── Mini-pantallas animadas dentro de los teléfonos de Motion ──
+   Recreadas en código con el mismo estilo del manómetro. Todo escala con el
+   ancho del slot (container queries, unidad cqi), así se ven nítidas. */
+.motion-phone__screen { container-type: inline-size; }
+.mph {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fafbfd;
+  text-align: center;
+}
+.mph__status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4cqi 9cqi 0;
+  flex-shrink: 0;
+}
+.mph__time { font-size: 3.4cqi; font-weight: 700; color: #1c2b4f; font-variant-numeric: tabular-nums; }
+.mph__sys { display: inline-flex; align-items: center; gap: 1.6cqi; }
+.mph__sys svg { display: block; height: 3cqi; width: auto; }
+.mph__island {
+  position: absolute; left: 50%; top: 2.6cqi; transform: translateX(-50%);
+  width: 28cqi; height: 6.4cqi; background: #000; border-radius: 999px;
+}
+.mph__caret { position: absolute; left: 6cqi; top: 11cqi; width: 6.5cqi; z-index: 2; }
+.mph__caret svg { display: block; width: 100%; }
+.mph__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 11cqi 9cqi 0;
+}
+/* Congrats: el check entra (pop) y el tilde se dibuja; loop continuo. */
+.mph .congrats__title {
+  margin: 0 0 3cqi;
+  font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: 6.2cqi;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1c2b4f;
+}
+.mph .congrats__sub {
+  margin: 0 0 9cqi;
+  font-size: 4.1cqi;
+  line-height: 1.35;
+  color: #334a6b;
+}
+.congrats__check { display: block; width: 33cqi; margin: 0 auto; }
+.congrats__img {
+  display: block; width: 100%; height: auto;
+  transform-origin: center;
+  animation: congrats-pop 3.6s ease-in-out infinite both;
+}
+@keyframes congrats-pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  14% { transform: scale(1.08); opacity: 1; }
+  22% { transform: scale(1); opacity: 1; }
+  82% { transform: scale(1); opacity: 1; }
+  90% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(0.3); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .congrats__img { animation: none; opacity: 1; transform: none; }
+}
+/* Congrats: botones al pie de la pantalla completa. */
+.mph__body { padding-bottom: 7cqi; }
+.congrats__cta { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4cqi; padding-top: 6cqi; }
+.congrats__link { font-size: 4.2cqi; font-weight: 600; color: #1c2b4f; }
+
+/* Botón teal reutilizable (mini-pantallas). */
+.mbtn {
+  display: flex; align-items: center; justify-content: center; gap: 2.6cqi;
+  width: 100%; padding: 4cqi; border-radius: 3.4cqi;
+  background: #00ae9d; color: #fff; font-size: 4.2cqi; font-weight: 700;
+}
+.mbtn svg { height: 5cqi; width: auto; display: block; }
+/* El botón va SIEMPRE al pie de la pantalla (como "Ir a movimientos"). */
+.mscan .mbtn { margin-top: auto; }
+
+/* ── #2 Scanner RFID: 3 etapas en loop (leer → procesar → finalizado) ── */
+.mph__stages { position: relative; flex: 1; }
+.mscan {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 9cqi 8cqi 7cqi;
+  text-align: center;
+  animation: 12s ease-in-out infinite both;
+}
+.mscan--a { animation-name: scan-a; }
+.mscan--b { animation-name: scan-b; justify-content: center; padding: 9cqi 6cqi; }
+.mscan--c { animation-name: scan-c; }
+@keyframes scan-a { 0%,36%{opacity:1} 40%{opacity:0} 96%{opacity:0} 100%{opacity:1} }
+@keyframes scan-b { 0%,38%{opacity:0} 43%,66%{opacity:1} 70%{opacity:0} 100%{opacity:0} }
+@keyframes scan-c { 0%,68%{opacity:0} 73%,94%{opacity:1} 98%,100%{opacity:0} }
+.mph .mscan__title {
+  margin: 0 0 2cqi; font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: 5.4cqi; font-weight: 600; line-height: 1.2; color: #1c2b4f;
+}
+.mph .mscan__sub { margin: 0 0 3cqi; font-size: 3.5cqi; line-height: 1.3; color: #334a6b; }
+/* Ondas RFID (SVG de Evelyn) */
+.rfid { display: block; width: 32cqi; margin: 3cqi auto 1cqi; }
+.rfid__img { display: block; width: 100%; height: auto; }
+.rfid--pulse .rfid__img { animation: rfidpulse 1.8s ease-in-out infinite; }
+@keyframes rfidpulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+/* Contador que sube (etapa A) / fijo (etapa C) */
+.mscan__count { position: relative; display: block; width: 100%; height: 8.5cqi; margin-bottom: 3.5cqi; }
+.mscan__count .cn { position: absolute; left: 0; right: 0; top: 0; font-size: 7cqi; font-weight: 700; color: #1c2b4f; font-variant-numeric: tabular-nums; }
+.mscan--c .mscan__count .cn { position: static; }
+.cn1 { animation: cn1 12s ease-in-out infinite both; }
+.cn2 { animation: cn2 12s ease-in-out infinite both; }
+.cn3 { animation: cn3 12s ease-in-out infinite both; }
+@keyframes cn1 { 0%,11%{opacity:1} 14%,100%{opacity:0} }
+@keyframes cn2 { 0%,11%{opacity:0} 14%,23%{opacity:1} 26%,100%{opacity:0} }
+@keyframes cn3 { 0%,23%{opacity:0} 26%,36%{opacity:1} 40%,100%{opacity:0} }
+/* Lista de lecturas */
+.mscan__lbl { align-self: flex-start; font-size: 2.9cqi; font-weight: 700; letter-spacing: 0.08em; color: #6b7a99; margin-bottom: 2.4cqi; }
+.lecard { width: 100%; border: 1px solid #dde3ed; border-radius: 3cqi; padding: 3.2cqi; margin-bottom: 2.6cqi; background: #fff; }
+.lecard__head { display: flex; align-items: center; gap: 2.4cqi; }
+.lebadge { display: inline-flex; align-items: center; gap: 1.2cqi; background: #17a15a; color: #fff; font-size: 2.9cqi; font-weight: 700; padding: 1cqi 2.4cqi; border-radius: 2cqi; flex-shrink: 0; }
+.lebadge__ic { width: 3.4cqi; height: 3.4cqi; display: block; }
+.lecard__name { flex: 1; font-size: 3.4cqi; font-weight: 600; color: #1c2b4f; text-align: left; }
+.lecard__chev { width: 3cqi; height: 3cqi; border-right: 1.5px solid #9fb0c4; border-bottom: 1.5px solid #9fb0c4; flex-shrink: 0; }
+.lecard__chev.up { transform: rotate(-135deg); }
+.lecard__chev.down { transform: rotate(45deg); }
+.letag { display: flex; align-items: center; gap: 2.2cqi; font-size: 3cqi; color: #334a6b; margin-top: 2.4cqi; }
+.letag__ic { width: 3cqi; height: 3cqi; border: 1.4px solid #c6cfdf; border-radius: 0.8cqi; transform: rotate(45deg); flex-shrink: 0; }
+.letick { margin-left: auto; width: 4cqi; height: 4cqi; flex-shrink: 0; display: block; }
+.letick img { display: block; width: 100%; height: 100%; }
+/* Etapa B: tarjeta de procesado + checklist que se prende (SVG de Evelyn) */
+.mproc-card { width: 100%; background: #fff; border-radius: 4.5cqi; box-shadow: 0 6cqi 18cqi -8cqi rgba(20,30,50,0.28); padding: 7cqi 5.5cqi; display: flex; flex-direction: column; align-items: center; }
+.mspin { display: block; width: 12cqi; margin: 0 auto 4cqi; }
+.mspin svg { display: block; width: 100%; animation: mspin 0.9s linear infinite; }
+@keyframes mspin { to { transform: rotate(360deg); } }
+.mchecklist { list-style: none; margin: 5cqi 0 0; padding: 0; width: 100%; }
+.ck { display: flex; align-items: center; gap: 2.8cqi; font-size: 3.2cqi; line-height: 1.25; color: #9fb0c4; margin-bottom: 3.4cqi; text-align: left; }
+.ck:last-child { margin-bottom: 0; }
+.ck__ico { position: relative; width: 4.6cqi; height: 4.6cqi; border-radius: 50%; border: 1.6px solid #cfd8e6; flex-shrink: 0; }
+.ck__done { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; }
+.ck1 { animation: cktxt1 12s linear infinite both; }
+.ck2 { animation: cktxt2 12s linear infinite both; }
+.ck3 { animation: cktxt3 12s linear infinite both; }
+.ck1 .ck__ico { animation: ckico1 12s linear infinite both; }
+.ck2 .ck__ico { animation: ckico2 12s linear infinite both; }
+.ck3 .ck__ico { animation: ckico3 12s linear infinite both; }
+.ck1 .ck__done { animation: ckd1 12s linear infinite both; }
+.ck2 .ck__done { animation: ckd2 12s linear infinite both; }
+.ck3 .ck__done { animation: ckd3 12s linear infinite both; }
+@keyframes cktxt1 { 0%,47%{color:#9fb0c4} 50%,100%{color:#1c2b4f} }
+@keyframes cktxt2 { 0%,53%{color:#9fb0c4} 56%,100%{color:#1c2b4f} }
+@keyframes cktxt3 { 0%,59%{color:#9fb0c4} 62%,100%{color:#1c2b4f} }
+@keyframes ckico1 { 0%,47%{border-color:#cfd8e6} 50%,100%{border-color:transparent} }
+@keyframes ckico2 { 0%,53%{border-color:#cfd8e6} 56%,100%{border-color:transparent} }
+@keyframes ckico3 { 0%,59%{border-color:#cfd8e6} 62%,100%{border-color:transparent} }
+@keyframes ckd1 { 0%,48%{opacity:0} 51%,100%{opacity:1} }
+@keyframes ckd2 { 0%,54%{opacity:0} 57%,100%{opacity:1} }
+@keyframes ckd3 { 0%,60%{opacity:0} 63%,100%{opacity:1} }
+@media (prefers-reduced-motion: reduce) {
+  .mscan, .cn1, .cn2, .cn3, .rfid--pulse .rfid__img, .mspin svg,
+  .ck1, .ck2, .ck3, .ck1 .ck__ico, .ck2 .ck__ico, .ck3 .ck__ico,
+  .ck1 .ck__done, .ck2 .ck__done, .ck3 .ck__done { animation: none !important; }
+  .mscan--b, .mscan--c { opacity: 0; }
+  .mscan--a { opacity: 1; }
+  .cn1, .cn2 { opacity: 0; } .cn3 { opacity: 1; }
 }
 
 /* ═══════════════════════════════════════════════════════════
