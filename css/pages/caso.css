@@ -107,6 +107,8 @@ span.semaforo--max {
 .ventana-max__scroll {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .caso-contenido {

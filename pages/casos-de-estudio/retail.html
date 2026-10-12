@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../../css/base/reset.css?v=18">
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
-  <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=18">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=29">
 </head>
 <body>
 
@@ -68,12 +68,42 @@
       </dl>
     </header>
 
-    <!-- 01 · BANNER de portada (espacio reservado: Evelyn lo exporta). -->
+    <!-- 01 · BANNER de portada -->
     <figure class="caso-figura">
-      <div class="ph ph--panorama" data-code="01 · banner" role="img" aria-label="Pendiente: banner de portada de Retail"></div>
+      <img src="../../assets/images/casos-de-estudio/retail/portada.webp?v=2" alt="Siotyx Retail: depósito con la plataforma web en una laptop y la app mobile de operación, con lectura RFID y código de barras." loading="eager">
     </figure>
 
-    <!-- ═══ 02 · PLATAFORMAS ═══ Las dos plataformas y lo que hace cada una. -->
+    <!-- Índice del caso: salta a cada fase con scroll suave. -->
+    <nav class="indice" aria-label="Índice del caso">
+      <div class="indice__inner">
+        <a class="indice__item" href="#fase-problema"><span class="indice__num">01</span>El problema</a>
+        <a class="indice__item" href="#fase-proceso"><span class="indice__num">02</span>El proceso</a>
+        <a class="indice__item" href="#fase-solucion"><span class="indice__num">03</span>La solución</a>
+        <a class="indice__item" href="#fase-impacto"><span class="indice__num">04</span>Impacto</a>
+        <a class="indice__item" href="#fase-motion"><span class="indice__num">05</span>Motion</a>
+      </div>
+    </nav>
+
+    <!-- ═══ 01 · PROBLEMA ═══ -->
+    <div class="fase" id="fase-problema" data-reveal>
+      <span class="fase__kicker">01</span>
+      <h2 class="fase__titulo">El problema</h2>
+    </div>
+    <section class="caso-seccion">
+      <div class="bloque__texto">
+        <p>Recibir mercadería es la parte simple. El problema
+        aparece después: cada traslado interno, cada salida y cada reingreso es una oportunidad de  <strong> perder la pista de una unidad.</strong> </p>
+        <p>Para evolucionar los esquemas tradicionales basados en planillas, el sistema redefinió la lógica de inventario: pasar del conteo estático a la <strong>trazabilidad  por eventos, </strong> donde cada lectura registra la historia y <strong>ubicación exacta de la unidad.</strong> </p>
+      </div>
+    </section>
+
+    <!-- ═══ 02 · PROCESO ═══ -->
+    <div class="fase" id="fase-proceso" data-reveal>
+      <span class="fase__kicker">02</span>
+      <h2 class="fase__titulo">El proceso</h2>
+    </div>
+
+    <!-- Las dos plataformas y lo que hace cada una (contexto del sistema). -->
     <section class="caso-seccion">
       <div class="plataformas">
         <article class="plataforma">
@@ -107,18 +137,6 @@
         </article>
       </div>
     </section>
-
-    <!-- ═══ 03 · PROBLEMA ═══ -->
-    <section class="caso-seccion">
-      <div class="bloque__texto">
-        <h2>Problema</h2>
-        <p>Recibir mercadería es la parte simple. El problema
-        aparece después: cada traslado interno, cada salida y cada reingreso es una oportunidad de  <strong> perder la pista de una unidad.</strong> </p>
-        <p>Para evolucionar los esquemas tradicionales basados en planillas, el sistema redefinió la lógica de inventario: pasar del conteo estático a la <strong>trazabilidad  por eventos, </strong> donde cada lectura registra la historia y <strong>ubicación exacta de la unidad.</strong> </p>
-      </div>
-    </section>
-
-    <!-- ═══ 04 · PROCESO ═══ -->
 
     <!-- 4.1 · Diagrama de recorrido (interactivo, construido en código) -->
     <section class="caso-seccion">
@@ -210,14 +228,32 @@
       </div>
     </section>
 
-    <!-- ═══ 05 · SOLUCIÓN ═══ -->
+    <!-- ═══ 03 · SOLUCIÓN ═══ -->
+    <div class="fase" id="fase-solucion" data-reveal>
+      <span class="fase__kicker">03</span>
+      <h2 class="fase__titulo">La solución</h2>
+    </div>
 
-    <!-- 5.1 · Picking + manómetro (SLOT: Evelyn define colores y capturas) -->
+    <!-- 5.1 · Picking: recolectar un pedido y despacharlo (pantallas reales) -->
     <section class="caso-seccion">
+      <div class="bloque__texto">
+        <h2>Picking: recolectar un pedido y despacharlo</h2>
+        <p>El operario elige un pedido, escanea cada etiqueta para recolectar sus ítems y, al completarlo, lo despacha. La interfaz traduce el proceso en un feedback visual claro: muestra qué unidades se verificaron y cuáles quedaron registradas en la orden, <strong>dando certeza operativa inmediata.</strong></p>
+      </div>
+      <!-- Las tres pantallas de picking (mobile) -->
+      <div class="frames-3" data-reveal>
+        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-1.webp" alt="Picking: lista de pedidos a recolectar con progreso de cada uno." loading="lazy"></div>
+        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-2.webp" alt="Picking: detalle del pedido en recolección." loading="lazy"></div>
+        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-3.webp" alt="Picking: pedido recolectado y confirmación." loading="lazy"></div>
+      </div>
+    </section>
+
+    <!-- 5.2 · Búsqueda por proximidad (manómetro) — bloque oscuro full-bleed (showpiece) -->
+    <section class="caso-seccion seccion-oscura">
       <!-- Dos columnas: texto a la izquierda, mockup del teléfono a la derecha. -->
       <div class="mano-bloque">
       <div class="bloque__texto">
-        <h2>Picking: de la señal física a la confirmación visual</h2>
+        <h2>Búsqueda por proximidad: de la señal física a la confirmación visual</h2>
         <p>Localizar un producto específico entre miles es un desafío. <strong>El manómetro de proximidad traduce la intensidad de la señal en un indicador dinámico:</strong> a medida que el operario se acerca a la etiqueta, la interfaz responde en tiempo real confirmando la ubicación exacta.</p>
       </div>
       <!-- 05 · Manómetro de proximidad — recreado en código.
@@ -318,20 +354,6 @@
       </div><!-- /.mano-bloque -->
     </section>
 
-    <!-- 5.2 · Despacho -->
-    <section class="caso-seccion">
-      <div class="bloque__texto">
-        <h2>Despacho: transparencia y visibilidad de estado</h2>
-        <p>Al validar una salida, la interfaz traduce el procesamiento de datos en un feedback visual claro: muestra exactamente qué unidades se verificaron y cuáles quedaron registradas en la orden, <strong>brindando certeza operativa e inmediata al operario.</strong></p>
-      </div>
-      <!-- Las tres pantallas de picking (mobile) -->
-      <div class="frames-3">
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-1.webp" alt="Picking: lista de pedidos a recolectar con progreso de cada uno." loading="lazy"></div>
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-2.webp" alt="Picking: detalle del pedido en recolección." loading="lazy"></div>
-        <div class="frame-shot"><img src="../../assets/images/casos-de-estudio/retail/picking-3.webp" alt="Picking: pedido recolectado y confirmación." loading="lazy"></div>
-      </div>
-    </section>
-
     <!-- 5.3 · Movimientos: dos recorridos (esquema construido en código) -->
     <section class="caso-seccion">
       <div class="bloque__texto">
@@ -370,6 +392,12 @@
 
     </section>
 
+    <!-- ═══ 04 · IMPACTO ═══ -->
+    <div class="fase" id="fase-impacto" data-reveal>
+      <span class="fase__kicker">04</span>
+      <h2 class="fase__titulo">Impacto</h2>
+    </div>
+
     <!-- 5.4 · Métricas -->
     <section class="caso-seccion">
       <div class="bloque__texto">
@@ -391,8 +419,9 @@
          (el mockup de iPhone), cortados abajo por el borde del cuadro.
          Scaffold: cada pantalla recibe una captura/animación (img/gif/video). -->
     <section class="caso-seccion">
-      <div class="motion-box">
+      <div class="motion-box" id="fase-motion">
         <div class="motion-box__head">
+          <span class="fase__kicker fase__kicker--light">05</span>
           <h2 class="motion-box__titulo">Motion</h2>
           <!-- BAJADA (borrador, ajustala): -->
           <p class="motion-box__sub">Las transiciones y microinteracciones del sistema:
@@ -449,77 +478,37 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
                 </span>
                 <div class="mph__stages">
-                  <!-- Etapa A · listo para escanear (ondas RFID + contador que sube) -->
-                  <div class="mscan mscan--a">
-                    <h4 class="mscan__title">Listo para escanear</h4>
-                    <p class="mscan__sub">Mantené presionado el botón hasta leer todas las etiquetas</p>
-                    <span class="rfid rfid--pulse" aria-hidden="true">
+                  <!-- Vista principal: lectura → finalizado (la maneja el script
+                       data-scan en retail.html, como un scanner real). -->
+                  <div class="scan" data-scan>
+                    <h4 class="scan__title" data-title>Listo para escanear</h4>
+                    <p class="scan__sub" data-sub>Mantené presionado el botón hasta leer todas las etiquetas</p>
+                    <span class="rfid is-scanning" data-rfid aria-hidden="true">
                       <img class="rfid__img" src="../../assets/images/casos-de-estudio/retail/scanner-waves.svg" alt="">
                     </span>
-                    <span class="mscan__count">
-                      <span class="cn cn1">2/6</span><span class="cn cn2">4/6</span><span class="cn cn3">6/6</span>
-                    </span>
-                    <span class="mscan__lbl">LECTURAS</span>
-                    <div class="lecard">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">2/2</span>
-                        <span class="lecard__name">Campera softshell mujer</span>
-                        <span class="lecard__chev up"></span>
-                      </div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4051<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4052<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                    </div>
-                    <span class="mbtn mbtn--primary">
-                      <svg viewBox="0 0 140 100"><circle cx="70" cy="50" r="12" fill="#fff"/><path d="M90 38 A 18 18 0 0 1 90 62" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><path d="M50 38 A 18 18 0 0 0 50 62" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg>
-                      Escanear
-                    </span>
+                    <span class="scan__count" data-count><b>0</b>/6</span>
+                    <span class="scan__lbl" data-lbl hidden>LECTURAS</span>
+                    <div class="scan__list" data-list></div>
+                    <button class="mbtn mbtn--primary" data-btn type="button">
+                      <svg class="ic-scan" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="2.4" fill="#fff" stroke="none"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4"/><path d="M19.1 4.9a10 10 0 0 1 0 14.2"/></svg>
+                      <svg class="ic-done" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M5 13l4 4L19 7"/></svg>
+                      <span data-btntext>Escanear</span>
+                    </button>
                   </div>
-                  <!-- Etapa B · registrando movimiento (spinner + checklist que se prende) -->
-                  <div class="mscan mscan--b">
+                  <!-- Overlay de registro (loading) -->
+                  <div class="scan-load" data-load>
                     <div class="mproc-card">
                       <span class="mspin" aria-hidden="true">
-                        <svg viewBox="0 0 48 48">
-                          <circle cx="24" cy="24" r="20" fill="none" stroke="#e9edf4" stroke-width="5"/>
-                          <path d="M24 4 a20 20 0 0 1 20 20" fill="none" stroke="#00ae9d" stroke-width="5" stroke-linecap="round"/>
-                        </svg>
+                        <img src="../../assets/images/casos-de-estudio/retail/loader.svg" alt="">
                       </span>
-                      <h4 class="mscan__title">Registrando movimiento</h4>
-                      <p class="mscan__sub">Guardando etiquetas leídas y destino. Aguardá un momento.</p>
-                      <ul class="mchecklist">
-                        <li class="ck ck1"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Guardando las etiquetas leídas</li>
-                        <li class="ck ck2"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Registrando reubicación</li>
-                        <li class="ck ck3"><span class="ck__ico" aria-hidden="true"><img class="ck__done" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span>Guardando información</li>
+                      <h4 class="scan__title">Registrando movimiento</h4>
+                      <p class="scan__sub">Guardando etiquetas leídas y destino. Aguardá un momento.</p>
+                      <ul class="mchecklist" data-checklist>
+                        <li class="ck" data-ck><span class="ck__ico" aria-hidden="true"><span class="ck__ring"></span><img class="ck__spin" src="../../assets/images/casos-de-estudio/retail/loader-mini.svg" alt=""><svg class="ck__done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#00ae9d"/><path d="M6.6 12.5l3.4 3.4L17.2 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Guardando etiquetas leídas</li>
+                        <li class="ck" data-ck><span class="ck__ico" aria-hidden="true"><span class="ck__ring"></span><img class="ck__spin" src="../../assets/images/casos-de-estudio/retail/loader-mini.svg" alt=""><svg class="ck__done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#00ae9d"/><path d="M6.6 12.5l3.4 3.4L17.2 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Registrando reubicación</li>
+                        <li class="ck" data-ck><span class="ck__ico" aria-hidden="true"><span class="ck__ring"></span><img class="ck__spin" src="../../assets/images/casos-de-estudio/retail/loader-mini.svg" alt=""><svg class="ck__done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#00ae9d"/><path d="M6.6 12.5l3.4 3.4L17.2 8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Guardando información</li>
                       </ul>
                     </div>
-                  </div>
-                  <!-- Etapa C · escaneo finalizado (ondas fijas + 6/6) -->
-                  <div class="mscan mscan--c">
-                    <h4 class="mscan__title">Escaneo finalizado</h4>
-                    <span class="rfid" aria-hidden="true">
-                      <img class="rfid__img" src="../../assets/images/casos-de-estudio/retail/scanner-waves.svg" alt="">
-                    </span>
-                    <span class="mscan__count"><span class="cn">6/6</span></span>
-                    <span class="mscan__lbl">LECTURAS</span>
-                    <div class="lecard">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">2/2</span>
-                        <span class="lecard__name">Campera softshell mujer</span>
-                        <span class="lecard__chev up"></span>
-                      </div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4051<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                      <div class="letag"><span class="letag__ic"></span>E280-6894-000-4052<span class="letick"><img src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt=""></span></div>
-                    </div>
-                    <div class="lecard lecard--collapsed">
-                      <div class="lecard__head">
-                        <span class="lebadge"><img class="lebadge__ic" src="../../assets/images/casos-de-estudio/retail/badge-check.svg" alt="">4/4</span>
-                        <span class="lecard__name">Campera softshell hombre</span>
-                        <span class="lecard__chev down"></span>
-                      </div>
-                    </div>
-                    <span class="mbtn mbtn--primary">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-                      Confirmar movimiento
-                    </span>
                   </div>
                 </div>
               </div>
@@ -545,6 +534,180 @@
     </div>
   </div>
   <script src="../../js/animations/reveal.js?v=2" defer></script>
+  <!-- Motion (06): las mini-pantallas escalan con --u (1% del ancho de cada
+       slot). Se setea por JS según el ancho real, sin depender de container
+       queries (algunos navegadores no las resuelven en estas mini-pantallas). -->
+  <script>
+    (function () {
+      function fitMotion() {
+        document.querySelectorAll('.motion-phone__screen').forEach(function (screen) {
+          var mph = screen.querySelector('.mph');
+          if (!mph) return;
+          var u = screen.clientWidth / 100;
+          if (u > 0) mph.style.setProperty('--u', u + 'px');
+        });
+      }
+      if (document.readyState !== 'loading') fitMotion();
+      else document.addEventListener('DOMContentLoaded', fitMotion);
+      window.addEventListener('load', fitMotion);
+      window.addEventListener('resize', fitMotion);
+    })();
+  </script>
+  <!-- Motion (06) · Scanner RFID: máquina de estados que simula la lectura real.
+       Lee etiqueta por etiqueta, las agrupa por producto (acordeón) y cierra
+       cada uno al completarse; termina con los acordeones cerrados. -->
+  <script>
+    (function () {
+      var ASSET = '../../assets/images/casos-de-estudio/retail/';
+      var PRODUCTS = [
+        { name: 'Campera softshell mujer', tags: ['E280-6894-000-4051', 'E280-6894-000-4052'] },
+        { name: 'Campera softshell hombre', tags: ['E280-6894-000-6071', 'E280-6894-000-6072', 'E280-6894-000-6073', 'E280-6894-000-6074'] }
+      ];
+      var TOTAL = 6;
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+      function buildScanner(root) {
+        var q = function (s) { return root.querySelector(s); };
+        var titleEl = q('[data-title]'), subEl = q('[data-sub]'), rfid = q('[data-rfid]'),
+            countEl = q('[data-count]'), lblEl = q('[data-lbl]'), listEl = q('[data-list]'),
+            btn = q('[data-btn]'), btnText = q('[data-btntext]'),
+            icScan = btn.querySelector('.ic-scan'), icDone = btn.querySelector('.ic-done'),
+            load = q('[data-load]');
+        var cks = [].slice.call(root.querySelectorAll('[data-ck]'));
+
+        function setCount(n) {
+          countEl.innerHTML = '<b>' + n + '</b>/' + TOTAL;
+          countEl.classList.remove('tick'); void countEl.offsetWidth; countEl.classList.add('tick');
+        }
+        function makeCard(p) {
+          var card = document.createElement('div'); card.className = 'lecard';
+          card.innerHTML =
+            '<div class="lecard__head">' +
+              '<span class="lebadge"><img class="lebadge__ic" src="' + ASSET + 'badge-check.svg" alt="">0/' + p.tags.length + '</span>' +
+              '<span class="lecard__name">' + p.name + '</span>' +
+              '<span class="lecard__chev up"></span>' +
+            '</div>' +
+            '<div class="lecard__body"></div>';
+          return card;
+        }
+        function addTag(card, code) {
+          var body = card.querySelector('.lecard__body');
+          var row = document.createElement('div'); row.className = 'letag';
+          row.innerHTML = '<span class="letag__ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9fb0c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2" fill="#9fb0c4" stroke="none"/></svg></span>' + code + '<span class="letick"><img src="' + ASSET + 'badge-check.svg" alt=""></span>';
+          body.appendChild(row); void row.offsetWidth; row.classList.add('is-in');
+        }
+        function setBadge(card, n, t) { card.querySelector('.lebadge').innerHTML = '<img class="lebadge__ic" src="' + ASSET + 'badge-check.svg" alt="">' + n + '/' + t; }
+        function collapse(card) {
+          var body = card.querySelector('.lecard__body');
+          body.style.maxHeight = body.scrollHeight + 'px'; void body.offsetWidth;
+          card.querySelector('.lecard__chev').classList.replace('up', 'down');
+          requestAnimationFrame(function () { body.style.maxHeight = '0px'; });
+        }
+        function reset() {
+          titleEl.textContent = 'Listo para escanear';
+          subEl.hidden = false;
+          rfid.classList.add('is-scanning');
+          lblEl.hidden = true;
+          listEl.innerHTML = '';
+          setCount(0); countEl.classList.remove('tick');
+          icScan.removeAttribute('hidden'); icDone.setAttribute('hidden', ''); btnText.textContent = 'Escanear';
+          load.classList.remove('is-on');
+          cks.forEach(function (c) { c.classList.remove('is-active', 'is-done'); });
+        }
+        async function runChecklist() {
+          for (var i = 0; i < cks.length; i++) {
+            cks[i].classList.add('is-active'); await sleep(620);
+            cks[i].classList.remove('is-active'); cks[i].classList.add('is-done'); await sleep(180);
+          }
+        }
+        async function cycle() {
+          reset(); await sleep(700);
+          var read = 0; lblEl.hidden = false;
+          for (var pi = 0; pi < PRODUCTS.length; pi++) {
+            var p = PRODUCTS[pi];
+            var card = makeCard(p); listEl.appendChild(card);
+            void card.offsetWidth; card.classList.add('is-in'); await sleep(420);
+            for (var ti = 0; ti < p.tags.length; ti++) {
+              addTag(card, p.tags[ti]); read++; setCount(read); setBadge(card, ti + 1, p.tags.length);
+              await sleep(640);
+            }
+            await sleep(480); collapse(card); await sleep(560);
+          }
+          await sleep(700);
+          rfid.classList.remove('is-scanning');
+          load.classList.add('is-on'); await sleep(350);
+          await runChecklist(); await sleep(500);
+          load.classList.remove('is-on'); await sleep(380);
+          titleEl.textContent = 'Escaneo finalizado';
+          subEl.hidden = true;
+          icScan.setAttribute('hidden', ''); icDone.removeAttribute('hidden'); btnText.textContent = 'Confirmar movimiento';
+          await sleep(2800);
+        }
+        async function loop() { while (true) { await cycle(); } }
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          titleEl.textContent = 'Escaneo finalizado'; subEl.hidden = true; rfid.classList.remove('is-scanning');
+          lblEl.hidden = false; setCount(6);
+          PRODUCTS.forEach(function (p) {
+            var c = makeCard(p); c.classList.add('is-in'); setBadge(c, p.tags.length, p.tags.length);
+            c.querySelector('.lecard__chev').classList.replace('up', 'down'); listEl.appendChild(c);
+          });
+          icScan.setAttribute('hidden', ''); icDone.removeAttribute('hidden'); btnText.textContent = 'Confirmar movimiento';
+          return;
+        }
+        loop();
+      }
+      function initScanners() {
+        document.querySelectorAll('[data-scan]').forEach(function (s) {
+          if (s.dataset.scanOn) return; s.dataset.scanOn = '1';
+          buildScanner(s.closest('.mph__stages'));
+        });
+      }
+      if (document.readyState !== 'loading') initScanners();
+      else document.addEventListener('DOMContentLoaded', initScanners);
+    })();
+  </script>
+  <!-- Índice del caso: resalta la fase activa a medida que se scrollea. -->
+  <script>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.indice__item'));
+      if (!items.length) return;
+      var map = {}, targets = [];
+      items.forEach(function (a) {
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (el) { map[el.id] = a; targets.push(el); }
+      });
+      var root = document.querySelector('.ventana-max__scroll') || null;
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            items.forEach(function (a) { a.classList.remove('is-active'); });
+            if (map[e.target.id]) map[e.target.id].classList.add('is-active');
+          }
+        });
+      }, { root: root, rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+      targets.forEach(function (t) { io.observe(t); });
+
+      // Modo claro sobre bloques oscuros: cuando un bloque oscuro cruza el
+      // centro vertical (donde flota el rail), el texto del índice pasa a claro
+      // para no quedar negro-sobre-negro.
+      var indice = document.querySelector('.indice');
+      var darks = Array.prototype.slice.call(document.querySelectorAll('.seccion-oscura, .motion-box'));
+      if (indice && darks.length) {
+        var onDark = [];
+        var ioDark = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            var i = onDark.indexOf(e.target);
+            if (e.isIntersecting) { if (i === -1) onDark.push(e.target); }
+            else if (i !== -1) { onDark.splice(i, 1); }
+          });
+          indice.classList.toggle('is-on-dark', onDark.length > 0);
+        }, { root: root, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+        darks.forEach(function (d) { ioDark.observe(d); });
+      }
+    })();
+  </script>
   <!-- Diagrama de recorrido (4.1): tabs accesibles. Click/teclado cambian el
        nodo activo y muestran su panel. Sin libs. -->
   <script>

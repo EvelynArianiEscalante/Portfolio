@@ -366,7 +366,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--espacio-4);
   align-items: start;
-  margin-top: var(--espacio-5);
+  max-width: 660px;
+  margin: var(--espacio-5) auto 0;
 }
 /* Capturas mobile (picking) en el bloque de despacho. */
 .frame-shot {
@@ -600,6 +601,12 @@
   transform: none;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+/* Despacho (5.2): el contenedor queda visible y las 3 capturas entran en stagger. */
+.frames-3.reveal-ready { opacity: 1; transform: none; }
+.frames-3.reveal-ready .frame-shot { opacity: 0; transform: translateY(28px); }
+.frames-3.is-in .frame-shot { opacity: 1; transform: none; transition: opacity 0.55s ease, transform 0.55s ease; }
+.frames-3.is-in .frame-shot:nth-child(2) { transition-delay: 0.12s; }
+.frames-3.is-in .frame-shot:nth-child(3) { transition-delay: 0.24s; }
 
 /* ── Composición Recepción (4.2): panel web de base + 2 mobile flotando ──
    El reveal anima los HIJOS en stagger, así que el contenedor NO se oculta
@@ -646,16 +653,21 @@
    de 180°, track gris, segmento de color que crece de izquierda a derecha y
    aguja navy que marca el valor. Acá SÍ viven los colores de producto
    (rojo/ámbar/verde y el teal de la marca); la maqueta sigue en el acento. */
-/* Dos columnas: texto a la izquierda, mockup a la derecha.
-   El texto se alinea arriba (no al centro), un poco por debajo del tope del
-   teléfono, cerca de donde arranca su contenido. */
+/* Tratamiento editorial: todo centrado en una sola columna. El texto (título
+   + bajada) va arriba, grande y centrado; el mockup debajo, también centrado.
+   Es un showpiece, así que respira y se lee como una pieza, no como dos
+   columnas enfrentadas. */
 .mano-bloque {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--espacio-6);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: calc(var(--espacio-6) * 1.2);
 }
-.mano-bloque .bloque__texto { padding-top: 64px; }
+.mano-bloque .bloque__texto {
+  max-width: 680px;
+  margin: 0 auto;
+}
 .mano {
   margin: 0;
   display: flex;
@@ -897,27 +909,160 @@
   .mano__estado--cerca { opacity: 1; }
 }
 
+/* ── Divisores de fase (jerarquía del caso) ──
+   Un overline chico de acento + un título grande que agrupa las secciones de
+   cada etapa (Problema / Proceso / Solución / Impacto / Motion). Dan "anclas"
+   escaneables y jerarquía por sobre los h2 de sección (1.25rem). */
+.fase {
+  margin: calc(var(--espacio-6) * 2.4) 0 var(--espacio-4);
+  scroll-margin-top: var(--espacio-6);
+}
+.fase__kicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-carpeta-oscuro);
+  margin-bottom: var(--espacio-2);
+}
+.fase__kicker--light { color: rgba(255, 255, 255, 0.55); }
+.fase .fase__titulo {
+  font-size: clamp(1.6rem, 3.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color-tinta);
+  margin: 0;
+}
+/* El primer título de sección después de un divisor arranca más pegado,
+   así el divisor y su primera sección se leen como un grupo. */
+.fase + .caso-seccion { margin-top: var(--espacio-5); }
+
+/* ── Índice del caso (sidebar vertical flotante que marca la fase activa) ──
+   Flota pegado al margen izquierdo y acompaña el scroll (fixed). Solo número +
+   texto: nada de bordes ni contenedores; el estado se expresa con peso y color.
+   Sobre bloques oscuros cambia a texto claro (.is-on-dark, lo togglea el
+   observer). Aparece solo en pantallas anchas; abajo de eso se oculta. */
+.indice { display: none; }
+@media (min-width: 1380px) {
+  .indice {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: max(26px, calc((100vw - 1040px) / 2 - 198px));
+    width: 150px;
+    z-index: 30;
+    margin: 0;
+    /* tokens de color conmutables: claros por defecto (fondo claro) */
+    --idx-muted: var(--color-tinta-suave);
+    --idx-strong: var(--color-tinta);
+    --idx-num: var(--color-carpeta-oscuro);
+  }
+  .indice.is-on-dark {
+    --idx-muted: rgba(255, 255, 255, 0.5);
+    --idx-strong: #fff;
+    --idx-num: #9db6e6;
+  }
+  .indice__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+  .indice__item {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    padding: 2px 0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--idx-muted);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .indice__item:hover { color: var(--idx-strong); }
+  .indice__num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--idx-num);
+    flex-shrink: 0;
+    transition: color 0.18s ease;
+  }
+  .indice__item.is-active { color: var(--idx-strong); font-weight: 700; }
+}
+
+/* ── Bloque oscuro full-bleed reutilizable (showpieces: manómetro) ──
+   Mismo tratamiento que Motion: el fondo navy sangra a todo el ancho de la
+   ventana y el contenido se recentra a la columna del caso, con texto blanco. */
+.seccion-oscura {
+  background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
+  width: calc(100vw - 36px);
+  margin-inline: calc(50% - 50vw + 18px);
+  padding: calc(var(--espacio-6) * 1.5) 0;
+  overflow: hidden;
+}
+.seccion-oscura > * {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--espacio-5);
+  padding-right: var(--espacio-5);
+  box-sizing: border-box;
+}
+/* Tipografía editorial para el showpiece oscuro: título grande y aireado,
+   bajada cómoda de leer. (Gana a la regla global .caso-seccion h2/p por orden
+   de carga: caso-retail.css se carga después de caso.css.) */
+.seccion-oscura h2 {
+  color: #fff;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--espacio-4);
+}
+.seccion-oscura p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1.08rem, 1.5vw, 1.22rem);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.seccion-oscura strong { color: #fff; }
+
 /* ── Bloque Motion (06.5) ──
    Cuadro oscuro navy con título + bajada y una fila de 3 teléfonos que se
    recortan abajo contra el borde del cuadro. Scaffold: cada pantalla recibe
    una captura/animación (img/gif/video). */
+/* Fondo oscuro a todo el ancho de la ventana (full-bleed): rompe la columna
+   del caso para resaltar que es una pieza propia. El contenido interno se
+   recentra a 1040px para quedar alineado con el resto. */
 .motion-box {
-  border-radius: 20px;
   background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
-  padding: var(--espacio-6);
+  padding: var(--espacio-6) 0;
   overflow: hidden;
+  border-radius: 0;
+  width: calc(100vw - 36px);
+  margin-inline: calc(50% - 50vw + 18px);
 }
-/* La bajada ocupa todo el ancho de la card (dentro del padding de la caja). */
-.motion-box__head { max-width: none; }
+.motion-box__head {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 var(--espacio-5);
+  box-sizing: border-box;
+}
 /* Especificidad extra (.motion-box …) para ganarle a la regla global
    `.caso-seccion h2/p`, que si no pinta el texto de tinta oscura e invisible. */
 .motion-box .motion-box__titulo {
   margin: 0 0 var(--espacio-4);
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(1.6rem, 3.2vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.015em;
   color: #fff;
 }
+#fase-motion { scroll-margin-top: var(--espacio-6); }
 .motion-box .motion-box__sub {
   margin: 0;
   font-size: 1.05rem;
@@ -928,7 +1073,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--espacio-5);
-  margin-top: var(--espacio-6);
+  max-width: 1040px;
+  margin: var(--espacio-6) auto 0;
+  padding: 0 var(--espacio-5);
+  box-sizing: border-box;
   align-items: start;
 }
 .motion-phone {
@@ -974,8 +1122,9 @@
 
 /* ── Mini-pantallas animadas dentro de los teléfonos de Motion ──
    Recreadas en código con el mismo estilo del manómetro. Todo escala con el
-   ancho del slot (container queries, unidad cqi), así se ven nítidas. */
-.motion-phone__screen { container-type: inline-size; }
+   ancho del slot. Todo escala con la variable --u (1% del ancho de la pantalla),
+   que setea un script por JS según el ancho real de cada slot. El valor por
+   defecto evita texto gigante si el JS no corre. */
 .mph {
   position: relative;
   width: 100%;
@@ -984,47 +1133,49 @@
   flex-direction: column;
   background: #fafbfd;
   text-align: center;
+  font-family: "Work Sans", system-ui, sans-serif;
+  --u: 2.9px;
 }
 .mph__status {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4cqi 9cqi 0;
+  padding: calc(4 * var(--u)) calc(9 * var(--u)) 0;
   flex-shrink: 0;
 }
-.mph__time { font-size: 3.4cqi; font-weight: 700; color: #1c2b4f; font-variant-numeric: tabular-nums; }
-.mph__sys { display: inline-flex; align-items: center; gap: 1.6cqi; }
-.mph__sys svg { display: block; height: 3cqi; width: auto; }
+.mph__time { font-size: calc(3.4 * var(--u)); font-weight: 700; color: #1c2b4f; font-variant-numeric: tabular-nums; }
+.mph__sys { display: inline-flex; align-items: center; gap: calc(1.6 * var(--u)); }
+.mph__sys svg { display: block; height: calc(3 * var(--u)); width: auto; }
 .mph__island {
-  position: absolute; left: 50%; top: 2.6cqi; transform: translateX(-50%);
-  width: 28cqi; height: 6.4cqi; background: #000; border-radius: 999px;
+  position: absolute; left: 50%; top: calc(2.6 * var(--u)); transform: translateX(-50%);
+  width: calc(28 * var(--u)); height: calc(6.4 * var(--u)); background: #000; border-radius: 999px;
 }
-.mph__caret { position: absolute; left: 6cqi; top: 11cqi; width: 6.5cqi; z-index: 2; }
-.mph__caret svg { display: block; width: 100%; }
+.mph__caret { position: absolute; left: calc(5 * var(--u)); top: calc(9.5 * var(--u)); width: calc(9.5 * var(--u)); height: calc(9.5 * var(--u)); border-radius: 50%; background: #fff; border: 1px solid #e3e8f0; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.mph__caret svg { display: block; width: calc(4.6 * var(--u)); height: calc(4.6 * var(--u)); }
 .mph__body {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 11cqi 9cqi 0;
+  padding: calc(11 * var(--u)) calc(9 * var(--u)) 0;
 }
 /* Congrats: el check entra (pop) y el tilde se dibuja; loop continuo. */
 .mph .congrats__title {
-  margin: 0 0 3cqi;
+  margin: 0 0 calc(3 * var(--u));
   font-family: "Red Hat Display", system-ui, sans-serif;
-  font-size: 6.2cqi;
+  font-size: calc(6.2 * var(--u));
   font-weight: 600;
   line-height: 1.2;
   color: #1c2b4f;
 }
 .mph .congrats__sub {
-  margin: 0 0 9cqi;
-  font-size: 4.1cqi;
+  margin: 0 0 calc(9 * var(--u));
+  font-size: calc(4.1 * var(--u));
   line-height: 1.35;
   color: #334a6b;
 }
-.congrats__check { display: block; width: 33cqi; margin: 0 auto; }
+.congrats__check { display: block; width: calc(33 * var(--u)); margin: 0 auto; }
 .congrats__img {
   display: block; width: 100%; height: auto;
   transform-origin: center;
@@ -1042,104 +1193,98 @@
   .congrats__img { animation: none; opacity: 1; transform: none; }
 }
 /* Congrats: botones al pie de la pantalla completa. */
-.mph__body { padding-bottom: 7cqi; }
-.congrats__cta { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4cqi; padding-top: 6cqi; }
-.congrats__link { font-size: 4.2cqi; font-weight: 600; color: #1c2b4f; }
+.mph__body { padding-bottom: calc(7 * var(--u)); }
+.congrats__cta { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: calc(4 * var(--u)); padding-top: calc(6 * var(--u)); }
+.congrats__link { font-size: calc(4.2 * var(--u)); font-weight: 600; color: #1c2b4f; }
 
 /* Botón teal reutilizable (mini-pantallas). */
 .mbtn {
-  display: flex; align-items: center; justify-content: center; gap: 2.6cqi;
-  width: 100%; padding: 4cqi; border-radius: 3.4cqi;
-  background: #00ae9d; color: #fff; font-size: 4.2cqi; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: calc(2.6 * var(--u));
+  width: 100%; padding: calc(4 * var(--u)); border: 0; border-radius: calc(3.4 * var(--u));
+  background: #00ae9d; color: #fff; font-family: inherit; font-size: calc(4.2 * var(--u)); font-weight: 700;
+  cursor: pointer; -webkit-appearance: none; appearance: none;
 }
-.mbtn svg { height: 5cqi; width: auto; display: block; }
+.mbtn svg { height: calc(7 * var(--u)); width: auto; display: block; }
+.mbtn svg[hidden] { display: none; }
 /* El botón va SIEMPRE al pie de la pantalla (como "Ir a movimientos"). */
-.mscan .mbtn { margin-top: auto; }
+.scan .mbtn { margin-top: auto; }
 
-/* ── #2 Scanner RFID: 3 etapas en loop (leer → procesar → finalizado) ── */
+/* ── #2 Scanner RFID (máquina de estados por JS en retail.html): lee etiqueta
+   por etiqueta, agrupa por producto (acordeón) y lo cierra al completar; la
+   pantalla final queda con los acordeones cerrados. ── */
 .mph__stages { position: relative; flex: 1; }
-.mscan {
+.scan {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center;
-  padding: 9cqi 8cqi 7cqi;
+  padding: calc(9 * var(--u)) calc(8 * var(--u)) calc(7 * var(--u));
   text-align: center;
-  animation: 12s ease-in-out infinite both;
 }
-.mscan--a { animation-name: scan-a; }
-.mscan--b { animation-name: scan-b; justify-content: center; padding: 9cqi 6cqi; }
-.mscan--c { animation-name: scan-c; }
-@keyframes scan-a { 0%,36%{opacity:1} 40%{opacity:0} 96%{opacity:0} 100%{opacity:1} }
-@keyframes scan-b { 0%,38%{opacity:0} 43%,66%{opacity:1} 70%{opacity:0} 100%{opacity:0} }
-@keyframes scan-c { 0%,68%{opacity:0} 73%,94%{opacity:1} 98%,100%{opacity:0} }
-.mph .mscan__title {
-  margin: 0 0 2cqi; font-family: "Red Hat Display", system-ui, sans-serif;
-  font-size: 5.4cqi; font-weight: 600; line-height: 1.2; color: #1c2b4f;
+.mph .scan__title {
+  margin: 0 0 calc(2 * var(--u)); font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: calc(6.6 * var(--u)); font-weight: 600; line-height: 1.2; color: #1c2b4f;
 }
-.mph .mscan__sub { margin: 0 0 3cqi; font-size: 3.5cqi; line-height: 1.3; color: #334a6b; }
+.mph .scan__sub {
+  margin: 0 0 calc(3 * var(--u)); font-family: "Work Sans", system-ui, sans-serif;
+  font-weight: 500; font-size: calc(4.4 * var(--u)); line-height: 1.3; color: #334a6b;
+  overflow: hidden; transition: opacity .3s ease, max-height .3s ease;
+}
+.mph .scan__sub[hidden] { display: block; opacity: 0; max-height: 0; margin: 0; }
 /* Ondas RFID (SVG de Evelyn) */
-.rfid { display: block; width: 32cqi; margin: 3cqi auto 1cqi; }
+.rfid { display: block; width: calc(46 * var(--u)); margin: calc(2 * var(--u)) auto calc(1 * var(--u)); }
 .rfid__img { display: block; width: 100%; height: auto; }
-.rfid--pulse .rfid__img { animation: rfidpulse 1.8s ease-in-out infinite; }
+.rfid.is-scanning .rfid__img { animation: rfidpulse 1.8s ease-in-out infinite; }
 @keyframes rfidpulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
-/* Contador que sube (etapa A) / fijo (etapa C) */
-.mscan__count { position: relative; display: block; width: 100%; height: 8.5cqi; margin-bottom: 3.5cqi; }
-.mscan__count .cn { position: absolute; left: 0; right: 0; top: 0; font-size: 7cqi; font-weight: 700; color: #1c2b4f; font-variant-numeric: tabular-nums; }
-.mscan--c .mscan__count .cn { position: static; }
-.cn1 { animation: cn1 12s ease-in-out infinite both; }
-.cn2 { animation: cn2 12s ease-in-out infinite both; }
-.cn3 { animation: cn3 12s ease-in-out infinite both; }
-@keyframes cn1 { 0%,11%{opacity:1} 14%,100%{opacity:0} }
-@keyframes cn2 { 0%,11%{opacity:0} 14%,23%{opacity:1} 26%,100%{opacity:0} }
-@keyframes cn3 { 0%,23%{opacity:0} 26%,36%{opacity:1} 40%,100%{opacity:0} }
-/* Lista de lecturas */
-.mscan__lbl { align-self: flex-start; font-size: 2.9cqi; font-weight: 700; letter-spacing: 0.08em; color: #6b7a99; margin-bottom: 2.4cqi; }
-.lecard { width: 100%; border: 1px solid #dde3ed; border-radius: 3cqi; padding: 3.2cqi; margin-bottom: 2.6cqi; background: #fff; }
-.lecard__head { display: flex; align-items: center; gap: 2.4cqi; }
-.lebadge { display: inline-flex; align-items: center; gap: 1.2cqi; background: #17a15a; color: #fff; font-size: 2.9cqi; font-weight: 700; padding: 1cqi 2.4cqi; border-radius: 2cqi; flex-shrink: 0; }
-.lebadge__ic { width: 3.4cqi; height: 3.4cqi; display: block; }
-.lecard__name { flex: 1; font-size: 3.4cqi; font-weight: 600; color: #1c2b4f; text-align: left; }
-.lecard__chev { width: 3cqi; height: 3cqi; border-right: 1.5px solid #9fb0c4; border-bottom: 1.5px solid #9fb0c4; flex-shrink: 0; }
+/* Contador de lecturas */
+.mph .scan__count { display: block; font-family: "Red Hat Display", system-ui, sans-serif; font-size: calc(5 * var(--u)); font-weight: 600; color: #1c2b4f; height: calc(6 * var(--u)); margin-bottom: calc(2.6 * var(--u)); font-variant-numeric: tabular-nums; }
+.scan__count b { font-weight: 600; display: inline-block; }
+.scan__count.tick b { animation: countpop .32s ease; }
+@keyframes countpop { 0%{transform:scale(1)} 40%{transform:scale(1.3);color:#00ae9d} 100%{transform:scale(1)} }
+.scan__lbl { align-self: flex-start; font-size: calc(2.9 * var(--u)); font-weight: 700; letter-spacing: 0.08em; color: #6b7a99; margin-bottom: calc(2.4 * var(--u)); transition: opacity .3s ease; }
+.scan__lbl[hidden] { display: block; opacity: 0; height: 0; margin: 0; overflow: hidden; }
+.scan__list { width: 100%; display: flex; flex-direction: column; gap: calc(2.6 * var(--u)); }
+/* Tarjeta de producto (acordeón) */
+.lecard { width: 100%; border: 1px solid #dde3ed; border-radius: calc(3 * var(--u)); padding: calc(3.2 * var(--u)); background: #fff; opacity: 0; transform: translateY(calc(3 * var(--u))); transition: opacity .32s ease, transform .32s ease; }
+.lecard.is-in { opacity: 1; transform: none; }
+.lecard__head { display: flex; align-items: center; gap: calc(2.4 * var(--u)); }
+.lebadge { display: inline-flex; align-items: center; gap: calc(0.7 * var(--u)); background: #17a15a; color: #fff; font-size: calc(3 * var(--u)); font-weight: 700; padding: calc(0.9 * var(--u)) calc(1.8 * var(--u)); border-radius: calc(2 * var(--u)); flex-shrink: 0; }
+.lebadge__ic { width: calc(3.2 * var(--u)); height: calc(3.2 * var(--u)); display: block; }
+.mph .lecard__name { flex: 1; font-family: "Work Sans", system-ui, sans-serif; font-size: calc(4.4 * var(--u)); font-weight: 500; color: #1c2b4f; text-align: left; }
+.lecard__chev { width: calc(3 * var(--u)); height: calc(3 * var(--u)); border-right: 1.5px solid #9fb0c4; border-bottom: 1.5px solid #9fb0c4; flex-shrink: 0; transition: transform .35s ease; }
 .lecard__chev.up { transform: rotate(-135deg); }
 .lecard__chev.down { transform: rotate(45deg); }
-.letag { display: flex; align-items: center; gap: 2.2cqi; font-size: 3cqi; color: #334a6b; margin-top: 2.4cqi; }
-.letag__ic { width: 3cqi; height: 3cqi; border: 1.4px solid #c6cfdf; border-radius: 0.8cqi; transform: rotate(45deg); flex-shrink: 0; }
-.letick { margin-left: auto; width: 4cqi; height: 4cqi; flex-shrink: 0; display: block; }
+.lecard__body { overflow: hidden; transition: max-height .42s ease; }
+.letag { display: flex; align-items: center; gap: calc(2.2 * var(--u)); font-family: "Work Sans", system-ui, sans-serif; font-size: calc(3.9 * var(--u)); font-weight: 500; color: #334a6b; margin-top: calc(2.4 * var(--u)); opacity: 0; transform: translateY(calc(1.6 * var(--u))); transition: opacity .28s ease, transform .28s ease; }
+.letag.is-in { opacity: 1; transform: none; }
+.letag__ic { width: calc(3.8 * var(--u)); height: calc(3.8 * var(--u)); flex-shrink: 0; display: block; }
+.letag__ic svg { display: block; width: 100%; height: 100%; }
+.letick { margin-left: auto; width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); flex-shrink: 0; display: block; }
 .letick img { display: block; width: 100%; height: 100%; }
-/* Etapa B: tarjeta de procesado + checklist que se prende (SVG de Evelyn) */
-.mproc-card { width: 100%; background: #fff; border-radius: 4.5cqi; box-shadow: 0 6cqi 18cqi -8cqi rgba(20,30,50,0.28); padding: 7cqi 5.5cqi; display: flex; flex-direction: column; align-items: center; }
-.mspin { display: block; width: 12cqi; margin: 0 auto 4cqi; }
-.mspin svg { display: block; width: 100%; animation: mspin 0.9s linear infinite; }
+/* Overlay de registro (loading) */
+.scan-load { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: calc(9 * var(--u)) calc(6 * var(--u)); background: #fafbfd; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.scan-load.is-on { opacity: 1; pointer-events: auto; }
+.mproc-card { width: 100%; background: #fff; border-radius: calc(4.5 * var(--u)); box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) calc(-8 * var(--u)) rgba(20,30,50,0.28); padding: calc(7 * var(--u)) calc(4 * var(--u)); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.mspin { display: block; width: calc(13 * var(--u)); margin: 0 auto calc(4 * var(--u)); }
+.mspin img { display: block; width: 100%; animation: mspin 0.9s linear infinite; }
 @keyframes mspin { to { transform: rotate(360deg); } }
-.mchecklist { list-style: none; margin: 5cqi 0 0; padding: 0; width: 100%; }
-.ck { display: flex; align-items: center; gap: 2.8cqi; font-size: 3.2cqi; line-height: 1.25; color: #9fb0c4; margin-bottom: 3.4cqi; text-align: left; }
+.mph .mproc-card .scan__sub { opacity: 1; max-height: none; margin: 0 0 calc(5 * var(--u)); }
+.mph .mchecklist { list-style: none; margin: calc(5 * var(--u)) 0 0; margin-left: 0; padding: 0; width: 100%; }
+/* `.mph .ck` (no `.ck` a secas) para ganarle a la regla global `.caso-seccion li`
+   que si no lo fuerza a 1rem (16px) y lo hace desbordar la card. */
+.mph .ck { display: flex; align-items: center; gap: calc(2.2 * var(--u)); font-size: calc(3.2 * var(--u)); line-height: 1.3; white-space: nowrap; color: #9fb0c4; margin-bottom: calc(3.6 * var(--u)); text-align: left; transition: color .3s ease; }
 .ck:last-child { margin-bottom: 0; }
-.ck__ico { position: relative; width: 4.6cqi; height: 4.6cqi; border-radius: 50%; border: 1.6px solid #cfd8e6; flex-shrink: 0; }
-.ck__done { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; }
-.ck1 { animation: cktxt1 12s linear infinite both; }
-.ck2 { animation: cktxt2 12s linear infinite both; }
-.ck3 { animation: cktxt3 12s linear infinite both; }
-.ck1 .ck__ico { animation: ckico1 12s linear infinite both; }
-.ck2 .ck__ico { animation: ckico2 12s linear infinite both; }
-.ck3 .ck__ico { animation: ckico3 12s linear infinite both; }
-.ck1 .ck__done { animation: ckd1 12s linear infinite both; }
-.ck2 .ck__done { animation: ckd2 12s linear infinite both; }
-.ck3 .ck__done { animation: ckd3 12s linear infinite both; }
-@keyframes cktxt1 { 0%,47%{color:#9fb0c4} 50%,100%{color:#1c2b4f} }
-@keyframes cktxt2 { 0%,53%{color:#9fb0c4} 56%,100%{color:#1c2b4f} }
-@keyframes cktxt3 { 0%,59%{color:#9fb0c4} 62%,100%{color:#1c2b4f} }
-@keyframes ckico1 { 0%,47%{border-color:#cfd8e6} 50%,100%{border-color:transparent} }
-@keyframes ckico2 { 0%,53%{border-color:#cfd8e6} 56%,100%{border-color:transparent} }
-@keyframes ckico3 { 0%,59%{border-color:#cfd8e6} 62%,100%{border-color:transparent} }
-@keyframes ckd1 { 0%,48%{opacity:0} 51%,100%{opacity:1} }
-@keyframes ckd2 { 0%,54%{opacity:0} 57%,100%{opacity:1} }
-@keyframes ckd3 { 0%,60%{opacity:0} 63%,100%{opacity:1} }
+.ck.is-done { color: #1c2b4f; }
+.ck__ico { position: relative; width: calc(5 * var(--u)); height: calc(5 * var(--u)); flex-shrink: 0; }
+.ck__ring, .ck__spin, .ck__done { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .25s ease; }
+.ck__ring { border-radius: 50%; border: 1.6px solid #cfd8e6; }
+.ck__spin { opacity: 0; animation: mspin 0.8s linear infinite; }
+.ck__done { opacity: 0; display: block; }
+.ck.is-active .ck__ring { opacity: 0; }
+.ck.is-active .ck__spin { opacity: 1; }
+.ck.is-done .ck__ring { opacity: 0; }
+.ck.is-done .ck__spin { opacity: 0; }
+.ck.is-done .ck__done { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
-  .mscan, .cn1, .cn2, .cn3, .rfid--pulse .rfid__img, .mspin svg,
-  .ck1, .ck2, .ck3, .ck1 .ck__ico, .ck2 .ck__ico, .ck3 .ck__ico,
-  .ck1 .ck__done, .ck2 .ck__done, .ck3 .ck__done { animation: none !important; }
-  .mscan--b, .mscan--c { opacity: 0; }
-  .mscan--a { opacity: 1; }
-  .cn1, .cn2 { opacity: 0; } .cn3 { opacity: 1; }
+  .rfid.is-scanning .rfid__img, .mspin img, .ck__spin, .scan__count.tick b { animation: none !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1155,12 +1300,15 @@
   .slot-pendiente-par { grid-template-columns: 1fr; }
 
   /* En móvil las 3 pantallas entran enteras (sin recorte) y con menos gap. */
-  .motion-box { padding: var(--espacio-5) var(--espacio-5) var(--espacio-5); }
+  .seccion-oscura { width: 100vw; margin-inline: calc(50% - 50vw); padding: var(--espacio-6) 0; }
+  .seccion-oscura > * { padding-left: var(--espacio-4); padding-right: var(--espacio-4); }
+  .motion-box { padding: var(--espacio-5) 0; width: 100vw; margin-inline: calc(50% - 50vw); }
+  .motion-box__head, .motion-reel { padding-left: var(--espacio-4); padding-right: var(--espacio-4); }
   .motion-reel { gap: var(--espacio-2); height: auto; margin-top: var(--espacio-5); }
   .motion-box__titulo { font-size: 1.8rem; }
 
-  /* El teléfono baja debajo del texto, centrado. */
-  .mano-bloque { grid-template-columns: 1fr; gap: var(--espacio-5); }
+  /* En móvil achicamos el gap del bloque editorial (ya apila por defecto). */
+  .mano-bloque { gap: var(--espacio-5); }
   .mano { margin-top: var(--espacio-2); }
 
   /* La composición se apila: web full width y los 2 mobile en fila abajo. */
