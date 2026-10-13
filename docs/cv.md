@@ -65,7 +65,7 @@ intuitivas y eficientes.
 
 Design Systems, Design Tokens, UX Research, Arquitectura de información,
 User Flows, Wireframing, Prototipado, Motion Design, Visual Design e
-iconografía, Atomic Design, Design Thinking y heurísticas, Diseño asistido
+iconografía, Atomic Design, Accesibilidad web (WCAG 2.1/2.2 AA), Design Thinking y heurísticas, Diseño asistido
 por IA, Comunicación efectiva y colaboración con desarrollo, HTML y CSS
 
 ## Herramientas
