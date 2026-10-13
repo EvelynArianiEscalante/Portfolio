@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=29">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=32">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
   <main class="caso-contenido caso-contenido--retail">
 
     <!-- ═══ 01 · HERO ═══ Mismo arranque que Transporte: título, bajada, ficha, banner. -->
-    <header class="caso-header">
+    <header class="caso-header" id="fase-intro">
       <h1>Siotyx Retail</h1>
       <p class="bajada">Saber qué hay en un depósito es fácil. Saber dónde está
       cada unidad, quién la movió y cuándo, no. Diseñé un sistema de trazabilidad
@@ -70,17 +70,18 @@
 
     <!-- 01 · BANNER de portada -->
     <figure class="caso-figura">
-      <img src="../../assets/images/casos-de-estudio/retail/portada.webp?v=2" alt="Siotyx Retail: depósito con la plataforma web en una laptop y la app mobile de operación, con lectura RFID y código de barras." loading="eager">
+      <img src="../../assets/images/casos-de-estudio/retail/portada.webp?v=3" alt="Siotyx Retail: depósito con la plataforma web en una laptop y la app mobile de operación, con lectura RFID y código de barras." loading="eager">
     </figure>
 
     <!-- Índice del caso: salta a cada fase con scroll suave. -->
     <nav class="indice" aria-label="Índice del caso">
       <div class="indice__inner">
-        <a class="indice__item" href="#fase-problema"><span class="indice__num">01</span>El problema</a>
-        <a class="indice__item" href="#fase-proceso"><span class="indice__num">02</span>El proceso</a>
-        <a class="indice__item" href="#fase-solucion"><span class="indice__num">03</span>La solución</a>
-        <a class="indice__item" href="#fase-impacto"><span class="indice__num">04</span>Impacto</a>
-        <a class="indice__item" href="#fase-motion"><span class="indice__num">05</span>Motion</a>
+        <a class="indice__item" href="#fase-intro"><span class="indice__num">01</span>Intro</a>
+        <a class="indice__item" href="#fase-problema"><span class="indice__num">02</span>El problema</a>
+        <a class="indice__item" href="#fase-proceso"><span class="indice__num">03</span>El proceso</a>
+        <a class="indice__item" href="#fase-solucion"><span class="indice__num">04</span>La solución</a>
+        <a class="indice__item" href="#fase-impacto"><span class="indice__num">05</span>Impacto</a>
+        <a class="indice__item" href="#fase-motion"><span class="indice__num">06</span>Motion</a>
       </div>
     </nav>
 
@@ -516,8 +517,48 @@
             <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
           </div>
           <div class="motion-phone">
-            <div class="motion-phone__screen" role="img" aria-label="Pantalla de motion 3">
-              <span class="motion-phone__tag">Pantalla 3</span>
+            <div class="motion-phone__screen" role="img" aria-label="Animación: escaneo de código de barras y lectura del número de serie">
+              <div class="mph mph--barcode">
+                <div class="mph__status">
+                  <span class="mph__time">12:30</span>
+                  <span class="mph__island" aria-hidden="true"></span>
+                  <span class="mph__sys" aria-hidden="true">
+                    <svg viewBox="0 0 17 12" fill="#1c2b4f"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+                    <svg viewBox="0 0 16 12" fill="none" stroke="#1c2b4f" stroke-width="1.6" stroke-linecap="round"><path d="M2 4.5a9 9 0 0 1 12 0"/><path d="M4.4 7a5.5 5.5 0 0 1 7.2 0"/><circle cx="8" cy="9.6" r="1" fill="#1c2b4f" stroke="none"/></svg>
+                    <svg viewBox="0 0 24 12" fill="none"><rect x="0.6" y="0.6" width="20" height="10.8" rx="2.6" stroke="#1c2b4f" stroke-opacity="0.5"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.4" fill="#1c2b4f"/><rect x="22" y="3.6" width="1.6" height="4.8" rx="0.8" fill="#1c2b4f" fill-opacity="0.5"/></svg>
+                  </span>
+                </div>
+                <!-- Scanner de código de barras: idle → escaneando (línea verde que
+                     barre) → leído (aparece N° de serie) → confirmar recepción.
+                     La máquina de estados vive en el script data-barcode. -->
+                <div class="bcs" data-barcode>
+                  <div class="bcs__top">
+                    <span class="bcs__back" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#1c2b4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+                    </span>
+                    <span class="bcs__conn">Conectado</span>
+                  </div>
+                  <div class="bcs__viewfinder" data-vf>
+                    <span class="bcs__corner bcs__corner--tl"></span>
+                    <span class="bcs__corner bcs__corner--tr"></span>
+                    <span class="bcs__corner bcs__corner--br"></span>
+                    <span class="bcs__corner bcs__corner--bl"></span>
+                    <svg class="bcs__bars" viewBox="0 0 48 40" fill="#1c2b4f" aria-hidden="true"><rect x="0" y="0" width="2.4" height="40"/><rect x="4.4" y="0" width="1.2" height="40"/><rect x="7.4" y="0" width="3.4" height="40"/><rect x="12.6" y="0" width="1.4" height="40"/><rect x="16" y="0" width="2.2" height="40"/><rect x="20.2" y="0" width="3.6" height="40"/><rect x="25.8" y="0" width="1.4" height="40"/><rect x="29" y="0" width="2.4" height="40"/><rect x="33.4" y="0" width="3.4" height="40"/><rect x="38.8" y="0" width="1.4" height="40"/><rect x="42" y="0" width="2.4" height="40"/><rect x="46.2" y="0" width="1.8" height="40"/></svg>
+                    <span class="bcs__line" data-line aria-hidden="true"></span>
+                  </div>
+                  <h4 class="bcs__title" data-title>Escaneá el código de barras</h4>
+                  <p class="bcs__sub" data-sub>Mantené presionado el botón para leer el código.</p>
+                  <span class="bcs__serial" data-serial hidden>
+                    <svg class="bcs__serial-ic" viewBox="0 0 24 24" fill="none" stroke="#00ae9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V5a1 1 0 0 1 1-1h2"/><path d="M17 4h2a1 1 0 0 1 1 1v2"/><path d="M20 17v2a1 1 0 0 1-1 1h-2"/><path d="M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M8 8v8M11 8v8M14 8v8M16.5 8v8"/></svg>
+                    N° de serie: <b data-code>A-209821110923441</b>
+                  </span>
+                  <button class="mbtn mbtn--primary bcs__btn" data-btn type="button">
+                    <svg class="ic-scan" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h2"/><path d="M17 4h2a1 1 0 0 1 1 1v2"/><path d="M20 17v2a1 1 0 0 1-1 1h-2"/><path d="M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M4 12h16"/></svg>
+                    <svg class="ic-done" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M5 13l4 4L19 7"/></svg>
+                    <span data-btntext>Escanear</span>
+                  </button>
+                </div>
+              </div>
             </div>
             <img class="motion-phone__frame" src="../../assets/images/casos-de-estudio/retail/iphone-16-frame.svg" alt="" aria-hidden="true">
           </div>
@@ -665,6 +706,61 @@
       }
       if (document.readyState !== 'loading') initScanners();
       else document.addEventListener('DOMContentLoaded', initScanners);
+    })();
+  </script>
+  <!-- Motion (06) · Scanner de código de barras: idle → escaneando → leído
+       (N° de serie) → confirmar recepción, en bucle. Mismo patrón que el RFID. -->
+  <script>
+    (function () {
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+      function buildBarcode(root) {
+        var q = function (s) { return root.querySelector(s); };
+        var vf = q('[data-vf]'), title = q('[data-title]'), sub = q('[data-sub]'),
+            serial = q('[data-serial]'), btn = q('[data-btn]'), btnText = q('[data-btntext]'),
+            icScan = btn.querySelector('.ic-scan'), icDone = btn.querySelector('.ic-done');
+        function reset() {
+          vf.classList.remove('is-scanning', 'is-done');
+          title.textContent = 'Escaneá el código de barras';
+          sub.removeAttribute('hidden');
+          serial.classList.remove('is-in'); serial.setAttribute('hidden', '');
+          btn.classList.remove('is-active');
+          icScan.removeAttribute('hidden'); icDone.setAttribute('hidden', ''); btnText.textContent = 'Escanear';
+        }
+        async function cycle() {
+          reset(); await sleep(1300);
+          // escaneando
+          vf.classList.add('is-scanning');
+          btn.classList.add('is-active'); btnText.textContent = 'Escaneando…';
+          await sleep(2200);
+          // leído
+          vf.classList.remove('is-scanning'); vf.classList.add('is-done');
+          btn.classList.remove('is-active');
+          title.textContent = 'Código leído';
+          sub.setAttribute('hidden', '');
+          serial.removeAttribute('hidden'); void serial.offsetWidth; serial.classList.add('is-in');
+          await sleep(1500);
+          // confirmar
+          icScan.setAttribute('hidden', ''); icDone.removeAttribute('hidden'); btnText.textContent = 'Confirmar recepción';
+          await sleep(2600);
+        }
+        async function loop() { while (true) { await cycle(); } }
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          vf.classList.add('is-done');
+          title.textContent = 'Código leído'; sub.setAttribute('hidden', '');
+          serial.removeAttribute('hidden'); serial.classList.add('is-in');
+          icScan.setAttribute('hidden', ''); icDone.removeAttribute('hidden'); btnText.textContent = 'Confirmar recepción';
+          return;
+        }
+        loop();
+      }
+      function initBarcode() {
+        document.querySelectorAll('[data-barcode]').forEach(function (s) {
+          if (s.dataset.bcOn) return; s.dataset.bcOn = '1';
+          buildBarcode(s);
+        });
+      }
+      if (document.readyState !== 'loading') initBarcode();
+      else document.addEventListener('DOMContentLoaded', initBarcode);
     })();
   </script>
   <!-- Índice del caso: resalta la fase activa a medida que se scrollea. -->

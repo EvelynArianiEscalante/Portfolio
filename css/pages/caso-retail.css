@@ -951,7 +951,7 @@
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    left: max(26px, calc((100vw - 1040px) / 2 - 198px));
+    left: clamp(22px, calc((100vw - 1040px) / 2 - 214px), 36px);
     width: 150px;
     z-index: 30;
     margin: 0;
@@ -1285,6 +1285,76 @@
 .ck.is-done .ck__done { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .rfid.is-scanning .rfid__img, .mspin img, .ck__spin, .scan__count.tick b { animation: none !important; }
+}
+
+/* ── #3 Scanner de código de barras (máquina de estados por JS) ──
+   Visor con brackets + código de barras y una línea verde que barre; al leer
+   aparece el N° de serie y el botón pasa a "Confirmar recepción". */
+.bcs {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center;
+  padding: calc(3 * var(--u)) calc(8 * var(--u)) calc(7 * var(--u));
+  text-align: center;
+}
+.bcs__top { width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: calc(4 * var(--u)); }
+.bcs__back { width: calc(9 * var(--u)); height: calc(9 * var(--u)); border-radius: 50%; background: #fff; border: 1px solid #e3e8f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.bcs__back svg { display: block; width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); }
+.bcs__conn { display: inline-flex; align-items: center; background: #1fae63; color: #fff; font-size: calc(3 * var(--u)); font-weight: 700; padding: calc(1.5 * var(--u)) calc(3.2 * var(--u)); border-radius: 999px; }
+/* Visor */
+.bcs__viewfinder {
+  position: relative; width: 100%; height: calc(46 * var(--u));
+  background: #eef1f6; border-radius: calc(4 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; margin-bottom: calc(6 * var(--u));
+}
+.bcs__corner { position: absolute; width: calc(7 * var(--u)); height: calc(7 * var(--u)); border: calc(0.8 * var(--u)) solid #1c2b4f; }
+.bcs__corner--tl { top: calc(6 * var(--u)); left: calc(9 * var(--u)); border-right: 0; border-bottom: 0; border-top-left-radius: calc(2 * var(--u)); }
+.bcs__corner--tr { top: calc(6 * var(--u)); right: calc(9 * var(--u)); border-left: 0; border-bottom: 0; border-top-right-radius: calc(2 * var(--u)); }
+.bcs__corner--br { bottom: calc(6 * var(--u)); right: calc(9 * var(--u)); border-left: 0; border-top: 0; border-bottom-right-radius: calc(2 * var(--u)); }
+.bcs__corner--bl { bottom: calc(6 * var(--u)); left: calc(9 * var(--u)); border-right: 0; border-top: 0; border-bottom-left-radius: calc(2 * var(--u)); }
+.bcs__bars { position: relative; z-index: 1; height: calc(17 * var(--u)); width: auto; display: block; }
+/* Línea verde que barre al escanear; queda fija al centro cuando lee (is-done). */
+.bcs__line {
+  position: absolute; left: calc(11 * var(--u)); right: calc(11 * var(--u)); top: 50%; height: calc(0.9 * var(--u));
+  border-radius: 999px; z-index: 2; opacity: 0;
+  background: linear-gradient(90deg, rgba(23,161,90,0) 0%, #17a15a 22%, #3ad67e 50%, #17a15a 78%, rgba(23,161,90,0) 100%);
+  box-shadow: 0 0 calc(3 * var(--u)) rgba(58,214,126,0.6);
+}
+.bcs__viewfinder.is-scanning .bcs__line { opacity: 1; animation: bc-sweep 1.5s ease-in-out infinite; }
+.bcs__viewfinder.is-done .bcs__line { opacity: 1; transform: none; background: #17a15a; }
+@keyframes bc-sweep {
+  0% { transform: translateY(calc(-15 * var(--u))); }
+  50% { transform: translateY(calc(15 * var(--u))); }
+  100% { transform: translateY(calc(-15 * var(--u))); }
+}
+/* Texto editorial del scanner */
+.mph .bcs__title {
+  margin: 0 0 calc(2 * var(--u)); font-family: "Red Hat Display", system-ui, sans-serif;
+  font-size: calc(6 * var(--u)); font-weight: 600; line-height: 1.2; color: #1c2b4f;
+}
+.mph .bcs__sub {
+  margin: 0 0 calc(3.6 * var(--u)); font-family: "Work Sans", system-ui, sans-serif;
+  font-weight: 500; font-size: calc(4 * var(--u)); line-height: 1.3; color: #6b7a99;
+  overflow: hidden; transition: opacity .3s ease, max-height .3s ease;
+}
+.mph .bcs__sub[hidden] { display: block; opacity: 0; max-height: 0; margin: 0; }
+/* Chip del N° de serie leído */
+.bcs__serial {
+  display: inline-flex; align-items: center; gap: calc(1.8 * var(--u));
+  background: #eef1f6; border-radius: 999px; padding: calc(2 * var(--u)) calc(3.4 * var(--u));
+  font-family: "Work Sans", system-ui, sans-serif; font-size: calc(3.7 * var(--u)); font-weight: 600; color: #1c2b4f;
+  white-space: nowrap; margin-bottom: calc(2 * var(--u));
+  opacity: 0; transform: translateY(calc(2 * var(--u))); transition: opacity .35s ease, transform .35s ease;
+}
+.bcs__serial.is-in { opacity: 1; transform: none; }
+.bcs__serial[hidden] { display: none; }
+.bcs__serial-ic { width: calc(4 * var(--u)); height: calc(4 * var(--u)); display: block; flex-shrink: 0; }
+.bcs__serial b { font-weight: 700; }
+/* El botón va siempre al pie; un toque de "pressed" mientras escanea. */
+.bcs__btn { margin-top: auto; transition: filter .2s ease; }
+.bcs__btn.is-active { filter: brightness(0.93); }
+@media (prefers-reduced-motion: reduce) {
+  .bcs__viewfinder.is-scanning .bcs__line { animation: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════
