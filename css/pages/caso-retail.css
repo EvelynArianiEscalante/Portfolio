@@ -1201,7 +1201,7 @@
 .mbtn {
   display: flex; align-items: center; justify-content: center; gap: calc(2.6 * var(--u));
   width: 100%; padding: calc(4 * var(--u)); border: 0; border-radius: calc(3.4 * var(--u));
-  background: #00ae9d; color: #fff; font-family: inherit; font-size: calc(4.2 * var(--u)); font-weight: 700;
+  background: #00ae9d; color: #fff; font-family: "Work Sans", system-ui, sans-serif; font-size: calc(4.4 * var(--u)); font-weight: 600;
   cursor: pointer; -webkit-appearance: none; appearance: none;
 }
 .mbtn svg { height: calc(7 * var(--u)); width: auto; display: block; }
@@ -1300,32 +1300,30 @@
 .bcs__back { width: calc(9 * var(--u)); height: calc(9 * var(--u)); border-radius: 50%; background: #fff; border: 1px solid #e3e8f0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .bcs__back svg { display: block; width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); }
 .bcs__conn { display: inline-flex; align-items: center; background: #1fae63; color: #fff; font-size: calc(3 * var(--u)); font-weight: 700; padding: calc(1.5 * var(--u)) calc(3.2 * var(--u)); border-radius: 999px; }
-/* Visor */
+/* Visor: contenedor con los colores del Figma (#F3F5F9 / borde #DDE3ED, radio 16). */
 .bcs__viewfinder {
   position: relative; width: 100%; height: calc(46 * var(--u));
-  background: #eef1f6; border-radius: calc(4 * var(--u));
+  background: #F3F5F9; border: 1px solid #DDE3ED; border-radius: calc(4.4 * var(--u));
   display: flex; align-items: center; justify-content: center;
   overflow: hidden; margin-bottom: calc(6 * var(--u));
 }
-.bcs__corner { position: absolute; width: calc(7 * var(--u)); height: calc(7 * var(--u)); border: calc(0.8 * var(--u)) solid #1c2b4f; }
-.bcs__corner--tl { top: calc(6 * var(--u)); left: calc(9 * var(--u)); border-right: 0; border-bottom: 0; border-top-left-radius: calc(2 * var(--u)); }
-.bcs__corner--tr { top: calc(6 * var(--u)); right: calc(9 * var(--u)); border-left: 0; border-bottom: 0; border-top-right-radius: calc(2 * var(--u)); }
-.bcs__corner--br { bottom: calc(6 * var(--u)); right: calc(9 * var(--u)); border-left: 0; border-top: 0; border-bottom-right-radius: calc(2 * var(--u)); }
-.bcs__corner--bl { bottom: calc(6 * var(--u)); left: calc(9 * var(--u)); border-right: 0; border-top: 0; border-bottom-left-radius: calc(2 * var(--u)); }
-.bcs__bars { position: relative; z-index: 1; height: calc(17 * var(--u)); width: auto; display: block; }
-/* Línea verde que barre al escanear; queda fija al centro cuando lee (is-done). */
+/* Corners + barcode: SVG de Evelyn, centrado. */
+.bcs__graphic { position: relative; z-index: 1; width: 73%; height: auto; display: block; }
+/* Línea verde fluor que barre al escanear; queda fija al centro cuando lee
+   (is-done). Verde #44C87A con glow, como el filtro del SVG original. */
 .bcs__line {
-  position: absolute; left: calc(11 * var(--u)); right: calc(11 * var(--u)); top: 50%; height: calc(0.9 * var(--u));
+  position: absolute; left: 15%; right: 15%; top: 50%; height: calc(0.9 * var(--u));
   border-radius: 999px; z-index: 2; opacity: 0;
-  background: linear-gradient(90deg, rgba(23,161,90,0) 0%, #17a15a 22%, #3ad67e 50%, #17a15a 78%, rgba(23,161,90,0) 100%);
-  box-shadow: 0 0 calc(3 * var(--u)) rgba(58,214,126,0.6);
+  background: #44C87A;
+  box-shadow: 0 0 calc(2 * var(--u)) rgba(68,200,122,0.95),
+              0 0 calc(5 * var(--u)) rgba(92,236,152,0.55);
 }
 .bcs__viewfinder.is-scanning .bcs__line { opacity: 1; animation: bc-sweep 1.5s ease-in-out infinite; }
-.bcs__viewfinder.is-done .bcs__line { opacity: 1; transform: none; background: #17a15a; }
+.bcs__viewfinder.is-done .bcs__line { opacity: 1; transform: none; }
 @keyframes bc-sweep {
-  0% { transform: translateY(calc(-15 * var(--u))); }
-  50% { transform: translateY(calc(15 * var(--u))); }
-  100% { transform: translateY(calc(-15 * var(--u))); }
+  0% { transform: translateY(calc(-11 * var(--u))); }
+  50% { transform: translateY(calc(11 * var(--u))); }
+  100% { transform: translateY(calc(-11 * var(--u))); }
 }
 /* Texto editorial del scanner */
 .mph .bcs__title {

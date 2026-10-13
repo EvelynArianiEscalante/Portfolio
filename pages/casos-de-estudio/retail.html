@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
-  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=32">
+  <link rel="stylesheet" href="../../css/pages/caso-retail.css?v=33">
 </head>
 <body>
 
@@ -539,11 +539,22 @@
                     <span class="bcs__conn">Conectado</span>
                   </div>
                   <div class="bcs__viewfinder" data-vf>
-                    <span class="bcs__corner bcs__corner--tl"></span>
-                    <span class="bcs__corner bcs__corner--tr"></span>
-                    <span class="bcs__corner bcs__corner--br"></span>
-                    <span class="bcs__corner bcs__corner--bl"></span>
-                    <svg class="bcs__bars" viewBox="0 0 48 40" fill="#1c2b4f" aria-hidden="true"><rect x="0" y="0" width="2.4" height="40"/><rect x="4.4" y="0" width="1.2" height="40"/><rect x="7.4" y="0" width="3.4" height="40"/><rect x="12.6" y="0" width="1.4" height="40"/><rect x="16" y="0" width="2.2" height="40"/><rect x="20.2" y="0" width="3.6" height="40"/><rect x="25.8" y="0" width="1.4" height="40"/><rect x="29" y="0" width="2.4" height="40"/><rect x="33.4" y="0" width="3.4" height="40"/><rect x="38.8" y="0" width="1.4" height="40"/><rect x="42" y="0" width="2.4" height="40"/><rect x="46.2" y="0" width="1.8" height="40"/></svg>
+                    <!-- Corners + barcode: SVG de Evelyn (barcode and line.svg), sin la
+                         línea (la verde la anima el CSS para que barra y sea fluor). -->
+                    <svg class="bcs__graphic" viewBox="0 0 273 138" fill="none" aria-hidden="true">
+                      <path d="M2.30078 49V9C2.30078 4.58172 5.8825 1 10.3008 1H50.3008" stroke-width="2" stroke-linecap="round" stroke="#1C2B4F"/>
+                      <path d="M2.30078 89V129C2.30078 133.418 5.8825 137 10.3008 137H50.3008" stroke-width="2" stroke-linecap="round" stroke="#1C2B4F"/>
+                      <path d="M270.301 49V9C270.301 4.58172 266.719 1 262.301 1H222.301" stroke-width="2" stroke-linecap="round" stroke="#1C2B4F"/>
+                      <path d="M270.301 89V129C270.301 133.418 266.719 137 262.301 137H222.301" stroke-width="2" stroke-linecap="round" stroke="#1C2B4F"/>
+                      <path d="M153.801 44H165.371C165.884 44 166.301 44.4165 166.301 44.9302V56.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M118.801 94H107.231C106.717 94 106.301 93.5835 106.301 93.0698V81.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M166.301 81.5V93.0698C166.301 93.5835 165.884 94 165.371 94H153.801" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M106.301 56.5V44.9302C106.301 44.4165 106.717 44 107.231 44H118.801" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M121.301 56.5V81.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M151.301 56.5V81.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M141.301 56.5V81.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                      <path d="M131.301 56.5V81.5" stroke-width="2.7907" stroke-linecap="round" stroke-linejoin="round" stroke="#1C2B4F"/>
+                    </svg>
                     <span class="bcs__line" data-line aria-hidden="true"></span>
                   </div>
                   <h4 class="bcs__title" data-title>Escaneá el código de barras</h4>

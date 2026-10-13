@@ -413,6 +413,12 @@
   .proyecto__imagen {
     height: 220px;
   }
+
+  /* Retail: en mobile la ventana recortaba los mockups; usamos un tile pensado
+     para mobile (dispositivos protagonistas). */
+  #ventana-retail .proyecto__imagen {
+    background-image: url('../../assets/images/casos-de-estudio/retail/tile-mobile.webp');
+  }
 }
 
 

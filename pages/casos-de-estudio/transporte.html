@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
   <!-- Capa editorial propia de ESTE caso: columnas alternadas, clímax,
        grilla despareja. Ver comentarios en el propio archivo. -->
-  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=78">
+  <link rel="stylesheet" href="../../css/pages/caso-transporte.css?v=80">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
   <main class="caso-contenido caso-contenido--transporte">
 
     <!-- ═══ 01 · HERO ═══ -->
-    <header class="caso-header">
+    <header class="caso-header" id="fase-intro">
       <h1>Siotyx Transporte</h1>
       <p class="bajada">Diseñé el ecosistema digital (web y mobile) que
       transforma lecturas RFID y datos de sensores en tiempo real en
@@ -74,12 +74,25 @@
       <img src="../../assets/images/casos-de-estudio/transporte/portada.webp" alt="Portada de Siotyx Transporte: flota de camiones, el dashboard web y la app mobile en un lector rugerizado." loading="eager">
     </figure>
 
-    <!-- ═══ 02 · FICHA ═══ Integrada al header. -->
+    <!-- Índice del caso: salta a cada fase con scroll suave. -->
+    <nav class="indice" aria-label="Índice del caso">
+      <div class="indice__inner">
+        <a class="indice__item" href="#fase-intro"><span class="indice__num">01</span>Intro</a>
+        <a class="indice__item" href="#fase-problema"><span class="indice__num">02</span>El problema</a>
+        <a class="indice__item" href="#fase-proceso"><span class="indice__num">03</span>El proceso</a>
+        <a class="indice__item" href="#fase-solucion"><span class="indice__num">04</span>La solución</a>
+        <a class="indice__item" href="#fase-impacto"><span class="indice__num">05</span>Impacto</a>
+        <a class="indice__item" href="#fase-principios"><span class="indice__num">06</span>Principios</a>
+      </div>
+    </nav>
 
-    <!-- ═══ 03 · EL PROBLEMA ═══ (sin cambios de contenido: el doc no lo cubre) -->
+    <!-- ═══ 02 · EL PROBLEMA ═══ -->
+    <div class="fase" id="fase-problema" data-reveal>
+      <span class="fase__kicker">02</span>
+      <h2 class="fase__titulo">El problema</h2>
+    </div>
     <section class="caso-seccion">
       <div class="bloque__texto">
-        <h2>El problema</h2>
         <p>En una flota, los neumáticos cambian de lugar todo el tiempo: se
         montan, se rotan, pasan por el taller. Nada de eso quedaba en un
         sistema: la información vivía dispersa y dependía del criterio de
@@ -89,6 +102,12 @@
         y en qué estado?</strong></p>
       </div>
     </section>
+
+    <!-- ═══ 03 · EL PROCESO ═══ -->
+    <div class="fase" id="fase-proceso" data-reveal>
+      <span class="fase__kicker">03</span>
+      <h2 class="fase__titulo">El proceso</h2>
+    </div>
 
     <!-- ═══ 04 · LOS DOS USUARIOS — 2 cards (Mobile / Web) ═══ -->
     <section class="caso-seccion caso-seccion--cards">
@@ -153,6 +172,12 @@
         <img class="ph ph--movil" src="../../assets/images/casos-de-estudio/transporte/resultado-altas.webp" alt="App mobile de Siotyx: resultado de altas, 12 registradas, 10 exitosas, 2 con error." loading="lazy">
       </div>
     </section>
+
+    <!-- ═══ 04 · LA SOLUCIÓN ═══ -->
+    <div class="fase" id="fase-solucion" data-reveal>
+      <span class="fase__kicker">04</span>
+      <h2 class="fase__titulo">La solución</h2>
+    </div>
 
     <!-- ═══ 07 · EL NEUMÁTICO — invertido: imagen izquierda ═══ -->
     <section class="caso-seccion bloque--partido bloque--invertido bloque--sonda">
@@ -286,8 +311,9 @@
       </div>
     </section>
 
-    <!-- ═══ 09 · EL VIAJE — CLÍMAX: callout de seguridad + imagen grande + pie ═══ -->
-    <section class="caso-seccion bloque--climax">
+    <!-- ═══ 09 · EL VIAJE — CLÍMAX: bloque oscuro full-bleed (showpiece) ═══ -->
+    <section class="caso-seccion bloque--climax seccion-oscura">
+      <div class="climax-bloque">
       <div class="bloque__texto">
         <h2>Programación de viajes</h2>
         <p>Al programar un viaje prevalece el estado más grave:
@@ -299,6 +325,7 @@
         <img src="../../assets/images/casos-de-estudio/transporte/validacion-critica.webp" alt="Pantalla web de Siotyx: validación de neumáticos en estado crítico al programar un viaje: lista de neumáticos marcados, mensaje de bloqueo y las dos salidas." loading="lazy">
         <figcaption>El bloqueo no es un callejón: ofrece dos salidas (elegir otro vehículo o enviarlo al taller). El umbral debería ser configurable por flota.</figcaption>
       </figure>
+      </div>
     </section>
 
     <!-- ═══ 10 · EL TALLER — patrón unificado + serie de pares ═══ -->
@@ -362,8 +389,14 @@
       </div>
     </section>
 
-    <!-- ═══ 11 · LA AUDITORÍA — control de estados (web) ═══ -->
-    <section class="caso-seccion">
+    <!-- ═══ 05 · IMPACTO ═══ -->
+    <div class="fase" id="fase-impacto" data-reveal>
+      <span class="fase__kicker">05</span>
+      <h2 class="fase__titulo">Impacto</h2>
+    </div>
+
+    <!-- ═══ 11 · LA AUDITORÍA — control de estados (web) · bloque oscuro full-bleed -->
+    <section class="caso-seccion seccion-oscura">
       <div class="audit-intro">
         <div class="audit-intro__meta">
           <span class="taller-kicker">Auditoría</span>
@@ -416,9 +449,14 @@
       </div>
     </section>
 
+    <!-- ═══ 06 · PRINCIPIOS ═══ -->
+    <div class="fase" id="fase-principios" data-reveal>
+      <span class="fase__kicker">06</span>
+      <h2 class="fase__titulo">Principios de sistema</h2>
+    </div>
+
     <!-- ═══ 13 · PRINCIPIOS DE SISTEMA — decisiones chicas con recorte real ═══ -->
     <section class="caso-seccion">
-      <h2>Principios de sistema</h2>
       <div class="detalles">
         <article class="detalle">
           <h3>Evidencia condicional</h3>
@@ -555,6 +593,47 @@
       window.addEventListener('resize', function () { layout(false); });
       layout(false);
     });
+  </script>
+  <!-- Índice del caso: resalta la fase activa al scrollear y cambia a texto
+       claro cuando un bloque oscuro queda detrás del rail. -->
+  <script>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.indice__item'));
+      if (!items.length) return;
+      var map = {}, targets = [];
+      items.forEach(function (a) {
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (el) { map[el.id] = a; targets.push(el); }
+      });
+      var root = document.querySelector('.ventana-max__scroll') || null;
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            items.forEach(function (a) { a.classList.remove('is-active'); });
+            if (map[e.target.id]) map[e.target.id].classList.add('is-active');
+          }
+        });
+      }, { root: root, rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+      targets.forEach(function (t) { io.observe(t); });
+
+      // Modo claro sobre bloques oscuros: cuando un bloque oscuro cruza el
+      // centro vertical (donde flota el rail), el texto del índice pasa a claro.
+      var indice = document.querySelector('.indice');
+      var darks = Array.prototype.slice.call(document.querySelectorAll('.seccion-oscura'));
+      if (indice && darks.length) {
+        var onDark = [];
+        var ioDark = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            var i = onDark.indexOf(e.target);
+            if (e.isIntersecting) { if (i === -1) onDark.push(e.target); }
+            else if (i !== -1) { onDark.splice(i, 1); }
+          });
+          indice.classList.toggle('is-on-dark', onDark.length > 0);
+        }, { root: root, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+        darks.forEach(function (d) { ioDark.observe(d); });
+      }
+    })();
   </script>
 </body>
 </html>

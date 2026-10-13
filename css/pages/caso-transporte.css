@@ -1113,3 +1113,63 @@ img.ph--web { aspect-ratio: auto; height: auto; object-fit: contain; }
    y el par de pantallas pegado debajo de su texto. */
 .portal-modos-intro { margin-top: 5rem; }
 .portal-modos { margin-top: var(--espacio-5); }
+
+/* ═══════════════════════════════════════════════════════════
+   JERARQUÍA DEL CASO — índice flotante + divisores de fase +
+   bloques oscuros full-bleed (mismo sistema que retail).
+   Esta sección carga después del resto del archivo, así los
+   empates de especificidad se resuelven a favor de estas reglas.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Divisores de fase: overline de acento + título grande que agrupa. */
+.fase { margin: calc(var(--espacio-6) * 2.4) 0 var(--espacio-4); scroll-margin-top: var(--espacio-6); }
+.fase__kicker { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-carpeta-oscuro); margin-bottom: var(--espacio-2); }
+.fase .fase__titulo { font-size: clamp(1.6rem, 3.2vw, 2rem); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; color: var(--color-tinta); margin: 0; }
+.fase + .caso-seccion { margin-top: var(--espacio-5); }
+
+/* Índice flotante (idéntico a retail). */
+.indice { display: none; }
+@media (min-width: 1380px) {
+  .indice { display: block; position: fixed; top: 50%; transform: translateY(-50%); left: clamp(22px, calc((100vw - 1040px) / 2 - 214px), 36px); width: 150px; z-index: 30; margin: 0; --idx-muted: var(--color-tinta-suave); --idx-strong: var(--color-tinta); --idx-num: var(--color-carpeta-oscuro); }
+  .indice.is-on-dark { --idx-muted: rgba(255, 255, 255, 0.5); --idx-strong: #fff; --idx-num: #9db6e6; }
+  .indice__inner { display: flex; flex-direction: column; gap: 7px; padding: 0; margin: 0; max-width: none; }
+  .indice__item { display: flex; align-items: baseline; gap: 9px; padding: 2px 0; font-size: 0.92rem; font-weight: 500; color: var(--idx-muted); text-decoration: none; transition: color 0.18s ease; }
+  .indice__item:hover { color: var(--idx-strong); }
+  .indice__num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: var(--idx-num); flex-shrink: 0; transition: color 0.18s ease; }
+  .indice__item.is-active { color: var(--idx-strong); font-weight: 700; }
+}
+
+/* Bloque oscuro full-bleed (showpieces: Programación de viajes, Auditoría).
+   Fondo gradiente navy a todo el ancho de la ventana; el contenido se recentra
+   a la columna del caso y el texto pasa a blanco. */
+.seccion-oscura {
+  background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
+  width: calc(100vw - 36px); margin-inline: calc(50% - 50vw + 18px);
+  padding: calc(var(--espacio-6) * 1.5) 0; border-radius: 0; overflow: hidden;
+}
+.seccion-oscura > * { max-width: 1040px; margin-left: auto; margin-right: auto; padding-left: var(--espacio-5); padding-right: var(--espacio-5); box-sizing: border-box; }
+.seccion-oscura h2 { color: #fff; }
+.seccion-oscura h3 { color: #fff; }
+.seccion-oscura p { color: rgba(255, 255, 255, 0.82); }
+.seccion-oscura .bloque__texto p { color: rgba(255, 255, 255, 0.82); }
+.seccion-oscura strong { color: #fff; }
+.seccion-oscura figcaption { color: rgba(255, 255, 255, 0.6); }
+.seccion-oscura .taller-kicker { color: #9db6e6; }
+.seccion-oscura ul.bullets li { color: rgba(255, 255, 255, 0.82); }
+
+/* Full-width también en móvil (sin el inset de 18px de la ventana). */
+@media (max-width: 700px) {
+  .seccion-oscura { width: 100vw; margin-inline: calc(50% - 50vw); padding: var(--espacio-6) 0; }
+  .seccion-oscura > * { padding-left: var(--espacio-4); padding-right: var(--espacio-4); }
+}
+
+/* Programación de viajes: dos columnas (texto a la izquierda, pantalla a la
+   derecha, a la misma altura), como el resto de los bloques partidos. */
+.climax-bloque { display: grid; grid-template-columns: 2fr 3fr; gap: var(--espacio-6); align-items: start; }
+.climax-bloque .bloque__texto { max-width: none; margin: 0; text-align: left; }
+.climax-bloque .climax-figura { margin: 0; }
+.climax-bloque .climax-figura img { max-width: 100%; margin: 0; }
+.climax-bloque .climax-figura figcaption { max-width: none; margin-top: var(--espacio-3); }
+@media (max-width: 700px) {
+  .climax-bloque { grid-template-columns: 1fr; gap: var(--espacio-5); }
+}
