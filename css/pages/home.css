@@ -414,6 +414,12 @@
     height: 220px;
   }
 
+  /* Retail: en mobile el ícono del finder usa un tile dedicado (dispositivos
+     protagonistas). En desktop se mantiene cover-intro (regla base). */
+  .fthumb--retail {
+    background-image: url('../../assets/images/casos-de-estudio/retail/tile-mobile-sq.webp');
+  }
+
 }
 
 
