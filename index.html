@@ -16,6 +16,9 @@
   <meta property="og:description" content="Diseño productos para sistemas B2B complejos conectados a hardware, integrando arquitectura, design system y desarrollo en una misma mirada. Un proceso potenciado por IA para simplificar complejidad.">
   <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/">
   <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
   <meta property="og:image:alt" content="Escritorio del portfolio de Evelyn Ariani Escalante">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -24,9 +27,9 @@
        El SVG es el principal (nítido a cualquier tamaño y pesa nada);
        el PNG de 32 es el plan B para Safari, que no acepta SVG acá;
        el de 180 es el que usa iOS al "Agregar a pantalla de inicio". -->
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
-  <link rel="apple-touch-icon" href="assets/icons/favicon-180.png">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" href="assets/icons/favicon-180.png?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,11 +50,11 @@
   <link rel="stylesheet" href="css/base/variables.css?v=55">
   <link rel="stylesheet" href="css/base/tipografia.css?v=55">
   <link rel="stylesheet" href="css/layout/escritorio.css?v=55">
-  <link rel="stylesheet" href="css/layout/menubar.css?v=55">
+  <link rel="stylesheet" href="css/layout/menubar.css?v=56">
   <link rel="stylesheet" href="css/components/icono-escritorio.css?v=55">
   <link rel="stylesheet" href="css/components/ventana.css?v=55">
   <link rel="stylesheet" href="css/components/dock.css?v=55">
-  <link rel="stylesheet" href="css/pages/home.css?v=59">
+  <link rel="stylesheet" href="css/pages/home.css?v=60">
 </head>
 
 <body>
@@ -66,11 +69,8 @@
            servidor y hereda contexto de CSS si algún día hace falta. El nombre
            sigue siendo texto vivo: seleccionable, indexable, accesible.
            aria-hidden en el SVG: es decorativo, el nombre ya dice quién es. -->
-      <a class="menubar__nombre" href="index.html" aria-label="Ir al inicio">
-        <svg class="menubar__logo" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8899 15.7312L18.8574 8.52076L11.8899 1.31307L4.50245 1.45408L8.0655 5.1203L6.28398 6.8829L0.459763 1.10156V16.1542L6.28398 10.1409L8.0655 12.1002L4.50245 15.7312H11.8899ZM11.8899 2.15912L18.1121 8.52076L11.7656 15.1385L5.41384 8.52076L11.8899 2.15912ZM5.77007 2.01812L8.47662 4.66202L11.0804 2.01812H5.77007ZM5.77007 15.1385L8.47662 12.4527L11.0804 15.1385H5.77007ZM1.04219 2.44114L5.90711 7.41168L4.70801 8.52076L5.90711 9.77357L0.939404 14.7441L1.04219 2.44114Z" fill="#B0CAF3" stroke="#B0CAF3" stroke-width="0.919883"/>
-        </svg>
-        Evelyn Ariani
+      <a class="menubar__nombre" href="index.html" aria-label="Evelyn Ariani — Inicio">
+        <img class="menubar__logo" src="assets/icons/favicon.svg?v=2" alt="Evelyn Ariani">
       </a>
 
       <!-- Menú final acordado (2026-08-15): Proyectos · Experiencia ·

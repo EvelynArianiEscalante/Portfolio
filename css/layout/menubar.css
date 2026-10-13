@@ -44,9 +44,10 @@
 }
 
 .menubar__logo {
-  width: 17px;
-  height: auto;
-  flex-shrink: 0; /* el pez no se comprime aunque falte espacio */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* el logo no se comprime aunque falte espacio */
+  display: block;
 }
 
 /* Bloque derecho: reloj + hamburguesa.
