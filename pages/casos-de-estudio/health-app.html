@@ -105,12 +105,6 @@
       <p><strong>Objetivo:</strong> convertir la app en una experiencia confiable y
       eficiente sin rehacer el producto desde cero, trabajando sobre su arquitectura
       y sus patrones para recuperar la confianza del usuario.</p>
-      <!-- ⚠️ EVELYN: el disparador fue cualitativo (reclamos a atención al cliente).
-           Si tenés algún número de baseline (volumen de reclamos, CSAT inicial,
-           tickets/mes), cae perfecto acá como "métrica inicial". Sin dato real,
-           lo dejamos cualitativo. -->
-      <p class="caso-nota">El disparador del proyecto no fue un dashboard sino el
-      volumen de reclamos de usabilidad que recibía el equipo de atención al cliente.</p>
     </section>
 
     <section class="caso-seccion">
@@ -161,62 +155,205 @@
     </div>
 
     <section class="caso-seccion">
-      <p>Antes de proponer pantallas necesitaba entender cómo los socios organizan
-      mentalmente sus gestiones. Combiné la evaluación heurística con investigación
-      generativa.</p>
+      <p>Antes de diseñar, analicé la estructura previa: había mucha información dispersa, secciones importantes escondidas y títulos que no se relacionaban con lo que el socio buscaba. Necesitaba entender su modelo mental real para reordenar la plataforma.</p>
 
-      <h3>Card sorting presencial</h3>
-      <p>Hice un card sorting presencial, en dos fases. Con tarjetas físicas y
-      post-its, los participantes agruparon y nombraron las gestiones con sus
-      propias palabras. El formato presencial dejó ver no solo el agrupamiento
-      final sino las dudas y los "esto no sé dónde lo pondría", que una herramienta
-      remota se pierde.</p>
+      <h3>Investigación de arquitectura &amp; modelo mental</h3>
+      <p>Diseñé una dinámica presencial en dos fases: un cuestionario inicial de
+      perfil y uso, seguido de un agrupamiento participativo con post-its para
+      reestructurar las gestiones.</p>
 
+      <!-- Carrusel de fotos del cardsorting: espacio reservado, se completa luego. -->
+      <div class="caso-carrusel" aria-hidden="true">Carrusel de fotos</div>
+
+      <!-- Recurso: tablero + presentación del cardsorting (FigJam).
+           ⚠️ EVELYN: reemplazá los href por los deep-links de cada sección cuando los tengas.
+           "Ir a presentación" va a "#" hasta que me pases el link. -->
+      <div class="caso-recurso">
+        <div class="caso-recurso__texto">
+          <h4>Cardsorting: proceso y material de trabajo</h4>
+          <p>Entregables del research: agrupamiento en FigJam y presentación a participantes.</p>
+        </div>
+        <div class="caso-recurso__acciones">
+          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+            Tablero de análisis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+          <a class="caso-boton caso-boton--ghost" href="#">
+            Ir a presentación
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <h3>Algunos insights</h3>
       <div class="caso-insights">
         <article class="caso-insight">
-          <span class="caso-insight__num">Insight 01</span>
-          <h4>Socio, no paciente</h4>
-          <p>Dentro de la app, los usuarios no se piensan como "pacientes": se
-          piensan como socios de una obra social. El vocabulario clínico generaba
-          distancia; el lenguaje administrativo —mi credencial, mis autorizaciones,
-          mi cartilla— conectaba con su modelo mental.</p>
+          <span class="caso-insight__num">01</span>
+          <h4>Doble vía de acceso</h4>
+          <p><strong>Hallazgos:</strong> Turnos, Recetas y Cartilla se dividieron
+          50/50 entre "Gestiones" y "Mi Salud".</p>
+          <p><strong>Solución:</strong> Habilitamos accesos dobles para responder a
+          ambos modelos mentales.</p>
         </article>
         <article class="caso-insight">
-          <span class="caso-insight__num">Insight 02</span>
-          <h4>Buscar por especialidad + zona</h4>
-          <p>A la hora de buscar atención, el eje mental no es la sede sino la
-          necesidad: qué especialidad y en qué zona. Empezar la búsqueda por sede
-          obligaba a invertir ese orden y rompía la lógica del usuario.</p>
+          <span class="caso-insight__num">02</span>
+          <h4>Credencial en la Home</h4>
+          <p><strong>Hallazgos:</strong> Casi la ordenaba en "Mi Perfil"; esperaban
+          verla asociada a "Mi Plan" o directa al entrar.</p>
+          <p><strong>Solución:</strong> La priorizamos en la home a primera vista
+          para un acceso inmediato en urgencias.</p>
+        </article>
+        <article class="caso-insight">
+          <span class="caso-insight__num">03</span>
+          <h4>Accesos no cubiertos</h4>
+          <p><strong>Hallazgos:</strong> El research reveló la necesidad de
+          jerarquizar Beneficios y Guardia/Emergencias.</p>
+          <p><strong>Solución:</strong> Incorporamos accesos rápidos en la Tab Bar
+          y sección de ayuda.</p>
         </article>
       </div>
 
       <h3>Benchmark</h3>
-      <p>Complementé el research con un benchmark de apps de salud y de obras
-      sociales para mapear patrones ya conocidos por el usuario —buscadores con
-      filtros, cartilla sobre mapa, estados de turno— y no reinventar convenciones
-      que ya funcionan.</p>
-      <!-- ⚠️ EVELYN: si querés sumar los competidores concretos que miraste o un
-           par de referencias visuales, van acá. Lo dejo general para no inventar. -->
-
-      <!-- Callout: link externo a tu tablero real de FigJam. -->
-      <div class="caso-callout-figjam">
-        <div class="caso-callout-figjam__texto">
-          <span class="caso-callout-figjam__kicker">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M12 8v8m0 0a3 3 0 1 0 3-3"/></svg>
-            Tablero real
-          </span>
-          <h3>El card sorting completo, en FigJam</h3>
-          <p>Tarjetas, agrupamientos de las dos fases y las conclusiones del modelo
-          mental, públicos para revisar el proceso de punta a punta.</p>
+      <p>Mapeé soluciones de la competencia para tomar como base los patrones más
+      comunes de la industria (como los buscadores filtrados o la cartilla en mapa)
+      y acelerar la curva de aprendizaje del usuario.</p>
+      <div class="caso-recurso">
+        <div class="caso-recurso__texto">
+          <h4>Análisis comparativo de la competencia</h4>
+          <p>Mapeo visual de flujos y pantallas analizadas en FigJam.</p>
         </div>
-        <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
-          Ver tablero en FigJam
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
+        <div class="caso-recurso__acciones">
+          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+            Ver tablero
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
       </div>
-      <!-- PENDIENTE: si querés, acá va una foto del card sorting presencial
-           (post-its). No pongo recuadro gris de relleno para no desentonar con
-           las imágenes reales. Cuando esté, se agrega una <figure> igual a las otras. -->
+
+      <h3>User personas</h3>
+      <p>Definí dos arquetipos clave basados en el research para validar la
+      navegación: el socio que necesita autonomía y certezas, y el socio que busca
+      resolución en pocos clics.</p>
+
+      <!-- ⚠️ EVELYN: cuando tengas las fotos, reemplazá el texto "Foto" dentro de
+           .persona__foto por <img src="..." alt="Nombre"> y listo. -->
+      <div class="caso-personas">
+        <article class="persona">
+          <div class="persona__top">
+            <div class="persona__foto">Foto</div>
+            <div class="persona__intro">
+              <h4 class="persona__nombre">Roberto Rossi</h4>
+              <p class="persona__quote">"Necesito hacer mis trámites sin depender de
+              mis hijos ni perder toda la mañana en el teléfono."</p>
+            </div>
+          </div>
+          <div class="persona__row persona__row--info">
+            <div class="persona__box">
+              <span class="persona__label">Info</span>
+              <ul class="persona__info">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>65 años</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Saavedra, (Bs. As.)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Jubilado (ex docente)</li>
+              </ul>
+            </div>
+            <div class="persona__box">
+              <span class="persona__label">Bio</span>
+              <p>Roberto depende de sus controles médicos y usa la app para coordinar
+              turnos y recetas. Su mayor desafío es gestionar de manera simple sus
+              necesidades.</p>
+            </div>
+          </div>
+          <div class="persona__row persona__row--duo">
+            <div class="persona__box">
+              <span class="persona__label">Frustraciones</span>
+              <ul class="persona__lista">
+                <li>Flujos complejos donde no sabe si el turno quedó confirmado o no.</li>
+                <li>Callejones sin salida cuando busca turno en una sede específica.</li>
+              </ul>
+            </div>
+            <div class="persona__box">
+              <span class="persona__label">Motivaciones</span>
+              <ul class="persona__lista">
+                <li>Mantener su autonomía digital para gestionar su salud.</li>
+                <li>Tener la credencial digital siempre a mano sin perderse en menús.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="persona__box persona__box--full">
+            <span class="persona__label">Objetivos</span>
+            <ul class="persona__lista">
+              <li>Sacar un turno médico rápido en una zona cercana a su domicilio.</li>
+              <li>Obtener sus recetas y autorizaciones sin ir presencialmente a una sede.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="persona">
+          <div class="persona__top">
+            <div class="persona__foto">Foto</div>
+            <div class="persona__intro">
+              <h4 class="persona__nombre">Valeria Gómez</h4>
+              <p class="persona__quote">"No tengo tiempo para adivinar cómo funciona
+              la app; necesito resolver el turno en 2 minutos."</p>
+            </div>
+          </div>
+          <div class="persona__row persona__row--info">
+            <div class="persona__box">
+              <span class="persona__label">Info</span>
+              <ul class="persona__info">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>41 años</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Almagro (Bs. As.)</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Community Manager</li>
+              </ul>
+            </div>
+            <div class="persona__box">
+              <span class="persona__label">Bio</span>
+              <p>Gestiona el plan de salud familiar entre reuniones o en la calle.
+              Requiere filtros inmediatos y cero pasos de más.</p>
+            </div>
+          </div>
+          <div class="persona__row persona__row--duo">
+            <div class="persona__box">
+              <span class="persona__label">Frustraciones</span>
+              <ul class="persona__lista">
+                <li>Información desorganizada por la estructura administrativa de la prepaga.</li>
+                <li>Falta de visibilidad sobre el estado de autorizaciones de estudios.</li>
+              </ul>
+            </div>
+            <div class="persona__box">
+              <span class="persona__label">Motivaciones</span>
+              <ul class="persona__lista">
+                <li>Completar reservas de turnos y trámites desde el celular sin interrumpir su jornada laboral.</li>
+                <li>Saber de antemano qué médicos tienen agenda disponible.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="persona__box persona__box--full">
+            <span class="persona__label">Objetivos</span>
+            <ul class="persona__lista">
+              <li>Encontrar turnos disponibles inmediatos por especialidad y zona.</li>
+              <li>Autorizar trámites y consultar la cartilla geolocalizada de forma rápida.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <h3>Nueva arquitectura de Información</h3>
+      <p>Reestructuré la navegación a partir de la evidencia del research, pasando de
+      un esquema administrativo a una arquitectura orientada a las tareas principales
+      del socio.</p>
+      <div class="caso-recurso">
+        <div class="caso-recurso__texto">
+          <h4>Navegación: antes vs. después</h4>
+          <p>Comparativa del árbol de navegación original y la nueva propuesta simplificada.</p>
+        </div>
+        <div class="caso-recurso__acciones">
+          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+            Ver tablero
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- ═══════════════ 03 · ARQUITECTURA & TASK FLOW ═══════════════ -->
@@ -226,17 +363,15 @@
     </div>
 
     <section class="caso-seccion">
-      <p>Con los insights del research, redefiní la arquitectura de información y el
-      flujo de reserva de turnos. Reorganicé las gestiones según el modelo mental del
-      socio —por tipo de gestión, no por área interna de la obra social.</p>
+      <p>Reorganicé la estructura del producto enfocándola en la intención de uso
+      del socio. Esto permite que el usuario encuentre y complete sus gestiones sin
+      necesidad de entender la lógica administrativa de la prepaga.</p>
 
-      <h3>El cambio de lógica en la reserva</h3>
-      <p>El cambio de mayor impacto fue en el flujo de turnos. El flujo original
-      arrancaba por <strong>sede</strong> y recién después mostraba disponibilidad:
-      si la sede elegida no tenía turnos para esa especialidad, el usuario quedaba
-      en un callejón sin salida y tenía que volver atrás a adivinar. Invertí la
-      lógica a un <strong>filtro directo</strong> —especialidad y zona primero— que
-      devuelve solo resultados con disponibilidad real.</p>
+      <h3>Cambio de lógica en la reserva</h3>
+      <p>El flujo original obligaba a elegir la sede primero, llevando a callejones
+      sin salida cuando no había agenda disponible. Invertí la lógica a un filtro
+      directo por especialidad y zona, mostrando únicamente resultados con
+      disponibilidad real de turnos.</p>
 
       <div class="caso-flow">
         <div class="caso-flow__col caso-flow__col--antes">

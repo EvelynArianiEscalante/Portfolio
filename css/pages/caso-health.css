@@ -181,7 +181,7 @@
 /* ── Insights del modelo mental (research) ── */
 .caso-insights {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--espacio-4);
   margin-top: var(--espacio-5);
 }
@@ -370,6 +370,120 @@
 }
 .caso-chip svg { width: 14px; height: 14px; color: var(--color-carpeta-oscuro); flex-shrink: 0; }
 
+/* ── Placeholder de carrusel (se completa con fotos después) ── */
+.caso-carrusel {
+  margin-top: var(--espacio-5);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie-lateral);
+  color: var(--color-tinta-suave);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Recurso / CTA a un tablero o archivo externo ── */
+.caso-recurso {
+  margin-top: var(--espacio-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  background: var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-4) var(--espacio-5);
+}
+.caso-recurso__texto h4 { margin: 0 0 4px; font-size: 1rem; color: var(--color-tinta); font-weight: 700; }
+.caso-recurso__texto p { margin: 0; font-size: 0.92rem; color: var(--color-tinta-cuerpo); }
+.caso-recurso__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-3); }
+
+/* Botón secundario (contorno) */
+.caso-boton--ghost {
+  background: transparent;
+  color: var(--color-carpeta-oscuro);
+  border: 1px solid var(--color-carpeta-claro);
+}
+.caso-boton--ghost:hover { background: rgba(90, 124, 174, 0.08); color: var(--color-carpeta-oscuro); }
+
+/* ── User personas ── */
+.caso-personas { display: flex; flex-direction: column; gap: var(--espacio-5); margin-top: var(--espacio-5); }
+.persona {
+  background: var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+}
+.persona__top { display: flex; align-items: center; gap: var(--espacio-5); }
+.persona__foto {
+  width: 132px;
+  height: 132px;
+  flex-shrink: 0;
+  border-radius: var(--radio-md);
+  background: #dfe3ea;
+  border: 1px solid var(--color-borde-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-tinta-suave);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+}
+.persona__foto img { width: 100%; height: 100%; object-fit: cover; }
+.persona__nombre { margin: 0 0 6px; font-size: 1.15rem; color: var(--color-tinta); font-weight: 700; }
+.persona__quote { margin: 0; font-style: italic; color: var(--color-tinta-cuerpo); line-height: 1.5; }
+.persona__row { display: grid; gap: var(--espacio-4); }
+.persona__row--info { grid-template-columns: 1fr 1.8fr; }
+.persona__row--duo { grid-template-columns: 1fr 1fr; }
+.persona__box {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-sm);
+  padding: var(--espacio-4);
+}
+.persona__label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-3);
+}
+.persona__box p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--color-tinta-cuerpo); }
+.persona ul.persona__info { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.persona ul.persona__info li { display: flex; align-items: center; gap: 9px; font-size: 0.9rem; line-height: 1.4; color: var(--color-tinta-cuerpo); }
+.persona ul.persona__info svg { width: 15px; height: 15px; color: var(--color-carpeta-oscuro); flex-shrink: 0; }
+.persona ul.persona__lista { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.persona ul.persona__lista li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-tinta-cuerpo);
+}
+.persona ul.persona__lista li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-carpeta);
+}
+
 /* ═══════════════════════════════════════════════════════════
    MÓVIL — va al final (corrige lo de arriba)
    ═══════════════════════════════════════════════════════════ */
@@ -387,4 +501,11 @@
 
   .caso-callout-figjam { flex-direction: column; align-items: flex-start; }
   .caso-boton { width: 100%; justify-content: center; }
+
+  .caso-recurso { flex-direction: column; align-items: flex-start; }
+  .caso-recurso__acciones { width: 100%; flex-direction: column; }
+
+  .persona__top { flex-direction: column; align-items: flex-start; }
+  .persona__row--info,
+  .persona__row--duo { grid-template-columns: 1fr; }
 }
