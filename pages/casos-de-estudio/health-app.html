@@ -61,17 +61,7 @@
       </dl>
     </header>
 
-    <!-- ═══ IMÁGENES ═══
-         Notas sobre cómo están puestas, por si tocás alguna:
-         · <figure> + <figcaption> es la etiqueta correcta para "imagen con
-           epígrafe": el navegador y los lectores de pantalla entienden que el
-           texto describe a la imagen, no que es un párrafo suelto.
-         · width y height NO fijan el tamaño en pantalla (eso lo hace el CSS
-           con width:100%). Le dicen al navegador la PROPORCIÓN, así reserva el
-           lugar antes de que la imagen cargue y el texto no salta.
-         · loading="lazy" = no la descargues hasta que el usuario se acerque.
-           La portada NO lo lleva: esa se ve apenas entrás y tiene que estar ya.
-         · El alt describe la imagen para quien no la ve. No es opcional. -->
+    <!-- ═══ IMÁGENES ═══ -->
 
     <figure class="caso-figura">
       <img src="../../assets/images/casos-de-estudio/health-app/1-cover.webp"
@@ -111,8 +101,7 @@
       <h3>Auditoría heurística</h3>
       <p>Diagnostiqué el problema de raíz antes de proponer soluciones. Recorrí los
       flujos principales para mapear los puntos de mayor fricción y agruparlos por tipo.</p>
-      <!-- ⚠️ EVELYN: esta lista la saqué de las anotaciones de tu propia
-           imagen 3-findings. Revisala y corregí lo que haga falta. -->
+
       <ul class="puntos puntos--problema">
         <li class="punto">
           <span class="punto__num">01</span>
@@ -162,23 +151,19 @@
       perfil y uso, seguido de un agrupamiento participativo con post-its para
       reestructurar las gestiones.</p>
 
-      <!-- Carrusel de fotos del cardsorting: espacio reservado, se completa luego. -->
-      <div class="caso-carrusel" aria-hidden="true">Carrusel de fotos</div>
 
-      <!-- Recurso: tablero + presentación del cardsorting (FigJam).
-           ⚠️ EVELYN: reemplazá los href por los deep-links de cada sección cuando los tengas.
-           "Ir a presentación" va a "#" hasta que me pases el link. -->
+
       <div class="caso-recurso">
         <div class="caso-recurso__texto">
           <h4>Cardsorting: proceso y material de trabajo</h4>
           <p>Entregables del research: agrupamiento en FigJam y presentación a participantes.</p>
         </div>
         <div class="caso-recurso__acciones">
-          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+          <a class="caso-boton" href="https://www.figma.com/board/CJmG1eIsvPJaHvAwRs3r66/Research---Cober?node-id=3-34&t=vIJDBfLgKeaBgpAC-1" target="_blank" rel="noopener">
             Tablero de análisis
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
-          <a class="caso-boton caso-boton--ghost" href="#">
+          <a class="caso-boton caso-boton--ghost" href="https://www.figma.com/deck/cIeRJwQ2TPl7RBx3WnLy3Q/Presentacio%CC%81n---Cardsorting-presencial?node-id=1-489&viewport=-134%2C-93%2C0.62&t=AHYWoBCBpoQCduVE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener">
             Ir a presentación
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
@@ -223,7 +208,7 @@
           <p>Mapeo visual de flujos y pantallas analizadas en FigJam.</p>
         </div>
         <div class="caso-recurso__acciones">
-          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+          <a class="caso-boton" href="https://www.figma.com/board/CJmG1eIsvPJaHvAwRs3r66/Research---Cober?node-id=5-3474&t=vIJDBfLgKeaBgpAC-1" target="_blank" rel="noopener">
             Ver tablero
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
@@ -235,12 +220,11 @@
       navegación: el socio que necesita autonomía y certezas, y el socio que busca
       resolución en pocos clics.</p>
 
-      <!-- ⚠️ EVELYN: cuando tengas las fotos, reemplazá el texto "Foto" dentro de
-           .persona__foto por <img src="..." alt="Nombre"> y listo. -->
+
       <div class="caso-personas">
         <article class="persona">
           <div class="persona__top">
-            <div class="persona__foto">Foto</div>
+            <div class="persona__foto"><img src="../../assets/images/casos-de-estudio/health-app/persona-roberto.webp" alt="Retrato de Roberto Rossi" width="400" height="400" loading="lazy"></div>
             <div class="persona__intro">
               <h4 class="persona__nombre">Roberto Rossi</h4>
               <p class="persona__quote">"Necesito hacer mis trámites sin depender de
@@ -290,7 +274,7 @@
 
         <article class="persona">
           <div class="persona__top">
-            <div class="persona__foto">Foto</div>
+            <div class="persona__foto"><img src="../../assets/images/casos-de-estudio/health-app/persona-valeria.webp" alt="Retrato de Valeria Gómez" width="400" height="400" loading="lazy"></div>
             <div class="persona__intro">
               <h4 class="persona__nombre">Valeria Gómez</h4>
               <p class="persona__quote">"No tengo tiempo para adivinar cómo funciona
@@ -348,7 +332,7 @@
           <p>Comparativa del árbol de navegación original y la nueva propuesta simplificada.</p>
         </div>
         <div class="caso-recurso__acciones">
-          <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+          <a class="caso-boton" href="https://www.figma.com/board/CJmG1eIsvPJaHvAwRs3r66/Research---Cober?node-id=6-3475&t=vIJDBfLgKeaBgpAC-1" target="_blank" rel="noopener">
             Ver tablero
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
@@ -373,34 +357,7 @@
       directo por especialidad y zona, mostrando únicamente resultados con
       disponibilidad real de turnos.</p>
 
-      <div class="caso-flow">
-        <div class="caso-flow__col caso-flow__col--antes">
-          <span class="caso-flow__tag">Antes · callejón sin salida</span>
-          <div class="caso-flow__pasos">
-            <span class="caso-flow__chip">Elegir sede</span>
-            <span class="caso-flow__arrow">→</span>
-            <span class="caso-flow__chip">Ver disponibilidad</span>
-            <span class="caso-flow__arrow">→</span>
-            <span class="caso-flow__chip">Sin turnos</span>
-            <span class="caso-flow__arrow">↩</span>
-            <span class="caso-flow__chip">Volver a empezar</span>
-          </div>
-          <p class="caso-flow__nota">El usuario decidía la sede sin saber si había
-          turnos: la decisión equivocada venía primero.</p>
-        </div>
-        <div class="caso-flow__col caso-flow__col--despues">
-          <span class="caso-flow__tag">Después · filtro directo</span>
-          <div class="caso-flow__pasos">
-            <span class="caso-flow__chip">Especialidad + zona</span>
-            <span class="caso-flow__arrow">→</span>
-            <span class="caso-flow__chip">Resultados con turnos reales</span>
-            <span class="caso-flow__arrow">→</span>
-            <span class="caso-flow__chip">Reservar</span>
-          </div>
-          <p class="caso-flow__nota">La disponibilidad guía la búsqueda: no hay
-          callejones sin salida.</p>
-        </div>
-      </div>
+
 
       <h3>Antes y después del flujo</h3>
       <figure class="caso-figura">
@@ -460,17 +417,6 @@
         <figcaption>Cartilla: del listado anterior a un buscador con filtros y resultados sobre mapa.</figcaption>
       </figure>
 
-      <h3>Accesibilidad</h3>
-      <p>Trabajé el sistema contra criterios WCAG 2.1/2.2 AA: contraste suficiente en
-      texto y estados, foco visible en navegación por teclado, estados que no dependen
-      solo del color (ícono y texto además del color) y targets táctiles cómodos.</p>
-      <div class="caso-chips">
-        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Contraste AA</span>
-        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Foco visible por teclado</span>
-        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Estado ≠ solo color</span>
-        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Targets táctiles</span>
-        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Jerarquía semántica</span>
-      </div>
     </section>
 
     <!-- ═══════════════ 05 · VALIDACIONES & TESTING ═══════════════ -->
@@ -480,9 +426,7 @@
     </div>
 
     <section class="caso-seccion">
-      <p>Para validar el rediseño del flujo de turnos preparé un guerrilla testing:
-      rápido, de bajo costo y en contexto. Dejo acá el protocolo que diseñé y las
-      hipótesis de mejora que guiaron la última iteración de las tarjetas.</p>
+      <p>Para validar las tarjetas de turno y no quedarme solo con mis hipótesis de diseño, ejecuté un <strong>testing guerrilla</strong> con tres personas de mi entorno directo. Una validación táctica, rápida y a costo cero que me permitió detectar puntos que podrían ser confusos</p>
 
       <div class="caso-protocolo">
         <div class="caso-protocolo__head">
@@ -492,20 +436,18 @@
         <div class="caso-protocolo__grid">
           <dl class="caso-protocolo__item">
             <dt>Participantes</dt>
-            <dd>4 usuarios con perfil de afiliado real.</dd>
-            <dd>Reclutamiento rápido en contexto (sala de espera / entorno cotidiano).</dd>
+            <dd>3 personas de mi entorno directo (validación exprés e informal).</dd>
+            <dd>Aprovechamiento de recursos inmediatos para detectar fricciones obvias en la pantalla.</dd>
           </dl>
           <dl class="caso-protocolo__item">
             <dt>Tareas</dt>
             <dd>Sacar un turno por especialidad y zona.</dd>
             <dd>Encontrar un prestador en la cartilla.</dd>
-            <dd>Interpretar el estado de un turno.</dd>
           </dl>
           <dl class="caso-protocolo__item">
             <dt>Qué mido</dt>
             <dd>Éxito de tarea y dudas o relecturas.</dd>
-            <dd>Puntos de abandono en el flujo.</dd>
-            <dd>Comprensión del estado de cada tarjeta.</dd>
+            <dd>Puntos de confusión en el flujo.</dd>
           </dl>
         </div>
       </div>
@@ -515,30 +457,21 @@
       tarjetas en dos puntos concretos:</p>
       <div class="caso-iteraciones">
         <article class="caso-iter caso-iter--antes">
-          <span class="caso-iter__tag">Antes</span>
+          <span class="caso-iter__tag">HALLAZGOS</span>
           <div class="caso-iter__cuerpo">
-            <p>La tarjeta mostraba fecha y estado, pero no decía explícitamente qué
-            tenía que hacer el usuario ni en qué paso del trámite estaba.</p>
-            <p>El estado dependía casi solo del color, sin refuerzo de texto.</p>
+        <p><strong>Ajuste de etiquetas y contexto:</strong> Se agregó uso de pills para estados como "Pendiente" y "Virtual", evitando depender de texto plano o colores poco legibles.</p>
+        <p><strong>Atajos e interacciones:</strong> Se identificó la necesidad de sumar acciones secundarias inmediatas, como la función de copiar el N° de orden directamente desde la tarjeta.</p>
           </div>
         </article>
         <article class="caso-iter caso-iter--despues">
-          <span class="caso-iter__tag">Después · iteración</span>
+          <span class="caso-iter__tag"> LO QUE SE VALIDO</span>
           <div class="caso-iter__cuerpo">
-            <p><strong>Microcopy explícito</strong> en cada estado ("Confirmá tu
-            asistencia", "Falta tu autorización"), con la acción principal a la vista.</p>
-            <p><strong>Barra de avance progresivo</strong> que ubica al usuario dentro
-            del trámite: solicitado → confirmado → autorizado.</p>
+          <p><strong>Modelo mental conocido (Estilo Google Maps):</strong> La búsqueda en cartilla con interacción de bottom sheet permitió explorar opciones y ver el detalle de cada prestador sin perder de vista el mapa.</p>
+          <p><strong>Escanabilidad:</strong> El bloque de fechar y hora facilitó reconocer la información crítica del turno de un vistazo.</p>
+          <p><strong>Claridad en las acciones:</strong> La inclusión de botones explícitos ("Detalles" y "Agendar turno") eliminó la duda sobre cómo avanzar</p>
           </div>
         </article>
       </div>
-      <!-- ⚠️ EVELYN: si sacás una captura del antes/después de la card, va una
-           <figure> acá abajo. Y cuando corras el guerrilla, cambiás "hipótesis"
-           por los hallazgos reales en el párrafo de abajo. -->
-      <p class="caso-nota">El protocolo queda listo para ejecutar; la iteración
-      responde a los hallazgos heurísticos y a las hipótesis de validación, no a
-      resultados de campo.</p>
-    </section>
 
     <!-- ═══════════════ 06 · IMPACTO & APRENDIZAJES ═══════════════ -->
     <div class="fase" id="fase-impacto" data-reveal>
@@ -546,31 +479,34 @@
       <h2 class="fase__titulo">Impacto &amp; Aprendizajes</h2>
     </div>
 
-    <section class="caso-seccion seccion-oscura">
-      <div>
-        <h2>La señal más clara no vino de un dashboard, sino del equipo de atención al cliente.</h2>
-        <p>Después del rediseño dejaron de llegar los reclamos de usabilidad que
-        habían motivado el proyecto. Los problemas por los que la gente escribía ya
-        no estaban ahí.</p>
-              <h3>Content Design en salud digital</h3>
-      <p>En salud, las palabras cargan ansiedad. Un "error" sin salida o un estado
-      ambiguo no es solo fricción: es un usuario que no sabe si va a poder atenderse.
-      Gran parte del rediseño fue de content design —nombrar las gestiones como el
-      socio las piensa y convertir cada estado en una instrucción accionable.</p>
-  
+ <section class="caso-seccion seccion-oscura">
+      <div class="caso-impacto-bloque">
+        <!-- 1. TÍTULO DESTACADO -->
+        <h3 class="caso-impacto__destacado" style="color: #ffffff; font-size: 1.5rem; font-weight: 700; line-height: 1.3; margin-bottom: 1.25rem;">
+          La señal más clara no vino de un dashboard, sino del equipo de atención al cliente.
+        </h3>
+        
+        <!-- 2. PÁRRAFO PRINCIPAL -->
+        <p class="caso-impacto__texto" style="font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.25rem;">
+          Después del rediseño dejaron de llegar los reclamos de usabilidad que habían motivado el proyecto. Los problemas por los que la gente escribía disminuyeron notablemente, sobre todo por el <strong>inicio de sesión</strong>.
+        </p>
+
+        <!-- 3. BLOQUE CONTENT DESIGN -->
+        <p class="caso-impacto__texto" style="font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;">
+          <strong style="color: #ffffff; font-weight: 600;">Content Design en salud digital:</strong> En salud, las palabras cargan ansiedad. Un "error" sin salida o un estado ambiguo no es solo fricción: es un usuario que no sabe si va a poder atenderse. Gran parte del rediseño fue de content design —nombrar las gestiones como el socio las piensa y convertir cada estado en una instrucción accionable.
+        </p>
+
+        <!-- 4. TARJETA BLANCA CON TEXTO NEGRO -->
+        <div class="caso-aprendizaje" style="background-color: #ffffff; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 1.5rem;">
+          <h4 style="color: #1a1a1a; font-size: 1.15rem; font-weight: 700; margin-top: 0; margin-bottom: 0.5rem;">Mi aprendizaje</h4>
+          <p style="color: #333333; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Descubrí que la investigación con usuarios es lo que permite ir más allá de lo estético. Observar en persona cómo la gente organiza la información me permitió comprender sus frustraciones y diseñar una estructura que se sintiera natural.
+          </p>
+        </div>
       </div>
     </section>
 
 
-    </section>
-
-    <div class="caso-aprendizaje">
-      <h2>Mi aprendizaje</h2>
-      <p>Descubrí que la investigación con usuarios es lo que permite ir más allá de
-      lo estético. Observar en persona cómo la gente organiza la información me
-      permitió comprender sus frustraciones y diseñar una estructura que se sintiera
-      natural.</p>
-    </div>
 
     <nav class="caso-siguiente">
       <a href="index.html">← Todos los proyectos</a>
