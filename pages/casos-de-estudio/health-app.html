@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Health App Redesign · Evelyn Ariani</title>
-  <meta name="description" content="Caso de estudio: rediseño de app de salud basado en research y card sorting. De una experiencia inconsistente a una app confiable.">
+  <meta name="description" content="Cober Touch: rediseño de la app de una obra social. De una experiencia inconsistente a una app confiable, con research (card sorting presencial), rediseño de arquitectura y un plan de validación.">
 
   <!-- Open Graph: preview del link al compartir este caso suelto. URLs absolutas. -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Health App Redesign · Caso de estudio de Evelyn Ariani">
-  <meta property="og:description" content="Rediseño de una app de salud basado en research y card sorting: de una experiencia inconsistente a una app confiable.">
+  <meta property="og:title" content="Health App Redesign · Caso de Evelyn Ariani">
+  <meta property="og:description" content="Cober Touch: rediseño de una app de salud basado en research y card sorting, de una experiencia inconsistente a una app confiable.">
   <meta property="og:url" content="https://evelynarianiescalante.github.io/Portfolio/pages/casos-de-estudio/health-app.html">
   <meta property="og:image" content="https://evelynarianiescalante.github.io/Portfolio/assets/images/og-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,8 @@
   <link rel="stylesheet" href="../../css/base/reset.css?v=18">
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
-  <link rel="stylesheet" href="../../css/pages/caso.css?v=19">
+  <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
+  <link rel="stylesheet" href="../../css/pages/caso-health.css?v=1">
 </head>
 <body>
 
@@ -40,19 +41,23 @@
       <a class="semaforo semaforo--cerrar" href="../../index.html" title="Volver al escritorio" aria-label="Cerrar"></a>
       <span class="semaforo semaforo--min"></span>
       <a class="semaforo semaforo--max" href="index.html" title="Todos los proyectos"></a>
-      <span class="ventana-max__titulo">Health App Redesign · Caso de estudio</span>
+      <span class="ventana-max__titulo">Health App Redesign</span>
     </div>
     <div class="ventana-max__scroll">
   <main class="caso-contenido">
 
-    <header class="caso-header">
+    <!-- ═══ HERO ═══ título, bajada, ficha, banner. -->
+    <header class="caso-header" id="fase-intro">
       <h1>Health App Redesign</h1>
-      <p class="bajada">La salud digital: del caos a la búsqueda de una experiencia intuitiva.</p>
+      <p class="bajada">Cober Touch: la app de una obra social que estaba en estado
+      crítico. Diagnostiqué de raíz, investigué cómo los socios organizan sus
+      gestiones y rediseñé arquitectura, flujos y sistema de UI para convertirla
+      en una experiencia confiable.</p>
       <dl class="caso-ficha">
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Sector</dt><dd>Salud · Medicina privada</dd></div>
         <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="13" height="6.5" rx="3.25"/><rect x="8" y="13" width="13" height="6.5" rx="3.25"/></svg>Timeline</dt><dd>Abr 2025 – Feb 2026</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr</dd></div>
-        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX Research · UI · Prototype · UX Writing</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0"/></svg>Rol</dt><dd>UX/UI Designer Ssr · Sole designer</dd></div>
+        <div class="dato"><dt><svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</dt><dd>UX Research · Arquitectura · UI · Prototipo · UX Writing</dd></div>
       </dl>
     </header>
 
@@ -74,29 +79,46 @@
            width="1752" height="984">
     </figure>
 
+    <!-- Índice del caso: salta a cada fase con scroll suave. -->
+    <nav class="indice" aria-label="Índice del caso">
+      <div class="indice__inner">
+        <a class="indice__item" href="#fase-contexto"><span class="indice__num">01</span>Contexto</a>
+        <a class="indice__item" href="#fase-research"><span class="indice__num">02</span>Research</a>
+        <a class="indice__item" href="#fase-arquitectura"><span class="indice__num">03</span>Arquitectura</a>
+        <a class="indice__item" href="#fase-sistema"><span class="indice__num">04</span>Sistema &amp; UI</a>
+        <a class="indice__item" href="#fase-testing"><span class="indice__num">05</span>Testing</a>
+        <a class="indice__item" href="#fase-impacto"><span class="indice__num">06</span>Impacto</a>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ 01 · CONTEXTO & DESAFÍO ═══════════════ -->
+    <div class="fase" id="fase-contexto" data-reveal>
+      <span class="fase__kicker">01</span>
+      <h2 class="fase__titulo">Contexto &amp; Desafío</h2>
+    </div>
+
     <section class="caso-seccion">
-      <h2>⛔ Problema</h2>
-      <p>La aplicación se encontraba en un estado crítico: inconsistente, poco
-      intuitiva y frustrante para sus usuarios. No solo carecía de coherencia,
-      sino que fallaba en sus flujos más importantes.</p>
-      <p><strong>Objetivo:</strong> convertir la app en una experiencia de
-      usuario confiable y efectiva.</p>
+      <p>La app de la obra social estaba en un estado crítico: inconsistente, poco
+      intuitiva y frustrante para sus socios. Fallaba en los flujos más sensibles
+      —sacar un turno, encontrar un prestador, consultar una autorización— justo
+      donde el usuario menos margen de error tolera.</p>
+      <p><strong>Objetivo:</strong> convertir la app en una experiencia confiable y
+      eficiente sin rehacer el producto desde cero, trabajando sobre su arquitectura
+      y sus patrones para recuperar la confianza del usuario.</p>
+      <!-- ⚠️ EVELYN: el disparador fue cualitativo (reclamos a atención al cliente).
+           Si tenés algún número de baseline (volumen de reclamos, CSAT inicial,
+           tickets/mes), cae perfecto acá como "métrica inicial". Sin dato real,
+           lo dejamos cualitativo. -->
+      <p class="caso-nota">El disparador del proyecto no fue un dashboard sino el
+      volumen de reclamos de usabilidad que recibía el equipo de atención al cliente.</p>
     </section>
 
     <section class="caso-seccion">
-      <h2>🛠️ Proceso</h2>
-      <p>Diagnostiqué el problema de raíz antes de proponer soluciones. Cada
-      decisión fue tomada a partir de investigación y de insights de encuestas
-      a usuarios.</p>
-      <p>Comencé con una revisión y navegación por diferentes flujos para
-      definir los puntos de mayor fricción.</p>
-      <h3>Hallazgos clave</h3>
+      <h3>Auditoría heurística</h3>
+      <p>Diagnostiqué el problema de raíz antes de proponer soluciones. Recorrí los
+      flujos principales para mapear los puntos de mayor fricción y agruparlos por tipo.</p>
       <!-- ⚠️ EVELYN: esta lista la saqué de las anotaciones de tu propia
            imagen 3-findings. Revisala y corregí lo que haga falta. -->
-      <!-- Grilla de hallazgos: cada uno es una card numerada.
-           Sigue siendo un <ul> por debajo — semánticamente ES una lista, y
-           así los lectores de pantalla la anuncian como "lista de 5 ítems".
-           Lo que cambia es cómo se dibuja, no lo que significa. -->
       <ul class="puntos puntos--problema">
         <li class="punto">
           <span class="punto__num">01</span>
@@ -130,43 +152,122 @@
              width="1830" height="1526" loading="lazy">
         <figcaption>Auditoría heurística: cada hallazgo mapeado sobre la pantalla donde ocurre.</figcaption>
       </figure>
-      <h3>Construyendo una arquitectura de información sólida: Card Sorting</h3>
-      <p>Con un card sorting realizado en 2 fases, validé los modelos mentales
-      de los usuarios y descubrí cómo distinguen claramente entre los distintos
-      tipos de gestiones.</p>
-      <!-- PENDIENTE: acá va la imagen del card sorting. No pongo un recuadro
-           gris de relleno porque al lado de 7 imágenes reales canta mucho.
-           Cuando esté, se agrega una <figure> igual a las de arriba. -->
     </section>
 
-    <section class="caso-seccion">
-      <h2>💡 Solución</h2>
-      <p>Con los insights de la investigación, el rediseño se enfocó en la
-      claridad, la coherencia y una estética minimalista, alineada con los
-      patrones de diseño modernos.</p>
-      <h3>Elementos centrales del rediseño</h3>
-      <!-- Mismo componente que los hallazgos, con la variante verde.
-           Rojo = lo que estaba mal · Verde = lo que se resolvió. -->
-      <ul class="puntos puntos--solucion">
-        <li class="punto">
-          <span class="punto__num">01</span>
-          <p><strong>Nueva arquitectura de información</strong></p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">02</span>
-          <p><strong>Flujos de usuario optimizados</strong></p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">03</span>
-          <p><strong>Credencial digital simplificada</strong></p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">04</span>
-          <p><strong>Prototipos interactivos</strong></p>
-        </li>
-      </ul>
+    <!-- ═══════════════ 02 · UX RESEARCH ═══════════════ -->
+    <div class="fase" id="fase-research" data-reveal>
+      <span class="fase__kicker">02</span>
+      <h2 class="fase__titulo">UX Research</h2>
+    </div>
 
-      <h3>Antes y después</h3>
+    <section class="caso-seccion">
+      <p>Antes de proponer pantallas necesitaba entender cómo los socios organizan
+      mentalmente sus gestiones. Combiné la evaluación heurística con investigación
+      generativa.</p>
+
+      <h3>Card sorting presencial</h3>
+      <p>Hice un card sorting presencial, en dos fases. Con tarjetas físicas y
+      post-its, los participantes agruparon y nombraron las gestiones con sus
+      propias palabras. El formato presencial dejó ver no solo el agrupamiento
+      final sino las dudas y los "esto no sé dónde lo pondría", que una herramienta
+      remota se pierde.</p>
+
+      <div class="caso-insights">
+        <article class="caso-insight">
+          <span class="caso-insight__num">Insight 01</span>
+          <h4>Socio, no paciente</h4>
+          <p>Dentro de la app, los usuarios no se piensan como "pacientes": se
+          piensan como socios de una obra social. El vocabulario clínico generaba
+          distancia; el lenguaje administrativo —mi credencial, mis autorizaciones,
+          mi cartilla— conectaba con su modelo mental.</p>
+        </article>
+        <article class="caso-insight">
+          <span class="caso-insight__num">Insight 02</span>
+          <h4>Buscar por especialidad + zona</h4>
+          <p>A la hora de buscar atención, el eje mental no es la sede sino la
+          necesidad: qué especialidad y en qué zona. Empezar la búsqueda por sede
+          obligaba a invertir ese orden y rompía la lógica del usuario.</p>
+        </article>
+      </div>
+
+      <h3>Benchmark</h3>
+      <p>Complementé el research con un benchmark de apps de salud y de obras
+      sociales para mapear patrones ya conocidos por el usuario —buscadores con
+      filtros, cartilla sobre mapa, estados de turno— y no reinventar convenciones
+      que ya funcionan.</p>
+      <!-- ⚠️ EVELYN: si querés sumar los competidores concretos que miraste o un
+           par de referencias visuales, van acá. Lo dejo general para no inventar. -->
+
+      <!-- Callout: link externo a tu tablero real de FigJam. -->
+      <div class="caso-callout-figjam">
+        <div class="caso-callout-figjam__texto">
+          <span class="caso-callout-figjam__kicker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M12 8v8m0 0a3 3 0 1 0 3-3"/></svg>
+            Tablero real
+          </span>
+          <h3>El card sorting completo, en FigJam</h3>
+          <p>Tarjetas, agrupamientos de las dos fases y las conclusiones del modelo
+          mental, públicos para revisar el proceso de punta a punta.</p>
+        </div>
+        <a class="caso-boton" href="https://www.figma.com/board/XFBbQeDywVkmNEzyA9oTK0/Cardsorting?node-id=0-1" target="_blank" rel="noopener">
+          Ver tablero en FigJam
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <!-- PENDIENTE: si querés, acá va una foto del card sorting presencial
+           (post-its). No pongo recuadro gris de relleno para no desentonar con
+           las imágenes reales. Cuando esté, se agrega una <figure> igual a las otras. -->
+    </section>
+
+    <!-- ═══════════════ 03 · ARQUITECTURA & TASK FLOW ═══════════════ -->
+    <div class="fase" id="fase-arquitectura" data-reveal>
+      <span class="fase__kicker">03</span>
+      <h2 class="fase__titulo">Arquitectura &amp; Task Flow</h2>
+    </div>
+
+    <section class="caso-seccion">
+      <p>Con los insights del research, redefiní la arquitectura de información y el
+      flujo de reserva de turnos. Reorganicé las gestiones según el modelo mental del
+      socio —por tipo de gestión, no por área interna de la obra social.</p>
+
+      <h3>El cambio de lógica en la reserva</h3>
+      <p>El cambio de mayor impacto fue en el flujo de turnos. El flujo original
+      arrancaba por <strong>sede</strong> y recién después mostraba disponibilidad:
+      si la sede elegida no tenía turnos para esa especialidad, el usuario quedaba
+      en un callejón sin salida y tenía que volver atrás a adivinar. Invertí la
+      lógica a un <strong>filtro directo</strong> —especialidad y zona primero— que
+      devuelve solo resultados con disponibilidad real.</p>
+
+      <div class="caso-flow">
+        <div class="caso-flow__col caso-flow__col--antes">
+          <span class="caso-flow__tag">Antes · callejón sin salida</span>
+          <div class="caso-flow__pasos">
+            <span class="caso-flow__chip">Elegir sede</span>
+            <span class="caso-flow__arrow">→</span>
+            <span class="caso-flow__chip">Ver disponibilidad</span>
+            <span class="caso-flow__arrow">→</span>
+            <span class="caso-flow__chip">Sin turnos</span>
+            <span class="caso-flow__arrow">↩</span>
+            <span class="caso-flow__chip">Volver a empezar</span>
+          </div>
+          <p class="caso-flow__nota">El usuario decidía la sede sin saber si había
+          turnos: la decisión equivocada venía primero.</p>
+        </div>
+        <div class="caso-flow__col caso-flow__col--despues">
+          <span class="caso-flow__tag">Después · filtro directo</span>
+          <div class="caso-flow__pasos">
+            <span class="caso-flow__chip">Especialidad + zona</span>
+            <span class="caso-flow__arrow">→</span>
+            <span class="caso-flow__chip">Resultados con turnos reales</span>
+            <span class="caso-flow__arrow">→</span>
+            <span class="caso-flow__chip">Reservar</span>
+          </div>
+          <p class="caso-flow__nota">La disponibilidad guía la búsqueda: no hay
+          callejones sin salida.</p>
+        </div>
+      </div>
+
+      <h3>Antes y después del flujo</h3>
       <figure class="caso-figura">
         <img src="../../assets/images/casos-de-estudio/health-app/4-before.webp"
              alt="Pantallas del portal de turnos antes del rediseño: cuatro vistas con jerarquía visual plana"
@@ -179,12 +280,24 @@
              width="916" height="909" loading="lazy">
         <figcaption>Después: el mismo flujo, con jerarquía y estados claros en cada paso.</figcaption>
       </figure>
+    </section>
+
+    <!-- ═══════════════ 04 · SISTEMA DE DISEÑO & UI ═══════════════ -->
+    <div class="fase" id="fase-sistema" data-reveal>
+      <span class="fase__kicker">04</span>
+      <h2 class="fase__titulo">Sistema de Diseño &amp; UI</h2>
+    </div>
+
+    <section class="caso-seccion">
+      <p>El rediseño se apoyó en claridad, consistencia y una estética sobria
+      alineada con patrones modernos. Trabajé el sistema en tres piezas y un criterio
+      transversal de accesibilidad.</p>
 
       <h3>Cards de turnos y autorizaciones</h3>
       <p>Las tarjetas no tenían jerarquía ni consistencia, y omitían información
-      crítica: fechas, estado y acción a seguir. Definí un sistema de color
-      unificado para los estados y dejé los datos esenciales siempre visibles,
-      con la acción principal a mano en cada tarjeta.</p>
+      crítica: fechas, estado y acción a seguir. Definí un sistema de color unificado
+      para los estados y dejé los datos esenciales siempre visibles, con la acción
+      principal a mano en cada tarjeta.</p>
       <figure class="caso-figura">
         <img src="../../assets/images/casos-de-estudio/health-app/6-redesign-cards.webp"
              alt="Rediseño de las tarjetas de turnos y autorizaciones, con el antes y el después de cada estado"
@@ -192,10 +305,10 @@
       </figure>
 
       <h3>Sistema de feedback</h3>
-      <p>Los mensajes de error eran vagos e intrusivos y no decían qué hacer
-      después, así que el usuario abandonaba el flujo o llamaba a soporte.
-      Diseñé un sistema de feedback conciso y con guía de acción explícita,
-      apoyado en tokens de color por estado: error, éxito, alerta e informativo.</p>
+      <p>Los mensajes de error eran vagos e intrusivos y no decían qué hacer después,
+      así que el usuario abandonaba el flujo o llamaba a soporte. Diseñé un sistema de
+      feedback conciso y con guía de acción explícita, apoyado en tokens de color por
+      estado: error, éxito, alerta e informativo.</p>
       <figure class="caso-figura">
         <img src="../../assets/images/casos-de-estudio/health-app/7-feedback-system.webp"
              alt="Sistema de mensajes de feedback: pantallas de inicio de sesión mostrando los estados de error y de alerta"
@@ -203,29 +316,125 @@
       </figure>
 
       <h3>Cartilla médica</h3>
+      <p>Trasladé el Insight 02 al producto: la cartilla pasó de un listado plano a
+      un buscador con filtros por especialidad y zona, con resultados sobre mapa.</p>
       <figure class="caso-figura">
         <img src="../../assets/images/casos-de-estudio/health-app/8-redesign-directory.webp"
              alt="Rediseño de la cartilla médica: comparación entre el buscador de prestadores anterior y el nuevo"
              width="1832" height="1165" loading="lazy">
         <figcaption>Cartilla: del listado anterior a un buscador con filtros y resultados sobre mapa.</figcaption>
       </figure>
+
+      <h3>Accesibilidad</h3>
+      <p>Trabajé el sistema contra criterios WCAG 2.1/2.2 AA: contraste suficiente en
+      texto y estados, foco visible en navegación por teclado, estados que no dependen
+      solo del color (ícono y texto además del color) y targets táctiles cómodos.</p>
+      <div class="caso-chips">
+        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Contraste AA</span>
+        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Foco visible por teclado</span>
+        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Estado ≠ solo color</span>
+        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Targets táctiles</span>
+        <span class="caso-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Jerarquía semántica</span>
+      </div>
     </section>
 
+    <!-- ═══════════════ 05 · VALIDACIONES & TESTING ═══════════════ -->
+    <div class="fase" id="fase-testing" data-reveal>
+      <span class="fase__kicker">05</span>
+      <h2 class="fase__titulo">Validaciones &amp; Testing</h2>
+    </div>
+
     <section class="caso-seccion">
-      <h2>💥 Impacto</h2>
-      <p>La señal más clara no vino de un dashboard sino del equipo de atención
-      al cliente: después del rediseño dejaron de recibir los reclamos de
-      usabilidad que habían motivado el proyecto. Los problemas por los que la
-      gente escribía ya no estaban ahí.</p>
-      <p class="caso-nota">Es feedback cualitativo, no una métrica de producto, pero viene de quienes atendían esos reclamos todos los días.</p>
+      <p>Para validar el rediseño del flujo de turnos preparé un guerrilla testing:
+      rápido, de bajo costo y en contexto. Dejo acá el protocolo que diseñé y las
+      hipótesis de mejora que guiaron la última iteración de las tarjetas.</p>
+
+      <div class="caso-protocolo">
+        <div class="caso-protocolo__head">
+          <h4>Protocolo de guerrilla testing</h4>
+          <span class="caso-tag">Plan de validación</span>
+        </div>
+        <div class="caso-protocolo__grid">
+          <dl class="caso-protocolo__item">
+            <dt>Participantes</dt>
+            <dd>4 usuarios con perfil de afiliado real.</dd>
+            <dd>Reclutamiento rápido en contexto (sala de espera / entorno cotidiano).</dd>
+          </dl>
+          <dl class="caso-protocolo__item">
+            <dt>Tareas</dt>
+            <dd>Sacar un turno por especialidad y zona.</dd>
+            <dd>Encontrar un prestador en la cartilla.</dd>
+            <dd>Interpretar el estado de un turno.</dd>
+          </dl>
+          <dl class="caso-protocolo__item">
+            <dt>Qué mido</dt>
+            <dd>Éxito de tarea y dudas o relecturas.</dd>
+            <dd>Puntos de abandono en el flujo.</dd>
+            <dd>Comprensión del estado de cada tarjeta.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <h3>Iteración de las tarjetas de turno</h3>
+      <p>En base a la auditoría heurística y a las hipótesis del test, iteré las
+      tarjetas en dos puntos concretos:</p>
+      <div class="caso-iteraciones">
+        <article class="caso-iter caso-iter--antes">
+          <span class="caso-iter__tag">Antes</span>
+          <div class="caso-iter__cuerpo">
+            <p>La tarjeta mostraba fecha y estado, pero no decía explícitamente qué
+            tenía que hacer el usuario ni en qué paso del trámite estaba.</p>
+            <p>El estado dependía casi solo del color, sin refuerzo de texto.</p>
+          </div>
+        </article>
+        <article class="caso-iter caso-iter--despues">
+          <span class="caso-iter__tag">Después · iteración</span>
+          <div class="caso-iter__cuerpo">
+            <p><strong>Microcopy explícito</strong> en cada estado ("Confirmá tu
+            asistencia", "Falta tu autorización"), con la acción principal a la vista.</p>
+            <p><strong>Barra de avance progresivo</strong> que ubica al usuario dentro
+            del trámite: solicitado → confirmado → autorizado.</p>
+          </div>
+        </article>
+      </div>
+      <!-- ⚠️ EVELYN: si sacás una captura del antes/después de la card, va una
+           <figure> acá abajo. Y cuando corras el guerrilla, cambiás "hipótesis"
+           por los hallazgos reales en el párrafo de abajo. -->
+      <p class="caso-nota">El protocolo queda listo para ejecutar; la iteración
+      responde a los hallazgos heurísticos y a las hipótesis de validación, no a
+      resultados de campo.</p>
+    </section>
+
+    <!-- ═══════════════ 06 · IMPACTO & APRENDIZAJES ═══════════════ -->
+    <div class="fase" id="fase-impacto" data-reveal>
+      <span class="fase__kicker">06</span>
+      <h2 class="fase__titulo">Impacto &amp; Aprendizajes</h2>
+    </div>
+
+    <section class="caso-seccion seccion-oscura">
+      <div>
+        <h2>La señal más clara no vino de un dashboard, sino del equipo de atención al cliente.</h2>
+        <p>Después del rediseño dejaron de llegar los reclamos de usabilidad que
+        habían motivado el proyecto. Los problemas por los que la gente escribía ya
+        no estaban ahí.</p>
+              <h3>Content Design en salud digital</h3>
+      <p>En salud, las palabras cargan ansiedad. Un "error" sin salida o un estado
+      ambiguo no es solo fricción: es un usuario que no sabe si va a poder atenderse.
+      Gran parte del rediseño fue de content design —nombrar las gestiones como el
+      socio las piensa y convertir cada estado en una instrucción accionable.</p>
+  
+      </div>
+    </section>
+
+
     </section>
 
     <div class="caso-aprendizaje">
-      <h2>💭 Mi aprendizaje</h2>
-      <p>Descubrí que la investigación con usuarios es lo que permite ir más
-      allá de lo estético. Observar en persona cómo la gente organiza
-      información me permitió comprender sus frustraciones y diseñar una
-      estructura que se sintiera natural.</p>
+      <h2>Mi aprendizaje</h2>
+      <p>Descubrí que la investigación con usuarios es lo que permite ir más allá de
+      lo estético. Observar en persona cómo la gente organiza la información me
+      permitió comprender sus frustraciones y diseñar una estructura que se sintiera
+      natural.</p>
     </div>
 
     <nav class="caso-siguiente">
@@ -236,5 +445,50 @@
   </main>
     </div>
   </div>
+
+  <!-- Reveal on scroll: fases y bloques entran con un fade suave. -->
+  <script src="../../js/animations/reveal.js?v=2" defer></script>
+
+  <!-- Índice del caso: resalta la fase activa al scrollear y pasa a texto claro
+       sobre el bloque oscuro. Mismo patrón que Retail/Transporte. -->
+  <script>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.indice__item'));
+      if (!items.length) return;
+      var map = {}, targets = [];
+      items.forEach(function (a) {
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (el) { map[el.id] = a; targets.push(el); }
+      });
+      var root = document.querySelector('.ventana-max__scroll') || null;
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            items.forEach(function (a) { a.classList.remove('is-active'); });
+            if (map[e.target.id]) map[e.target.id].classList.add('is-active');
+          }
+        });
+      }, { root: root, rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+      targets.forEach(function (t) { io.observe(t); });
+
+      // Modo claro sobre bloques oscuros: cuando un bloque oscuro cruza el
+      // centro vertical (donde flota el rail), el texto del índice pasa a claro.
+      var indice = document.querySelector('.indice');
+      var darks = Array.prototype.slice.call(document.querySelectorAll('.seccion-oscura'));
+      if (indice && darks.length) {
+        var onDark = [];
+        var ioDark = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            var i = onDark.indexOf(e.target);
+            if (e.isIntersecting) { if (i === -1) onDark.push(e.target); }
+            else if (i !== -1) { onDark.splice(i, 1); }
+          });
+          indice.classList.toggle('is-on-dark', onDark.length > 0);
+        }, { root: root, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+        darks.forEach(function (d) { ioDark.observe(d); });
+      }
+    })();
+  </script>
 </body>
 </html>

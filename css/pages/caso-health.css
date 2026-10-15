@@ -1,0 +1,390 @@
+/* ═══════════════════════════════════════════════════════════
+   CASO HEALTH APP (Cober Touch) — capa narrativa
+   Se carga DESPUÉS de caso.css. Reutiliza el sistema de Retail/Transporte
+   (índice flotante, divisores de fase y bloque oscuro full-bleed) y suma los
+   componentes propios de este caso: callout FigJam, grilla de insights,
+   comparador de flujo, protocolo de testing e iteraciones antes/después.
+   Todo con los tokens de variables.css. Los @media que corrigen van al final.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Divisores de fase (idéntico a Retail/Transporte) ── */
+.fase {
+  margin: calc(var(--espacio-6) * 2.4) 0 var(--espacio-4);
+  scroll-margin-top: var(--espacio-6);
+}
+.fase__kicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-carpeta-oscuro);
+  margin-bottom: var(--espacio-2);
+}
+.fase__kicker--light { color: rgba(255, 255, 255, 0.55); }
+.fase .fase__titulo {
+  font-size: clamp(1.6rem, 3.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color-tinta);
+  margin: 0;
+}
+.fase + .caso-seccion { margin-top: var(--espacio-5); }
+
+/* ── Índice del caso (sidebar vertical flotante, idéntico a Retail) ── */
+.indice { display: none; }
+@media (min-width: 1380px) {
+  .indice {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: clamp(22px, calc((100vw - 1040px) / 2 - 214px), 36px);
+    width: 150px;
+    z-index: 30;
+    margin: 0;
+    --idx-muted: var(--color-tinta-suave);
+    --idx-strong: var(--color-tinta);
+    --idx-num: var(--color-carpeta-oscuro);
+  }
+  .indice.is-on-dark {
+    --idx-muted: rgba(255, 255, 255, 0.5);
+    --idx-strong: #fff;
+    --idx-num: #9db6e6;
+  }
+  .indice__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+  .indice__item {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    padding: 2px 0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--idx-muted);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+  .indice__item:hover { color: var(--idx-strong); }
+  .indice__num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--idx-num);
+    flex-shrink: 0;
+    transition: color 0.18s ease;
+  }
+  .indice__item.is-active { color: var(--idx-strong); font-weight: 700; }
+}
+
+/* ── Bloque oscuro full-bleed (idéntico a Retail) ── */
+.seccion-oscura {
+  background: linear-gradient(165deg, #202e4e 0%, #141d33 100%);
+  width: calc(100vw - 36px);
+  margin-inline: calc(50% - 50vw + 18px);
+  padding: calc(var(--espacio-6) * 1.5) 0;
+  overflow: hidden;
+}
+.seccion-oscura > * {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--espacio-5);
+  padding-right: var(--espacio-5);
+  box-sizing: border-box;
+}
+.seccion-oscura h2 {
+  color: #fff;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--espacio-4);
+}
+.seccion-oscura p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1.08rem, 1.5vw, 1.22rem);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.seccion-oscura strong { color: #fff; }
+
+/* ── Reveal on scroll (mismo patrón que Retail/Transporte) ── */
+[data-reveal].reveal-ready { opacity: 0; transform: translateY(24px); }
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ═══ COMPONENTES PROPIOS DEL CASO ═══ */
+
+/* ── Callout promocional: link externo a un recurso real (FigJam) ── */
+.caso-callout-figjam {
+  margin-top: var(--espacio-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-5);
+  background:
+    radial-gradient(130% 150% at 0% 0%, rgba(90, 124, 174, 0.12), transparent 55%),
+    var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+}
+.caso-callout-figjam__texto { max-width: 62ch; }
+.caso-callout-figjam__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-carpeta-oscuro);
+  margin-bottom: var(--espacio-2);
+}
+.caso-callout-figjam h3 {
+  margin: 0 0 var(--espacio-2);
+  font-size: 1.1rem;
+  color: var(--color-tinta);
+  font-weight: 700;
+}
+.caso-callout-figjam p { margin: 0; }
+
+/* Botón genérico del caso (link con énfasis) */
+.caso-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-carpeta-oscuro);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.94rem;
+  padding: 11px 17px;
+  border-radius: var(--radio-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.caso-boton:hover { background: var(--color-carpeta); transform: translateY(-1px); }
+.caso-boton svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── Insights del modelo mental (research) ── */
+.caso-insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.caso-insight {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+}
+.caso-insight__num {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-carpeta-oscuro);
+  margin-bottom: var(--espacio-2);
+}
+.caso-insight h4 {
+  margin: 0 0 var(--espacio-2);
+  font-size: 1.02rem;
+  line-height: 1.25;
+  color: var(--color-tinta);
+  font-weight: 700;
+}
+.caso-insight p { margin: 0; }
+
+/* ── Comparador de lógica de flujo (antes / después) ── */
+.caso-flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.caso-flow__col {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  background: var(--color-superficie);
+}
+.caso-flow__col--antes {
+  background: var(--color-alerta-tenue);
+  border-color: rgba(209, 69, 59, 0.25);
+}
+.caso-flow__col--despues {
+  background: rgba(46, 158, 91, 0.06);
+  border-color: rgba(46, 158, 91, 0.28);
+}
+.caso-flow__tag {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--espacio-3);
+}
+.caso-flow__col--antes .caso-flow__tag { color: var(--color-alerta); }
+.caso-flow__col--despues .caso-flow__tag { color: var(--color-exito); }
+.caso-flow__pasos { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.caso-flow__chip {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-weight: 600;
+  color: var(--color-tinta);
+  font-size: 0.84rem;
+}
+.caso-flow__col--antes .caso-flow__chip { background: rgba(255, 255, 255, 0.6); }
+.caso-flow__arrow { color: var(--color-tinta-suave); font-weight: 700; }
+.caso-flow__col .caso-flow__nota {
+  margin: var(--espacio-4) 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-tinta-cuerpo);
+}
+
+/* ── Protocolo de testing (plan de validación preparado) ── */
+.caso-protocolo {
+  margin-top: var(--espacio-5);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+  overflow: hidden;
+}
+.caso-protocolo__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-4) var(--espacio-5);
+  background: var(--color-superficie-lateral);
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+.caso-protocolo__head h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-tinta);
+  font-weight: 700;
+}
+.caso-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(247, 201, 72, 0.18);
+  color: #8a6d12;
+  white-space: nowrap;
+}
+.caso-protocolo__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.caso-protocolo__item {
+  padding: var(--espacio-5);
+  border-right: 1px solid var(--color-borde-claro);
+  margin: 0;
+}
+.caso-protocolo__item:last-child { border-right: 0; }
+.caso-protocolo__item dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-tinta-suave);
+  margin-bottom: var(--espacio-3);
+}
+.caso-protocolo__item dd {
+  margin: 0 0 7px;
+  color: var(--color-tinta-cuerpo);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.caso-protocolo__item dd:last-child { margin-bottom: 0; }
+
+/* ── Iteraciones antes / después (hipótesis de mejora) ── */
+.caso-iteraciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-5);
+}
+.caso-iter {
+  border: 1px solid var(--color-borde-claro);
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  background: var(--color-superficie);
+}
+.caso-iter__tag {
+  display: block;
+  padding: 10px var(--espacio-5);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.caso-iter--antes .caso-iter__tag { background: var(--color-alerta-tenue); color: var(--color-alerta); }
+.caso-iter--despues .caso-iter__tag { background: rgba(46, 158, 91, 0.08); color: var(--color-exito); }
+.caso-iter__cuerpo { padding: var(--espacio-5); }
+.caso-iter__cuerpo p { margin: 0; }
+.caso-iter__cuerpo p + p { margin-top: var(--espacio-3); }
+
+/* ── Chips de criterios (accesibilidad / estados) ── */
+.caso-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--espacio-4);
+}
+.caso-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--color-fondo-agrupado);
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-tinta-cuerpo);
+}
+.caso-chip svg { width: 14px; height: 14px; color: var(--color-carpeta-oscuro); flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   MÓVIL — va al final (corrige lo de arriba)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .seccion-oscura { width: 100vw; margin-inline: calc(50% - 50vw); padding: var(--espacio-6) 0; }
+  .seccion-oscura > * { padding-left: var(--espacio-4); padding-right: var(--espacio-4); }
+
+  .caso-insights,
+  .caso-flow,
+  .caso-iteraciones { grid-template-columns: 1fr; }
+
+  .caso-protocolo__grid { grid-template-columns: 1fr; }
+  .caso-protocolo__item { border-right: 0; border-bottom: 1px solid var(--color-borde-claro); }
+  .caso-protocolo__item:last-child { border-bottom: 0; }
+
+  .caso-callout-figjam { flex-direction: column; align-items: flex-start; }
+  .caso-boton { width: 100%; justify-content: center; }
+}
