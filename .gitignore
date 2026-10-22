@@ -24,3 +24,8 @@ assets/icons/faviconcv.svg
 # pero NO se suben al repo (son ~30 MB de peso muerto, no los carga nadie).
 assets/images/casos-de-estudio/**/originals/
 assets/images/casos-de-estudio/transporte/_exportaciones-figma/
+
+# ═══ Entregables de Claude (Cowork) — personales, NO van al repo ═══
+# Cowork guarda aca los archivos que Claude te pasa por el chat (CVs, textos,
+# capturas). Son tuyos, no son del portfolio: git los ignora.
+Claude outputs/
