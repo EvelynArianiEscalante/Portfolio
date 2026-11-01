@@ -10,7 +10,7 @@ intuitivas y eficientes.
 
 ## Experiencia
 
-**SSR UX/UI Designer · Supply Solutions** — Buenos Aires, Argentina · Mar 26 – Actualidad
+**SSR UX/UI Designer · Supply Solutions** — Buenos Aires, Argentina · Mar 26 – Nov 26
 *(Redactado 2026-08 con criterio ATS/RRHH: genérico y legible; lo técnico vive en el portfolio)*
 - Diseño end-to-end de plataforma B2B de logística conectada a hardware RFID:
   3 productos en versiones web y mobile, como única diseñadora del equipo.
@@ -84,4 +84,4 @@ VS Code, Git y GitHub, Trello, Mural, Optimal Workshop
 - Ojo tipos en el original de Figma: "Phothoshop", "Worpress" — corregir si se reusa.
 - Con esto queda clara la línea de tiempo real: Coderhouse UX (22-23) →
   Fidooo (Oct 23-May 24) + Micemark freelance (Ago 23-Mar 25) en paralelo →
-  SISU (May-Nov 24) → Cober (Abr 25-Feb 26) → Supply Solutions (actual).
+  SISU (May-Nov 24) → Cober (Abr 25-Feb 26) → Supply Solutions (hasta Nov 2026).
