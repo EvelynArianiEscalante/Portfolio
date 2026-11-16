@@ -484,6 +484,60 @@
   background: var(--color-carpeta);
 }
 
+/* === Auditoria: telefono + componentes flotantes + cards de ejes === */
+.audit-visual { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items: center; margin: var(--espacio-5) 0 var(--espacio-6); }
+.audit-fono { position: relative; width: 100%; max-width: 360px; margin: 0 auto; }
+.audit-fono__base { width: 100%; height: auto; display: block; }
+.audit-fono__layer { position: absolute; display: block; height: auto; transform-origin: center; filter: drop-shadow(0 10px 20px rgba(0,0,0,.22)); }
+.audit-fono__layer--cred { --rot: 4deg;  width: 63.7%; left: 37.5%; top: 9.5%; }
+.audit-fono__layer--btn  { --rot: -5deg; width: 67.9%; left: -7.5%; top: 42.1%; }
+.audit-fono__layer--nav  { --rot: 4deg;  width: 76.4%; left: 26%;   top: 67.5%; }
+.audit-ejes { display: flex; flex-direction: column; gap: 16px; }
+.audit-cards2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; margin: var(--espacio-5) 0 var(--espacio-6); }
+.audit-card { background: var(--color-superficie); border: 1px solid var(--color-borde-claro); border-radius: var(--radio-md); padding: 20px 22px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 26px rgba(0,0,0,.05); }
+.audit-card__head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+.audit-card__num { color: #EB3E40; font-weight: 700; font-size: 1.05rem; }
+.audit-card__title { font-size: 1.08rem; font-weight: 700; letter-spacing: -.01em; margin: 0; color: var(--color-tinta); }
+.audit-card__lead { font-size: .9rem; line-height: 1.55; color: var(--color-tinta-suave); margin: 0 0 14px; }
+.audit-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.audit-chips li { font-size: .76rem; font-weight: 600; color: #EB3E40; background: rgba(235,62,64,.08); border: 1px solid rgba(235,62,64,.38); padding: 5px 12px; border-radius: 999px; }
+/* animacion enganchada al reveal del sitio: [data-reveal] -> .reveal-ready (oculta) -> .is-in (muestra) */
+.audit-fono__base { transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1); }
+.audit-fono__layer { transform: rotate(var(--rot)); transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); }
+.audit-card { transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); }
+.audit-visual.reveal-ready { opacity: 1 !important; transform: none !important; }
+.audit-visual.reveal-ready .audit-fono__base { opacity: 0; transform: scale(.9); }
+.audit-visual.reveal-ready .audit-fono__layer { opacity: 0; transform: scale(.8) rotate(var(--rot)); }
+.audit-visual.reveal-ready .audit-card { opacity: 0; transform: translateY(18px); }
+.audit-visual.is-in .audit-fono__base { opacity: 1; transform: scale(1); }
+.audit-visual.is-in .audit-fono__layer { opacity: 1; transform: scale(1) rotate(var(--rot)); }
+.audit-visual.is-in .audit-fono__layer--cred { transition-delay: .26s; }
+.audit-visual.is-in .audit-fono__layer--btn { transition-delay: .38s; }
+.audit-visual.is-in .audit-fono__layer--nav { transition-delay: .50s; }
+.audit-visual.is-in .audit-card { opacity: 1; transform: none; }
+.audit-visual.is-in .audit-card:nth-child(1) { transition-delay: .60s; }
+.audit-visual.is-in .audit-card:nth-child(2) { transition-delay: .72s; }
+@media (max-width: 860px) {
+  .audit-visual { grid-template-columns: 1fr; gap: 32px; }
+  .audit-fono { max-width: 300px; }
+  .audit-cards2 { grid-template-columns: 1fr; }
+}
+
+/* === Auditoria bloque 2: cards izq + dos telefonos (portal + cartilla) der === */
+.audit-fonos2 { position: relative; width: 100%; max-width: 420px; margin: 0 auto; }
+.audit-fonos2::before { content: ""; display: block; padding-top: 140%; }
+.audit-fono2 { position: absolute; display: block; height: auto; transform-origin: center; filter: drop-shadow(0 12px 24px rgba(0,0,0,.24)); }
+.audit-fono2--portal { width: 56%; left: 1%; top: 2%; }
+.audit-fono2--cartilla { width: 58%; left: 41%; top: 21%; }
+.audit-fono2 { transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); }
+.audit-visual.reveal-ready .audit-fono2 { opacity: 0; transform: scale(.85); }
+.audit-visual.is-in .audit-fono2 { opacity: 1; transform: scale(1); }
+.audit-visual.is-in .audit-fono2--portal { transition-delay: .26s; }
+.audit-visual.is-in .audit-fono2--cartilla { transition-delay: .46s; }
+@media (max-width: 860px) {
+  .audit-fonos2 { max-width: 320px; }
+}
+
 /* ═══════════════════════════════════════════════════════════
    MÓVIL — va al final (corrige lo de arriba)
    ═══════════════════════════════════════════════════════════ */

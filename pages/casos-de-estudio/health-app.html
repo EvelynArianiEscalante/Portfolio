@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
-  <link rel="stylesheet" href="../../css/pages/caso-health.css?v=1">
+  <link rel="stylesheet" href="../../css/pages/caso-health.css?v=4">
 </head>
 <body>
 
@@ -102,39 +102,45 @@
       <p>Diagnostiqué el problema de raíz antes de proponer soluciones. Recorrí los
       flujos principales para mapear los puntos de mayor fricción y agruparlos por tipo.</p>
 
-      <ul class="puntos puntos--problema">
-        <li class="punto">
-          <span class="punto__num">01</span>
-          <p><strong>Jerarquía visual inconsistente</strong><br>
-          Problemas de grid y de alineación a lo largo de toda la app.</p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">02</span>
-          <p><strong>Uso inapropiado del color</strong><br>
-          Con fallas de accesibilidad asociadas.</p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">03</span>
-          <p><strong>Flujos con fricción</strong><br>
-          Búsqueda ineficiente y navegación confusa.</p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">04</span>
-          <p><strong>Ausencia de feedback visual</strong><br>
-          E incumplimiento de patrones ya conocidos por el usuario.</p>
-        </li>
-        <li class="punto">
-          <span class="punto__num">05</span>
-          <p><strong>Vocabulario impreciso</strong><br>
-          Terminología interna que no conectaba con el lenguaje del usuario.</p>
-        </li>
-      </ul>
-      <figure class="caso-figura">
-        <img src="../../assets/images/casos-de-estudio/health-app/3-findings.webp"
-             alt="Auditoría de la app: cada pantalla anotada con los problemas detectados, agrupados por tipo"
-             width="1830" height="1526" loading="lazy">
-        <figcaption>Auditoría heurística: cada hallazgo mapeado sobre la pantalla donde ocurre.</figcaption>
-      </figure>
+      <div class="audit-visual" data-reveal>
+        <figure class="audit-fono">
+          <img class="audit-fono__base" src="../../assets/images/casos-de-estudio/health-app/contexto-telefono.webp" alt="Pantalla de inicio de la app con sus componentes sueltos" width="978" height="1830" loading="lazy">
+          <img class="audit-fono__layer audit-fono__layer--cred" src="../../assets/images/casos-de-estudio/health-app/contexto-credencial.webp" alt="" width="839" height="495" loading="lazy">
+          <img class="audit-fono__layer audit-fono__layer--btn" src="../../assets/images/casos-de-estudio/health-app/contexto-boton.webp" alt="" width="894" height="257" loading="lazy">
+          <img class="audit-fono__layer audit-fono__layer--nav" src="../../assets/images/casos-de-estudio/health-app/contexto-nav.webp" alt="" width="1006" height="217" loading="lazy">
+        </figure>
+        <div class="audit-ejes">
+          <article class="audit-card">
+            <div class="audit-card__head"><span class="audit-card__num">01.</span><h4 class="audit-card__title">Consistencia y jerarqu&iacute;a</h4></div>
+            <p class="audit-card__lead">Los mismos elementos se ve&iacute;an y se comportaban distinto seg&uacute;n la pantalla, sin una jerarqu&iacute;a que guiara la lectura.</p>
+            <ul class="audit-chips"><li>Problemas de grid y alineaci&oacute;n</li><li>Jerarqu&iacute;a visual inconsistente</li><li>Incumplimiento de patrones</li></ul>
+          </article>
+          <article class="audit-card">
+            <div class="audit-card__head"><span class="audit-card__num">02.</span><h4 class="audit-card__title">Accesibilidad</h4></div>
+            <p class="audit-card__lead">El color cargaba significado que no todos pod&iacute;an percibir, y varios elementos no respetaban contraste ni los m&iacute;nimos de accesibilidad.</p>
+            <ul class="audit-chips"><li>Incumplimiento de normas de accesibilidad</li><li>Uso inapropiado del color</li></ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="audit-visual audit-visual--b2" data-reveal>
+        <div class="audit-ejes">
+          <article class="audit-card">
+            <div class="audit-card__head"><span class="audit-card__num">03.</span><h4 class="audit-card__title">Navegaci&oacute;n y flujos</h4></div>
+            <p class="audit-card__lead">Tareas frecuentes como buscar un prestador o gestionar un turno ped&iacute;an pasos de m&aacute;s y decisiones poco claras.</p>
+            <ul class="audit-chips"><li>Flujo de b&uacute;squeda ineficiente</li><li>Navegaci&oacute;n confusa</li><li>Flujos con fricci&oacute;n</li></ul>
+          </article>
+          <article class="audit-card">
+            <div class="audit-card__head"><span class="audit-card__num">04.</span><h4 class="audit-card__title">Feedback y contenido</h4></div>
+            <p class="audit-card__lead">La interfaz no confirmaba el resultado de las acciones y el lenguaje no acompa&ntilde;aba al usuario.</p>
+            <ul class="audit-chips"><li>Ausencia de feedback visual</li><li>Vocabulario impreciso</li></ul>
+          </article>
+        </div>
+        <figure class="audit-fonos2">
+          <img class="audit-fono2 audit-fono2--portal" src="../../assets/images/casos-de-estudio/health-app/contexto-portal.webp" alt="Pantalla del portal de turnos" width="729" height="1363" loading="lazy">
+          <img class="audit-fono2 audit-fono2--cartilla" src="../../assets/images/casos-de-estudio/health-app/contexto-cartilla.webp" alt="Pantalla de cartilla y servicios de guardia en el mapa" width="365" height="682" loading="lazy">
+        </figure>
+      </div>
     </section>
 
     <!-- ═══════════════ 02 · UX RESEARCH ═══════════════ -->
@@ -163,7 +169,7 @@
             Tablero de análisis
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
-          <a class="caso-boton caso-boton--ghost" href="https://www.figma.com/deck/cIeRJwQ2TPl7RBx3WnLy3Q/Presentacio%CC%81n---Cardsorting-presencial?node-id=1-489&viewport=-134%2C-93%2C0.62&t=AHYWoBCBpoQCduVE-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener">
+          <a class="caso-boton caso-boton--ghost" href="../../assets/docs/cardsorting-presentacion.pdf" target="_blank" rel="noopener">
             Ir a presentación
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
