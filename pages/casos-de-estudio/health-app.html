@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../../css/base/variables.css?v=18">
   <link rel="stylesheet" href="../../css/base/tipografia.css?v=18">
   <link rel="stylesheet" href="../../css/pages/caso.css?v=21">
-  <link rel="stylesheet" href="../../css/pages/caso-health.css?v=4">
+  <link rel="stylesheet" href="../../css/pages/caso-health.css?v=9">
 </head>
 <body>
 
@@ -159,49 +159,36 @@
 
 
 
-      <div class="caso-recurso">
-        <div class="caso-recurso__texto">
-          <h4>Cardsorting: proceso y material de trabajo</h4>
-          <p>Entregables del research: agrupamiento en FigJam y presentación a participantes.</p>
-        </div>
-        <div class="caso-recurso__acciones">
-          <a class="caso-boton" href="https://www.figma.com/board/CJmG1eIsvPJaHvAwRs3r66/Research---Cober?node-id=3-34&t=vIJDBfLgKeaBgpAC-1" target="_blank" rel="noopener">
-            Tablero de análisis
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-          </a>
-          <a class="caso-boton caso-boton--ghost" href="../../assets/docs/cardsorting-presentacion.pdf" target="_blank" rel="noopener">
-            Ir a presentación
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-          </a>
-        </div>
-      </div>
 
-      <h3>Algunos insights</h3>
-      <div class="caso-insights">
-        <article class="caso-insight">
-          <span class="caso-insight__num">01</span>
-          <h4>Doble vía de acceso</h4>
-          <p><strong>Hallazgos:</strong> Turnos, Recetas y Cartilla se dividieron
-          50/50 entre "Gestiones" y "Mi Salud".</p>
-          <p><strong>Solución:</strong> Habilitamos accesos dobles para responder a
-          ambos modelos mentales.</p>
-        </article>
-        <article class="caso-insight">
-          <span class="caso-insight__num">02</span>
-          <h4>Credencial en la Home</h4>
-          <p><strong>Hallazgos:</strong> Casi la ordenaba en "Mi Perfil"; esperaban
-          verla asociada a "Mi Plan" o directa al entrar.</p>
-          <p><strong>Solución:</strong> La priorizamos en la home a primera vista
-          para un acceso inmediato en urgencias.</p>
-        </article>
-        <article class="caso-insight">
-          <span class="caso-insight__num">03</span>
-          <h4>Accesos no cubiertos</h4>
-          <p><strong>Hallazgos:</strong> El research reveló la necesidad de
-          jerarquizar Beneficios y Guardia/Emergencias.</p>
-          <p><strong>Solución:</strong> Incorporamos accesos rápidos en la Tab Bar
-          y sección de ayuda.</p>
-        </article>
+      <h3 class="research-sep">Algunos insights</h3>
+      <div class="research-visual" data-reveal>
+        <div class="research-cards">
+          <article class="audit-card audit-card--verde">
+            <div class="audit-card__head"><span class="audit-card__num">01.</span><h4 class="audit-card__title">Doble v&iacute;a de acceso</h4></div>
+            <p class="audit-card__lead">En el card sorting, Turnos, Recetas y Cartilla quedaron 50/50 entre "Gestiones" y "Mi Salud".</p>
+            <ul class="audit-chips"><li>Acceso desde Gestiones</li><li>Acceso desde Mi Salud</li></ul>
+          </article>
+          <article class="audit-card audit-card--verde">
+            <div class="audit-card__head"><span class="audit-card__num">02.</span><h4 class="audit-card__title">Credencial en la Home</h4></div>
+            <p class="audit-card__lead">La buscaban en "Mi Perfil", pero la esperaban junto a "Mi Plan" o directa al entrar.</p>
+            <ul class="audit-chips"><li>Credencial en la home</li><li>Acceso inmediato en urgencias</li></ul>
+          </article>
+          <article class="audit-card audit-card--verde">
+            <div class="audit-card__head"><span class="audit-card__num">03.</span><h4 class="audit-card__title">Accesos no cubiertos</h4></div>
+            <p class="audit-card__lead">Beneficios y Guardia/Emergencias no ten&iacute;an la jerarqu&iacute;a que el research ped&iacute;a.</p>
+            <ul class="audit-chips"><li>Accesos en la Tab Bar</li><li>Secci&oacute;n de ayuda</li></ul>
+          </article>
+        </div>
+        <div class="research-media">
+          <figure class="audit-fotos">
+            <img class="audit-foto audit-foto--1" src="../../assets/images/casos-de-estudio/health-app/research-foto-1.webp" alt="Sesi&oacute;n de card sorting presencial: participantes agrupando tarjetas" width="1194" height="904" loading="lazy">
+            <img class="audit-foto audit-foto--2" src="../../assets/images/casos-de-estudio/health-app/research-foto-2.webp" alt="Participantes trabajando en el agrupamiento de tarjetas" width="901" height="1191" loading="lazy">
+          </figure>
+          <a class="caso-boton" href="../../assets/docs/cardsorting-presentacion.pdf" target="_blank" rel="noopener">
+            Ver presentaci&oacute;n
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
       </div>
 
       <h3>Benchmark</h3>
